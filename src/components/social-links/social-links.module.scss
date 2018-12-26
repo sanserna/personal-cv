@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.social-links {
+  list-style: none;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+
+  &,
+  .social-links__item {
+    margin: 0;
+  }
+
+  .social-links__item {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+  .social-links__link {
+    display: block;
+    text-decoration: none;
+    background-image: none;
+    text-shadow: none;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .social-links__icon-wrapper {
+    display: block !important;
+  }
+}

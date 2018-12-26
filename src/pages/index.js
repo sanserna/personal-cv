@@ -1,13 +1,14 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 
 import MainLayout from '../components/main-layout/main-layout';
+import HeroHeader from '../components/hero-header/hero-header';
+import Resume from '../components/resume/resume';
 
-export default () => (
-  <MainLayout>
-    <div>hola</div>
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-  </MainLayout>
-);
+export default () => {
+  return (
+    <MainLayout>
+      <HeroHeader />
+      <Resume />
+    </MainLayout>
+  );
+};
