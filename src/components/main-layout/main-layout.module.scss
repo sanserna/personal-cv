@@ -1,3 +1,9 @@
+@import '../../styles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
-  background: #ecf0f1;
+  background: $gray-400;
 }

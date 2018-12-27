@@ -12,7 +12,32 @@ module.exports = {
         github: 'https://github.com/sanserna',
         linkedin: 'https://linkedin.com/in/sanserna/',
         instagram: 'https://www.instagram.com/sanserna91'
-      }
+      },
+      softSkills: [
+        'Animación por Computadora',
+        'Gestion de Proyectos',
+        'UI/UX',
+        'Arquitectura de Sofware',
+        'Arquitectura Web',
+        'Liderazgo de Equipos'
+      ],
+      techSkills: [
+        { label: 'HTML/CSS', level: 100 },
+        { label: 'JavaScript', level: 90 },
+        { label: 'NodeJs', level: 65 },
+        { label: 'Java', level: 80 },
+        { label: 'PHP7', level: 60 },
+        { label: 'Python', level: 20 },
+        { label: 'MySQL', level: 60 },
+        { label: 'Git', level: 80 },
+        { label: 'C++', level: 40 },
+        { label: 'Angular', level: 85 },
+        { label: 'React', level: 40 },
+        { label: 'VueJs', level: 80 },
+        { label: 'Firebase', level: 75 },
+        { label: 'ExpressJs', level: 70 },
+        { label: 'Laravel', level: 65 }
+      ]
     }
   },
   plugins: [

@@ -6,33 +6,30 @@ import Img from 'gatsby-image';
 import heroHeaderStyles from './hero-header.module.scss';
 import SocialLinks from '../social-links/social-links';
 
-const HeroHeader = props => {
-  const sectionHeight = window.innerHeight - props.layoutPadding;
-  const renderHeroHeader = ({ site, avatar, pattern }) => {
-    const person = site.siteMetadata.person;
-    const patternSrc = pattern.childImageSharp.fixed.src;
-
-    return (
+const HeroHeader = props => (
+  <StaticQuery
+    query={query}
+    render={({ site, avatar, pattern }) => (
       <section
         className={heroHeaderStyles.container}
         style={{
-          height: sectionHeight,
-          backgroundImage: `url(${patternSrc})`
+          height: window.innerHeight - props.layoutPadding,
+          backgroundImage: `url(${pattern.childImageSharp.fixed.src})`
         }}
       >
         <header className={heroHeaderStyles.header}>
           <a
             className={heroHeaderStyles.header__item}
-            href={`tel:${person.phone}`}
+            href={`tel:${site.siteMetadata.person.phone}`}
           >
-            {person.phone}
+            {site.siteMetadata.person.phone}
           </a>
           <a
             className={heroHeaderStyles.header__item}
-            href={`mailto:${person.email}`}
+            href={`mailto:${site.siteMetadata.person.email}`}
             style={{ fontStyle: 'italic' }}
           >
-            {person.email}
+            {site.siteMetadata.person.email}
           </a>
         </header>
 
@@ -42,19 +39,29 @@ const HeroHeader = props => {
             className={heroHeaderStyles.hero__imageContainer}
           />
           <div className={heroHeaderStyles.hero__descriptionContent}>
-            <h2 className={heroHeaderStyles.hero__title}>{person.name}</h2>
+            <h2 className={heroHeaderStyles.hero__title}>
+              {site.siteMetadata.person.name}
+            </h2>
             <small className={heroHeaderStyles.hero__subtitle}>
-              {person.profesion}
+              {site.siteMetadata.person.profesion}
             </small>
           </div>
-          <SocialLinks />
+          <SocialLinks style={{ paddingTop: '30px' }} />
         </div>
       </section>
-    );
-  };
+    )}
+  />
+);
 
-  return <StaticQuery query={query} render={renderHeroHeader} />;
+HeroHeader.propTypes = {
+  layoutPadding: PropTypes.number
 };
+
+HeroHeader.defaultProps = {
+  layoutPadding: 0
+};
+
+export default HeroHeader;
 
 const query = graphql`
   query {
@@ -84,13 +91,3 @@ const query = graphql`
     }
   }
 `;
-
-HeroHeader.propTypes = {
-  layoutPadding: PropTypes.number
-};
-
-HeroHeader.defaultProps = {
-  layoutPadding: 0
-};
-
-export default HeroHeader;

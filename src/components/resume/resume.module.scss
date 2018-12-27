@@ -1,10 +1,5 @@
 @import '../../styles/variables';
 
-.container {
-  background: $white;
-  padding: 100px;
-}
-
 .short-bio,
 .about {
   border: 1px solid $gray-100;
@@ -19,30 +14,13 @@
 
   .short-bio__text {
     padding: 20px 25px;
+    margin: 0;
   }
 }
 
 .about {
   padding: 70px 50px;
   flex-grow: 1;
-  width: auto;
-
-  .about__title {
-    margin: 0;
-    padding-bottom: 30px;
-    text-transform: uppercase;
-
-    &::after {
-      content: '';
-      background: #000;
-      border-radius: 15px 0 30px 15px;
-      display: block;
-      height: 10px;
-      margin-top: 30px;
-      top: 50px;
-      width: 40px;
-    }
-  }
 
   .about__text-item {
     margin: 0;
