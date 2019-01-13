@@ -2,11 +2,11 @@
 
 .soft-skills,
 .tech-skills {
+  padding: 70px 50px;
   border: 1px solid $gray-100;
 }
 
 .soft-skills {
-  padding: 70px 50px;
   width: 35%;
 
   .soft-skills__list {
@@ -34,7 +34,6 @@
 }
 
 .tech-skills {
-  padding: 70px 50px;
   flex-grow: 1;
 }
 

@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.content-left,
+.content-right {
+  padding: 70px 50px;
+  border: 1px solid $gray-100;
+}
+
+.content-left {
+  flex-shrink: 0;
+  width: 35%;
+}
+
+.content-right {
+  flex-grow: 1;
+}
+
+.overlay-content {
+  background: $gray-300;
+}
