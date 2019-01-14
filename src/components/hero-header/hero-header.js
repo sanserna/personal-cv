@@ -4,73 +4,63 @@ import Img from 'gatsby-image';
 
 import heroHeaderStyles from './hero-header.module.scss';
 import SocialLinks from '../social-links/social-links';
+import { PersonDataConsumer } from '../../contexts/person-data-context';
+import { AssetsConsumer } from '../../contexts/assets-context';
 
-const HeroHeader = ({ layoutPadding, bgImgSrc, socialData, avatar, data }) => (
-  <section
-    className={heroHeaderStyles.container}
-    style={{
-      height: window.innerHeight - layoutPadding,
-      backgroundImage: `url(${bgImgSrc})`
-    }}
-  >
-    <header className={heroHeaderStyles.header}>
-      <a className={heroHeaderStyles.header__item} href={`tel:${data.phone}`}>
-        {data.phone}
-      </a>
-      <a
-        className={heroHeaderStyles.header__item}
-        href={`mailto:${data.email}`}
-        style={{ fontStyle: 'italic' }}
-      >
-        {data.email}
-      </a>
-    </header>
+const HeroHeader = ({ layoutPadding }) => (
+  <PersonDataConsumer>
+    {person => (
+      <AssetsConsumer>
+        {({ headerAvatar, haderPattern }) => (
+          <section
+            className={heroHeaderStyles.container}
+            style={{
+              height: window.innerHeight - layoutPadding,
+              backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`
+            }}
+          >
+            <header className={heroHeaderStyles.header}>
+              <a
+                className={heroHeaderStyles.header__item}
+                href={`tel:${person.phone}`}
+              >
+                {person.phone}
+              </a>
+              <a
+                className={heroHeaderStyles.header__item}
+                href={`mailto:${person.email}`}
+                style={{ fontStyle: 'italic' }}
+              >
+                {person.email}
+              </a>
+            </header>
 
-    <div className={heroHeaderStyles.hero}>
-      <Img fixed={avatar} className={heroHeaderStyles.hero__imageContainer} />
-      <div className={heroHeaderStyles.hero__descriptionContent}>
-        <h2 className={heroHeaderStyles.hero__title}>{data.name}</h2>
-        <small className={heroHeaderStyles.hero__subtitle}>
-          {data.profesion}
-        </small>
-      </div>
-      <SocialLinks style={{ paddingTop: '30px' }} socialData={socialData} />
-    </div>
-  </section>
+            <div className={heroHeaderStyles.hero}>
+              <Img
+                fixed={headerAvatar.childImageSharp.fixed}
+                className={heroHeaderStyles.hero__imageContainer}
+              />
+              <div className={heroHeaderStyles.hero__descriptionContent}>
+                <h2 className={heroHeaderStyles.hero__title}>{person.name}</h2>
+                <small className={heroHeaderStyles.hero__subtitle}>
+                  {person.profesion}
+                </small>
+              </div>
+              <SocialLinks style={{ paddingTop: '30px' }} />
+            </div>
+          </section>
+        )}
+      </AssetsConsumer>
+    )}
+  </PersonDataConsumer>
 );
 
 HeroHeader.propTypes = {
-  layoutPadding: PropTypes.number,
-  bgImgSrc: PropTypes.string,
-  socialData: PropTypes.arrayOf(
-    PropTypes.shape({
-      link: PropTypes.string.isRequired,
-      iconImg: PropTypes.shape({
-        height: PropTypes.number,
-        originalName: PropTypes.string,
-        src: PropTypes.string,
-        srcSet: PropTypes.string,
-        width: PropTypes.number
-      }).isRequired
-    })
-  ).isRequired,
-  avatar: PropTypes.shape({
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired,
-    srcSet: PropTypes.string.isRequired
-  }).isRequired,
-  data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    profesion: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired
-  }).isRequired
+  layoutPadding: PropTypes.number
 };
 
 HeroHeader.defaultProps = {
-  layoutPadding: 0,
-  bgImgSrc: ''
+  layoutPadding: 0
 };
 
 export default HeroHeader;
