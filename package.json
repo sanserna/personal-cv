@@ -27,7 +27,8 @@
     "react-dom": "^16.5.1",
     "react-typography": "^0.16.18",
     "typography": "^0.16.18",
-    "typography-theme-lincoln": "^0.16.18"
+    "typography-theme-lincoln": "^0.16.18",
+    "unstated": "^2.1.1"
   },
   "repository": {
     "type": "git",

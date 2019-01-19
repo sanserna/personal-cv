@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import { Subscribe } from 'unstated';
+
+import { PersonDataContainer } from '../../containers/person-data.container';
+import { AssetsContainer } from '../../containers/assets.container';
 
 import socialLinksStyles from './social-links.module.scss';
 import { PersonDataConsumer } from '../../contexts/person-data-context';
@@ -21,31 +25,29 @@ const getSocialData = (socialLinks = {}, socialIcons = []) =>
   });
 
 const SocialLinks = props => (
-  <PersonDataConsumer>
-    {({ social }) => (
-      <AssetsConsumer>
-        {({ socialIcons }) => (
-          <ul className={socialLinksStyles.socialLinks} style={props.style}>
-            {getSocialData(social, socialIcons.edges).map((data, index) => (
-              <li key={index} className={socialLinksStyles.socialLinks__item}>
-                <a
-                  href={data.link}
-                  target="_blanc"
-                  className={socialLinksStyles.socialLinks__link}
-                >
-                  <Img
-                    fixed={data.iconImg}
-                    className={socialLinksStyles.socialLinks__iconWrapper}
-                    imgStyle={{ filter: 'invert(95%)' }}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+  <Subscribe to={[PersonDataContainer, AssetsContainer]}>
+    {({ state: person }, { assets }) => (
+      <ul className={socialLinksStyles.socialLinks} style={props.style}>
+        {getSocialData(person.social, assets.socialIcons.edges).map(
+          (data, index) => (
+            <li key={index} className={socialLinksStyles.socialLinks__item}>
+              <a
+                href={data.link}
+                target="_blanc"
+                className={socialLinksStyles.socialLinks__link}
+              >
+                <Img
+                  fixed={data.iconImg}
+                  className={socialLinksStyles.socialLinks__iconWrapper}
+                  imgStyle={{ filter: 'invert(95%)' }}
+                />
+              </a>
+            </li>
+          )
         )}
-      </AssetsConsumer>
+      </ul>
     )}
-  </PersonDataConsumer>
+  </Subscribe>
 );
 
 SocialLinks.propTypes = {
