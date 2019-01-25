@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import cardStyles from './card.module.scss';
 
 const Card = ({ children, style }) => (
-  <div className={cardStyles.card} style={style}>
-    {children}
+  <div className={cardStyles.container}>
+    <div className={cardStyles.card} style={style}>
+      {children}
+    </div>
   </div>
 );
 

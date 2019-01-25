@@ -7,8 +7,6 @@ import { PersonDataContainer } from '../../containers/person-data.container';
 import { AssetsContainer } from '../../containers/assets.container';
 
 import socialLinksStyles from './social-links.module.scss';
-import { PersonDataConsumer } from '../../contexts/person-data-context';
-import { AssetsConsumer } from '../../contexts/assets-context';
 
 const getSocialData = (socialLinks = {}, socialIcons = []) =>
   Object.keys(socialLinks).map(socialLink => {
