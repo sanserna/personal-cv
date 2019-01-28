@@ -2,19 +2,26 @@
 
 .content-left,
 .content-right {
-  padding: 70px 50px;
+  width: 100%;
+  padding: 40px 20px;
   border: 1px solid $gray-100;
-}
-
-.content-left {
-  flex-shrink: 0;
-  width: 35%;
 }
 
 .content-right {
   flex-grow: 1;
 }
 
-.overlay-content {
-  background: $gray-300;
+@media (min-width: 768px) {
+  .content-left,
+  .content-right {
+    padding: 70px 50px;
+  }
+
+  .content-left {
+    width: 35%;
+  }
+
+  .content-right {
+    width: 65%;
+  }
 }
