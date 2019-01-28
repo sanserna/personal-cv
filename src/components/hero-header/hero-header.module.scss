@@ -4,18 +4,22 @@
   background-color: $dracula-orchid;
   background-repeat: repeat;
   background-size: 800px 800px;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
   width: 100%;
+
+  @media (min-width: 768px) {
+    height: calc(100vh - #{$main-layout-padding});
+  }
 }
 
 .header {
-  // align-self: flex-start;
   display: flex;
-  justify-content: flex-end;
-  padding: 20px 40px;
+  justify-content: space-around;
+  padding: 20px 20px;
   width: 100%;
 
   .header__item {
@@ -29,20 +33,24 @@
     &:hover {
       opacity: 1;
     }
+  }
 
-    &:not(:first-child) {
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+    padding: 20px 40px;
+
+    .header__item:not(:first-child) {
       padding-left: 20px;
     }
   }
 }
 
 .hero {
-  // padding-top: 80px;
-  // border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   .hero__image-container {
     border-radius: 50%;

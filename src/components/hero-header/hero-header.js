@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { Subscribe } from 'unstated';
 
@@ -9,10 +8,8 @@ import { AssetsContainer } from '../../containers/assets.container';
 import heroHeaderStyles from './hero-header.module.scss';
 import SocialLinks from '../social-links/social-links';
 
-let headerRef;
-
 const renderHeader = person => (
-  <header className={heroHeaderStyles.header} ref={ele => (headerRef = ele)}>
+  <header className={heroHeaderStyles.header}>
     <a className={heroHeaderStyles.header__item} href={`tel:${person.phone}`}>
       {person.phone}
     </a>
@@ -25,8 +22,6 @@ const renderHeader = person => (
     </a>
   </header>
 );
-
-console.log(headerRef);
 
 const renderHero = (heroAvatar, person) => (
   <div className={heroHeaderStyles.hero}>
@@ -47,34 +42,20 @@ const HeroHeader = ({ layoutPadding }) => (
       <section
         className={heroHeaderStyles.container}
         style={{
-          height: window.innerHeight - layoutPadding,
           backgroundImage: `url(${
             assets.haderPattern.childImageSharp.fixed.src
           })`
         }}
       >
         {renderHeader(person)}
-        <div
-          style={{
-            border: '1px solid red',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center'
-          }}
-        >
-          {renderHero(assets.headerAvatar.childImageSharp.fixed, person)}
-        </div>
+        {renderHero(assets.headerAvatar.childImageSharp.fixed, person)}
       </section>
     )}
   </Subscribe>
 );
 
-HeroHeader.propTypes = {
-  layoutPadding: PropTypes.number
-};
+HeroHeader.propTypes = {};
 
-HeroHeader.defaultProps = {
-  layoutPadding: 0
-};
+HeroHeader.defaultProps = {};
 
 export default HeroHeader;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Subscribe } from 'unstated';
 
 import { PersonDataContainer } from '../../containers/person-data.container';
@@ -15,17 +14,17 @@ const Skills = () => (
     {({ state: person }) => (
       <SectionContainer>
         <Card>
-          <div className={skillsStyles.softSkills}>
+          <div className={skillsStyles.contentLeft}>
             <h3 className={typographyStyles.sectionTitle}>Conocimientos</h3>
-            <ul className={skillsStyles.softSkills__list}>
+            <ul className={skillsStyles.listGroup}>
               {person.softSkills.map((skill, i) => (
-                <li key={i} className={skillsStyles.softSkills__item}>
+                <li key={i} className={skillsStyles.listGroup__item}>
                   {skill}
                 </li>
               ))}
             </ul>
           </div>
-          <div className={skillsStyles.techSkills}>
+          <div className={skillsStyles.contentRight}>
             <div className={skillsStyles.skillsContainer}>
               {person.techSkills.map((skill, i) => (
                 <div key={i} className={skillsStyles.skillItem}>
@@ -45,12 +44,8 @@ const Skills = () => (
   </Subscribe>
 );
 
-Skills.propTypes = {
-  layoutPadding: PropTypes.number
-};
+Skills.propTypes = {};
 
-Skills.defaultProps = {
-  layoutPadding: 0
-};
+Skills.defaultProps = {};
 
 export default Skills;

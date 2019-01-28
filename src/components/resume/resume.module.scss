@@ -1,37 +1,50 @@
 @import '../../styles/variables';
 
-.short-bio,
-.about {
+.content-left,
+.content-right {
+  width: 100%;
   border: 1px solid $gray-100;
 }
 
-.short-bio {
-  width: 35%;
+.content-right {
+  padding: 40px 20px;
+  flex-grow: 1;
+}
 
-  .short-bio__image-container {
-    width: 100% !important;
+.image-container {
+  width: 100% !important;
+}
+
+.resume-text {
+  padding: 20px;
+  margin: 0;
+}
+
+.list-text-item {
+  margin: 0;
+  padding: 10px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-200;
   }
 
-  .short-bio__text {
-    padding: 20px 25px;
-    margin: 0;
+  span {
+    font-weight: bold;
   }
 }
 
-.about {
-  padding: 70px 50px;
-  flex-grow: 1;
+@media (min-width: 768px) {
+  .content-left {
+    width: 35%;
+  }
 
-  .about__text-item {
-    margin: 0;
-    padding: 10px 0;
+  .content-right {
+    width: auto;
+    padding: 70px 50px;
+  }
 
-    &:not(:last-child) {
-      border-bottom: 1px solid $gray-200;
-    }
-
-    span {
-      font-weight: bold;
-    }
+  .resume-text {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }

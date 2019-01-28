@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import educationStyles from './education.module.scss';
 import typographyStyles from '../../styles/modules/typography.module.scss';
@@ -28,12 +27,8 @@ const Education = () => (
   </SectionContainer>
 );
 
-Education.propTypes = {
-  layoutPadding: PropTypes.number
-};
+Education.propTypes = {};
 
-Education.defaultProps = {
-  layoutPadding: 0
-};
+Education.defaultProps = {};
 
 export default Education;

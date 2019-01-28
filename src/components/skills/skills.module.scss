@@ -1,21 +1,22 @@
 @import '../../styles/variables';
 
-.soft-skills,
-.tech-skills {
-  padding: 70px 50px;
+.content-left,
+.content-right {
+  width: 100%;
+  padding: 40px 20px;
   border: 1px solid $gray-100;
 }
 
-.soft-skills {
-  width: 35%;
+.content-right {
+  flex-grow: 1;
+}
 
-  .soft-skills__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+.list-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-  .soft-skills__item {
+  .list-group__item {
     border-bottom: 1px solid $gray-200;
     font-weight: 700;
     margin-bottom: 20px;
@@ -31,10 +32,6 @@
       padding-right: 5px;
     }
   }
-}
-
-.tech-skills {
-  flex-grow: 1;
 }
 
 .skills-container {
@@ -64,5 +61,20 @@
   .skill-item__bar-container {
     width: 80%;
     height: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-left,
+  .content-right {
+    padding: 70px 50px;
+  }
+
+  .content-left {
+    width: 35%;
+  }
+
+  .content-right {
+    width: auto;
   }
 }
