@@ -4,7 +4,6 @@ import { Subscribe } from 'unstated';
 import { PersonDataContainer } from '../../containers/person-data.container';
 
 import skillsStyles from './skills.module.scss';
-import typographyStyles from '../../styles/modules/typography.module.scss';
 import SectionContainer from '../section-container/section-container';
 import Card from '../card/card';
 import ProgressBar from '../progress-bar/progress-bar';
@@ -15,7 +14,7 @@ const Skills = () => (
       <SectionContainer>
         <Card>
           <div className={skillsStyles.contentLeft}>
-            <h3 className={typographyStyles.sectionTitle}>Conocimientos</h3>
+            <h3 className="section-title">Conocimientos</h3>
             <ul className={skillsStyles.listGroup}>
               {person.softSkills.map((skill, i) => (
                 <li key={i} className={skillsStyles.listGroup__item}>

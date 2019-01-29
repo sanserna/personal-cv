@@ -6,7 +6,6 @@ import { PersonDataContainer } from '../../containers/person-data.container';
 import { AssetsContainer } from '../../containers/assets.container';
 
 import resumeStyles from './resume.module.scss';
-import typographyStyles from '../../styles/modules/typography.module.scss';
 import SectionContainer from '../section-container/section-container';
 import Card from '../card/card';
 import Button from '../button/button';
@@ -29,7 +28,7 @@ const Resume = () => (
             </p>
           </div>
           <div className={resumeStyles.contentRight}>
-            <h3 className={typographyStyles.sectionTitle}>Sobre mi</h3>
+            <h3 className="section-title">Sobre mi</h3>
             <p className={resumeStyles.listTextItem}>
               <span>Nombre completo: </span>
               {person.name}

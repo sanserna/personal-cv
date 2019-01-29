@@ -4,8 +4,6 @@ import { Subscribe } from 'unstated';
 import { PersonDataContainer } from '../../containers/person-data.container';
 
 import educationStyles from './education.module.scss';
-import globalComponentsStyles from '../../styles/modules/global-components.module.scss';
-import typographyStyles from '../../styles/modules/typography.module.scss';
 import SectionContainer from '../section-container/section-container';
 import Card from '../card/card';
 
@@ -15,7 +13,7 @@ const Education = () => (
       <SectionContainer>
         <Card>
           <div className={educationStyles.contentLeft}>
-            <h3 className={typographyStyles.sectionTitle}>Educación</h3>
+            <h3 className="section-title">Educación</h3>
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
               quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam
@@ -23,7 +21,7 @@ const Education = () => (
             </span>
           </div>
           <div className={educationStyles.contentRight}>
-            <ul className={globalComponentsStyles.timeline}>
+            <ul className="timeline">
               <li>hola</li>
             </ul>
           </div>
