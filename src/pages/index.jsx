@@ -23,10 +23,6 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <HeroHeader theme={theme} />
-      <Card theme={theme}>
-        <Card.Section>hola</Card.Section>
-        <Card.Section>hola</Card.Section>
-      </Card>
     </>
   );
   // return (

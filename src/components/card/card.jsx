@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+
+import { ThemeContext } from '../../layouts';
 
 const CardContext = React.createContext({});
 
-const Card = ({ theme, children, style }) => {
+const Card = ({ children, style }) => {
+  const {
+    color: { neutral: neutralColors },
+    card: {
+      section: {
+        padding: { default: sectionPadding }
+      }
+    }
+  } = useContext(ThemeContext);
   const childrenCount = React.Children.count(children);
-  const [cardTheme, setCardTheme] = useState({
-    backgroundColor: theme.color.neutral.white,
-    sectionBorderColor: theme.color.neutral.gray.b,
+  const [cardTheme] = useState({
+    sectionPadding,
+    backgroundColor: neutralColors.white,
+    sectionBorderColor: neutralColors.gray.b,
     sectionWidth: `${100 / childrenCount}%`
   });
 
@@ -41,9 +52,9 @@ const Card = ({ theme, children, style }) => {
         .card {
           display: flex;
           flex-wrap: wrap;
-          background-color: ${theme.color.neutral.white};
+          background-color: ${neutralColors.white};
           border-collapse: collapse;
-          border: 1px solid ${theme.color.neutral.gray.a};
+          border: 1px solid ${neutralColors.gray.a};
           box-shadow: 0.1rem 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
         }
       `}</style>
@@ -55,14 +66,15 @@ Card.Section = ({ children, style }) => (
   <CardContext.Consumer>
     {cardTheme => (
       <>
-        <div className="section" style={style}>
+        <div className="card__section" style={style}>
           {children}
         </div>
 
         <style jsx>{`
-          .section {
+          .card__section {
             border: 1px solid ${cardTheme.sectionBorderColor};
             width: ${cardTheme.sectionWidth};
+            padding: ${cardTheme.sectionPadding};
           }
         `}</style>
       </>
