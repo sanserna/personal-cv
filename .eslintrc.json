@@ -1,5 +1,7 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
-  "rules": {}
+  "extends": ["airbnb", "prettier", "react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error"
+  }
 }

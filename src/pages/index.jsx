@@ -1,52 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { graphql } from 'gatsby';
 
 import { withPersonData } from '../contexts/person-data-context';
 
-import MainLayout from '../components/main-layout/main-layout';
-import HeroHeader from '../components/hero-header/hero-header';
-import Resume from '../components/resume/resume';
-import Skills from '../components/skills/skills';
-import Education from '../components/education/education';
+import Card from '../components/card';
 
-const IndexPage = ({ personProvider, data }) => {
-  const { personJson } = data;
+import { ThemeContext } from '../layouts';
+// import MainLayout from '../components/main-layout/main-layout';
+import HeroHeader from '../components/hero-header';
+// import Resume from '../components/resume/resume';
+// import Skills from '../components/skills/skills';
+// import Education from '../components/education/education';
 
-  useEffect(() => {
-    personProvider.setPersonData(personJson);
-  }, []);
+const IndexPage = ({ data }) => {
+  const theme = useContext(ThemeContext);
+  // const { personJson } = data;
+
+  // useEffect(() => {
+  //   personProvider.setPersonData(personJson);
+  // }, []);
 
   return (
-    <MainLayout>
-      <HeroHeader />
-      {/* <Resume />
-      <Skills />
-      <Education /> */}
-    </MainLayout>
+    <>
+      <HeroHeader theme={theme} />
+      <Card theme={theme}>
+        <Card.Section>hola</Card.Section>
+        <Card.Section>hola</Card.Section>
+      </Card>
+    </>
   );
+  // return (
+  //   <MainLayout>
+  //     <HeroHeader />
+  //     <Resume />
+  //     <Skills />
+  //     <Education />
+  //   </MainLayout>
+  // );
 };
 
-export default withPersonData(IndexPage);
+export default IndexPage;
+// export default withPersonData(IndexPage);
 
-export const query = graphql`
-  query {
-    personJson(id: { eq: "sanserna" }) {
-      name
-      profesion
-      email
-      phone
-      birthdate
-      softSkills
-      techSkills {
-        label
-        level
-      }
-      social {
-        facebook
-        instagram
-        linkedin
-        github
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//   }
+// `;
