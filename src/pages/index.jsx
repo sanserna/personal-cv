@@ -4,11 +4,12 @@ import { graphql } from 'gatsby';
 import { withPersonData } from '../contexts/person-data-context';
 
 import Card from '../components/card';
+import SectionContainer from '../components/section-container';
 
 import { ThemeContext } from '../layouts';
 // import MainLayout from '../components/main-layout/main-layout';
 import HeroHeader from '../components/hero-header';
-// import Resume from '../components/resume/resume';
+import Resume from '../components/resume';
 // import Skills from '../components/skills/skills';
 // import Education from '../components/education/education';
 
@@ -23,6 +24,10 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <HeroHeader theme={theme} />
+
+      <SectionContainer theme={theme}>
+        <Resume />
+      </SectionContainer>
     </>
   );
   // return (

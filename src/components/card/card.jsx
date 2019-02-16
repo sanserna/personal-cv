@@ -5,7 +5,7 @@ import { ThemeContext } from '../../layouts';
 
 const CardContext = React.createContext({});
 
-const Card = ({ children, style }) => {
+const Card = ({ children, className, style }) => {
   const {
     color: { neutral: neutralColors },
     card: {
@@ -24,14 +24,14 @@ const Card = ({ children, style }) => {
 
   return (
     <CardContext.Provider value={cardTheme}>
-      <div className="container">
-        <div className="card" style={style}>
+      <div className="card-container">
+        <div className={`card ${className}`} style={style}>
           {children}
         </div>
       </div>
 
       <style jsx>{`
-        .container {
+        .card-container {
           padding: 0 20px;
           margin-left: auto;
           margin-right: auto;
@@ -62,11 +62,21 @@ const Card = ({ children, style }) => {
   );
 };
 
-Card.Section = ({ children, style }) => (
+Card.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object
+};
+
+Card.defaultProps = {
+  className: '',
+  style: {}
+};
+
+Card.Section = ({ children, className, style }) => (
   <CardContext.Consumer>
     {cardTheme => (
       <>
-        <div className="card__section" style={style}>
+        <div className={`card__section ${className}`} style={style}>
           {children}
         </div>
 
@@ -82,11 +92,13 @@ Card.Section = ({ children, style }) => (
   </CardContext.Consumer>
 );
 
-Card.propTypes = {
+Card.Section.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.object
 };
 
-Card.defaultProps = {
+Card.Section.defaultProps = {
+  className: '',
   style: {}
 };
 

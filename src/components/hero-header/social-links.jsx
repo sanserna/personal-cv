@@ -30,6 +30,8 @@ const SocialLinks = ({ style, theme }) => {
     size: '1.5em'
   });
 
+  console.log('redner');
+
   return (
     <>
       <ul className="social-links" style={style}>
