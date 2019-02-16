@@ -3,29 +3,33 @@ import PropTypes from 'prop-types';
 
 import { author } from '../../../content/meta/config';
 
-const AuthorResume = ({ avatar }) => (
+const authorDataItems = [
+  {
+    label: 'Nombre completo',
+    value: author.name
+  },
+  {
+    label: 'Profesión',
+    value: author.profesion
+  },
+  {
+    label: 'Celular',
+    value: author.phone
+  },
+  {
+    label: 'Fecha de nacimiento',
+    value: author.birthdate
+  }
+];
+
+const AuthorResume = ({ theme }) => (
   <>
-    <h3 className={'typographyStyles.sectionTitle'}>Sobre mi</h3>
-    <p className="list-text-item">
-      <span>Nombre completo: </span>
-      {author.name}
-    </p>
-    <p className="list-text-item">
-      <span>Profesión: </span>
-      {author.profesion}
-    </p>
-    <p className="list-text-item">
-      <span>Celular: </span>
-      {author.phone}
-    </p>
-    <p className="list-text-item">
-      <span>Email: </span>
-      {author.email}
-    </p>
-    <p className="list-text-item">
-      <span>Fecha de nacimiento: </span>
-      {author.birthdate}
-    </p>
+    {authorDataItems.map((item, index) => (
+      <p key={index} className="list-text-item">
+        <span>{item.label}: </span>
+        {item.value}
+      </p>
+    ))}
 
     <style jsx>{`
       .list-text-item {
@@ -33,7 +37,7 @@ const AuthorResume = ({ avatar }) => (
         padding: 10px 0;
 
         &:not(:last-child) {
-          border-bottom: 1px solid red;
+          border-bottom: 1px solid ${theme.color.neutral.gray.c};
         }
       }
 
@@ -44,7 +48,9 @@ const AuthorResume = ({ avatar }) => (
   </>
 );
 
-AuthorResume.propTypes = {};
+AuthorResume.propTypes = {
+  theme: PropTypes.object.isRequired
+};
 
 AuthorResume.defaultProps = {};
 

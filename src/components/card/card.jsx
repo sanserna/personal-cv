@@ -19,7 +19,8 @@ const Card = ({ children, className, style }) => {
     sectionPadding,
     backgroundColor: neutralColors.white,
     sectionBorderColor: neutralColors.gray.b,
-    sectionWidth: `${100 / childrenCount}%`
+    sectionWidth: `${100 / childrenCount}%`,
+    cardTitleColor: neutralColors.gray.i
   });
 
   return (
@@ -36,7 +37,7 @@ const Card = ({ children, className, style }) => {
           margin-left: auto;
           margin-right: auto;
 
-          @above tablet {
+          @from-width 768px {
             width: 640px;
           }
 
@@ -44,7 +45,7 @@ const Card = ({ children, className, style }) => {
             width: 970px;
           }
 
-          @above desktop {
+          @from-width 1200px {
             width: 1200px;
           }
         }
@@ -75,19 +76,17 @@ Card.defaultProps = {
 Card.Section = ({ children, className, style }) => (
   <CardContext.Consumer>
     {cardTheme => (
-      <>
-        <div className={`card__section ${className}`} style={style}>
-          {children}
-        </div>
+      <div className={`card__section ${className}`} style={style}>
+        <span>{children}</span>
 
         <style jsx>{`
           .card__section {
-            border: 1px solid ${cardTheme.sectionBorderColor};
+            border: 0.5px solid ${cardTheme.sectionBorderColor};
             width: ${cardTheme.sectionWidth};
             padding: ${cardTheme.sectionPadding};
           }
         `}</style>
-      </>
+      </div>
     )}
   </CardContext.Consumer>
 );
@@ -98,6 +97,44 @@ Card.Section.propTypes = {
 };
 
 Card.Section.defaultProps = {
+  className: '',
+  style: {}
+};
+
+Card.Title = ({ children, className, style }) => (
+  <CardContext.Consumer>
+    {cardTheme => (
+      <>
+        <h3 className="card-title">{children}</h3>
+
+        <style jsx>{`
+          .card-title {
+            margin: 0;
+            text-transform: uppercase;
+            padding-bottom: 30px;
+
+            &::after {
+              content: '';
+              background: ${cardTheme.cardTitleColor};
+              border-radius: 15px 0 30px 15px;
+              display: block;
+              height: 10px;
+              margin-top: 30px;
+              width: 40px;
+            }
+          }
+        `}</style>
+      </>
+    )}
+  </CardContext.Consumer>
+);
+
+Card.Title.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object
+};
+
+Card.Title.defaultProps = {
   className: '',
   style: {}
 };

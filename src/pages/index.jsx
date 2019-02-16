@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
       <HeroHeader theme={theme} />
 
       <SectionContainer theme={theme}>
-        <Resume />
+        <Resume theme={theme} />
       </SectionContainer>
     </>
   );

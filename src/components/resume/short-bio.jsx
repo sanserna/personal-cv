@@ -19,6 +19,10 @@ const ShortBio = ({ avatar }) => (
         width: 100% !important;
       }
 
+      div :global(.image-container) {
+        width: 100% !important;
+      }
+
       .resume-text {
         padding: 20px;
         margin: 0;

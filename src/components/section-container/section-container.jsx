@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SectionContainer = ({ children, theme, style }) => (
-  <>
-    <div className="container" style={style}>
-      {children}
-    </div>
+  <div className="container" style={style}>
+    <>{children}</>
+
     <style jsx>{`
       --container-padding-y: ${theme.space.s};
 
@@ -34,7 +33,7 @@ const SectionContainer = ({ children, theme, style }) => (
         }
       }
     `}</style>
-  </>
+  </div>
 );
 
 SectionContainer.propTypes = {

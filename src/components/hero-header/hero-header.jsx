@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
-import Img from 'gatsby-image';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { FaFacebookF, FaInstagram, FaGithub } from 'react-icons/fa';
 
 import Header from './header';
 import Hero from './hero';
@@ -52,7 +51,9 @@ const HeroHeader = ({ theme }) => (
   />
 );
 
-HeroHeader.propTypes = {};
+HeroHeader.propTypes = {
+  theme: PropTypes.object.isRequired
+};
 
 HeroHeader.defaultProps = {};
 

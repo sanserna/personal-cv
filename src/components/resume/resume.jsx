@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import { author } from '../../../content/meta/config';
@@ -6,7 +7,7 @@ import ShortBio from './short-bio';
 import AuthorResume from './author-resume';
 import Card from '../card/card';
 
-const Resume = () => (
+const Resume = ({ theme }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -26,7 +27,8 @@ const Resume = () => (
             <ShortBio avatar={avatar.childImageSharp.fixed} />
           </Card.Section>
           <Card.Section className="content-right">
-            <AuthorResume />
+            <Card.Title>Sobre mi</Card.Title>
+            <AuthorResume theme={theme} />
           </Card.Section>
         </Card>
 
@@ -34,6 +36,10 @@ const Resume = () => (
           .resume-container :global(.content-left),
           .resume-container :global(.content-right) {
             width: 100%;
+          }
+
+          .resume-container :global(.content-left) {
+            padding: 0;
           }
 
           .resume-container :global(.content-right) {
@@ -57,7 +63,9 @@ const Resume = () => (
   />
 );
 
-Resume.propTypes = {};
+Resume.propTypes = {
+  theme: PropTypes.object.isRequired
+};
 
 Resume.defaultProps = {};
 
