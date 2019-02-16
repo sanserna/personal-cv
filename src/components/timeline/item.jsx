@@ -5,7 +5,7 @@ const Item = ({ style, stepColor, lapse, title, desc }) => (
   <>
     <li className="item">
       <h5 className="item__lapse">{lapse}</h5>
-      <div>
+      <div className="item__detail-content">
         <h4 className="item__title">{title}</h4>
         <p className="item__desc">{desc}</p>
       </div>
@@ -13,7 +13,6 @@ const Item = ({ style, stepColor, lapse, title, desc }) => (
 
     <style jsx>{`
       .item {
-        display: flex;
         position: relative;
         padding-bottom: 50px;
         padding-top: 3px;
@@ -41,14 +40,33 @@ const Item = ({ style, stepColor, lapse, title, desc }) => (
         margin-bottom: 0;
       }
 
-      .item__title {
-        text-transform: uppercase;
+      .item__detail-content {
+        padding-left: 40px;
       }
 
       .item__lapse {
         flex-shrink: 0;
         padding-left: 40px;
-        padding-right: 40px;
+        padding-bottom: 20px;
+      }
+
+      .item__title {
+        text-transform: uppercase;
+      }
+
+      @above mobile {
+        .item {
+          display: flex;
+        }
+
+        .item__lapse {
+          padding-right: 40px;
+          padding-bottom: 0;
+        }
+
+        .item__detail-content {
+          padding-left: 0;
+        }
       }
     `}</style>
   </>
