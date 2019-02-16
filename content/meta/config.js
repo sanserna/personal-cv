@@ -43,6 +43,24 @@ module.exports = {
       { label: 'Firebase', level: 75 },
       { label: 'ExpressJs', level: 70 },
       { label: 'Laravel', level: 65 }
+    ],
+    education: [
+      {
+        lapse: '2000 - 2005',
+        title: 'Colegio San Bartolome la Merced',
+        desc: 'Estudios primarios'
+      },
+      {
+        lapse: '2005 - 2010',
+        title: 'Colegio San Carlos',
+        desc: 'Estudios secundarios'
+      },
+      {
+        lapse: '2010 - 2015',
+        title: 'Universidad Militar Nueva Granada',
+        desc:
+          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+      }
     ]
   },
 

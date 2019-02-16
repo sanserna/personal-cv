@@ -23,7 +23,7 @@ const authorDataItems = [
 ];
 
 const AuthorResume = ({ theme }) => (
-  <>
+  <div>
     {authorDataItems.map((item, index) => (
       <p key={index} className="list-text-item">
         <span>{item.label}: </span>
@@ -34,7 +34,11 @@ const AuthorResume = ({ theme }) => (
     <style jsx>{`
       .list-text-item {
         margin: 0;
-        padding: 10px 0;
+        padding-bottom: 10px;
+
+        &:not(:first-child) {
+          padding-top: 10px;
+        }
 
         &:not(:last-child) {
           border-bottom: 1px solid ${theme.color.neutral.gray.c};
@@ -45,7 +49,7 @@ const AuthorResume = ({ theme }) => (
         font-weight: bold;
       }
     `}</style>
-  </>
+  </div>
 );
 
 AuthorResume.propTypes = {

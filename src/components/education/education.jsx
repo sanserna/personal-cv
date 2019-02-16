@@ -1,37 +1,58 @@
 import React from 'react';
-import { Subscribe } from 'unstated';
+import PropTypes from 'prop-types';
 
-import { PersonDataContainer } from '../../containers/person-data.container';
-
-import educationStyles from './education.module.scss';
-import SectionContainer from '../section-container/section-container';
-import Card from '../card/card';
+import { author } from '../../../content/meta/config';
+import Card from '../card';
+import Timeline from '../timeline';
 
 const Education = () => (
-  <Subscribe to={[PersonDataContainer]}>
-    {({ state: person }) => (
-      <SectionContainer>
-        <Card>
-          <div className={educationStyles.contentLeft}>
-            <h3 className="section-title">Educación</h3>
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-              quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam
-              architecto vel.
-            </span>
-          </div>
-          <div className={educationStyles.contentRight}>
-            <ul className="timeline">
-              <li>hola</li>
-            </ul>
-          </div>
-        </Card>
-      </SectionContainer>
-    )}
-  </Subscribe>
+  <div className="education-container">
+    <Card>
+      <Card.Section className="content-left">
+        <Card.Title>Educación</Card.Title>
+        <span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
+          Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
+          vel.
+        </span>
+      </Card.Section>
+      <Card.Section className="content-right">
+        <Timeline items={author.education} />
+      </Card.Section>
+    </Card>
+
+    <style jsx>{`
+      .education-container :global(.content-left),
+      .education-container :global(.content-right) {
+        width: 100%;
+        padding: 40px 20px;
+      }
+
+      .education-container :global(.content-right) {
+        flex: 1;
+      }
+
+      @above tablet {
+        .education-container :global(.content-left),
+        .education-container :global(.content-right) {
+          padding: 70px 50px;
+        }
+
+        .education-container :global(.content-left) {
+          width: 35%;
+        }
+
+        .education-container :global(.content-right) {
+          width: auto;
+        }
+      }
+    `}</style>
+  </div>
 );
 
-Education.propTypes = {};
+Education.propTypes = {
+  theme: PropTypes.object.isRequired
+};
 
 Education.defaultProps = {};
 

@@ -1,49 +1,56 @@
 import React from 'react';
-import { Subscribe } from 'unstated';
+import PropTypes from 'prop-types';
 
-import { PersonDataContainer } from '../../containers/person-data.container';
+import { author } from '../../../content/meta/config';
+import SoftSkillsList from './soft-skills-list';
+import TechSkillsList from './tech-skills-list';
+import Card from '../card';
 
-import skillsStyles from './skills.module.scss';
-import SectionContainer from '../section-container/section-container';
-import Card from '../card/card';
-import ProgressBar from '../progress-bar/progress-bar';
+const Skills = ({ theme }) => (
+  <div className="skills-container">
+    <Card>
+      <Card.Section className="content-left">
+        <Card.Title>Conocimientos</Card.Title>
+        <SoftSkillsList theme={theme} />
+      </Card.Section>
 
-const Skills = () => (
-  <Subscribe to={[PersonDataContainer]}>
-    {({ state: person }) => (
-      <SectionContainer>
-        <Card>
-          <div className={skillsStyles.contentLeft}>
-            <h3 className="section-title">Conocimientos</h3>
-            <ul className={skillsStyles.listGroup}>
-              {person.softSkills.map((skill, i) => (
-                <li key={i} className={skillsStyles.listGroup__item}>
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={skillsStyles.contentRight}>
-            <div className={skillsStyles.skillsContainer}>
-              {person.techSkills.map((skill, i) => (
-                <div key={i} className={skillsStyles.skillItem}>
-                  <h3 className={skillsStyles.skillItem__label}>
-                    {skill.label}
-                  </h3>
-                  <div className={skillsStyles.skillItem__barContainer}>
-                    <ProgressBar value={skill.level} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Card>
-      </SectionContainer>
-    )}
-  </Subscribe>
+      <Card.Section className="content-right">
+        <TechSkillsList theme={theme} />
+      </Card.Section>
+    </Card>
+
+    <style jsx>{`
+      .skills-container :global(.content-left),
+      .skills-container :global(.content-right) {
+        width: 100%;
+        padding: 40px 20px;
+      }
+
+      .skills-container :global(.content-right) {
+        flex: 1;
+      }
+
+      @above tablet {
+        .skills-container :global(.content-left),
+        .skills-container :global(.content-right) {
+          padding: 70px 50px;
+        }
+
+        .skills-container :global(.content-left) {
+          width: 35%;
+        }
+
+        .skills-container :global(.content-right) {
+          width: auto;
+        }
+      }
+    `}</style>
+  </div>
 );
 
-Skills.propTypes = {};
+Skills.propTypes = {
+  theme: PropTypes.object.isRequired
+};
 
 Skills.defaultProps = {};
 

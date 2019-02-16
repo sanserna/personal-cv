@@ -8,7 +8,7 @@ import themeObjectFromYaml from '../theme/theme.yaml';
 export const ThemeContext = React.createContext(null);
 
 const Layout = ({ children }) => {
-  const [theme, setTheme] = useState(themeObjectFromYaml);
+  const [theme] = useState(themeObjectFromYaml);
 
   return (
     <ThemeContext.Provider value={theme}>

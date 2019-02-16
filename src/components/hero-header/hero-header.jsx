@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { author } from '../../../content/meta/config';
 import Header from './header';
 import Hero from './hero';
-import { author } from '../../../content/meta/config';
 
 const HeroHeader = ({ theme }) => (
   <StaticQuery

@@ -1,43 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-const SectionContainer = ({ children, theme, style }) => (
-  <div className="container" style={style}>
-    <>{children}</>
+import { ThemeContext } from '../../layouts';
 
-    <style jsx>{`
-      --container-padding-y: ${theme.space.s};
+const SectionContainer = ({ children, style }) => {
+  const {
+    color: {
+      neutral: {
+        gray: { b: backgroundColor }
+      }
+    },
+    space: { s: paddingY }
+  } = useContext(ThemeContext);
 
-      .container {
-        background: ${theme.color.neutral.gray.b};
-        padding: var(--container-padding-y) 0;
+  return (
+    <div className="container" style={style}>
+      <>{children}</>
 
-        &:nth-child(2) {
-          padding-top: calc(var(--container-padding-y) * 2);
-        }
+      <style jsx>{`
+        --container-padding-y: ${paddingY};
 
-        &:last-child {
-          padding-bottom: calc(var(--container-padding-y) * 2);
-        }
-
-        @above tablet {
-          padding: calc(var(--container-padding-y) * 5) 0;
+        .container {
+          background: ${backgroundColor};
+          padding: var(--container-padding-y) 0;
 
           &:nth-child(2) {
-            padding-top: calc(var(--container-padding-y) * 10);
+            padding-top: calc(var(--container-padding-y) * 2);
           }
 
           &:last-child {
-            padding-bottom: calc(var(--container-padding-y) * 10);
+            padding-bottom: calc(var(--container-padding-y) * 2);
+          }
+
+          @above tablet {
+            padding: calc(var(--container-padding-y) * 5) 0;
+
+            &:nth-child(2) {
+              padding-top: calc(var(--container-padding-y) * 10);
+            }
+
+            &:last-child {
+              padding-bottom: calc(var(--container-padding-y) * 10);
+            }
           }
         }
-      }
-    `}</style>
-  </div>
-);
+      `}</style>
+    </div>
+  );
+};
 
 SectionContainer.propTypes = {
-  theme: PropTypes.object.isRequired,
   style: PropTypes.object
 };
 
