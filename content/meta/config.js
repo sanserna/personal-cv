@@ -16,8 +16,8 @@ module.exports = {
     social: {
       facebook: 'https://www.facebook.com/sanserna91',
       github: 'https://github.com/sanserna',
-      linkedin: 'https://linkedin.com/in/sanserna/',
-      instagram: 'https://www.instagram.com/sanserna9'
+      linkedin: 'https://linkedin.com/in/sanserna',
+      instagram: 'https://www.instagram.com/sanserna91'
     },
     softSkills: [
       'Animación por Computadora',
@@ -48,18 +48,35 @@ module.exports = {
       {
         lapse: '2000 - 2005',
         title: 'Colegio San Bartolome la Merced',
-        desc: 'Estudios primarios'
+        subtitle: 'Estudios primarios'
       },
       {
         lapse: '2005 - 2010',
         title: 'Colegio San Carlos',
-        desc: 'Estudios secundarios'
+        subtitle: 'Estudios secundarios'
       },
       {
         lapse: '2010 - 2015',
         title: 'Universidad Militar Nueva Granada',
-        desc:
+        subtitle:
           'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+      }
+    ],
+    experience: [
+      {
+        lapse: '2016 - 2018',
+        title: 'Nectia',
+        subtitle: 'Full-stack Developer'
+      },
+      {
+        lapse: '2018 - 2019',
+        title: 'PappCorn',
+        subtitle: 'Tech Lead & Product Manager'
+      },
+      {
+        lapse: '2019 - ....',
+        title: 'Grability',
+        subtitle: 'Tech Lead'
       }
     ]
   },

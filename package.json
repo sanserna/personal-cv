@@ -12,6 +12,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "formik": "^1.5.0",
     "gatsby": "^2.0.33",
     "gatsby-image": "^2.0.25",
     "gatsby-plugin-layout": "^1.0.12",
@@ -34,7 +35,8 @@
     "styled-jsx": "^3.2.1",
     "typography": "^0.16.18",
     "typography-theme-lincoln": "^0.16.18",
-    "unstated": "^2.1.1"
+    "unstated": "^2.1.1",
+    "yup": "^0.26.10"
   },
   "repository": {
     "type": "git",

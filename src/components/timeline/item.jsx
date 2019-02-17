@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Item = ({ style, stepColor, lapse, title, desc }) => (
+const Item = ({ style, stepColor, lapse, title, desc, subtitle }) => (
   <>
     <li className="item">
       <h5 className="item__lapse">{lapse}</h5>
       <div className="item__detail-content">
         <h4 className="item__title">{title}</h4>
-        <p className="item__desc">{desc}</p>
+        {subtitle && <h5 className="item__subtitle">{subtitle}</h5>}
+        {desc && <p className="item__desc">{desc}</p>}
       </div>
     </li>
 
@@ -35,7 +36,8 @@ const Item = ({ style, stepColor, lapse, title, desc }) => (
       }
 
       .item__lapse,
-      .item__title {
+      .item__title,
+      .item__subtitle {
         margin-top: 0;
         margin-bottom: 0;
       }
@@ -46,12 +48,17 @@ const Item = ({ style, stepColor, lapse, title, desc }) => (
 
       .item__lapse {
         flex-shrink: 0;
+        flex-basis: 180px;
         padding-left: 40px;
         padding-bottom: 20px;
       }
 
       .item__title {
         text-transform: uppercase;
+      }
+
+      .item__subtitle {
+        padding-top: 5px;
       }
 
       @above mobile {
@@ -77,11 +84,14 @@ Item.propTypes = {
   stepColor: PropTypes.string.isRequired,
   lapse: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired
+  desc: PropTypes.string,
+  subtitle: PropTypes.string
 };
 
 Item.defaultProps = {
-  style: {}
+  style: {},
+  desc: '',
+  subtitle: ''
 };
 
 export default Item;

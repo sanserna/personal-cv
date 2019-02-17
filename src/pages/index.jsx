@@ -7,6 +7,8 @@ import HeroHeader from '../components/hero-header';
 import Resume from '../components/resume';
 import Skills from '../components/skills';
 import Education from '../components/education';
+import Experience from '../components/experience';
+import Contact from '../components/contact';
 
 const IndexPage = ({ data }) => {
   const theme = useContext(ThemeContext);
@@ -25,6 +27,14 @@ const IndexPage = ({ data }) => {
 
       <SectionContainer>
         <Education theme={theme} />
+      </SectionContainer>
+
+      <SectionContainer>
+        <Experience theme={theme} />
+      </SectionContainer>
+
+      <SectionContainer>
+        <Contact theme={theme} />
       </SectionContainer>
     </>
   );

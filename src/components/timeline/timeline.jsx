@@ -11,6 +11,7 @@ const Timeline = ({ style, stepColor, lineColor, items }) => (
         stepColor={stepColor}
         lapse={item.lapse}
         title={item.title}
+        subtitle={item.subtitle}
         desc={item.desc}
       />
     ))}
@@ -45,7 +46,8 @@ Timeline.propTypes = {
     PropTypes.shape({
       lapse: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      desc: PropTypes.string.isRequired
+      desc: PropTypes.string,
+      subtitle: PropTypes.string
     })
   ).isRequired
 };
