@@ -24,22 +24,22 @@ const SectionContainer = ({ children, style }) => {
           background: ${backgroundColor};
           padding: var(--container-padding-y) 0;
 
-          &:nth-child(2) {
+          &:first-of-type {
             padding-top: calc(var(--container-padding-y) * 2);
           }
 
-          &:last-child {
+          &:last-of-type {
             padding-bottom: calc(var(--container-padding-y) * 2);
           }
 
           @above tablet {
             padding: calc(var(--container-padding-y) * 5) 0;
 
-            &:nth-child(2) {
+            &:first-of-type {
               padding-top: calc(var(--container-padding-y) * 10);
             }
 
-            &:last-child {
+            &:last-of-type {
               padding-bottom: calc(var(--container-padding-y) * 10);
             }
           }
