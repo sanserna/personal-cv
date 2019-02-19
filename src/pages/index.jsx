@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { graphql } from 'gatsby';
 
 import { ThemeContext } from '../layouts';
+import Seo from '../components/seo';
 import SectionContainer from '../components/section-container';
 import HeroHeader from '../components/hero-header';
 import Resume from '../components/resume';
@@ -16,6 +17,8 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
+      <Seo />
+
       <HeroHeader theme={theme} />
 
       <SectionContainer>

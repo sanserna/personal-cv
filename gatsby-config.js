@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-transformer-json',
     'gatsby-plugin-layout',
     'gatsby-plugin-styled-jsx-postcss',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-typography',
       options: {

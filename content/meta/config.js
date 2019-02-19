@@ -1,10 +1,10 @@
 module.exports = {
-  siteTitle: 'HeroBlog - a GatsbyJS starter', // <title>
+  siteTitle: "Santiago's Blog",
   shortSiteTitle: 'HeroBlog - GatsbyJS starter', // <title> ending for posts and pages
   siteDescription: 'HeroBlog is a GatsbyJS starter.',
   siteUrl: 'https://gatsby-starter-hero-blog.greglobinski.com',
   siteImage: 'preview.jpg',
-  siteLanguage: 'en',
+  siteLanguage: 'es',
 
   /* author */
   author: {
