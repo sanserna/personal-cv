@@ -9,6 +9,8 @@ import Card from '../card';
 import Input from './input';
 import Textarea from './textarea';
 
+// FIX: los estilos son muy especificos para el tipo de layout, se debe buscar
+// una implementacion mas generica
 export const getFormControlStyles = ({
   color: {
     special,
@@ -20,7 +22,7 @@ export const getFormControlStyles = ({
   .form-control {
     color: ${gray.k};
     background: var(--bgColor);
-    border: 2px solid var(--bgColor);
+    border: 1px solid var(--bgColor);
     border-radius: 2px;
     margin: 0 0 20px;
     outline: 0 none;
@@ -28,9 +30,10 @@ export const getFormControlStyles = ({
     padding: 10px 15px;
     resize: none;
     width: 100%;
+    transition: border .2s;
 
     &.invalid {
-      border: 0.7px solid ${special.invalid};
+      border-color: ${special.invalid};
     }
 
     @above mobile {
@@ -52,6 +55,7 @@ export const getFormControlStyles = ({
 const ContactFormSchema = object().shape({
   name: string().required(),
   message: string().required(),
+  subject: string().required(),
   email: string()
     .email()
     .required()
@@ -70,7 +74,7 @@ const Contact = ({ theme }) => (
       </Card.Section>
       <Card.Section className="content-right">
         <Formik
-          initialValues={{ email: '', name: '', message: '' }}
+          initialValues={{ email: '', name: '', subject: '', message: '' }}
           validationSchema={ContactFormSchema}
         >
           {() => (
@@ -88,6 +92,15 @@ const Contact = ({ theme }) => (
                 placeholder="Tu email *"
                 theme={theme}
                 component={Input}
+                style={{ marginRight: 0 }}
+              />
+              <Field
+                type="text"
+                name="subject"
+                placeholder="Tu asunto *"
+                theme={theme}
+                component={Input}
+                style={{ flex: '0 1 auto', width: '100%' }}
               />
               <Field
                 name="message"

@@ -33,7 +33,6 @@
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
     "react-typography": "^0.16.18",
-    "sass-resources-loader": "^2.0.0",
     "styled-jsx": "^3.2.1",
     "typography": "^0.16.18",
     "typography-theme-lincoln": "^0.16.18",

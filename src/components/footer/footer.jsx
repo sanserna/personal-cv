@@ -20,7 +20,6 @@ const Footer = ({ theme }) => (
     render={({ haderPattern }) => (
       <>
         <section className="container">
-          <h2>SANSERNA</h2>
           <p>© 2018 Santiago Serna. Todos los derechos reservados.</p>
         </section>
 
@@ -35,16 +34,11 @@ const Footer = ({ theme }) => (
         `}</style>
 
         <style jsx>{`
-          h2,
           p {
             color: white;
             text-align: center;
             width: 100%;
             margin: 0;
-          }
-
-          p {
-            padding-top: 10px;
           }
         `}</style>
       </>

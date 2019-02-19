@@ -25,7 +25,7 @@ const Item = ({ style, stepColor, lapse, title, desc, subtitle }) => (
           width: 16px;
           background: #fff;
           border-radius: 50%;
-          border: solid 1px ${stepColor};
+          border: solid 1.5px ${stepColor};
           left: -8px;
           top: 2px;
         }
@@ -59,6 +59,10 @@ const Item = ({ style, stepColor, lapse, title, desc, subtitle }) => (
 
       .item__subtitle {
         padding-top: 5px;
+      }
+
+      .item__desc {
+        color: #706e6b;
       }
 
       @above mobile {

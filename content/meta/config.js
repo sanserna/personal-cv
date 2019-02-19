@@ -66,7 +66,9 @@ module.exports = {
       {
         lapse: '2016 - 2018',
         title: 'Nectia',
-        subtitle: 'Full-stack Developer'
+        subtitle: 'Full-stack Developer',
+        desc:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
       },
       {
         lapse: '2018 - 2019',

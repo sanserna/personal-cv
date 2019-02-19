@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../../layouts';
 
-const SectionContainer = ({ children, style }) => {
+const SectionContainer = ({ children, style, className }) => {
   const {
     color: {
       neutral: {
@@ -14,14 +14,14 @@ const SectionContainer = ({ children, style }) => {
   } = useContext(ThemeContext);
 
   return (
-    <div className="container" style={style}>
+    <div className={`container ${className}`} style={style}>
       <>{children}</>
 
       <style jsx>{`
         --container-padding-y: ${paddingY};
 
         .container {
-          background: ${backgroundColor};
+          background-color: ${backgroundColor};
           padding: var(--container-padding-y) 0;
 
           &:first-of-type {
@@ -50,11 +50,13 @@ const SectionContainer = ({ children, style }) => {
 };
 
 SectionContainer.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  className: PropTypes.string
 };
 
 SectionContainer.defaultProps = {
-  style: {}
+  style: {},
+  className: ''
 };
 
 export default SectionContainer;
