@@ -1,3 +1,4 @@
+/* eslint react/no-array-index-key: "off" */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { IconContext } from 'react-icons';
@@ -80,12 +81,10 @@ const SocialLinks = ({ style, theme }) => {
 
 SocialLinks.propTypes = {
   theme: PropTypes.object.isRequired,
-  orientation: PropTypes.string,
   style: PropTypes.object
 };
 
 SocialLinks.defaultProps = {
-  orientation: 'h',
   style: {}
 };
 

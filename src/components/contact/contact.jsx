@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { resolve } from 'styled-jsx/css';
 import { object, string } from 'yup';
 
-import { author } from '../../../content/meta/config';
-import Card from '../card';
+import Card from '../../lib/card';
 import Input from './input';
 import Textarea from './textarea';
 
-// FIX: los estilos son muy especificos para el tipo de layout, se debe buscar
+// FIXME: los estilos son muy especificos para el tipo de layout, se debe buscar
 // una implementacion mas generica
 export const getFormControlStyles = ({
   color: {

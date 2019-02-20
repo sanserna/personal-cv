@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { author } from '../../../content/meta/config';
+import Card from '../../lib/card';
 import ShortBio from './short-bio';
 import AuthorResume from './author-resume';
-import Card from '../card';
 
 const Resume = ({ theme }) => (
   <StaticQuery

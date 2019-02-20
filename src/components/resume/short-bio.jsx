@@ -2,8 +2,6 @@ import React from 'react';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 
-import { author } from '../../../content/meta/config';
-
 const ShortBio = ({ avatar }) => (
   <div>
     <Img fixed={avatar} className="image-container" />

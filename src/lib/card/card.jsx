@@ -5,7 +5,7 @@ import { ThemeContext } from '../../layouts';
 
 const CardContext = React.createContext({});
 
-const Card = ({ children, className, style }) => {
+const Card = ({ children, className }) => {
   const {
     color: { neutral: neutralColors },
     card: {
@@ -26,9 +26,7 @@ const Card = ({ children, className, style }) => {
   return (
     <CardContext.Provider value={cardTheme}>
       <div className="card-container">
-        <div className={`card ${className}`} style={style}>
-          {children}
-        </div>
+        <div className={`card ${className}`}>{children}</div>
       </div>
 
       <style jsx>{`

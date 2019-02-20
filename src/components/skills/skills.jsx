@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { author } from '../../../content/meta/config';
+import Card from '../../lib/card';
 import SoftSkillsList from './soft-skills-list';
 import TechSkillsList from './tech-skills-list';
-import Card from '../card';
 
 const Skills = ({ theme }) => (
   <div className="skills-container">

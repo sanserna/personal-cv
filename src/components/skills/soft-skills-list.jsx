@@ -1,3 +1,4 @@
+/* eslint react/no-array-index-key: "off" */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,8 +6,8 @@ import { author } from '../../../content/meta/config';
 
 const SoftSkillsList = ({ theme }) => (
   <ul className="list-group">
-    {author.softSkills.map((skill, i) => (
-      <li key={i} className="list-group__item">
+    {author.softSkills.map((skill, index) => (
+      <li key={index} className="list-group__item">
         {skill}
       </li>
     ))}

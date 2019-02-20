@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { author } from '../../../content/meta/config';
-import Card from '../card';
-import Timeline from '../timeline';
+import Card from '../../lib/card';
+import Timeline from '../../lib/timeline';
 
 const Education = ({ theme }) => (
   <div className="education-container">

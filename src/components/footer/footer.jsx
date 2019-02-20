@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { author } from '../../../content/meta/config';
-
 const Footer = ({ theme }) => (
   <StaticQuery
     query={graphql`
