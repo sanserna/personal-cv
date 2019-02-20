@@ -16,7 +16,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-styled-jsx`,
+      resolve: 'gatsby-plugin-styled-jsx',
       options: {
         optimizeForSpeed: true,
         sourceMaps: false,
@@ -31,22 +31,29 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/content/posts/`
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          `gatsby-plugin-sharp`,
-          `gatsby-remark-prismjs`,
+          'gatsby-plugin-sharp',
+          'gatsby-remark-prismjs',
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
               backgroundColor: 'transparent'
             }
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: `margin-bottom: 2em`
+              wrapperStyle: 'margin-bottom: 2em'
             }
           },
           {

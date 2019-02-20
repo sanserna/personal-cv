@@ -11,7 +11,6 @@ import Skills from '../components/skills';
 import Education from '../components/education';
 import Experience from '../components/experience';
 import Contact from '../components/contact';
-import Footer from '../components/footer';
 
 // FIXME: hacer componente generico en lib
 const BgImgSection = ({
@@ -105,8 +104,6 @@ const IndexPage = ({ data }) => {
       <SectionContainer>
         <Contact theme={theme} />
       </SectionContainer>
-
-      <Footer theme={theme} />
     </>
   );
 };

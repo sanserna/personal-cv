@@ -31,6 +31,8 @@
     "gatsby-transformer-remark": "^2.2.5",
     "gatsby-transformer-sharp": "^2.1.9",
     "hoist-non-react-statics": "^3.3.0",
+    "lodash": "^4.17.11",
+    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
