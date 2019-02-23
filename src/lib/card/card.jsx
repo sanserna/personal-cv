@@ -5,7 +5,7 @@ import { ThemeContext } from '../../layouts';
 
 const CardContext = React.createContext({});
 
-const Card = ({ children, className }) => {
+const Card = ({ children, className, style }) => {
   const {
     color: { neutral: neutralColors },
     card: {
@@ -25,29 +25,11 @@ const Card = ({ children, className }) => {
 
   return (
     <CardContext.Provider value={cardTheme}>
-      <div className="card-container">
-        <div className={`card ${className}`}>{children}</div>
+      <div className={`card ${className}`} style={style}>
+        {children}
       </div>
 
       <style jsx>{`
-        .card-container {
-          padding: 0 20px;
-          margin-left: auto;
-          margin-right: auto;
-
-          @from-width 768px {
-            width: 640px;
-          }
-
-          @from-width 992px {
-            width: 970px;
-          }
-
-          @from-width 1200px {
-            width: 1200px;
-          }
-        }
-
         .card {
           display: flex;
           flex-wrap: wrap;
@@ -62,6 +44,10 @@ const Card = ({ children, className }) => {
 };
 
 Card.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   className: PropTypes.string,
   style: PropTypes.object
 };

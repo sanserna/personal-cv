@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Col } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import { ThemeContext } from '../layouts';
 import Seo from '../lib/seo';
-import SectionContainer from '../lib/section-container';
 import BgImgSection from '../lib/bg-img-section';
 import HeroHeader from '../components/hero-header';
 import Resume from '../components/resume';
@@ -15,6 +15,14 @@ import Contact from '../components/contact';
 
 const IndexPage = ({ data }) => {
   const theme = useContext(ThemeContext);
+  const {
+    color: {
+      neutral: {
+        gray: { b: pageContentBgColor }
+      }
+    },
+    space: { s: sectionPaddingY }
+  } = theme;
   const {
     background1: {
       childImageSharp: { fluid: background1 }
@@ -27,42 +35,86 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <Seo />
-
       <HeroHeader theme={theme} />
+      <div className="page-content">
+        <Container>
+          <Row className="section-container">
+            <Col>
+              <Resume theme={theme} />
+            </Col>
+          </Row>
+          <Row className="section-container">
+            <Col>
+              <Skills theme={theme} />
+            </Col>
+          </Row>
+          <Row className="section-container">
+            <Col>
+              <BgImgSection
+                background={background1}
+                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
+              />
+            </Col>
+          </Row>
+          <Row className="section-container">
+            <Col>
+              <Education theme={theme} />
+            </Col>
+          </Row>
+          <Row className="section-container">
+            <Col>
+              <Experience theme={theme} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <BgImgSection
+                background={background2}
+                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
+              />
+            </Col>
+          </Row>
+          <Row className="section-container">
+            <Col>
+              <Contact theme={theme} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-      <SectionContainer>
-        <Resume theme={theme} />
-      </SectionContainer>
+      <style jsx>{`
+        --container-padding-y: ${sectionPaddingY};
 
-      <SectionContainer>
-        <Skills theme={theme} />
-      </SectionContainer>
+        .page-content {
+          background-color: ${pageContentBgColor};
 
-      <SectionContainer style={{ paddingLeft: 0, paddingRight: 0 }}>
-        <BgImgSection
-          background={background1}
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
-        />
-      </SectionContainer>
+          :global(.section-container) {
+            padding-top: var(--container-padding-y);
+            padding-bottom: var(--container-padding-y);
 
-      <SectionContainer>
-        <Education theme={theme} />
-      </SectionContainer>
+            &:first-of-type {
+              padding-top: calc(var(--container-padding-y) * 2);
+            }
 
-      <SectionContainer>
-        <Experience theme={theme} />
-      </SectionContainer>
+            &:last-of-type {
+              padding-bottom: calc(var(--container-padding-y) * 2);
+            }
 
-      <SectionContainer style={{ paddingLeft: 0, paddingRight: 0 }}>
-        <BgImgSection
-          background={background2}
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
-        />
-      </SectionContainer>
+            @above tablet {
+              padding-top: calc(var(--container-padding-y) * 5);
+              padding-bottom: calc(var(--container-padding-y) * 5);
 
-      <SectionContainer>
-        <Contact theme={theme} />
-      </SectionContainer>
+              &:first-of-type {
+                padding-top: calc(var(--container-padding-y) * 10);
+              }
+
+              &:last-of-type {
+                padding-bottom: calc(var(--container-padding-y) * 10);
+              }
+            }
+          }
+        }
+      `}</style>
     </>
   );
 };
