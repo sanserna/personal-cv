@@ -51,7 +51,7 @@ const BgImgSection = ({ text, background }) => (
       }
 
       .text-content {
-        color: white;
+        color: #fff;
         margin: 0 auto;
         text-align: center;
         text-shadow: 1px 1px 10px black;

@@ -37,11 +37,11 @@ const PostTemplate = props => {
       <header className="post-header">
         <Container fluid style={{ maxWidth: 1300 }}>
           <Row align="center" nogutter>
-            <Col xs={5}>
+            <Col xs={12} sm={5}>
               <Img fluid={fluid} className="post-header__img" />
             </Col>
 
-            <Col xs={7}>
+            <Col xs={12} sm={7}>
               <div className="header-text-wrapper">
                 <h1 className="post-header__title">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -77,7 +77,8 @@ const PostTemplate = props => {
 
       <style jsx>{`
         .post-header {
-          padding: 2rem 0;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
           border-bottom: 1px solid ${headerBorderColor};
           background-color: ${headerBgColor};
 
@@ -88,6 +89,7 @@ const PostTemplate = props => {
           .post-header__title,
           .post-header__txt-item {
             margin: 0;
+            text-align: center;
           }
 
           .post-header__txt-item {
@@ -105,10 +107,22 @@ const PostTemplate = props => {
               padding-bottom: 5px;
             }
           }
+
+          @above mobile {
+            .post-header__title,
+            .post-header__txt-item {
+              text-align: left;
+            }
+          }
         }
 
         .header-text-wrapper {
-          padding-left: 20px;
+          padding-top: 20px;
+
+          @above mobile {
+            padding-top: 0;
+            padding-left: 20px;
+          }
         }
 
         .post-content {
