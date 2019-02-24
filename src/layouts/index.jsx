@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import 'moment/locale/es';
 
 import themeObjectFromYaml from '../theme/theme.yaml';
 import Footer from '../components/footer';
+
+// Setup moment
+moment.locale('es');
 
 // Global contexts
 export const ThemeContext = React.createContext(null);

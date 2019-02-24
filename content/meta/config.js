@@ -46,9 +46,10 @@ module.exports = {
     ],
     education: [
       {
-        lapse: '2000 - 2005',
-        title: 'Colegio San Bartolome la Merced',
-        subtitle: 'Estudios primarios'
+        lapse: '2010 - 2015',
+        title: 'Universidad Militar Nueva Granada',
+        subtitle:
+          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
       },
       {
         lapse: '2005 - 2010',
@@ -56,29 +57,40 @@ module.exports = {
         subtitle: 'Estudios secundarios'
       },
       {
-        lapse: '2010 - 2015',
-        title: 'Universidad Militar Nueva Granada',
-        subtitle:
-          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+        lapse: '2000 - 2005',
+        title: 'Colegio San Bartolome la Merced',
+        subtitle: 'Estudios primarios'
       }
     ],
     experience: [
       {
-        lapse: '2016 - 2018',
-        title: 'Nectia',
-        subtitle: 'Full-stack Developer',
+        lapse: {
+          from: '09/24/2018'
+        },
+        title: 'Grability',
+        subtitle: 'Tech Lead',
         desc:
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
       },
       {
-        lapse: '2018 - 2019',
+        lapse: {
+          from: '02/01/2018',
+          to: '09/21/2018'
+        },
         title: 'PappCorn',
-        subtitle: 'Tech Lead & Product Manager'
+        subtitle: 'Tech Lead & Product Manager',
+        desc:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
       },
       {
-        lapse: '2019 - ....',
-        title: 'Grability',
-        subtitle: 'Tech Lead'
+        lapse: {
+          from: '02/01/2016',
+          to: '07/15/2018'
+        },
+        title: 'Nectia',
+        subtitle: 'Full-stack Developer',
+        desc:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
       }
     ]
   },

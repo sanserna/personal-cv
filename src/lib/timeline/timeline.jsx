@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../../layouts';
+import { formatLapseDate } from '../../utils/date';
 import Item from './item';
 
 export const TimelineContext = React.createContext({});
@@ -26,7 +27,7 @@ const Timeline = ({ style, stepColor, lineColor, items }) => {
         {items.map((item, index) => (
           <Item
             key={index}
-            lapse={item.lapse}
+            lapse={formatLapseDate(item.lapse)}
             title={item.title}
             subtitle={item.subtitle}
             desc={item.desc}
@@ -63,7 +64,13 @@ Timeline.propTypes = {
   lineColor: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      lapse: PropTypes.string.isRequired,
+      lapse: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.shape({
+          from: PropTypes.string.isRequired,
+          to: PropTypes.string
+        }).isRequired
+      ]).isRequired,
       title: PropTypes.string.isRequired,
       desc: PropTypes.string,
       subtitle: PropTypes.string

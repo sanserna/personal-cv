@@ -1,5 +1,6 @@
 ---
 title: Two things are infinite the universe and human stupidity
+description: Alguna cosa
 category: 'sayings'
 author: greg lobinski
 cover: bg-1.jpg

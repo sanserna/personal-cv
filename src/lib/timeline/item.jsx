@@ -76,21 +76,6 @@ const Item = ({ style, lapse, title, desc, subtitle }) => (
           .item__subtitle {
             padding-top: 5px;
           }
-
-          @above mobile {
-            .item {
-              display: flex;
-            }
-
-            .item__lapse {
-              padding-right: 40px;
-              padding-bottom: 0;
-            }
-
-            .item__detail-content {
-              padding-left: 0;
-            }
-          }
         `}</style>
       </>
     )}

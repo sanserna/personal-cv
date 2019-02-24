@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import { FaCalendarAlt } from 'react-icons/fa';
 
 import { ThemeContext } from '../layouts';
+import Seo from '../lib/seo';
 
 const PostTemplate = props => {
   const {
@@ -28,6 +29,8 @@ const PostTemplate = props => {
         fields: { prefix },
         frontmatter: {
           author,
+          title,
+          description,
           cover: {
             childImageSharp: { fluid }
           }
@@ -79,6 +82,8 @@ const PostTemplate = props => {
         </Container>
       </main>
 
+      <Seo title={title} description={description} />
+
       <style jsx>{`
         .post-header {
           padding-top: 1rem;
@@ -105,26 +110,27 @@ const PostTemplate = props => {
               padding-bottom: 5px;
             }
           }
+        }
 
-          @above mobile {
+        .post-content {
+          padding-top: 2rem;
+        }
+
+        @above mobile {
+          .post-header {
+            padding-top: 1.3rem;
+            padding-bottom: 1.3rem;
+
             .post-header__title,
             .post-header__txt-item {
               text-align: left;
             }
           }
-        }
 
-        .header-text-wrapper {
-          padding-top: 20px;
-
-          @above mobile {
+          .header-text-wrapper {
             padding-top: 0;
             padding-left: 20px;
           }
-        }
-
-        .post-content {
-          padding-top: 2rem;
         }
       `}</style>
 
@@ -167,8 +173,9 @@ export const query = graphql`
         prefix
       }
       frontmatter {
-        title
         author
+        title
+        description
         category
         cover {
           childImageSharp {

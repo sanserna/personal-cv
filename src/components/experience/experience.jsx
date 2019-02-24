@@ -9,7 +9,7 @@ const Experience = ({ theme }) => (
   <div className="experience-container">
     <Card>
       <Card.Section className="content-left">
-        <Card.Title>Experience</Card.Title>
+        <Card.Title>Experiencia</Card.Title>
         <span>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
           Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
