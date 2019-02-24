@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import { Container } from 'react-grid-system';
 
-const BgImgSection = ({ text, background }) => (
+const BgImgSection = ({ children, background }) => (
   <div className="bg-img-section">
     <Img fluid={background} className="bg-image-container" />
     <div className="text-wrapper">
-      <h2 className="text-content">{text}</h2>
+      <Container>
+        <h2 className="text-content">{children}</h2>
+      </Container>
     </div>
 
     <style jsx>{`
@@ -52,17 +55,19 @@ const BgImgSection = ({ text, background }) => (
 
       .text-content {
         color: #fff;
-        margin: 0 auto;
+        margin: 0;
         text-align: center;
         text-shadow: 1px 1px 10px black;
-        max-width: 1200px;
       }
     `}</style>
   </div>
 );
 
 BgImgSection.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   background: PropTypes.shape({
     base64: PropTypes.string,
     aspectRatio: PropTypes.number,

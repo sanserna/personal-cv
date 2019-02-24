@@ -48,14 +48,15 @@ const IndexPage = ({ data }) => {
               <Skills theme={theme} />
             </Col>
           </Row>
-          <Row className="section-container">
-            <Col>
-              <BgImgSection
-                background={background1}
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
-              />
-            </Col>
-          </Row>
+        </Container>
+
+        <BgImgSection background={background1}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+          consectetur voluptates et incidunt dolore veniam suscipit voluptatibus
+          blanditiis fugiat corporis.
+        </BgImgSection>
+
+        <Container>
           <Row className="section-container">
             <Col>
               <Education theme={theme} />
@@ -66,14 +67,15 @@ const IndexPage = ({ data }) => {
               <Experience theme={theme} />
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <BgImgSection
-                background={background2}
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur voluptates et incidunt dolore veniam suscipit voluptatibus blanditiis fugiat corporis."
-              />
-            </Col>
-          </Row>
+        </Container>
+
+        <BgImgSection background={background2}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+          consectetur voluptates et incidunt dolore veniam suscipit voluptatibus
+          blanditiis fugiat corporis.
+        </BgImgSection>
+
+        <Container>
           <Row className="section-container">
             <Col>
               <Contact theme={theme} />
