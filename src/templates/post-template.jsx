@@ -10,10 +10,14 @@ import { ThemeContext } from '../layouts';
 
 const PostTemplate = props => {
   const {
+    size: {
+      radius: { small: imgBorderRadius }
+    },
     color: {
+      scheme: { medium: headerBorderColor, dark: darkColor },
       neutral: {
         white,
-        gray: { e: headerBorderColor, b: headerBgColor }
+        gray: { b: headerBgColor }
       }
     }
   } = useContext(ThemeContext);
@@ -79,12 +83,6 @@ const PostTemplate = props => {
         .post-header {
           padding-top: 1rem;
           padding-bottom: 1rem;
-          border-bottom: 1px solid ${headerBorderColor};
-          background-color: ${headerBgColor};
-
-          :global(.post-header__img) {
-            border-radius: 0.3rem;
-          }
 
           .post-header__title,
           .post-header__txt-item {
@@ -127,6 +125,25 @@ const PostTemplate = props => {
 
         .post-content {
           padding-top: 2rem;
+        }
+      `}</style>
+
+      <style jsx>{`
+        .post-header {
+          border-bottom: 1px solid ${headerBorderColor};
+          background-color: ${headerBgColor};
+
+          :global(.post-header__img) {
+            border-radius: ${imgBorderRadius};
+          }
+
+          .post-header__title,
+          .post-header__txt-item {
+            color: ${darkColor};
+          }
+        }
+
+        .post-content {
           background-color: ${white};
         }
       `}</style>

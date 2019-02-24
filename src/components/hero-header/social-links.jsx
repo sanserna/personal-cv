@@ -27,7 +27,7 @@ const links = [
 
 const SocialLinks = ({ style, theme }) => {
   const [iconConfig] = useState({
-    color: theme.color.neutral.gray.d,
+    color: theme.color.neutral.gray.a,
     size: '1.5em'
   });
 

@@ -18,25 +18,34 @@ const Footer = ({ theme }) => (
     render={({ haderPattern }) => (
       <>
         <section className="container">
-          <p>© 2018 Santiago Serna. Todos los derechos reservados.</p>
+          <p className="footer-text">
+            © 2018 Santiago Serna. Todos los derechos reservados.
+          </p>
         </section>
 
         <style jsx>{`
           .container {
             background-repeat: repeat;
             background-size: 800px 800px;
-            background-image: url(${haderPattern.childImageSharp.fixed.src});
             padding: 60px;
             width: 100%;
           }
-        `}</style>
 
-        <style jsx>{`
           p {
             color: white;
             text-align: center;
             width: 100%;
             margin: 0;
+          }
+        `}</style>
+
+        <style jsx>{`
+          .container {
+            background-image: url(${haderPattern.childImageSharp.fixed.src});
+          }
+
+          .footer-text {
+            color: ${theme.color.neutral.gray.d};
           }
         `}</style>
       </>

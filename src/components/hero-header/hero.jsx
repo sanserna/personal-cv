@@ -17,8 +17,6 @@ const Hero = ({ theme, avatar }) => (
     </div>
 
     <style jsx>{`
-      --mainColor: ${theme.color.neutral.gray.c};
-
       .hero {
         display: flex;
         flex-wrap: wrap;
@@ -28,7 +26,6 @@ const Hero = ({ theme, avatar }) => (
 
         :global(.hero__image-container) {
           border-radius: 50%;
-          border: 10px solid var(--mainColor);
           box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -39,7 +36,6 @@ const Hero = ({ theme, avatar }) => (
 
         .hero__title,
         .hero__subtitle {
-          color: var(--mainColor);
           text-align: center;
           width: 100%;
         }
@@ -59,6 +55,19 @@ const Hero = ({ theme, avatar }) => (
         border-radius: 50%;
         border: 10px solid red;
         box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+      }
+    `}</style>
+
+    <style jsx>{`
+      .hero {
+        :global(.hero__image-container) {
+          border: 10px solid ${theme.color.scheme.primary};
+        }
+
+        .hero__title,
+        .hero__subtitle {
+          color: ${theme.color.neutral.gray.d};
+        }
       }
     `}</style>
   </>

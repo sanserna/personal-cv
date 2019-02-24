@@ -1,42 +1,61 @@
-import React from 'react';
+/* eslint react/no-array-index-key: "off" */
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { ThemeContext } from '../../layouts';
 import Item from './item';
 
-const Timeline = ({ style, stepColor, lineColor, items }) => (
-  <ul className="timeline" style={style}>
-    {items.map((item, index) => (
-      <Item
-        key={index}
-        stepColor={stepColor}
-        lapse={item.lapse}
-        title={item.title}
-        subtitle={item.subtitle}
-        desc={item.desc}
-      />
-    ))}
+export const TimelineContext = React.createContext({});
 
-    <style jsx>{`
-      .timeline {
-        padding: 0;
-        margin: 0;
-        padding-top: 10px;
-        list-style: none;
-        position: relative;
+const Timeline = ({ style, stepColor, lineColor, items }) => {
+  const {
+    color: {
+      scheme: { primary: primaryColor, medium: mediumColor, dark: darkColor }
+    }
+  } = useContext(ThemeContext);
+  const [timelineTheme] = useState({
+    stepColor,
+    primaryColor,
+    mediumColor,
+    darkColor
+  });
 
-        &::before {
-          content: ' ';
-          position: absolute;
-          width: 1px;
-          height: 100%;
-          top: 0;
-          left: 0;
-          background: ${lineColor};
-        }
-      }
-    `}</style>
-  </ul>
-);
+  return (
+    <TimelineContext.Provider value={timelineTheme}>
+      <ul className="timeline" style={style}>
+        {items.map((item, index) => (
+          <Item
+            key={index}
+            lapse={item.lapse}
+            title={item.title}
+            subtitle={item.subtitle}
+            desc={item.desc}
+          />
+        ))}
+
+        <style jsx>{`
+          .timeline {
+            padding: 0;
+            margin: 0;
+            padding-top: 10px;
+            list-style: none;
+            position: relative;
+
+            &::before {
+              content: ' ';
+              position: absolute;
+              width: 1px;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background: ${lineColor || timelineTheme.darkColor};
+            }
+          }
+        `}</style>
+      </ul>
+    </TimelineContext.Provider>
+  );
+};
 
 Timeline.propTypes = {
   style: PropTypes.object,
@@ -54,8 +73,8 @@ Timeline.propTypes = {
 
 Timeline.defaultProps = {
   style: {},
-  stepColor: '#b0adab',
-  lineColor: '#969492'
+  stepColor: '',
+  lineColor: ''
 };
 
 export default Timeline;

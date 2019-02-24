@@ -2,12 +2,17 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../../layouts';
+import Section from './card-section';
+import Title from './card-title';
 
-const CardContext = React.createContext({});
+export const CardContext = React.createContext({});
 
 const Card = ({ children, className, style }) => {
   const {
-    color: { neutral: neutralColors },
+    color: {
+      neutral: neutralColors,
+      scheme: { dark: darkColor }
+    },
     card: {
       section: {
         padding: { default: sectionPadding }
@@ -17,10 +22,10 @@ const Card = ({ children, className, style }) => {
   const childrenCount = React.Children.count(children);
   const [cardTheme] = useState({
     sectionPadding,
+    darkColor,
     backgroundColor: neutralColors.white,
     sectionBorderColor: neutralColors.gray.b,
-    sectionWidth: `${100 / childrenCount}%`,
-    cardTitleColor: neutralColors.gray.i
+    sectionWidth: `${100 / childrenCount}%`
   });
 
   return (
@@ -57,70 +62,8 @@ Card.defaultProps = {
   style: {}
 };
 
-Card.Section = ({ children, className, style }) => (
-  <CardContext.Consumer>
-    {cardTheme => (
-      <div className={`card__section ${className}`} style={style}>
-        <span>{children}</span>
-
-        <style jsx>{`
-          .card__section {
-            border: 0.5px solid ${cardTheme.sectionBorderColor};
-            width: ${cardTheme.sectionWidth};
-            padding: ${cardTheme.sectionPadding};
-          }
-        `}</style>
-      </div>
-    )}
-  </CardContext.Consumer>
-);
-
-Card.Section.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object
-};
-
-Card.Section.defaultProps = {
-  className: '',
-  style: {}
-};
-
-Card.Title = ({ children, className, style }) => (
-  <CardContext.Consumer>
-    {cardTheme => (
-      <>
-        <h3 className="card-title">{children}</h3>
-
-        <style jsx>{`
-          .card-title {
-            margin: 0;
-            text-transform: uppercase;
-            padding-bottom: 30px;
-
-            &::after {
-              content: '';
-              background: ${cardTheme.cardTitleColor};
-              border-radius: 15px 0 30px 15px;
-              display: block;
-              height: 10px;
-              margin-top: 30px;
-              width: 40px;
-            }
-          }
-        `}</style>
-      </>
-    )}
-  </CardContext.Consumer>
-);
-
-Card.Title.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object
-};
-
-Card.Title.defaultProps = {
-  className: '',
-  style: {}
-};
+// Setup card compound components items
+Card.Section = Section;
+Card.Title = Title;
 
 export default Card;
