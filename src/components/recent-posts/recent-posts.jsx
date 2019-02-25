@@ -18,6 +18,7 @@ const RecentPosts = ({ theme, posts = [] }) => (
             ({
               id,
               excerpt,
+              fields: { slug },
               frontmatter: {
                 title,
                 cover: {
@@ -25,9 +26,13 @@ const RecentPosts = ({ theme, posts = [] }) => (
                 }
               }
             }) => (
-              <Col key={id} xs={4}>
-                <PlainCard title={title} text={excerpt} background={fluid} />
-              </Col>
+              <PlainCard
+                key={id}
+                link={slug}
+                title={title}
+                text={excerpt}
+                background={fluid}
+              />
             )
           )}
         </Row>
@@ -37,7 +42,11 @@ const RecentPosts = ({ theme, posts = [] }) => (
     <style jsx>{`
       .recent-posts-container {
         :global(.card) {
-          padding: 30px 15px;
+          padding: 40px 0;
+
+          @above mobile {
+            padding: 40px 20px;
+          }
         }
       }
     `}</style>
