@@ -16,6 +16,12 @@ Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, soll
 
 Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo. Suspendisse egestas est ac dolor imperdiet pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor, erat sit amet venenatis luctus, augue libero ultrices quam, ut congue nisi risus eu purus. Cras semper consectetur elementum.
 
+```javascript
+import { createMuiTheme } from 'material-ui/styles';
+import Color from 'color';
+import colors from './colors';
+```
+
 ### Cras semper consectetur elementum
 
 Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.

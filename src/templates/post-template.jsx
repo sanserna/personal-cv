@@ -95,6 +95,10 @@ const PostTemplate = props => {
             text-align: center;
           }
 
+          .post-header__title {
+            padding-top: 10px;
+          }
+
           .post-header__txt-item {
             text-transform: capitalize;
 
@@ -124,6 +128,10 @@ const PostTemplate = props => {
             .post-header__title,
             .post-header__txt-item {
               text-align: left;
+            }
+
+            .post-header__title {
+              padding-top: 0;
             }
           }
 

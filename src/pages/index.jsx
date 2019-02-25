@@ -12,6 +12,7 @@ import Skills from '../components/skills';
 import Education from '../components/education';
 import Experience from '../components/experience';
 import Contact from '../components/contact';
+import RecentPosts from '../components/recent-posts';
 
 const IndexPage = ({ data }) => {
   const theme = useContext(ThemeContext);
@@ -29,7 +30,8 @@ const IndexPage = ({ data }) => {
     },
     background2: {
       childImageSharp: { fluid: background2 }
-    }
+    },
+    posts: { edges: posts = [] }
   } = data;
 
   return (
@@ -76,6 +78,11 @@ const IndexPage = ({ data }) => {
         </BgImgSection>
 
         <Container>
+          <Row className="section-container">
+            <Col>
+              <RecentPosts theme={theme} posts={posts.map(post => post.node)} />
+            </Col>
+          </Row>
           <Row className="section-container">
             <Col>
               <Contact theme={theme} />
@@ -142,6 +149,34 @@ export const query = graphql`
         fluid(maxWidth: 1200, quality: 100, grayscale: true) {
           ...GatsbyImageSharpFluid
           presentationHeight
+        }
+      }
+    }
+    posts: allMarkdownRemark(
+      limit: 3
+      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
+      sort: { fields: [fields___prefix], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          fields {
+            slug
+            prefix
+          }
+          frontmatter {
+            title
+            category
+            author
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
