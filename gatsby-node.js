@@ -17,7 +17,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       createNodeField({
         node,
         name: 'slug',
-        value: `${separtorIndex ? '/' : ''}${slug.substring(shortSlugStart)}`
+        value: `blog${separtorIndex ? '/' : ''}${slug.substring(
+          shortSlugStart
+        )}`
       });
     }
 
@@ -54,32 +56,30 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(
-              ${filters}
-              sort: { fields: [fields___prefix], order: DESC }
-              limit: 1000
-            ) {
-              edges {
-                node {
-                  id
-                  fields {
-                    slug
-                    prefix
-                    source
-                  }
-                  frontmatter {
-                    title
-                    category
-                  }
+      graphql(`
+        {
+          allMarkdownRemark(
+            ${filters}
+            sort: { fields: [fields___prefix], order: DESC }
+            limit: 1000
+          ) {
+            edges {
+              node {
+                id
+                fields {
+                  slug
+                  prefix
+                  source
+                }
+                frontmatter {
+                  title
+                  category
                 }
               }
             }
           }
-        `
-      ).then(result => {
+        }
+      `).then(result => {
         if (result.errors) {
           console.log(result.errors);
           reject(result.errors);

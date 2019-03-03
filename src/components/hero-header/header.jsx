@@ -26,10 +26,8 @@ const Header = ({ theme }) => (
         width: 100%;
 
         .header__item {
-          background-image: none;
           color: ${theme.color.neutral.gray.d};
           opacity: 0.7;
-          text-shadow: none;
           text-decoration: none;
           transition: all ${theme.time.duration.short} ease;
 

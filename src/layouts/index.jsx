@@ -24,6 +24,7 @@ const Layout = ({ children }) => {
 
       <style jsx>{`
         .wrapper {
+          min-height: 100vh;
           background: linear-gradient(
             to bottom,
             ${theme.color.neutral.gray.d} 0%,
@@ -41,6 +42,11 @@ const Layout = ({ children }) => {
       <style jsx global>{`
         * {
           box-sizing: border-box;
+        }
+
+        a {
+          background-image: none;
+          text-shadow: none;
         }
       `}</style>
     </ThemeContext.Provider>

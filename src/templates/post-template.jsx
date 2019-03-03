@@ -50,10 +50,7 @@ const PostTemplate = props => {
 
             <Col xs={12} sm={7}>
               <div className="header-text-wrapper">
-                <h1 className="post-header__title">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Laborum, quia!
-                </h1>
+                <h1 className="post-header__title">{title}</h1>
 
                 <p className="post-header__txt-item">
                   <span>Autor - </span>
