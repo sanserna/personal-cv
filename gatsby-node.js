@@ -1,5 +1,5 @@
 /* eslint no-console: "off" */
-const { kebabCase } = require('lodash');
+// const { kebabCase } = require('lodash');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require('path');
 
@@ -37,119 +37,118 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
+  const postTemplate = path.resolve('./src/templates/post-template.jsx');
 
-  return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve('./src/templates/post-template.jsx');
+  let activeEnv =
+    process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
-    let activeEnv =
-      process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
+  console.log(`Using environment config: '${activeEnv}'`);
 
-    console.log(`Using environment config: '${activeEnv}'`);
+  let filters = 'filter: { fields: { slug: { ne: null } } }';
 
-    let filters = 'filter: { fields: { slug: { ne: null } } }';
+  if (activeEnv == 'production') {
+    filters =
+      'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
+  }
 
-    if (activeEnv == 'production') {
-      filters =
-        'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
-    }
+  if (activeEnv == 'production') {
+    filters =
+      'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
+  }
 
-    resolve(
-      graphql(`
-        {
-          allMarkdownRemark(
-            ${filters}
-            sort: { fields: [fields___prefix], order: DESC }
-            limit: 1000
-          ) {
-            edges {
-              node {
-                id
-                fields {
-                  slug
-                  prefix
-                  source
-                }
-                frontmatter {
-                  title
-                  category
-                }
-              }
+  const { data, errors } = await graphql(`
+    {
+      allMarkdownRemark(
+        ${filters}
+        sort: { fields: [fields___prefix], order: DESC }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+              prefix
+              source
+            }
+            frontmatter {
+              title
+              categories
             }
           }
         }
-      `).then(result => {
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
-        }
+      }
+    }
+  `);
 
-        const items = result.data.allMarkdownRemark.edges;
+  if (errors) {
+    console.log(errors);
+    return Promise.reject(errors);
+  }
 
-        // Create category list
-        // const categorySet = new Set();
-        // items.forEach(edge => {
-        //   const {
-        //     node: {
-        //       frontmatter: { category }
-        //     }
-        //   } = edge;
+  const items = data.allMarkdownRemark.edges;
 
-        //   if (category && category !== null) {
-        //     categorySet.add(category);
-        //   }
-        // });
+  // Create category list
+  // const categorySet = new Set();
+  // items.forEach(edge => {
+  //   const {
+  //     node: {
+  //       frontmatter: { category }
+  //     }
+  //   } = edge;
 
-        // Create category pages
-        // const categoryList = Array.from(categorySet);
-        // categoryList.forEach(category => {
-        //   createPage({
-        //     path: `/category/${kebabCase(category)}/`,
-        //     component: categoryTemplate,
-        //     context: {
-        //       category
-        //     }
-        //   });
-        // });
+  //   if (category && category !== null) {
+  //     categorySet.add(category);
+  //   }
+  // });
 
-        // Create posts
-        const posts = items.filter(item => item.node.fields.source === 'posts');
-        posts.forEach(({ node }, index) => {
-          const slug = node.fields.slug;
-          const next = index === 0 ? undefined : posts[index - 1].node;
-          const prev =
-            index === posts.length - 1 ? undefined : posts[index + 1].node;
-          const source = node.fields.source;
+  // Create category pages
+  // const categoryList = Array.from(categorySet);
+  // categoryList.forEach(category => {
+  //   createPage({
+  //     path: `/category/${kebabCase(category)}/`,
+  //     component: categoryTemplate,
+  //     context: {
+  //       category
+  //     }
+  //   });
+  // });
 
-          createPage({
-            path: slug,
-            component: postTemplate,
-            context: {
-              slug,
-              prev,
-              next,
-              source
-            }
-          });
-        });
+  // Create posts
+  const posts = items.filter(item => item.node.fields.source === 'posts');
+  posts.forEach(({ node }, index) => {
+    const slug = node.fields.slug;
+    const next = index === 0 ? undefined : posts[index - 1].node;
+    const prev = index === posts.length - 1 ? undefined : posts[index + 1].node;
+    const source = node.fields.source;
 
-        // and pages.
-        // const pages = items.filter(item => item.node.fields.source === 'pages');
-        // pages.forEach(({ node }) => {
-        //   const slug = node.fields.slug;
-        //   const source = node.fields.source;
-
-        //   createPage({
-        //     path: slug,
-        //     component: pageTemplate,
-        //     context: {
-        //       slug,
-        //       source
-        //     }
-        //   });
-        // });
-      })
-    );
+    createPage({
+      path: slug,
+      component: postTemplate,
+      context: {
+        slug,
+        prev,
+        next,
+        source
+      }
+    });
   });
+
+  // and pages.
+  // const pages = items.filter(item => item.node.fields.source === 'pages');
+  // pages.forEach(({ node }) => {
+  //   const slug = node.fields.slug;
+  //   const source = node.fields.source;
+
+  //   createPage({
+  //     path: slug,
+  //     component: pageTemplate,
+  //     context: {
+  //       slug,
+  //       source
+  //     }
+  //   });
+  // });
 };

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 
 import Card from '../../lib/card';
-import PlainCard from '../../lib/plain-card';
+import PostPreview from '../../lib/post-preview';
 
 const RecentPosts = ({ theme, posts = [] }) => (
   <div className="recent-posts-container">
     <Card className="card">
-      <Container>
+      <Container fluid>
         <Row>
           <Col xs={12}>
             <Card.Title>Últimas publicaciones</Card.Title>
@@ -21,18 +21,21 @@ const RecentPosts = ({ theme, posts = [] }) => (
               fields: { slug },
               frontmatter: {
                 title,
+                categories,
                 cover: {
                   childImageSharp: { fluid }
                 }
               }
             }) => (
-              <PlainCard
-                key={id}
-                link={slug}
-                title={title}
-                text={excerpt}
-                background={fluid}
-              />
+              <Col key={id} xs={12} className="post-container">
+                <PostPreview
+                  categories={categories}
+                  link={slug}
+                  title={title}
+                  text={excerpt}
+                  img={fluid}
+                />
+              </Col>
             )
           )}
         </Row>
@@ -41,6 +44,10 @@ const RecentPosts = ({ theme, posts = [] }) => (
 
     <style jsx>{`
       .recent-posts-container {
+        :global(.post-container:not(:last-child)) {
+          margin-bottom: 20px;
+        }
+
         :global(.card) {
           padding: 40px 0;
 
@@ -65,7 +72,7 @@ RecentPosts.propTypes = {
       }),
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        category: PropTypes.string.isRequired,
+        categories: PropTypes.arrayOf(PropTypes.string).isRequired,
         author: PropTypes.string.isRequired,
         cover: PropTypes.object.isRequired
       }).isRequired

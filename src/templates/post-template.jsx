@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaTags } from 'react-icons/fa';
 
 import { ThemeContext } from '../layouts';
 import Seo from '../lib/seo';
+import Badge from '../lib/badge';
 
 const PostTemplate = props => {
   const {
@@ -31,6 +32,7 @@ const PostTemplate = props => {
           author,
           title,
           description,
+          categories = [],
           cover: {
             childImageSharp: { fluid }
           }
@@ -53,16 +55,27 @@ const PostTemplate = props => {
                 <h1 className="post-header__title">{title}</h1>
 
                 <p className="post-header__txt-item">
-                  <span>Autor - </span>
+                  <span className="font-weight-bold">Autor - </span>
                   {author}
                 </p>
 
                 <p className="post-header__txt-item">
-                  <span>
+                  <span className="font-weight-bold">
                     <FaCalendarAlt />
                   </span>
                   {` ${prefix}`}
                 </p>
+
+                <div className="categories">
+                  <span className="font-weight-bold icon">
+                    <FaTags />
+                  </span>
+                  {categories.map((category, index) => (
+                    /* eslint-disable react/no-array-index-key */
+                    <Badge key={index} text={category} />
+                    /* eslint-enable react/no-array-index-key */
+                  ))}
+                </div>
               </div>
             </Col>
           </Row>
@@ -89,7 +102,6 @@ const PostTemplate = props => {
           .post-header__title,
           .post-header__txt-item {
             margin: 0;
-            text-align: center;
           }
 
           .post-header__title {
@@ -99,7 +111,7 @@ const PostTemplate = props => {
           .post-header__txt-item {
             text-transform: capitalize;
 
-            span {
+            .font-weight-bold {
               font-weight: bold;
             }
 
@@ -113,19 +125,24 @@ const PostTemplate = props => {
           }
         }
 
+        .categories {
+          display: flex;
+          align-items: center;
+
+          .icon {
+            margin-right: 5px;
+          }
+        }
+
         .post-content {
           padding-top: 2rem;
+          padding-bottom: 1rem;
         }
 
         @above mobile {
           .post-header {
             padding-top: 1.3rem;
             padding-bottom: 1.3rem;
-
-            .post-header__title,
-            .post-header__txt-item {
-              text-align: left;
-            }
 
             .post-header__title {
               padding-top: 0;
@@ -181,7 +198,7 @@ export const query = graphql`
         author
         title
         description
-        category
+        categories
         cover {
           childImageSharp {
             fluid {

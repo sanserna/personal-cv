@@ -2,11 +2,20 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 
 import { ThemeContext } from '../../layouts';
+import Badge from '../badge';
 
-const PlainCard = ({ style, title, text, link, background }) => {
+const PostPreview = ({
+  style,
+  className,
+  title,
+  text,
+  link,
+  img,
+  categories
+}) => {
   const {
     color: {
       special: { link: linkColor }
@@ -14,24 +23,33 @@ const PlainCard = ({ style, title, text, link, background }) => {
   } = useContext(ThemeContext);
 
   return (
-    <Container fluid>
-      <div className="plain-card">
+    <>
+      <div className={`post-preview ${className}`} style={style}>
         <Row align="center" nogutter>
           <Col xs={12} lg={6} xl={5}>
             <Img
-              fluid={background}
-              className="plain-card__img"
+              fluid={img}
+              className="post-preview__img"
               imgStyle={{ margin: 0 }}
             />
           </Col>
 
           <Col xs={12} lg={6} xl={7}>
-            <div className="plain-card__body">
-              <h3 className="plain-card__title">{title}</h3>
-              <p className="plain-card__text">{text}</p>
+            <div className="post-preview__body">
+              <h3 className="post-preview__title">{title}</h3>
+              {categories.length > 0 && (
+                <div className="categories">
+                  {categories.map((category, index) => (
+                    /* eslint-disable react/no-array-index-key */
+                    <Badge key={index} text={category} />
+                    /* eslint-enable react/no-array-index-key */
+                  ))}
+                </div>
+              )}
+              <p className="post-preview__text">{text}</p>
               {link && (
                 <div style={{ paddingTop: 5 }}>
-                  <Link to={link} className="plain-card__link">
+                  <Link to={link} className="post-preview__link">
                     Continuar leyendo
                   </Link>
                 </div>
@@ -42,17 +60,17 @@ const PlainCard = ({ style, title, text, link, background }) => {
       </div>
 
       <style jsx>{`
-        .plain-card {
+        .post-preview {
           background-color: #fff;
           background-clip: border-box;
           border: 1px solid rgba(0, 0, 0, 0.125);
           border-radius: 0.25rem;
 
-          .plain-card__body {
+          .post-preview__body {
             padding: 1rem;
           }
 
-          :global(.plain-card__img) {
+          :global(.post-preview__img) {
             border-top-left-radius: calc(0.25rem - 1px);
             border-top-right-radius: calc(0.25rem - 1px);
 
@@ -63,20 +81,24 @@ const PlainCard = ({ style, title, text, link, background }) => {
             }
           }
 
-          .plain-card__title {
+          .post-preview__title {
             margin-top: 0;
             margin-bottom: 0.75rem;
           }
 
-          .plain-card__text {
+          .post-preview__text {
             margin-bottom: 0;
+          }
+
+          .categories {
+            margin-bottom: 0.2rem;
           }
         }
       `}</style>
 
       <style jsx>{`
-        .plain-card {
-          :global(.plain-card__link) {
+        .post-preview {
+          :global(.post-preview__link) {
             color: ${linkColor};
             text-decoration: none;
             text-shadow: none;
@@ -85,16 +107,18 @@ const PlainCard = ({ style, title, text, link, background }) => {
           }
         }
       `}</style>
-    </Container>
+    </>
   );
 };
 
-PlainCard.propTypes = {
+PostPreview.propTypes = {
   style: PropTypes.object,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   link: PropTypes.string,
-  background: PropTypes.shape({
+  categories: PropTypes.arrayOf(PropTypes.string),
+  img: PropTypes.shape({
     base64: PropTypes.string,
     aspectRatio: PropTypes.number,
     src: PropTypes.string,
@@ -103,9 +127,11 @@ PlainCard.propTypes = {
   }).isRequired
 };
 
-PlainCard.defaultProps = {
+PostPreview.defaultProps = {
   style: {},
-  link: ''
+  className: '',
+  link: '',
+  categories: []
 };
 
-export default PlainCard;
+export default PostPreview;

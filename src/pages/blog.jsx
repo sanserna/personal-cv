@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
 
 import { ThemeContext } from '../layouts';
-import PlainCard from '../lib/plain-card';
+import PostPreview from '../lib/post-preview';
 
 const BlogPage = ({ data }) => {
   const theme = useContext(ThemeContext);
@@ -32,18 +32,20 @@ const BlogPage = ({ data }) => {
                 fields: { slug },
                 frontmatter: {
                   title,
+                  categories,
                   cover: {
                     childImageSharp: { fluid }
                   }
                 }
               }
             }) => (
-              <Col key={id}>
-                <PlainCard
+              <Col key={id} xs={12} className="post-container">
+                <PostPreview
+                  categories={categories}
                   link={slug}
                   title={title}
                   text={excerpt}
-                  background={fluid}
+                  img={fluid}
                 />
               </Col>
             )
@@ -53,6 +55,10 @@ const BlogPage = ({ data }) => {
 
       <style jsx>{`
         .page-content {
+          :global(.post-container:not(:last-child)) {
+            margin-bottom: 20px;
+          }
+
           background-color: ${pageContentBgColor};
           padding-top: ${pagePaddingY};
           padding-bottom: ${pagePaddingY};
@@ -84,11 +90,11 @@ export const query = graphql`
           }
           frontmatter {
             title
-            category
+            categories
             author
             cover {
               childImageSharp {
-                fluid(maxWidth: 400) {
+                fluid(maxHeight: 300) {
                   ...GatsbyImageSharpFluid
                 }
               }
