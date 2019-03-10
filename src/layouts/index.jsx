@@ -48,6 +48,24 @@ const Layout = ({ children }) => {
           background-image: none;
           text-shadow: none;
         }
+
+        .gatsby-highlight {
+          background-color: #2d2d2d;
+          border-radius: 0.3em;
+          margin: 0.5em 0;
+          padding: 0.2em;
+          overflow: auto;
+        }
+
+        .gatsby-highlight pre[class*='language-'].line-numbers {
+          padding: 0;
+          padding-left: 3.2em;
+          overflow: initial;
+
+          .line-numbers-rows {
+            padding-left: 0.5em;
+          }
+        }
       `}</style>
     </ThemeContext.Provider>
   );
