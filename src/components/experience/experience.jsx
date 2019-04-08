@@ -1,3 +1,4 @@
+/* eslint react/no-danger: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,11 +11,7 @@ const Experience = ({ theme }) => (
     <Card>
       <Card.Section className="content-left">
         <Card.Title>Experiencia</Card.Title>
-        <span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
-          Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
-          vel.
-        </span>
+        <p dangerouslySetInnerHTML={{ __html: author.texts.experience }} />
       </Card.Section>
       <Card.Section className="content-right">
         <Timeline items={author.experience} />
@@ -33,17 +30,14 @@ const Experience = ({ theme }) => (
       }
 
       @above tablet {
-        .experience-container :global(.content-left),
-        .experience-container :global(.content-right) {
-          padding: 70px 50px;
-        }
-
         .experience-container :global(.content-left) {
-          width: 35%;
+          padding: 70px 35px;
+          width: 40%;
         }
 
         .experience-container :global(.content-right) {
           width: auto;
+          padding: 70px 50px;
         }
       }
     `}</style>

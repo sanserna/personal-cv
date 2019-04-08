@@ -6,7 +6,7 @@ import { author } from '../../../content/meta/config';
 
 const authorDataItems = [
   {
-    label: 'Nombre completo',
+    label: 'Nombre',
     value: author.name
   },
   {

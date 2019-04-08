@@ -1,3 +1,4 @@
+/* eslint react/no-danger: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,11 +11,7 @@ const Education = ({ theme }) => (
     <Card>
       <Card.Section className="content-left">
         <Card.Title>Educación</Card.Title>
-        <span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
-          Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
-          vel.
-        </span>
+        <span dangerouslySetInnerHTML={{ __html: author.texts.education }} />
       </Card.Section>
       <Card.Section className="content-right">
         <Timeline items={author.education} />
@@ -33,16 +30,13 @@ const Education = ({ theme }) => (
       }
 
       @above tablet {
-        .education-container :global(.content-left),
+        .education-container :global(.content-left) {
+          padding: 70px 35px;
+          width: 40%;
+        }
+
         .education-container :global(.content-right) {
           padding: 70px 50px;
-        }
-
-        .education-container :global(.content-left) {
-          width: 35%;
-        }
-
-        .education-container :global(.content-right) {
           width: auto;
         }
       }

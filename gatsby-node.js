@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
       'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
   }
 
-  const { data, errors } = await graphql(`
+  await graphql(`
     {
       allMarkdownRemark(
         ${filters}
@@ -81,74 +81,75 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);
+  `).then(({ data, errors }) => {
+    if (errors) {
+      console.log(errors);
+      return Promise.reject(errors);
+    }
 
-  if (errors) {
-    console.log(errors);
-    return Promise.reject(errors);
-  }
+    const items = data.allMarkdownRemark.edges;
 
-  const items = data.allMarkdownRemark.edges;
+    // Create category list
+    // const categorySet = new Set();
+    // items.forEach(edge => {
+    //   const {
+    //     node: {
+    //       frontmatter: { category }
+    //     }
+    //   } = edge;
 
-  // Create category list
-  // const categorySet = new Set();
-  // items.forEach(edge => {
-  //   const {
-  //     node: {
-  //       frontmatter: { category }
-  //     }
-  //   } = edge;
+    //   if (category && category !== null) {
+    //     categorySet.add(category);
+    //   }
+    // });
 
-  //   if (category && category !== null) {
-  //     categorySet.add(category);
-  //   }
-  // });
+    // Create category pages
+    // const categoryList = Array.from(categorySet);
+    // categoryList.forEach(category => {
+    //   createPage({
+    //     path: `/category/${kebabCase(category)}/`,
+    //     component: categoryTemplate,
+    //     context: {
+    //       category
+    //     }
+    //   });
+    // });
 
-  // Create category pages
-  // const categoryList = Array.from(categorySet);
-  // categoryList.forEach(category => {
-  //   createPage({
-  //     path: `/category/${kebabCase(category)}/`,
-  //     component: categoryTemplate,
-  //     context: {
-  //       category
-  //     }
-  //   });
-  // });
+    // Create posts
+    const posts = items.filter(item => item.node.fields.source === 'posts');
+    posts.forEach(({ node }, index) => {
+      const slug = node.fields.slug;
+      const next = index === 0 ? undefined : posts[index - 1].node;
+      const prev =
+        index === posts.length - 1 ? undefined : posts[index + 1].node;
+      const source = node.fields.source;
 
-  // Create posts
-  const posts = items.filter(item => item.node.fields.source === 'posts');
-  posts.forEach(({ node }, index) => {
-    const slug = node.fields.slug;
-    const next = index === 0 ? undefined : posts[index - 1].node;
-    const prev = index === posts.length - 1 ? undefined : posts[index + 1].node;
-    const source = node.fields.source;
-
-    createPage({
-      path: slug,
-      component: postTemplate,
-      context: {
-        slug,
-        prev,
-        next,
-        source
-      }
+      createPage({
+        path: slug,
+        component: postTemplate,
+        context: {
+          slug,
+          prev,
+          next,
+          source
+        }
+      });
     });
+
+    // and pages.
+    // const pages = items.filter(item => item.node.fields.source === 'pages');
+    // pages.forEach(({ node }) => {
+    //   const slug = node.fields.slug;
+    //   const source = node.fields.source;
+
+    //   createPage({
+    //     path: slug,
+    //     component: pageTemplate,
+    //     context: {
+    //       slug,
+    //       source
+    //     }
+    //   });
+    // });
   });
-
-  // and pages.
-  // const pages = items.filter(item => item.node.fields.source === 'pages');
-  // pages.forEach(({ node }) => {
-  //   const slug = node.fields.slug;
-  //   const source = node.fields.source;
-
-  //   createPage({
-  //     path: slug,
-  //     component: pageTemplate,
-  //     context: {
-  //       slug,
-  //       source
-  //     }
-  //   });
-  // });
 };

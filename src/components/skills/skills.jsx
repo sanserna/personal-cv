@@ -30,16 +30,13 @@ const Skills = ({ theme }) => (
       }
 
       @above tablet {
-        .skills-container :global(.content-left),
+        .skills-container :global(.content-left) {
+          padding: 70px 35px;
+          width: 40%;
+        }
+
         .skills-container :global(.content-right) {
           padding: 70px 50px;
-        }
-
-        .skills-container :global(.content-left) {
-          width: 35%;
-        }
-
-        .skills-container :global(.content-right) {
           width: auto;
         }
       }

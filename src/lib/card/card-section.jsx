@@ -7,17 +7,14 @@ const Section = ({ children, className, style }) => (
   <CardContext.Consumer>
     {({ sectionBorderColor, sectionWidth, sectionPadding, darkColor }) => (
       <div className={`card-section ${className}`} style={style}>
-        <span className="card-section__text">{children}</span>
+        {children}
 
         <style jsx>{`
           .card-section {
+            color: ${darkColor};
             border: 0.5px solid ${sectionBorderColor};
             width: ${sectionWidth};
             padding: ${sectionPadding};
-
-            .card-section__text {
-              color: ${darkColor};
-            }
           }
         `}</style>
       </div>

@@ -11,7 +11,6 @@ import Resume from '../components/resume';
 import Skills from '../components/skills';
 import Education from '../components/education';
 import Experience from '../components/experience';
-import Contact from '../components/contact';
 import RecentPosts from '../components/recent-posts';
 
 const IndexPage = ({ data }) => {
@@ -53,9 +52,10 @@ const IndexPage = ({ data }) => {
         </Container>
 
         <BgImgSection background={background1}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          consectetur voluptates et incidunt dolore veniam suscipit voluptatibus
-          blanditiis fugiat corporis.
+          &quot;Las oportunidades grandes nacen de haber sabido aprovechar las
+          pequeñas&quot;
+          <br />
+          <br />- BG
         </BgImgSection>
 
         <Container>
@@ -72,20 +72,16 @@ const IndexPage = ({ data }) => {
         </Container>
 
         <BgImgSection background={background2}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          consectetur voluptates et incidunt dolore veniam suscipit voluptatibus
-          blanditiis fugiat corporis.
+          &quot;Contrata a los mejores y déjalos hacer lo que saben. Si no,
+          contrata a los mas baratos y que hagan lo que tu dices.&quot;
+          <br />
+          <br />- WB
         </BgImgSection>
 
         <Container>
           <Row className="section-container">
             <Col>
               <RecentPosts theme={theme} posts={posts.map(post => post.node)} />
-            </Col>
-          </Row>
-          <Row className="section-container">
-            <Col>
-              <Contact theme={theme} />
             </Col>
           </Row>
         </Container>
@@ -136,7 +132,7 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    background1: file(relativePath: { eq: "bg-1.jpg" }) {
+    background1: file(relativePath: { eq: "bg-7.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, quality: 100, grayscale: true) {
           ...GatsbyImageSharpFluid

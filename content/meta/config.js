@@ -10,9 +10,17 @@ module.exports = {
   author: {
     name: 'Santiago Serna',
     profesion: 'Full-Stack Developer',
-    email: 'sanserve@gmail.com',
+    email: 'sanserve91@gmail.com',
     phone: '+57 301 510 6106',
     birthdate: 'Agosto 5 de 1991',
+    texts: {
+      resume:
+        'Soy un desarrollador full-stack con experiencia en tecnologías web, las uso para crear aplicaciones móviles y web. También tengo experiencia en desarrollo backend y casi siempre hago parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en los dos roles (frontend y backend). Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software. Soy una persona autodidacta y me gusta usar mi tiempo libre aprendiendo cosas nuevas.',
+      education:
+        'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',
+      experience:
+        'He tenido la suerte de encontrar una profesión que combina mis dos grandes pasiones (diseño y programación) y me permite hacer uso de ellas en todo momento, ser desarrollador de software full-stack me ha dado la oportunidad de estar involucrado en el procesos de desarrollo de todo tipo de aplicaciones de principio a fin.<br>Dentro de mi experiencia he tenido la oportunidad de trabajar en proyectos con el banco Davivienda, creando módulos y aplicaciones web (SPA) así como también el backend y la infraestructura que las soporta, he trabajado con startups y empresas medianas en la creación de plataformas web de todo tipo usando diferentes tipos de tecnologías, así como también aplicaciones móviles de pequeña y gran envergadura.<br>En algunos de los proyectos en los que he participado, he trabajado como Líder Técnico con equipos compuestos por perfiles en backend, frontend, QA, IOS y Android.'
+    },
     social: {
       facebook: 'https://www.facebook.com/sanserna91',
       github: 'https://github.com/sanserna',
@@ -68,9 +76,10 @@ module.exports = {
           from: '09/24/2018'
         },
         title: 'Grability',
+        url: 'https://www.grability.com/',
         subtitle: 'Tech Lead',
         desc:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
+          'Aplicaciones móviles para retailers centradas en la experiencia de compra de un supermercado, desarrollos nativos en Android, IOS y React Native; A cargo de coordinar los equipos de desarrollo (dispositivos, backend) como Líder Técnico en el proyecto para el Supermercado El Corte Ingles de España.'
       },
       {
         lapse: {
@@ -78,19 +87,21 @@ module.exports = {
           to: '09/21/2018'
         },
         title: 'PappCorn',
+        url: 'https://www.pappcorn.com/',
         subtitle: 'Tech Lead & Product Manager',
         desc:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
+          'Soluciones digitales de todo tipo, planeación estratégica y desarrollo tecnológico para startups y empresas medianas; A cargo de coordinar los diferentes proyectos en el proceso de ideación, planeación y ejecución; Orientación en los equipos de backend y frontend como Líder Técnico y Product Manager.'
       },
       {
         lapse: {
           from: '02/01/2016',
           to: '07/15/2018'
         },
-        title: 'Nectia',
+        title: 'Nectia Colombia',
+        url: 'http://www.nectia.com/',
         subtitle: 'Full-stack Developer',
         desc:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo. Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto vel.'
+          'Desarrollador frontend y backend en proyecto con el banco Davivienda, a cargo de desarrollar módulos web (SPA) de uso transversal, diseño y desarrollo de APIs REST orientadas a servicios, manejo de bases de datos MySQL y creación de herramientas para automatización en procesos de desarrollo.'
       }
     ]
   },

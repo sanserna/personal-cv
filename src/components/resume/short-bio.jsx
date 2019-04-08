@@ -2,15 +2,10 @@ import React from 'react';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 
-const ShortBio = ({ avatar }) => (
+const ShortBio = ({ avatar, bioTxt }) => (
   <div>
     <Img fixed={avatar} className="image-container" />
-    <p className="resume-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur sunt
-      provident tempore, magni omnis facilis accusamus laborum illum, molestiae
-      ratione labore debitis architecto commodi delectus corrupti saepe quae vel
-      porro!
-    </p>
+    <p className="resume-text">{bioTxt}</p>
 
     <style jsx>{`
       div :global(.image-container) {
@@ -35,6 +30,7 @@ const ShortBio = ({ avatar }) => (
 );
 
 ShortBio.propTypes = {
+  bioTxt: PropTypes.string.isRequired,
   avatar: PropTypes.object.isRequired
 };
 

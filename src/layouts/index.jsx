@@ -45,8 +45,8 @@ const Layout = ({ children }) => {
         }
 
         a {
-          background-image: none;
-          text-shadow: none;
+          background-image: none !important;
+          text-shadow: none !important;
         }
 
         .gatsby-highlight {

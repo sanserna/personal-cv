@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { author } from '../../../content/meta/config';
 import Card from '../../lib/card';
-import ShortBio from './short-bio';
 import AuthorResume from './author-resume';
 
 const Resume = ({ theme }) => (
@@ -23,37 +23,36 @@ const Resume = ({ theme }) => (
       <div className="resume-container">
         <Card>
           <Card.Section className="content-left">
-            <ShortBio avatar={avatar.childImageSharp.fixed} />
-          </Card.Section>
-          <Card.Section className="content-right">
             <Card.Title>Sobre mi</Card.Title>
             <AuthorResume theme={theme} />
+          </Card.Section>
+          <Card.Section className="content-right">
+            <p>{author.texts.resume}</p>
           </Card.Section>
         </Card>
 
         <style jsx>{`
           .resume-container :global(.content-left),
           .resume-container :global(.content-right) {
+            padding: 40px 20px;
             width: 100%;
           }
 
-          .resume-container :global(.content-left) {
-            padding: 0;
-          }
-
           .resume-container :global(.content-right) {
-            padding: 40px 20px;
-            flex-grow: 1;
+            p {
+              margin: 0;
+            }
           }
 
           @above tablet {
             .resume-container :global(.content-left) {
-              width: 35%;
+              padding: 70px 35px;
+              width: 40%;
             }
 
             .resume-container :global(.content-right) {
-              width: auto;
               padding: 70px 50px;
+              width: 60%;
             }
           }
         `}</style>
