@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
 
-        <BgImgSection background={background1}>
+        <BgImgSection background={background1.src}>
           &quot;Las oportunidades grandes nacen de haber sabido aprovechar las
           pequeñas&quot;
           <br />
@@ -71,7 +71,7 @@ const IndexPage = ({ data }) => {
           </Row>
         </Container>
 
-        <BgImgSection background={background2}>
+        <BgImgSection background={background2.src}>
           &quot;Contrata a los mejores y déjalos hacer lo que saben. Si no,
           contrata a los mas baratos y que hagan lo que tu dices.&quot;
           <br />
