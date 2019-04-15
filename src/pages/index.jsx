@@ -135,16 +135,14 @@ export const query = graphql`
     background1: file(relativePath: { eq: "bg-7.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, quality: 100, grayscale: true) {
-          ...GatsbyImageSharpFluid
-          presentationHeight
+          src
         }
       }
     }
     background2: file(relativePath: { eq: "bg-3.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, quality: 100, grayscale: true) {
-          ...GatsbyImageSharpFluid
-          presentationHeight
+          src
         }
       }
     }
