@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { Row, Col } from 'react-grid-system';
 
-import { ThemeContext } from '../../layouts';
+import { ThemeContext } from 'app-layouts/index';
 import Badge from '../badge';
 
 const PostPreview = ({

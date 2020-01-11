@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 
-import Card from '../../lib/card';
-import PostPreview from '../../lib/post-preview';
+import Card from 'app-lib/card';
+import PostPreview from 'app-lib/post-preview';
 
 const RecentPosts = ({ theme, posts = [] }) => (
   <div className="recent-posts-container">

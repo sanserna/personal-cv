@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
-import { author } from '../../../content/meta/config';
+import { author } from 'app-content/meta/config';
 import SocialLinks from './social-links';
 
 const Hero = ({ theme, avatar }) => (

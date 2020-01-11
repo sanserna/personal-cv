@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
-import { ThemeContext } from '../layouts';
-import Seo from '../lib/seo';
-import BgImgSection from '../lib/bg-img-section';
-import HeroHeader from '../components/hero-header';
-import Resume from '../components/resume';
-import Skills from '../components/skills';
-import Education from '../components/education';
-import Experience from '../components/experience';
-import RecentPosts from '../components/recent-posts';
+import { ThemeContext } from 'app-layouts/index';
+import Seo from 'app-lib/seo';
+import BgImgSection from 'app-lib/bg-img-section';
+import HeroHeader from 'app-components/hero-header';
+import Resume from 'app-components/resume';
+import Skills from 'app-components/skills';
+import Education from 'app-components/education';
+import Experience from 'app-components/experience';
+import RecentPosts from 'app-components/recent-posts';
 
 const IndexPage = ({ data }) => {
   const theme = useContext(ThemeContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../../layouts';
+import { ThemeContext } from 'app-layouts/index';
 
 const ProgressBar = ({ value, backgroundColor, color }) => {
   const {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'react-grid-system';
 
-import { ThemeContext } from '../../layouts';
+import { ThemeContext } from 'app-layouts/index';
 
 const BgImgSection = ({ children, background }) => {
   const {

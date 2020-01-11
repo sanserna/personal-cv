@@ -2,8 +2,8 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../../layouts';
-import { formatLapseDate } from '../../utils/date';
+import { ThemeContext } from 'app-layouts/index';
+import { formatLapseDate } from 'app-utils/date';
 import Item from './item';
 
 export const TimelineContext = React.createContext({});

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { IconContext } from 'react-icons';
 import { FaFacebookF, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-import { author } from '../../../content/meta/config';
+import { author } from 'app-content/meta/config';
 
 const links = [
   {

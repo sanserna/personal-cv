@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card from '../../lib/card';
+import Card from 'app-lib/card';
 import SoftSkillsList from './soft-skills-list';
 import TechSkillsList from './tech-skills-list';
 

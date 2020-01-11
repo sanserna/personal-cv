@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import { resolve } from 'styled-jsx/css';
 import { object, string } from 'yup';
 
-import Card from '../../lib/card';
+import Card from 'app-lib/card';
 import Input from './input';
 import Textarea from './textarea';
 

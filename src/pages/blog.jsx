@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
 
-import { ThemeContext } from '../layouts';
-import PostPreview from '../lib/post-preview';
+import { ThemeContext } from 'app-layouts/index';
+import PostPreview from 'app-lib/post-preview';
 
 const BlogPage = ({ data }) => {
   const theme = useContext(ThemeContext);

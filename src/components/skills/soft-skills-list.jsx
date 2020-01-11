@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { author } from '../../../content/meta/config';
+import { author } from 'app-content/meta/config';
 
 const SoftSkillsList = ({ theme }) => (
   <ul className="list-group">

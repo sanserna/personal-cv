@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../../layouts';
+import { ThemeContext } from 'app-layouts/index';
 import Section from './card-section';
 import Title from './card-title';
 

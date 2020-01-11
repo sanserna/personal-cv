@@ -6,9 +6,9 @@ import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
 import { FaCalendarAlt, FaTags } from 'react-icons/fa';
 
-import { ThemeContext } from '../layouts';
-import Seo from '../lib/seo';
-import Badge from '../lib/badge';
+import { ThemeContext } from 'app-layouts/index';
+import Seo from 'app-lib/seo';
+import Badge from 'app-lib/badge';
 
 const PostTemplate = props => {
   const {

@@ -3,6 +3,24 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require('path');
 
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        'app-content': path.resolve(__dirname, 'content'),
+        'app-components': path.resolve(__dirname, './src/components'),
+        'app-layouts': path.resolve(__dirname, './src/layouts'),
+        'app-lib': path.resolve(__dirname, './src/lib'),
+        'app-pages': path.resolve(__dirname, './src/pages'),
+        'app-templates': path.resolve(__dirname, './src/templates'),
+        'app-theme': path.resolve(__dirname, './src/theme'),
+        'app-utils': path.resolve(__dirname, './src/utils')
+      }
+    }
+  });
+};
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 

@@ -28,6 +28,23 @@
     "es6": true,
     "node": true
   },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["app-components", "./src/components"],
+          ["app-layouts", "./src/layouts"],
+          ["app-lib", "./src/lib"],
+          ["app-pages", "./src/pages"],
+          ["app-templates", "./src/templates"],
+          ["app-theme", "./src/theme"],
+          ["app-utils", "./src/utils"],
+          ["app-content", "./content"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  },
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react/forbid-prop-types": "off"

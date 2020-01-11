@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { author } from '../../../content/meta/config';
-import Card from '../../lib/card';
-import Timeline from '../../lib/timeline';
+import { author } from 'app-content/meta/config';
+import Card from 'app-lib/card';
+import Timeline from 'app-lib/timeline';
 
 const Education = ({ theme }) => (
   <div className="education-container">

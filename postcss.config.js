@@ -1,5 +1,6 @@
 module.exports = ctx => ({
   plugins: {
+    tailwindcss: './tailwind.config.js',
     'postcss-easy-media-query': {
       breakpoints: {
         mobile: 576,
