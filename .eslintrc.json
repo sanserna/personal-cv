@@ -39,7 +39,8 @@
           ["app-templates", "./src/templates"],
           ["app-theme", "./src/theme"],
           ["app-utils", "./src/utils"],
-          ["app-content", "./content"]
+          ["app-content", "./content"],
+          ["app-root", "./"]
         ],
         "extensions": [".ts", ".js", ".jsx", ".json"]
       }

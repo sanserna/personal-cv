@@ -8,6 +8,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
+        'app-root': path.resolve(__dirname, './'),
         'app-content': path.resolve(__dirname, 'content'),
         'app-components': path.resolve(__dirname, './src/components'),
         'app-layouts': path.resolve(__dirname, './src/layouts'),

@@ -1,6 +1,8 @@
 /* eslint react/no-array-index-key: "off" */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import { IconContext } from 'react-icons';
 import { FaFacebookF, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -25,62 +27,55 @@ const links = [
   }
 ];
 
-const SocialLinks = ({ style, theme }) => {
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+`;
+
+const ListItem = styled.li`
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0;
+`;
+
+const Link = styled.a`
+  display: block;
+  text-decoration: none;
+  background-image: none;
+  text-shadow: none;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const SocialLinks = ({ style }) => {
+  const theme = useTheme();
   const [iconConfig] = useState({
-    color: theme.color.neutral.gray.a,
+    color: theme.colors.gray[100],
     size: '1.5em'
   });
 
   return (
-    <>
-      <ul className="social-links" style={style}>
-        <IconContext.Provider value={iconConfig}>
-          {links.map(({ icon: Icon, url }, index) => (
-            <li key={index} className="social-links__item">
-              <a href={url} target="_blanc" className="social-links__link">
-                <Icon />
-              </a>
-            </li>
-          ))}
-        </IconContext.Provider>
-      </ul>
-
-      <style jsx>{`
-        .social-links {
-          list-style: none;
-          display: flex;
-          align-items: center;
-
-          &,
-          .social-links__item {
-            margin: 0;
-          }
-
-          .social-links__item {
-            display: inline-block;
-            padding: 0 10px;
-          }
-
-          .social-links__link {
-            display: block;
-            text-decoration: none;
-            background-image: none;
-            text-shadow: none;
-            opacity: 0.7;
-            transition: all ${theme.time.duration.short} ease;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
-        }
-      `}</style>
-    </>
+    <List style={style}>
+      <IconContext.Provider value={iconConfig}>
+        {links.map(({ icon: Icon, url }, index) => (
+          <ListItem key={index}>
+            <Link href={url} target="_blanc">
+              <Icon />
+            </Link>
+          </ListItem>
+        ))}
+      </IconContext.Provider>
+    </List>
   );
 };
 
 SocialLinks.propTypes = {
-  theme: PropTypes.object.isRequired,
   style: PropTypes.object
 };
 

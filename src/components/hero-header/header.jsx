@@ -1,57 +1,52 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
 import { author } from 'app-content/meta/config';
+import { bpAboveMedium } from 'app-utils/breakpoints';
 
-const Header = ({ theme }) => (
-  <>
-    <header className="header">
-      <a className="header__item" href={`tel:${author.phone}`}>
-        {author.phone}
-      </a>
-      <a
-        className="header__item"
-        href={`mailto:${author.email}`}
-        style={{ fontStyle: 'italic' }}
-      >
-        {author.email}
-      </a>
-    </header>
+const HeaderEl = styled.header`
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 20px;
+  width: 100%;
 
-    <style jsx>{`
-      .header {
-        display: flex;
-        justify-content: space-around;
-        padding: 20px 20px;
-        width: 100%;
+  .header__item {
+    color: ${({ theme }) => theme.colors.gray[400]};
+    opacity: 0.7;
+    text-decoration: none;
+    transition: all 0.3s ease;
 
-        .header__item {
-          color: ${theme.color.neutral.gray.d};
-          opacity: 0.7;
-          text-decoration: none;
-          transition: all ${theme.time.duration.short} ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
 
-          &:hover {
-            opacity: 1;
-          }
-        }
+  ${bpAboveMedium} {
+    justify-content: flex-end;
+    padding: 20px 40px;
 
-        @above tablet {
-          justify-content: flex-end;
-          padding: 20px 40px;
+    .header__item:not(:first-of-type) {
+      padding-left: 20px;
+    }
+  }
+`;
 
-          .header__item:not(:first-child) {
-            padding-left: 20px;
-          }
-        }
-      }
-    `}</style>
-  </>
+const Header = () => (
+  <HeaderEl>
+    <a className="header__item" href={`tel:${author.phone}`}>
+      {author.phone}
+    </a>
+    <a
+      className="header__item"
+      href={`mailto:${author.email}`}
+      style={{ fontStyle: 'italic' }}
+    >
+      {author.email}
+    </a>
+  </HeaderEl>
 );
 
-Header.propTypes = {
-  theme: PropTypes.object.isRequired
-};
+Header.propTypes = {};
 
 Header.defaultProps = {};
 

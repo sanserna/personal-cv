@@ -1,44 +1,69 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
+import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 
-import { ThemeContext } from 'app-layouts/index';
+import { bpAboveMedium } from 'app-utils/breakpoints';
 import Seo from 'app-lib/seo';
-import BgImgSection from 'app-lib/bg-img-section';
+// import BgImgSection from 'app-lib/bg-img-section';
 import HeroHeader from 'app-components/hero-header';
-import Resume from 'app-components/resume';
-import Skills from 'app-components/skills';
-import Education from 'app-components/education';
-import Experience from 'app-components/experience';
-import RecentPosts from 'app-components/recent-posts';
+// import Resume from 'app-components/resume';
+// import Skills from 'app-components/skills';
+// import Education from 'app-components/education';
+// import Experience from 'app-components/experience';
+// import RecentPosts from 'app-components/recent-posts';
+
+const PageContent = styled.div`
+  --container-padding-y: ${({ theme }) => theme.spacing[3]};
+
+  label: page-content;
+  background-color: red;
+
+  & .section-container {
+    padding-top: var(--container-padding-y);
+    padding-bottom: var(--container-padding-y);
+
+    &:first-of-type {
+      padding-top: calc(var(--container-padding-y) * 2);
+    }
+
+    &:last-of-type {
+      padding-bottom: calc(var(--container-padding-y) * 2);
+    }
+
+    ${bpAboveMedium} {
+      padding-top: calc(var(--container-padding-y) * 5);
+      padding-bottom: calc(var(--container-padding-y) * 5);
+
+      &:first-of-type {
+        padding-top: calc(var(--container-padding-y) * 10);
+      }
+
+      &:last-of-type {
+        padding-bottom: calc(var(--container-padding-y) * 10);
+      }
+    }
+  }
+`;
 
 const IndexPage = ({ data }) => {
-  const theme = useContext(ThemeContext);
-  const {
-    color: {
-      neutral: {
-        gray: { b: pageContentBgColor }
-      }
-    },
-    space: { s: sectionPaddingY }
-  } = theme;
-  const {
-    background1: {
-      childImageSharp: { fluid: background1 }
-    },
-    background2: {
-      childImageSharp: { fluid: background2 }
-    },
-    posts: { edges: posts = [] }
-  } = data;
+  // const {
+  //   background1: {
+  //     childImageSharp: { fluid: background1 }
+  //   },
+  //   background2: {
+  //     childImageSharp: { fluid: background2 }
+  //   },
+  //   posts: { edges: posts = [] }
+  // } = data;
 
   return (
     <>
       <Seo />
-      <HeroHeader theme={theme} />
-      <div className="page-content">
-        <Container>
+      <HeroHeader />
+      <PageContent>
+        {/* <Container>
           <Row className="section-container">
             <Col>
               <Resume theme={theme} />
@@ -84,42 +109,8 @@ const IndexPage = ({ data }) => {
               <RecentPosts theme={theme} posts={posts.map(post => post.node)} />
             </Col>
           </Row>
-        </Container>
-      </div>
-
-      <style jsx>{`
-        --container-padding-y: ${sectionPaddingY};
-
-        .page-content {
-          background-color: ${pageContentBgColor};
-
-          :global(.section-container) {
-            padding-top: var(--container-padding-y);
-            padding-bottom: var(--container-padding-y);
-
-            &:first-of-type {
-              padding-top: calc(var(--container-padding-y) * 2);
-            }
-
-            &:last-of-type {
-              padding-bottom: calc(var(--container-padding-y) * 2);
-            }
-
-            @above tablet {
-              padding-top: calc(var(--container-padding-y) * 5);
-              padding-bottom: calc(var(--container-padding-y) * 5);
-
-              &:first-of-type {
-                padding-top: calc(var(--container-padding-y) * 10);
-              }
-
-              &:last-of-type {
-                padding-bottom: calc(var(--container-padding-y) * 10);
-              }
-            }
-          }
-        }
-      `}</style>
+        </Container> */}
+      </PageContent>
     </>
   );
 };

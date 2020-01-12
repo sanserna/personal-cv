@@ -6,178 +6,179 @@ import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
 import { FaCalendarAlt, FaTags } from 'react-icons/fa';
 
-import { ThemeContext } from 'app-layouts/index';
-import Seo from 'app-lib/seo';
-import Badge from 'app-lib/badge';
+// import Seo from 'app-lib/seo';
+// import Badge from 'app-lib/badge';
 
-const PostTemplate = props => {
-  const {
-    size: {
-      radius: { small: imgBorderRadius }
-    },
-    color: {
-      scheme: { medium: headerBorderColor, dark: darkColor },
-      neutral: {
-        white,
-        gray: { b: headerBgColor }
-      }
-    }
-  } = useContext(ThemeContext);
-  const {
-    data: {
-      post: {
-        html,
-        fields: { prefix },
-        frontmatter: {
-          author,
-          title,
-          description,
-          categories = [],
-          cover: {
-            childImageSharp: { fluid }
-          }
-        }
-      }
-    }
-  } = props;
+const PostTemplate = () => <div />;
 
-  return (
-    <>
-      <header className="post-header">
-        <Container fluid style={{ maxWidth: 1300 }}>
-          <Row align="center" nogutter>
-            <Col xs={12} sm={5}>
-              <Img fluid={fluid} className="post-header__img" />
-            </Col>
+// const PostTemplate = props => {
+//   const {
+//     size: {
+//       radius: { small: imgBorderRadius }
+//     },
+//     color: {
+//       scheme: { medium: headerBorderColor, dark: darkColor },
+//       neutral: {
+//         white,
+//         gray: { b: headerBgColor }
+//       }
+//     }
+//   } = useContext(ThemeContext);
+//   const {
+//     data: {
+//       post: {
+//         html,
+//         fields: { prefix },
+//         frontmatter: {
+//           author,
+//           title,
+//           description,
+//           categories = [],
+//           cover: {
+//             childImageSharp: { fluid }
+//           }
+//         }
+//       }
+//     }
+//   } = props;
 
-            <Col xs={12} sm={7}>
-              <div className="header-text-wrapper">
-                <h1 className="post-header__title">{title}</h1>
+//   return (
+//     <>
+//       <header className="post-header">
+//         <Container fluid style={{ maxWidth: 1300 }}>
+//           <Row align="center" nogutter>
+//             <Col xs={12} sm={5}>
+//               <Img fluid={fluid} className="post-header__img" />
+//             </Col>
 
-                <p className="post-header__txt-item">
-                  <span className="font-weight-bold">Autor - </span>
-                  {author}
-                </p>
+//             <Col xs={12} sm={7}>
+//               <div className="header-text-wrapper">
+//                 <h1 className="post-header__title">{title}</h1>
 
-                <p className="post-header__txt-item">
-                  <span className="font-weight-bold">
-                    <FaCalendarAlt />
-                  </span>
-                  {` ${prefix}`}
-                </p>
+//                 <p className="post-header__txt-item">
+//                   <span className="font-weight-bold">Autor - </span>
+//                   {author}
+//                 </p>
 
-                <div className="categories">
-                  <span className="font-weight-bold icon">
-                    <FaTags />
-                  </span>
-                  {categories.map((category, index) => (
-                    /* eslint-disable react/no-array-index-key */
-                    <Badge key={index} text={category} />
-                    /* eslint-enable react/no-array-index-key */
-                  ))}
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </header>
+//                 <p className="post-header__txt-item">
+//                   <span className="font-weight-bold">
+//                     <FaCalendarAlt />
+//                   </span>
+//                   {` ${prefix}`}
+//                 </p>
 
-      <main className="post-content">
-        <Container>
-          <Row>
-            <Col>
-              <div dangerouslySetInnerHTML={{ __html: html }} />
-            </Col>
-          </Row>
-        </Container>
-      </main>
+//                 <div className="categories">
+//                   <span className="font-weight-bold icon">
+//                     <FaTags />
+//                   </span>
+//                   {categories.map((category, index) => (
+//                     /* eslint-disable react/no-array-index-key */
+//                     <Badge key={index} text={category} />
+//                     /* eslint-enable react/no-array-index-key */
+//                   ))}
+//                 </div>
+//               </div>
+//             </Col>
+//           </Row>
+//         </Container>
+//       </header>
 
-      <Seo title={title} description={description} />
+//       <main className="post-content">
+//         <Container>
+//           <Row>
+//             <Col>
+//               <div dangerouslySetInnerHTML={{ __html: html }} />
+//             </Col>
+//           </Row>
+//         </Container>
+//       </main>
 
-      <style jsx>{`
-        .post-header {
-          padding-top: 1rem;
-          padding-bottom: 1rem;
+//       <Seo title={title} description={description} />
 
-          .post-header__title,
-          .post-header__txt-item {
-            margin: 0;
-          }
+//       <style jsx>{`
+//         .post-header {
+//           padding-top: 1rem;
+//           padding-bottom: 1rem;
 
-          .post-header__title {
-            padding-top: 10px;
-          }
+//           .post-header__title,
+//           .post-header__txt-item {
+//             margin: 0;
+//           }
 
-          .post-header__txt-item {
-            text-transform: capitalize;
+//           .post-header__title {
+//             padding-top: 10px;
+//           }
 
-            .font-weight-bold {
-              font-weight: bold;
-            }
+//           .post-header__txt-item {
+//             text-transform: capitalize;
 
-            &:first-of-type {
-              padding-top: 10px;
-            }
+//             .font-weight-bold {
+//               font-weight: bold;
+//             }
 
-            &:not(:last-of-type) {
-              padding-bottom: 5px;
-            }
-          }
-        }
+//             &:first-of-type {
+//               padding-top: 10px;
+//             }
 
-        .categories {
-          display: flex;
-          align-items: center;
+//             &:not(:last-of-type) {
+//               padding-bottom: 5px;
+//             }
+//           }
+//         }
 
-          .icon {
-            margin-right: 5px;
-          }
-        }
+//         .categories {
+//           display: flex;
+//           align-items: center;
 
-        .post-content {
-          padding-top: 2rem;
-          padding-bottom: 1rem;
-        }
+//           .icon {
+//             margin-right: 5px;
+//           }
+//         }
 
-        @above mobile {
-          .post-header {
-            padding-top: 1.3rem;
-            padding-bottom: 1.3rem;
+//         .post-content {
+//           padding-top: 2rem;
+//           padding-bottom: 1rem;
+//         }
 
-            .post-header__title {
-              padding-top: 0;
-            }
-          }
+//         @above mobile {
+//           .post-header {
+//             padding-top: 1.3rem;
+//             padding-bottom: 1.3rem;
 
-          .header-text-wrapper {
-            padding-top: 0;
-            padding-left: 20px;
-          }
-        }
-      `}</style>
+//             .post-header__title {
+//               padding-top: 0;
+//             }
+//           }
 
-      <style jsx>{`
-        .post-header {
-          border-bottom: 1px solid ${headerBorderColor};
-          background-color: ${headerBgColor};
+//           .header-text-wrapper {
+//             padding-top: 0;
+//             padding-left: 20px;
+//           }
+//         }
+//       `}</style>
 
-          :global(.post-header__img) {
-            border-radius: ${imgBorderRadius};
-          }
+//       <style jsx>{`
+//         .post-header {
+//           border-bottom: 1px solid ${headerBorderColor};
+//           background-color: ${headerBgColor};
 
-          .post-header__title,
-          .post-header__txt-item {
-            color: ${darkColor};
-          }
-        }
+//           :global(.post-header__img) {
+//             border-radius: ${imgBorderRadius};
+//           }
 
-        .post-content {
-          background-color: ${white};
-        }
-      `}</style>
-    </>
-  );
-};
+//           .post-header__title,
+//           .post-header__txt-item {
+//             color: ${darkColor};
+//           }
+//         }
+
+//         .post-content {
+//           background-color: ${white};
+//         }
+//       `}</style>
+//     </>
+//   );
+// };
 
 PostTemplate.propTypes = {
   data: PropTypes.object.isRequired

@@ -7,20 +7,12 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-json',
     'gatsby-plugin-layout',
-    'gatsby-plugin-styled-jsx-postcss',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: 'src/utils/typography.js'
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-styled-jsx',
-      options: {
-        optimizeForSpeed: true,
-        sourceMaps: false,
-        vendorPrefixes: true
       }
     },
     {

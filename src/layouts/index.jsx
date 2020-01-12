@@ -1,45 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import styled from '@emotion/styled';
+import { Global, css } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
+import resolveConfig from 'tailwindcss/resolveConfig';
 import 'moment/locale/es';
 
-import themeObjectFromYaml from 'app-theme/theme.yaml';
-import Footer from 'app-components/footer';
+import tailwindConfig from 'app-root/tailwind.config';
+import { bpAboveMedium } from 'app-utils/breakpoints';
+// import Footer from 'app-components/footer';
 
 // Setup moment
 moment.locale('es');
 
-// Global contexts
-export const ThemeContext = React.createContext(null);
+const { theme: themeConfig } = resolveConfig(tailwindConfig);
 
-const Layout = ({ children }) => {
-  const [theme] = useState(themeObjectFromYaml);
+const LayoutWrapper = styled.div(
+  {
+    minHeight: '100vh'
+  },
+  ({ theme }) => ({
+    background: `linear-gradient(
+      to bottom,
+      ${theme.colors.gray[100]} 0%,
+      ${theme.colors.gray[200]} 35%,
+      ${theme.colors.gray[300]} 60%,
+      ${theme.colors.gray[400]} 100%
+    )`,
+    [bpAboveMedium]: {
+      padding: theme.spacing[5]
+    }
+  })
+);
 
-  return (
-    <ThemeContext.Provider value={theme}>
-      <div className="wrapper">
-        <main>{children}</main>
-        <Footer theme={theme} />
-      </div>
-
-      <style jsx>{`
-        .wrapper {
-          min-height: 100vh;
-          background: linear-gradient(
-            to bottom,
-            ${theme.color.neutral.gray.d} 0%,
-            ${theme.color.neutral.gray.c} 35%,
-            ${theme.color.neutral.gray.c} 60%,
-            ${theme.color.neutral.gray.d} 100%
-          );
-
-          @above tablet {
-            padding: ${theme.space.layout};
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
+const Layout = ({ children }) => (
+  <ThemeProvider theme={themeConfig}>
+    <Global
+      styles={css`
         * {
           box-sizing: border-box;
         }
@@ -89,10 +87,14 @@ const Layout = ({ children }) => {
             }
           }
         }
-      `}</style>
-    </ThemeContext.Provider>
-  );
-};
+      `}
+    />
+    <LayoutWrapper>
+      <main>{children}</main>
+      {/* <Footer theme={theme} /> */}
+    </LayoutWrapper>
+  </ThemeProvider>
+);
 
 Layout.propTypes = {
   children: PropTypes.object.isRequired

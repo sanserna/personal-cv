@@ -1,80 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import styled from '@emotion/styled';
 
 import { author } from 'app-content/meta/config';
 import SocialLinks from './social-links';
 
-const Hero = ({ theme, avatar }) => (
-  <>
-    <div className="hero">
-      <Img fixed={avatar} className="hero__image-container" />
-      <div className="hero__description-content">
-        <h2 className="hero__title">{author.name}</h2>
-        <small className="hero__subtitle">{author.profesion}</small>
-      </div>
-      <SocialLinks style={{ paddingTop: '30px' }} theme={theme} />
-    </div>
+const text = theme => ({
+  color: theme.colors.gray[400],
+  textAlign: 'center',
+  width: '100%'
+});
 
-    <style jsx>{`
-      .hero {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 
-        :global(.hero__image-container) {
-          border-radius: 50%;
-          box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
-        }
+const DescriptionContent = styled.div`
+  padding-top: 30px;
+  width: 100%;
+`;
 
-        .hero__description-content {
-          padding-top: 30px;
-          width: 100%;
-        }
+const Title = styled.h2(
+  {
+    margin: 0,
+    textTransform: 'uppercase'
+  },
+  ({ theme }) => text(theme)
+);
 
-        .hero__title,
-        .hero__subtitle {
-          text-align: center;
-          width: 100%;
-        }
+const Subtitle = styled.small(
+  {
+    display: 'block',
+    fontStyle: 'italic'
+  },
+  ({ theme }) => text(theme)
+);
 
-        .hero__title {
-          margin: 0;
-          text-transform: uppercase;
-        }
-
-        .hero__subtitle {
-          display: block;
-          font-style: italic;
-        }
-      }
-
-      .hero__image-container {
-        border-radius: 50%;
-        border: 10px solid red;
-        box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
-      }
-    `}</style>
-
-    <style jsx>{`
-      .hero {
-        :global(.hero__image-container) {
-          border: 10px solid ${theme.color.scheme.primary};
-        }
-
-        .hero__title,
-        .hero__subtitle {
-          color: ${theme.color.neutral.gray.d};
-        }
-      }
-    `}</style>
-  </>
+const Hero = ({ avatar }) => (
+  <Container>
+    <Img
+      fixed={avatar}
+      css={theme => ({
+        borderRadius: '50%',
+        boxShadow: '5px 10px 15px rgba(0, 0, 0, 0.3)',
+        border: `10px solid ${theme.colors.primary}`
+      })}
+    />
+    <DescriptionContent>
+      <Title>{author.name}</Title>
+      <Subtitle>{author.profesion}</Subtitle>
+    </DescriptionContent>
+    <SocialLinks style={{ paddingTop: '30px' }} />
+  </Container>
 );
 
 Hero.propTypes = {
-  theme: PropTypes.object.isRequired,
   avatar: PropTypes.object.isRequired
 };
 

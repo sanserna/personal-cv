@@ -1,11 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
 import Hero from './hero';
 
-const HeroHeader = ({ theme }) => (
+const SectionContainer = styled.section(
+  {
+    backgroundRepeat: 'repeat',
+    backgroundSize: '800px 800px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    width: '100%'
+  },
+  ({ haderPattern, theme }) => ({
+    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
+    height: `calc(100vh - ${theme.spacing[8]})`
+  })
+);
+
+const HeroHeader = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -26,33 +43,15 @@ const HeroHeader = ({ theme }) => (
       }
     `}
     render={({ headerAvatar, haderPattern }) => (
-      <>
-        <section className="container">
-          <Header theme={theme} />
-          <Hero theme={theme} avatar={headerAvatar.childImageSharp.fixed} />
-        </section>
-
-        <style jsx>{`
-          .container {
-            background-repeat: repeat;
-            background-size: 800px 800px;
-            background-image: url(${haderPattern.childImageSharp.fixed.src});
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: flex-start;
-            height: calc(100vh - ${theme.space.layout});
-            width: 100%;
-          }
-        `}</style>
-      </>
+      <SectionContainer haderPattern={haderPattern}>
+        <Header />
+        <Hero avatar={headerAvatar.childImageSharp.fixed} />
+      </SectionContainer>
     )}
   />
 );
 
-HeroHeader.propTypes = {
-  theme: PropTypes.object.isRequired
-};
+HeroHeader.propTypes = {};
 
 HeroHeader.defaultProps = {};
 
