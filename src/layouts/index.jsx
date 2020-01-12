@@ -9,7 +9,7 @@ import 'moment/locale/es';
 
 import tailwindConfig from 'app-root/tailwind.config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
-// import Footer from 'app-components/footer';
+import Footer from 'app-components/footer';
 
 // Setup moment
 moment.locale('es');
@@ -91,7 +91,7 @@ const Layout = ({ children }) => (
     />
     <LayoutWrapper>
       <main>{children}</main>
-      {/* <Footer theme={theme} /> */}
+      <Footer />
     </LayoutWrapper>
   </ThemeProvider>
 );
