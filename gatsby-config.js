@@ -10,9 +10,9 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-sass`,
       options: {
-        pathToConfigModule: 'src/utils/typography.js'
+        postCssPlugins: [require('tailwindcss')]
       }
     },
     {
