@@ -10,22 +10,24 @@ const HeaderEl = styled.header`
   padding: 20px 20px;
   width: 100%;
 
-  .header__item {
-    color: ${({ theme }) => theme.colors.gray[400]};
-    opacity: 0.7;
-    text-decoration: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
   ${bpAboveMedium} {
     justify-content: flex-end;
     padding: 20px 40px;
+  }
+`;
 
-    .header__item:not(:first-of-type) {
+const HeaderItem = styled.a`
+  color: ${({ theme }) => theme.colors.gray[400]};
+  opacity: 0.7;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${bpAboveMedium} {
+    &:not(:first-of-type) {
       padding-left: 20px;
     }
   }
@@ -33,16 +35,10 @@ const HeaderEl = styled.header`
 
 const Header = () => (
   <HeaderEl>
-    <a className="header__item" href={`tel:${author.phone}`}>
-      {author.phone}
-    </a>
-    <a
-      className="header__item"
-      href={`mailto:${author.email}`}
-      style={{ fontStyle: 'italic' }}
-    >
+    <HeaderItem href={`tel:${author.phone}`}>{author.phone}</HeaderItem>
+    <HeaderItem href={`mailto:${author.email}`} style={{ fontStyle: 'italic' }}>
       {author.email}
-    </a>
+    </HeaderItem>
   </HeaderEl>
 );
 
