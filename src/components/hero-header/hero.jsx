@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
+import { FaFacebookF, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import { author } from 'app-content/meta/config';
-import SocialLinks from './social-links';
+import SocialLinks from 'app-components/social-links';
 
 const text = theme => ({
   color: theme.colors.gray[400],
@@ -55,7 +56,27 @@ const Hero = ({ avatar }) => (
       <Title>{author.name}</Title>
       <Subtitle>{author.profesion}</Subtitle>
     </DescriptionContent>
-    <SocialLinks style={{ paddingTop: '30px' }} />
+    <SocialLinks
+      style={{ paddingTop: '30px' }}
+      links={[
+        {
+          url: author.social.facebook,
+          icon: FaFacebookF
+        },
+        {
+          url: author.social.instagram,
+          icon: FaInstagram
+        },
+        {
+          url: author.social.github,
+          icon: FaGithub
+        },
+        {
+          url: author.social.linkedin,
+          icon: FaLinkedin
+        }
+      ]}
+    />
   </Container>
 );
 

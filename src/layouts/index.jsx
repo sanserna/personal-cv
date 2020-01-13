@@ -8,30 +8,18 @@ import resolveConfig from 'tailwindcss/resolveConfig';
 import { Container } from 'react-grid-system';
 import 'moment/locale/es';
 
-import { author } from 'app-content/meta/config';
 import tailwindConfig from 'app-root/tailwind.config';
 import Footer from 'app-components/footer';
-import Navbar from 'app-lib/navbar';
+import Navbar from 'app-components/navbar';
 
 // Setup moment
 moment.locale('es');
 
 const { theme: themeConfig } = resolveConfig(tailwindConfig);
 
-const LayoutWrapper = styled.div(
-  {
-    minHeight: '100vh'
-  },
-  ({ theme }) => ({
-    background: `linear-gradient(
-      to bottom,
-      ${theme.colors.gray[100]} 0%,
-      ${theme.colors.gray[200]} 35%,
-      ${theme.colors.gray[300]} 60%,
-      ${theme.colors.gray[400]} 100%
-    )`
-  })
-);
+const LayoutWrapper = styled.div({
+  minHeight: '100vh'
+});
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={themeConfig}>
@@ -90,22 +78,7 @@ const Layout = ({ children }) => (
     />
     <LayoutWrapper>
       <Container>
-        <Navbar
-          css={theme => ({
-            height: theme.spacing[20]
-          })}
-          brandName={author.name}
-          navItems={[
-            {
-              to: '/about',
-              label: 'About'
-            },
-            {
-              to: '/blog',
-              label: 'Blog'
-            }
-          ]}
-        />
+        <Navbar />
       </Container>
       <main>{children}</main>
       <Container>

@@ -5,9 +5,10 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { IconContext } from 'react-icons';
-import { FaBars } from 'react-icons/fa';
-
+import { FaBars, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { author } from 'app-content/meta/config';
 import Button from 'app-lib/button';
+import SocialLinks from 'app-components/social-links';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const Nav = styled.nav`
@@ -16,10 +17,10 @@ const Nav = styled.nav`
   justify-content: space-between;
   flex-wrap: wrap;
   background-color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.spacing[4]};
+  padding: ${({ theme }) => `${theme.spacing[6]} ${theme.spacing[4]}`};
 `;
 
-const Brand = styled.span({}, ({ theme }) => ({
+const Brand = styled.h1({}, ({ theme }) => ({
   letterSpacing: theme.letterSpacing.tight,
   fontWeight: theme.fontWeight.semibold,
   fontSize: theme.fontSize.xl,
@@ -55,7 +56,7 @@ const NavigationItem = styled(Link)`
   }
 `;
 
-const Navbar = ({ style, className, brandName, navItems }) => {
+const Navbar = ({ style, className }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
@@ -65,7 +66,7 @@ const Navbar = ({ style, className, brandName, navItems }) => {
   return (
     <IconContext.Provider value={iconConfig}>
       <Nav style={style} className={className}>
-        {brandName && <Brand>{brandName}</Brand>}
+        <Brand>{author.name}</Brand>
         <div className="block md:hidden">
           <Button
             color="dark"
@@ -78,12 +79,37 @@ const Navbar = ({ style, className, brandName, navItems }) => {
           </Button>
         </div>
         <NavigationItems>
-          {navItems.map((navItem, index) => (
+          {[
+            {
+              to: '/about',
+              label: 'About'
+            },
+            {
+              to: '/blog',
+              label: 'Blog'
+            }
+          ].map((navItem, index) => (
             <NavigationItem key={index} to={navItem.to}>
               {navItem.label}
             </NavigationItem>
           ))}
         </NavigationItems>
+        <SocialLinks
+          style={{
+            paddingLeft: theme.spacing[4]
+          }}
+          color={theme.colors.gray[800]}
+          links={[
+            {
+              url: author.social.github,
+              icon: FaGithub
+            },
+            {
+              url: author.social.linkedin,
+              icon: FaLinkedin
+            }
+          ]}
+        />
       </Nav>
     </IconContext.Provider>
   );
@@ -91,21 +117,12 @@ const Navbar = ({ style, className, brandName, navItems }) => {
 
 Navbar.propTypes = {
   style: PropTypes.object,
-  className: PropTypes.string,
-  brandName: PropTypes.string,
-  navItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      to: PropTypes.string,
-      label: PropTypes.string
-    })
-  )
+  className: PropTypes.string
 };
 
 Navbar.defaultProps = {
   style: {},
-  className: '',
-  brandName: '',
-  navItems: []
+  className: ''
 };
 
 export default Navbar;

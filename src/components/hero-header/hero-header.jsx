@@ -1,23 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
+import { Container, Row, Col } from 'react-grid-system';
 
 import Header from './header';
-import Hero from './hero';
 
 const SectionContainer = styled.section(
   {
     backgroundRepeat: 'repeat',
-    backgroundSize: '800px 800px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    width: '100%'
+    backgroundSize: '800px 800px'
   },
   ({ haderPattern, theme }) => ({
-    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
-    height: `calc(100vh - ${theme.spacing[8]})`
+    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`
   })
 );
 
@@ -43,8 +37,24 @@ const HeroHeader = () => (
     `}
     render={({ headerAvatar, haderPattern }) => (
       <SectionContainer haderPattern={haderPattern}>
-        <Header />
-        <Hero avatar={headerAvatar.childImageSharp.fixed} />
+        <Container>
+          <Header />
+          <Row align="center" nogutter>
+            <Col>
+              <h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In quas
+                aspernatur perferendis est ipsam corrupti.
+              </h1>
+            </Col>
+            <Col md={5}>
+              <img
+                src="https://kentcdodds.com/static/kent-985f8a0db8a37e47da2c07080cffa865.png"
+                alt=""
+                style={{ maxWidth: '100%', marginBottom: 0 }}
+              />
+            </Col>
+          </Row>
+        </Container>
       </SectionContainer>
     )}
   />

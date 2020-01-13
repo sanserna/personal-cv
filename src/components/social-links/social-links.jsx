@@ -4,28 +4,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { IconContext } from 'react-icons';
-import { FaFacebookF, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
-
-import { author } from 'app-content/meta/config';
-
-const links = [
-  {
-    url: author.social.facebook,
-    icon: FaFacebookF
-  },
-  {
-    url: author.social.instagram,
-    icon: FaInstagram
-  },
-  {
-    url: author.social.github,
-    icon: FaGithub
-  },
-  {
-    url: author.social.linkedin,
-    icon: FaLinkedin
-  }
-];
 
 const List = styled.ul`
   list-style: none;
@@ -53,10 +31,10 @@ const Link = styled.a`
   }
 `;
 
-const SocialLinks = ({ style }) => {
+const SocialLinks = ({ style, links, color }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
-    color: theme.colors.gray[100],
+    color: color || theme.colors.gray[100],
     size: '1.5em'
   });
 
@@ -76,11 +54,20 @@ const SocialLinks = ({ style }) => {
 };
 
 SocialLinks.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  color: PropTypes.string,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      icon: PropTypes.func
+    })
+  )
 };
 
 SocialLinks.defaultProps = {
-  style: {}
+  style: {},
+  color: '',
+  links: []
 };
 
 export default SocialLinks;
