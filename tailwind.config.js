@@ -10,14 +10,8 @@ module.exports = {
         warning: colors.yellow[600],
         danger: colors.red[600],
         success: colors.green[600],
-        light: {
-          default: colors.gray[300],
-          darker: colors.gray[400]
-        },
-        dark: {
-          default: colors.gray[800],
-          darker: colors.gray[900]
-        }
+        light: colors.gray[300],
+        dark: colors.gray[900]
       }
     }
   },

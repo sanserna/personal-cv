@@ -5,11 +5,13 @@ import styled from '@emotion/styled';
 import { Global, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import resolveConfig from 'tailwindcss/resolveConfig';
+import { Container } from 'react-grid-system';
 import 'moment/locale/es';
 
+import { author } from 'app-content/meta/config';
 import tailwindConfig from 'app-root/tailwind.config';
-import { bpAboveMedium } from 'app-utils/breakpoints';
 import Footer from 'app-components/footer';
+import Navbar from 'app-lib/navbar';
 
 // Setup moment
 moment.locale('es');
@@ -27,10 +29,7 @@ const LayoutWrapper = styled.div(
       ${theme.colors.gray[200]} 35%,
       ${theme.colors.gray[300]} 60%,
       ${theme.colors.gray[400]} 100%
-    )`,
-    [bpAboveMedium]: {
-      padding: theme.spacing[5]
-    }
+    )`
   })
 );
 
@@ -90,8 +89,28 @@ const Layout = ({ children }) => (
       `}
     />
     <LayoutWrapper>
+      <Container>
+        <Navbar
+          css={theme => ({
+            height: theme.spacing[20]
+          })}
+          brandName={author.name}
+          navItems={[
+            {
+              to: '/about',
+              label: 'About'
+            },
+            {
+              to: '/blog',
+              label: 'Blog'
+            }
+          ]}
+        />
+      </Container>
       <main>{children}</main>
-      <Footer />
+      <Container>
+        <Footer />
+      </Container>
     </LayoutWrapper>
   </ThemeProvider>
 );

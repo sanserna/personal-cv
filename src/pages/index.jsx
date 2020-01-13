@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'react-grid-system';
 import styled from '@emotion/styled';
+import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import { bpAboveMedium } from 'app-utils/breakpoints';
@@ -18,7 +18,7 @@ const PageContent = styled.div`
   --container-padding-y: ${({ theme }) => theme.spacing[3]};
 
   label: page-content;
-  background-color: red;
+  background-color: ${({ theme }) => theme.colors.gray[200]};
 
   & .section-container {
     padding-top: var(--container-padding-y);
@@ -62,8 +62,10 @@ const IndexPage = ({ data }) => {
     <>
       <Seo />
       <HeroHeader />
-      <PageContent>
-        {/* <Container>
+      <Container>
+        <PageContent>
+          aaaa
+          {/* <Container>
           <Row className="section-container">
             <Col>
               <Resume theme={theme} />
@@ -110,7 +112,8 @@ const IndexPage = ({ data }) => {
             </Col>
           </Row>
         </Container> */}
-      </PageContent>
+        </PageContent>
+      </Container>
     </>
   );
 };
