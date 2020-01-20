@@ -11,7 +11,8 @@ module.exports = {
         danger: colors.red[600],
         success: colors.green[600],
         light: colors.gray[300],
-        dark: colors.gray[900]
+        dark: colors.gray[900],
+        link: theme => theme.colors.primary
       }
     }
   },

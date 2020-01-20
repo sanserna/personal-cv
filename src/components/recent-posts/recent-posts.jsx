@@ -1,34 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import { Row, Col } from 'react-grid-system';
 
 import PostPreview from 'app-lib/post-preview';
 
 const RecentPosts = ({ posts = [] }) => (
   <>
     <h1>Últimas publicaciones</h1>
-    {posts.map(
-      ({
-        id,
-        excerpt,
-        fields: { slug },
-        frontmatter: {
-          title,
-          categories,
-          cover: {
-            childImageSharp: { fluid }
+    <Row>
+      {posts.map(
+        ({
+          id,
+          excerpt,
+          fields: { slug, prefix },
+          frontmatter: {
+            title,
+            categories,
+            cover: {
+              childImageSharp: { fluid }
+            }
           }
-        }
-      }) => (
-        <PostPreview
-          key={id}
-          categories={categories}
-          link={slug}
-          title={title}
-          text={excerpt}
-          img={fluid}
-        />
-      )
-    )}
+        }) => (
+          <Col key={id} md={6} lg={4}>
+            <PostPreview
+              creationDate={moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+              categories={categories}
+              link={slug}
+              title={title}
+              text={excerpt}
+              img={fluid}
+            />
+          </Col>
+        )
+      )}
+    </Row>
   </>
 );
 

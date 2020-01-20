@@ -73,11 +73,6 @@ exports.createPages = async ({ graphql, actions }) => {
       'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
   }
 
-  if (activeEnv == 'production') {
-    filters =
-      'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
-  }
-
   const { data, errors } = await graphql(`
     {
       allMarkdownRemark(
@@ -138,6 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create posts
   const posts = items.filter(item => item.node.fields.source === 'posts');
+
   posts.forEach(({ node }, index) => {
     const slug = node.fields.slug;
     const next = index === 0 ? undefined : posts[index - 1].node;

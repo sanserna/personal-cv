@@ -58,6 +58,8 @@ const IndexPage = ({ data }) => {
     posts: { edges: posts = [] }
   } = data;
 
+  posts.push();
+
   return (
     <>
       <Seo />
@@ -142,7 +144,7 @@ export const query = graphql`
       }
     }
     posts: allMarkdownRemark(
-      limit: 3
+      limit: 4
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
       sort: { fields: [fields___prefix], order: DESC }
     ) {
