@@ -14,8 +14,12 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   display: inline-block;
-  padding: 0 10px;
   margin: 0;
+  ${({ theme }) => `
+    &:not(:first-of-type) {
+      padding-left: ${theme.spacing[3]};
+    }
+  `}
 `;
 
 const Link = styled.a`
@@ -31,7 +35,7 @@ const Link = styled.a`
   }
 `;
 
-const SocialLinks = ({ style, links, color }) => {
+const SocialLinks = ({ className, style, links, color }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: color || theme.colors.gray[100],
@@ -39,7 +43,7 @@ const SocialLinks = ({ style, links, color }) => {
   });
 
   return (
-    <List style={style}>
+    <List className={className} style={style}>
       <IconContext.Provider value={iconConfig}>
         {links.map(({ icon: Icon, url }, index) => (
           <ListItem key={index}>
@@ -54,6 +58,7 @@ const SocialLinks = ({ style, links, color }) => {
 };
 
 SocialLinks.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.object,
   color: PropTypes.string,
   links: PropTypes.arrayOf(
@@ -65,6 +70,7 @@ SocialLinks.propTypes = {
 };
 
 SocialLinks.defaultProps = {
+  className: '',
   style: {},
   color: '',
   links: []

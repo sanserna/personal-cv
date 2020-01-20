@@ -17,7 +17,7 @@ const sizeModifierStyles = {
   `
 };
 
-const Button = ({ children, style, disabled, color, type, size }) => {
+const Button = ({ children, style, disabled, color, type, size, ...props }) => {
   const theme = useTheme();
   const mainColor = theme.colors[color];
   const activeColor = darken(0.2, mainColor);
@@ -26,6 +26,7 @@ const Button = ({ children, style, disabled, color, type, size }) => {
 
   return (
     <button
+      {...props}
       style={style}
       type="button"
       disabled={disabled}

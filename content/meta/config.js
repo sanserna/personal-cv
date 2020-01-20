@@ -14,6 +14,8 @@ module.exports = {
     phone: '+57 301 510 6106',
     birthdate: 'Agosto 5 de 1991',
     texts: {
+      headerResume:
+        'Hola, me llamo Santiago. Soy desarrollador full-stack con experiencia en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.',
       resume:
         'Soy un desarrollador full-stack con experiencia en tecnologías web, las uso para crear aplicaciones móviles y web. También tengo experiencia en desarrollo backend y casi siempre hago parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en los dos roles (frontend y backend). Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software. Soy una persona autodidacta y me gusta usar mi tiempo libre aprendiendo cosas nuevas.',
       education:
