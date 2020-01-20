@@ -1,11 +1,67 @@
-import React, { useContext } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from '@emotion/styled';
 import { Row, Col } from 'react-grid-system';
 
-import { ThemeContext } from 'app-layouts/index';
-import Badge from '../badge';
+import Badge from 'app-lib/badge';
+import Link from 'app-lib/link';
+import { bpAboveMedium } from 'app-utils/breakpoints';
+
+const PostPreviewWrapper = styled.div(
+  {
+    backgroundClip: 'border-box'
+  },
+  ({ theme }) => ({
+    backgroundColor: theme.colors.white,
+    border: `1px solid rgba(0, 0, 0, 0.125)`,
+    borderRadius: theme.borderRadius.default
+  })
+);
+
+const PreviewImg = styled(Img)(({ theme }) => ({
+  borderTopLeftRadius: `calc(${theme.borderRadius.default} - 1px)`,
+  borderTopRightRadius: `calc(${theme.borderRadius.default} - 1px)`,
+  [bpAboveMedium]: {
+    borderTopLeftRadius: `calc(${theme.borderRadius.default} - 1px)`,
+    borderTopRightRadius: 0,
+    borderBottomLeftRadius: `calc(${theme.borderRadius.default} - 1px)`
+  }
+}));
+
+const Body = styled.div(({ theme }) => ({
+  padding: theme.spacing[4]
+}));
+
+const Title = styled.h2(
+  {
+    marginTop: 0
+  },
+  ({ theme }) => ({
+    fontSize: theme.fontSize['3xl'],
+    marginBottom: theme.spacing[3]
+  })
+);
+
+const PreviewText = styled.p`
+  margin-bottom: 0;
+`;
+
+const PostLink = styled(Link)`
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  background-color: transparent;
+
+  ${({ theme }) => `
+    color: ${theme.colors.primary};
+  `}
+`;
+
+const CategoriesWrapper = styled.div(({ theme }) => ({
+  marginBottom: theme.spacing[1]
+}));
 
 const PostPreview = ({
   style,
@@ -15,101 +71,39 @@ const PostPreview = ({
   link,
   img,
   categories
-}) => {
-  const {
-    color: {
-      special: { link: linkColor }
-    }
-  } = useContext(ThemeContext);
+}) => (
+  <PostPreviewWrapper className={className} style={style}>
+    <Row align="center" nogutter>
+      <Col xs={12} md={5} lg={6} xl={5}>
+        <PreviewImg fluid={img} imgStyle={{ margin: 0 }} />
+      </Col>
 
-  return (
-    <>
-      <div className={`post-preview ${className}`} style={style}>
-        <Row align="center" nogutter>
-          <Col xs={12} lg={6} xl={5}>
-            <Img
-              fluid={img}
-              className="post-preview__img"
-              imgStyle={{ margin: 0 }}
-            />
-          </Col>
-
-          <Col xs={12} lg={6} xl={7}>
-            <div className="post-preview__body">
-              <h3 className="post-preview__title">{title}</h3>
-              {categories.length > 0 && (
-                <div className="categories">
-                  {categories.map((category, index) => (
-                    /* eslint-disable react/no-array-index-key */
-                    <Badge key={index} text={category} />
-                    /* eslint-enable react/no-array-index-key */
-                  ))}
-                </div>
-              )}
-              <p className="post-preview__text">{text}</p>
-              {link && (
-                <div style={{ paddingTop: 5 }}>
-                  <Link to={link} className="post-preview__link">
-                    Continuar leyendo
-                  </Link>
-                </div>
-              )}
+      <Col xs={12} md={7} lg={6} xl={7}>
+        <Body>
+          <Title>{title}</Title>
+          {categories.length > 0 && (
+            <CategoriesWrapper>
+              {categories.map((category, index) => (
+                <Badge
+                  key={index}
+                  text={category}
+                  color="red"
+                  textColor="white"
+                />
+              ))}
+            </CategoriesWrapper>
+          )}
+          <PreviewText>{text}</PreviewText>
+          {link && (
+            <div style={{ paddingTop: 5 }}>
+              <PostLink to={link}>Continuar leyendo</PostLink>
             </div>
-          </Col>
-        </Row>
-      </div>
-
-      <style jsx>{`
-        .post-preview {
-          background-color: #fff;
-          background-clip: border-box;
-          border: 1px solid rgba(0, 0, 0, 0.125);
-          border-radius: 0.25rem;
-
-          .post-preview__body {
-            padding: 1rem;
-          }
-
-          :global(.post-preview__img) {
-            border-top-left-radius: calc(0.25rem - 1px);
-            border-top-right-radius: calc(0.25rem - 1px);
-
-            @above tablet {
-              border-top-left-radius: calc(0.25rem - 1px);
-              border-top-right-radius: 0;
-              border-bottom-left-radius: calc(0.25rem - 1px);
-            }
-          }
-
-          .post-preview__title {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-          }
-
-          .post-preview__text {
-            margin-bottom: 0;
-          }
-
-          .categories {
-            margin-bottom: 0.2rem;
-          }
-        }
-      `}</style>
-
-      <style jsx>{`
-        .post-preview {
-          :global(.post-preview__link) {
-            color: ${linkColor};
-            text-decoration: none;
-            text-shadow: none;
-            background-image: none;
-            background-color: transparent;
-          }
-        }
-      `}</style>
-    </>
-  );
-};
+          )}
+        </Body>
+      </Col>
+    </Row>
+  </PostPreviewWrapper>
+);
 
 PostPreview.propTypes = {
   style: PropTypes.object,

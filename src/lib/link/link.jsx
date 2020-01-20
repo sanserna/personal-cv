@@ -7,14 +7,14 @@ const Link = ({ children, className, style, to, ...props }) => {
 
   if (internal) {
     return (
-      <GatsbyLink to={to} {...props}>
+      <GatsbyLink className={className} to={to} {...props}>
         {children}
       </GatsbyLink>
     );
   }
 
   return (
-    <a href={to} {...props}>
+    <a className={className} href={to} {...props}>
       {children}
     </a>
   );

@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 import { useTheme } from 'emotion-theming';
 import { IconContext } from 'react-icons';
 import { FaBars, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import Button from 'app-lib/button';
+import Link from 'app-lib/link';
 import SocialLinks from 'app-components/social-links';
 import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
@@ -41,6 +41,7 @@ const NavigationItems = styled.div`
 
 const NavigationItem = styled(Link)`
   display: block;
+
   ${({ theme }) => `
     font-size: ${theme.fontSize.base};
     padding-top: ${theme.spacing[5]};

@@ -12,7 +12,7 @@ import HeroHeader from 'app-components/hero-header';
 // import Skills from 'app-components/skills';
 // import Education from 'app-components/education';
 // import Experience from 'app-components/experience';
-// import RecentPosts from 'app-components/recent-posts';
+import RecentPosts from 'app-components/recent-posts';
 
 const PageContent = styled.div`
   --container-padding-y: ${({ theme }) => theme.spacing[3]};
@@ -48,24 +48,25 @@ const PageContent = styled.div`
 `;
 
 const IndexPage = ({ data }) => {
-  // const {
-  //   background1: {
-  //     childImageSharp: { fluid: background1 }
-  //   },
-  //   background2: {
-  //     childImageSharp: { fluid: background2 }
-  //   },
-  //   posts: { edges: posts = [] }
-  // } = data;
+  const {
+    background1: {
+      childImageSharp: { fluid: background1 }
+    },
+    background2: {
+      childImageSharp: { fluid: background2 }
+    },
+    posts: { edges: posts = [] }
+  } = data;
 
   return (
     <>
       <Seo />
       <HeroHeader />
       <Container>
-        <PageContent>
-          aaaa
-          {/* <Container>
+        <RecentPosts posts={posts.map(post => post.node)} />
+        {/* <Resume theme={theme} /> */}
+        {/* <PageContent>
+          <Container>
           <Row className="section-container">
             <Col>
               <Resume theme={theme} />
@@ -111,8 +112,8 @@ const IndexPage = ({ data }) => {
               <RecentPosts theme={theme} posts={posts.map(post => post.node)} />
             </Col>
           </Row>
-        </Container> */}
-        </PageContent>
+        </Container>
+        </PageContent> */}
       </Container>
     </>
   );
