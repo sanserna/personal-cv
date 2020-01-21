@@ -56,18 +56,18 @@ const Seo = ({ description, meta, keywords, title }) => (
   />
 );
 
-Seo.defaultProps = {
-  title: config.siteTitle,
-  description: config.siteDescription,
-  meta: [],
-  keywords: []
-};
-
 Seo.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string)
+};
+
+Seo.defaultProps = {
+  title: config.siteTitle,
+  description: config.siteDescription,
+  meta: [],
+  keywords: []
 };
 
 export default Seo;

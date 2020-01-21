@@ -21,7 +21,7 @@ const SectionContainer = styled.section(
 
 const ThumbnailImg = styled(Img)`
   ${({ theme }) => ({
-    background: theme.colors.black,
+    background: theme.colors.primary,
     borderRadius: '50%',
     boxShadow: '5px 10px 15px rgba(0, 0, 0, 0.3)'
   })}
@@ -49,7 +49,7 @@ const HeroHeader = () => {
   return (
     <StaticQuery
       query={graphql`
-        query {
+        {
           heroImage: file(relativePath: { eq: "santiago.png" }) {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
