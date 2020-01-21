@@ -12,7 +12,7 @@ import SocialLinks from 'app-components/social-links';
 import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
-const Nav = styled.nav`
+const Navbar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,7 +83,7 @@ const NavigationSocialLinks = styled(SocialLinks)(({ theme }) => ({
   }
 }));
 
-const Navbar = ({ style, className }) => {
+const MianNav = ({ style, className }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
@@ -93,7 +93,7 @@ const Navbar = ({ style, className }) => {
 
   return (
     <IconContext.Provider value={iconConfig}>
-      <Nav style={style} className={className}>
+      <Navbar style={style} className={className}>
         <Brand>{author.name}</Brand>
         <div className="block md:hidden">
           <Button
@@ -138,19 +138,19 @@ const Navbar = ({ style, className }) => {
             ]}
           />
         </NavigationCollapse>
-      </Nav>
+      </Navbar>
     </IconContext.Provider>
   );
 };
 
-Navbar.propTypes = {
+MianNav.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string
 };
 
-Navbar.defaultProps = {
+MianNav.defaultProps = {
   style: {},
   className: ''
 };
 
-export default Navbar;
+export default MianNav;

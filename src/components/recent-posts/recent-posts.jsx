@@ -4,10 +4,11 @@ import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
 
 import PostPreview from 'app-lib/post-preview';
+import Heading from 'app-lib/heading';
 
 const RecentPosts = ({ posts = [] }) => (
   <>
-    <h1>Últimas publicaciones</h1>
+    <Heading>Últimas publicaciones</Heading>
     <Row>
       {posts.map(
         ({

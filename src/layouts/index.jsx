@@ -10,7 +10,7 @@ import 'moment/locale/es';
 
 import tailwindConfig from 'app-root/tailwind.config';
 import Footer from 'app-components/footer';
-import Navbar from 'app-components/navbar';
+import MainNav from 'app-components/main-nav';
 
 // Setup moment
 moment.locale('es');
@@ -78,7 +78,7 @@ const Layout = ({ children }) => (
     />
     <LayoutWrapper>
       <Container>
-        <Navbar />
+        <MainNav />
       </Container>
       <main>{children}</main>
       <Container>
