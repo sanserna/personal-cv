@@ -2,12 +2,13 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { object, string } from 'yup';
 import { useTheme } from 'emotion-theming';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 
 import Heading from 'app-lib/heading';
 import Input from 'app-lib/input';
 import TextArea from 'app-lib/text-area';
-import { bpAboveMedium } from 'app-utils/breakpoints';
+import Button from 'app-lib/button';
+import { bpBelowMedium, bpAboveMedium } from 'app-utils/breakpoints';
 
 const ContactFormSchema = object().shape({
   name: string().required(),
@@ -47,27 +48,48 @@ const Contact = () => {
       <Formik
         initialValues={{ email: '', name: '', subject: '', message: '' }}
         validationSchema={ContactFormSchema}
+        onSubmit={(values, actions) => {}}
       >
-        {() => (
-          <Form className="form-inline">
+        {({ errors }) => (
+          <Form>
             <Row>
               <Col xs={12} md={6}>
-                <Input name="name" label="Nombre" required />
+                <Input required name="name" label="Nombre" />
+                <Input required name="email" label="Email" />
+                <Input required name="subject" label="Asunto" />
               </Col>
               <Col xs={12} md={6}>
-                <Input name="email" label="Email" required />
+                <TextArea
+                  required
+                  name="message"
+                  label="Mensaje"
+                  css={{
+                    height: 208
+                  }}
+                />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Input name="subject" label="Asunto" required />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <TextArea name="message" label="Mensaje" required />
-              </Col>
-            </Row>
+            <div
+              css={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'flex-end'
+              }}
+            >
+              <Button
+                type="submit"
+                color="dark"
+                disabled={Object.entries(errors).length > 0}
+                css={{
+                  width: 100,
+                  [bpBelowMedium]: {
+                    width: '100%'
+                  }
+                }}
+              >
+                Enviar
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>

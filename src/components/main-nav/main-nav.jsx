@@ -98,7 +98,7 @@ const MianNav = ({ style, className }) => {
         <div className="block md:hidden">
           <Button
             color="dark"
-            style={{
+            css={{
               paddingTop: theme.spacing[2],
               paddingBottom: theme.spacing[2]
             }}

@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -17,18 +18,27 @@ const sizeModifierStyles = {
   `
 };
 
-const Button = ({ children, style, disabled, color, type, size, ...props }) => {
+const Button = ({
+  children,
+  style,
+  disabled,
+  oulined,
+  type,
+  size,
+  color,
+  ...props
+}) => {
   const theme = useTheme();
   const mainColor = theme.colors[color];
   const activeColor = darken(0.2, mainColor);
-  const disabledColor = theme.colors[500];
+  const disabledColor = theme.colors.gray[500];
   const mdSpacing = theme.spacing[3];
 
   return (
     <button
       {...props}
       style={style}
-      type="button"
+      type={type}
       disabled={disabled}
       color={color}
       css={css`
@@ -60,12 +70,8 @@ const Button = ({ children, style, disabled, color, type, size, ...props }) => {
 
         ${sizeModifierStyles[size] && sizeModifierStyles[size](theme)}
 
-        ${type === 'solid'
+        ${oulined
           ? css`
-              background: ${mainColor};
-              color: ${theme.colors.white};
-            `
-          : css`
               background: transparent;
               color: ${mainColor};
 
@@ -73,6 +79,10 @@ const Button = ({ children, style, disabled, color, type, size, ...props }) => {
               &:not(:disabled):not(.disabled):hover {
                 color: ${theme.colors.white};
               }
+            `
+          : css`
+              background: ${mainColor};
+              color: ${theme.colors.white};
             `}
       `}
     >
@@ -88,7 +98,8 @@ Button.propTypes = {
   ]).isRequired,
   style: PropTypes.object,
   disabled: PropTypes.bool,
-  type: PropTypes.oneOf(['solid', 'outline']),
+  oulined: PropTypes.bool,
+  type: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   color: PropTypes.oneOf([
     'primary',
@@ -104,7 +115,8 @@ Button.propTypes = {
 Button.defaultProps = {
   style: {},
   disabled: false,
-  type: 'solid',
+  oulined: false,
+  type: 'button',
   size: 'md',
   color: 'primary'
 };
