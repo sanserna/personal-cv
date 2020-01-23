@@ -2,42 +2,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
+import { useTheme } from 'emotion-theming';
 
 import PostPreview from 'app-lib/post-preview';
 import Heading from 'app-lib/heading';
 
-const RecentPosts = ({ posts = [] }) => (
-  <>
-    <Heading>Últimas publicaciones</Heading>
-    <Row>
-      {posts.map(
-        ({
-          id,
-          excerpt,
-          fields: { slug, prefix },
-          frontmatter: {
-            title,
-            categories,
-            cover: {
-              childImageSharp: { fluid }
+const RecentPosts = ({ posts = [] }) => {
+  const theme = useTheme();
+
+  return (
+    <>
+      <Heading
+        css={{
+          padding: `${theme.spacing[16]} 0 ${theme.spacing[5]} 0`
+        }}
+      >
+        Últimas publicaciones
+      </Heading>
+      <Row>
+        {posts.map(
+          ({
+            id,
+            excerpt,
+            fields: { slug, prefix },
+            frontmatter: {
+              title,
+              categories,
+              cover: {
+                childImageSharp: { fluid }
+              }
             }
-          }
-        }) => (
-          <Col key={id} md={6} lg={4}>
-            <PostPreview
-              creationDate={moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
-              categories={categories}
-              link={slug}
-              title={title}
-              text={excerpt}
-              img={fluid}
-            />
-          </Col>
-        )
-      )}
-    </Row>
-  </>
-);
+          }) => (
+            <Col key={id} md={6} lg={4}>
+              <PostPreview
+                creationDate={moment(prefix, 'YYYY-MM-DD').format(
+                  'DD MMMM YYYY'
+                )}
+                categories={categories}
+                link={slug}
+                title={title}
+                text={excerpt}
+                img={fluid}
+              />
+            </Col>
+          )
+        )}
+      </Row>
+    </>
+  );
+};
 
 RecentPosts.propTypes = {
   posts: PropTypes.arrayOf(

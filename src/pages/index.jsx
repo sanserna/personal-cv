@@ -11,13 +11,12 @@ import HeroHeader from 'app-components/hero-header';
 // import Education from 'app-components/education';
 // import Experience from 'app-components/experience';
 import RecentPosts from 'app-components/recent-posts';
+import Contact from 'app-components/contact';
 
 const IndexPage = ({ data }) => {
   const {
     posts: { edges: posts = [] }
   } = data;
-
-  posts.push();
 
   return (
     <>
@@ -25,6 +24,7 @@ const IndexPage = ({ data }) => {
       <HeroHeader />
       <Container>
         <RecentPosts posts={posts.map(post => post.node)} />
+        <Contact />
       </Container>
     </>
   );

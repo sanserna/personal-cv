@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
-import { useTheme } from 'emotion-theming';
 import { StaticQuery, graphql } from 'gatsby';
 import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
 
@@ -44,64 +43,60 @@ const Title = styled.h1(({ theme }) => ({
   }
 }));
 
-const HeroHeader = () => {
-  const theme = useTheme();
-
-  return (
-    <StaticQuery
-      query={graphql`
-        {
-          heroImage: file(relativePath: { eq: "santiago-2.png" }) {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid_noBase64
-              }
-            }
-          }
-          haderPattern: file(relativePath: { eq: "assets/tree_bark.png" }) {
-            childImageSharp {
-              fixed(width: 350, height: 350, quality: 100) {
-                src
-              }
+const HeroHeader = () => (
+  <StaticQuery
+    query={graphql`
+      {
+        heroImage: file(relativePath: { eq: "santiago-2.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid_noBase64
             }
           }
         }
-      `}
-      render={({ heroImage, haderPattern }) => (
-        <HeaderWrapper haderPattern={haderPattern}>
-          <Container>
-            <Row align="center" nogutter>
-              <Hidden md lg xl>
-                <Col xs={12}>
-                  <ThumbnailImg
-                    fluid={heroImage.childImageSharp.fluid}
-                    css={{
-                      margin: 'auto',
-                      height: 250,
-                      width: 250
-                    }}
-                    imgStyle={{
-                      width: 'auto',
-                      height: 'auto'
-                    }}
-                  />
-                </Col>
-              </Hidden>
-              <Visible md lg xl>
-                <Col md={4} lg={5}>
-                  <Img fluid={heroImage.childImageSharp.fluid} />
-                </Col>
-              </Visible>
-              <Col>
-                <Title>{author.texts.headerResume}</Title>
+        haderPattern: file(relativePath: { eq: "assets/tree_bark.png" }) {
+          childImageSharp {
+            fixed(width: 350, height: 350, quality: 100) {
+              src
+            }
+          }
+        }
+      }
+    `}
+    render={({ heroImage, haderPattern }) => (
+      <HeaderWrapper haderPattern={haderPattern}>
+        <Container>
+          <Row align="center" nogutter>
+            <Hidden md lg xl>
+              <Col xs={12}>
+                <ThumbnailImg
+                  fluid={heroImage.childImageSharp.fluid}
+                  css={{
+                    margin: 'auto',
+                    height: 250,
+                    width: 250
+                  }}
+                  imgStyle={{
+                    width: 'auto',
+                    height: 'auto'
+                  }}
+                />
               </Col>
-            </Row>
-          </Container>
-        </HeaderWrapper>
-      )}
-    />
-  );
-};
+            </Hidden>
+            <Visible md lg xl>
+              <Col md={4} lg={5}>
+                <Img fluid={heroImage.childImageSharp.fluid} />
+              </Col>
+            </Visible>
+            <Col>
+              <Title>{author.texts.headerResume}</Title>
+            </Col>
+          </Row>
+        </Container>
+      </HeaderWrapper>
+    )}
+  />
+);
 
 HeroHeader.propTypes = {};
 

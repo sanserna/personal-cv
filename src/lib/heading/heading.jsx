@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
+import { bpAboveMedium } from 'app-utils/breakpoints';
+
 const Heading = ({ children, className, style, tag: TagName }) => {
   const theme = useTheme();
 
@@ -12,7 +14,6 @@ const Heading = ({ children, className, style, tag: TagName }) => {
       css={{
         color: theme.colors.dark,
         fontSize: theme.fontSize['4xl'],
-        padding: `${theme.spacing[3]} 0`,
         '&::after': {
           content: '""',
           background: theme.colors.primary,
@@ -21,6 +22,9 @@ const Heading = ({ children, className, style, tag: TagName }) => {
           marginTop: theme.spacing[1],
           marginLeft: theme.spacing[1],
           width: '45px'
+        },
+        [bpAboveMedium]: {
+          fontSize: theme.fontSize['5xl']
         }
       }}
     >
