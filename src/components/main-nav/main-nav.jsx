@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { IconContext } from 'react-icons';
-import { FaBars, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 
 import Button from 'app-lib/button';
 import Link from 'app-lib/link';
@@ -125,17 +125,9 @@ const MianNav = ({ style, className }) => {
             ))}
           </NavigationItems>
           <NavigationSocialLinks
-            color={theme.colors.gray[800]}
-            links={[
-              {
-                url: author.social.github,
-                icon: FaGithub
-              },
-              {
-                url: author.social.linkedin,
-                icon: FaLinkedin
-              }
-            ]}
+            iconColor={theme.colors.gray[800]}
+            iconSize="md"
+            show={['github', 'linkedin']}
           />
         </NavigationCollapse>
       </Navbar>
