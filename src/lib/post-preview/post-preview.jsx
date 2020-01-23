@@ -15,7 +15,7 @@ const PostPreview = ({
   link,
   img,
   creationDate,
-  categories
+  categories = []
 }) => {
   const theme = useTheme();
 
@@ -65,15 +65,14 @@ const PostPreview = ({
         >
           {creationDate}
         </div>
-        {categories.length > 0 &&
-          categories.map((category, index) => (
-            <Badge
-              key={index}
-              text={category}
-              color={theme.colors.primary}
-              textColor={theme.colors.white}
-            />
-          ))}
+        {categories.map((category, index) => (
+          <Badge
+            key={index}
+            text={category}
+            color={theme.colors.primary}
+            textColor={theme.colors.white}
+          />
+        ))}
       </div>
     </div>
   );

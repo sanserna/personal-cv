@@ -8,10 +8,11 @@ import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
 import { author } from 'app-content/meta/config';
 import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 
-const SectionContainer = styled.section(
+const HeaderWrapper = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundSize: '800px 800px'
+    backgroundSize: '800px 800px',
+    backgroundCover: 'cover'
   },
   ({ haderPattern, theme }) => ({
     backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
@@ -28,7 +29,7 @@ const ThumbnailImg = styled(Img)`
 `;
 
 const Title = styled.h1(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.colors.dark,
   fontSize: theme.fontSize['2xl'],
   paddingBottom: theme.spacing[8],
   paddingTop: theme.spacing[3],
@@ -50,19 +51,16 @@ const HeroHeader = () => {
     <StaticQuery
       query={graphql`
         {
-          heroImage: file(relativePath: { eq: "santiago.png" }) {
+          heroImage: file(relativePath: { eq: "santiago-2.png" }) {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
                 ...GatsbyImageSharpFluid_noBase64
               }
-              fixed(width: 200, height: 200, quality: 100) {
-                ...GatsbyImageSharpFixed_noBase64
-              }
             }
           }
-          haderPattern: file(relativePath: { eq: "assets/footer_lodyas.png" }) {
+          haderPattern: file(relativePath: { eq: "assets/tree_bark.png" }) {
             childImageSharp {
-              fixed(width: 800, height: 800, quality: 100) {
+              fixed(width: 350, height: 350, quality: 100) {
                 src
               }
             }
@@ -70,17 +68,21 @@ const HeroHeader = () => {
         }
       `}
       render={({ heroImage, haderPattern }) => (
-        <SectionContainer haderPattern={haderPattern}>
+        <HeaderWrapper haderPattern={haderPattern}>
           <Container>
             <Row align="center" nogutter>
               <Hidden md lg xl>
-                <Col xs={12} style={{ textAlign: 'center' }}>
+                <Col xs={12}>
                   <ThumbnailImg
-                    fixed={heroImage.childImageSharp.fixed}
+                    fluid={heroImage.childImageSharp.fluid}
+                    css={{
+                      margin: 'auto',
+                      height: 250,
+                      width: 250
+                    }}
                     imgStyle={{
-                      left: 'auto',
-                      right: theme.spacing[4],
-                      top: theme.spacing[6]
+                      width: 'auto',
+                      height: 'auto'
                     }}
                   />
                 </Col>
@@ -95,7 +97,7 @@ const HeroHeader = () => {
               </Col>
             </Row>
           </Container>
-        </SectionContainer>
+        </HeaderWrapper>
       )}
     />
   );
