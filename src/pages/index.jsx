@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 
 import Seo from 'app-lib/seo';
 import HeroHeader from 'app-components/hero-header';
-import NavigationSocialLinks from 'app-components/social-links';
+import SocialLinks from 'app-components/social-links';
 // import Resume from 'app-components/resume';
 // import Skills from 'app-components/skills';
 // import Education from 'app-components/education';
@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => {
       <Container>
         <RecentPosts posts={posts.map(post => post.node)} />
         <Contact />
-        <NavigationSocialLinks
+        <SocialLinks
           iconColor={theme.colors.dark}
           iconSize="xl"
           css={{

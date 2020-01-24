@@ -1,8 +1,8 @@
-/* eslint react/no-array-index-key: "off" */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
+import { Visible } from 'react-grid-system';
 import { IconContext } from 'react-icons';
 import { FaBars } from 'react-icons/fa';
 
@@ -17,14 +17,11 @@ const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => `${theme.spacing[6]} ${theme.spacing[4]}`};
+  ${({ theme }) => `
+    background-color: ${theme.colors.white};
+    padding: ${`${theme.spacing[6]} ${theme.spacing[4]}`};
+  `};
 `;
-
-const Brand = styled.h1({}, ({ theme }) => ({
-  letterSpacing: theme.letterSpacing.tight,
-  fontWeight: theme.fontWeight.semibold
-}));
 
 const NavigationItems = styled.div`
   display: block;
@@ -43,7 +40,7 @@ const NavigationItem = styled(Link)`
   display: block;
 
   ${({ theme }) => `
-    font-size: ${theme.fontSize.base};
+    font-size: ${theme.fontSize.lg};
     padding-top: ${theme.spacing[5]};
     color: ${theme.colors.gray[600]};
 
@@ -75,15 +72,7 @@ const NavigationCollapse = styled.div`
   }
 `;
 
-const NavigationSocialLinks = styled(SocialLinks)(({ theme }) => ({
-  paddingTop: theme.spacing[5],
-  [bpAboveMedium]: {
-    paddingLeft: theme.spacing[5],
-    paddingTop: 0
-  }
-}));
-
-const MianNav = ({ style, className }) => {
+const MainNav = ({ style, className }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
@@ -94,8 +83,21 @@ const MianNav = ({ style, className }) => {
   return (
     <IconContext.Provider value={iconConfig}>
       <Navbar style={style} className={className}>
-        <Brand>{author.name}</Brand>
-        <div className="block md:hidden">
+        <Link
+          to="/"
+          css={{
+            color: theme.colors.dark,
+            letterSpacing: theme.letterSpacing.tight,
+            fontSize: theme.fontSize['2xl'],
+            fontWeight: theme.fontWeight.semibold,
+            '&:hover': {
+              textDecoration: 'none'
+            }
+          }}
+        >
+          {author.name}
+        </Link>
+        <Visible xs sm>
           <Button
             color="dark"
             css={{
@@ -106,7 +108,7 @@ const MianNav = ({ style, className }) => {
           >
             <FaBars />
           </Button>
-        </div>
+        </Visible>
         <NavigationCollapse className={navCollapseIsHidden ? 'is-hidden' : ''}>
           <NavigationItems>
             {[
@@ -118,16 +120,23 @@ const MianNav = ({ style, className }) => {
                 to: '/blog',
                 label: 'Blog'
               }
-            ].map((navItem, index) => (
-              <NavigationItem key={index} to={navItem.to}>
+            ].map(navItem => (
+              <NavigationItem key={navItem.to} to={navItem.to}>
                 {navItem.label}
               </NavigationItem>
             ))}
           </NavigationItems>
-          <NavigationSocialLinks
+          <SocialLinks
             iconColor={theme.colors.gray[800]}
-            iconSize="md"
+            iconSize="lg"
             show={['github', 'linkedin']}
+            css={{
+              paddingTop: theme.spacing[5],
+              [bpAboveMedium]: {
+                paddingLeft: theme.spacing[5],
+                paddingTop: 0
+              }
+            }}
           />
         </NavigationCollapse>
       </Navbar>
@@ -135,14 +144,14 @@ const MianNav = ({ style, className }) => {
   );
 };
 
-MianNav.propTypes = {
+MainNav.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string
 };
 
-MianNav.defaultProps = {
+MainNav.defaultProps = {
   style: {},
   className: ''
 };
 
-export default MianNav;
+export default MainNav;
