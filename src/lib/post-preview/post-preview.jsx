@@ -84,6 +84,7 @@ PostPreview.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  // FIXME: we should format the date internaly
   creationDate: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
   img: PropTypes.shape({

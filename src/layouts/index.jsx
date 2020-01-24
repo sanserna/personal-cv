@@ -17,10 +17,6 @@ moment.locale('es');
 
 const { theme: themeConfig } = resolveConfig(tailwindConfig);
 
-const LayoutWrapper = styled.div({
-  minHeight: '100vh'
-});
-
 const Layout = ({ children }) => (
   <ThemeProvider theme={themeConfig}>
     <Global
@@ -76,13 +72,17 @@ const Layout = ({ children }) => (
         }
       `}
     />
-    <LayoutWrapper>
+    <div
+      css={{
+        minHeight: '100vh'
+      }}
+    >
       <Container>
         <MainNav />
       </Container>
       <main>{children}</main>
       <MainFooter />
-    </LayoutWrapper>
+    </div>
   </ThemeProvider>
 );
 
