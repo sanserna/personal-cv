@@ -33,8 +33,8 @@
       "alias": {
         "map": [
           ["app-components", "./src/components"],
+          ["app-base-components", "./src/components/_base"],
           ["app-layouts", "./src/layouts"],
-          ["app-lib", "./src/lib"],
           ["app-pages", "./src/pages"],
           ["app-templates", "./src/templates"],
           ["app-theme", "./src/theme"],

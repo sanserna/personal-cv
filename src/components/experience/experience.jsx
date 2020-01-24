@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { author } from 'app-content/meta/config';
-import Card from 'app-lib/card';
-import Timeline from 'app-lib/timeline';
+import Card from 'app-base-components/card';
+import Timeline from 'app-base-components/timeline';
 
 const Experience = ({ theme }) => (
   <div className="experience-container">

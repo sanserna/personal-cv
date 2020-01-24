@@ -4,10 +4,10 @@ import { object, string } from 'yup';
 import { useTheme } from 'emotion-theming';
 import { Row, Col } from 'react-grid-system';
 
-import Heading from 'app-lib/heading';
-import Input from 'app-lib/input';
-import TextArea from 'app-lib/text-area';
-import Button from 'app-lib/button';
+import Heading from 'app-base-components/heading';
+import Input from 'app-base-components/input';
+import TextArea from 'app-base-components/text-area';
+import Button from 'app-base-components/button';
 import { bpBelowMedium, bpAboveMedium } from 'app-utils/breakpoints';
 
 const ContactFormSchema = object().shape({

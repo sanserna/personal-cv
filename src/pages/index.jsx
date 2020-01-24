@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming';
 import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
-import Seo from 'app-lib/seo';
+import Seo from 'app-base-components/seo';
 import HeroHeader from 'app-components/hero-header';
 import SocialLinks from 'app-components/social-links';
 // import Resume from 'app-components/resume';

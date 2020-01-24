@@ -12,8 +12,11 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
         'app-content': path.resolve(__dirname, 'content'),
         'app-images': path.resolve(__dirname, './src/images'),
         'app-components': path.resolve(__dirname, './src/components'),
+        'app-base-components': path.resolve(
+          __dirname,
+          './src/components/_base'
+        ),
         'app-layouts': path.resolve(__dirname, './src/layouts'),
-        'app-lib': path.resolve(__dirname, './src/lib'),
         'app-pages': path.resolve(__dirname, './src/pages'),
         'app-templates': path.resolve(__dirname, './src/templates'),
         'app-theme': path.resolve(__dirname, './src/theme'),

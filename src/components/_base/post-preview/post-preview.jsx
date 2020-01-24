@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { useTheme } from 'emotion-theming';
 
-import Badge from 'app-lib/badge';
-import Link from 'app-lib/link';
+import Badge from 'app-base-components/badge';
+import Link from 'app-base-components/link';
 
 const PostPreview = ({
   style,

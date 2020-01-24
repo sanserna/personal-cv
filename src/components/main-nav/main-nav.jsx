@@ -6,8 +6,8 @@ import { Visible } from 'react-grid-system';
 import { IconContext } from 'react-icons';
 import { FaBars } from 'react-icons/fa';
 
-import Button from 'app-lib/button';
-import Link from 'app-lib/link';
+import Button from 'app-base-components/button';
+import Link from 'app-base-components/link';
 import SocialLinks from 'app-components/social-links';
 import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';

@@ -8,8 +8,8 @@ import { graphql } from 'gatsby';
 import { useTheme } from 'emotion-theming';
 import { Container, Row, Col } from 'react-grid-system';
 
-import Seo from 'app-lib/seo';
-import Badge from 'app-lib/badge';
+import Seo from 'app-base-components/seo';
+import Badge from 'app-base-components/badge';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const PostHeader = styled.header(({ theme }) => ({

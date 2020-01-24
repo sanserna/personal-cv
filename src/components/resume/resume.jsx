@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import { author } from 'app-content/meta/config';
-import Card from 'app-lib/card';
+import Card from 'app-base-components/card';
 import AuthorResume from './author-resume';
 
 const Resume = ({ theme }) => (

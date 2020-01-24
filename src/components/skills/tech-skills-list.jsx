@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { author } from 'app-content/meta/config';
-import ProgressBar from 'app-lib/progress-bar';
+import ProgressBar from 'app-base-components/progress-bar';
 
 const TechSkillsList = ({ theme }) => (
   <div className="container">
