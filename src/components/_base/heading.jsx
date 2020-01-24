@@ -14,6 +14,7 @@ const Heading = ({ children, className, style, tag: TagName }) => {
       css={{
         color: theme.colors.dark,
         fontSize: theme.fontSize['4xl'],
+        marginBottom: theme.spacing[5],
         '&::after': {
           content: '""',
           background: theme.colors.primary,

@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import Seo from 'app-base-components/seo';
+import Heading from 'app-base-components/heading';
 import HeroHeader from 'app-components/hero-header';
+import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
-// import Resume from 'app-components/resume';
-// import Skills from 'app-components/skills';
-// import Education from 'app-components/education';
-// import Experience from 'app-components/experience';
-import RecentPosts from 'app-components/recent-posts-section';
-import Contact from 'app-components/contact-section';
+import PostsGrid from 'app-components/posts-grid';
+import { bpAboveMedium } from 'app-utils/breakpoints';
+
+const SectionWrapper = styled.section(({ theme }) => ({
+  paddingTop: theme.spacing[16]
+}));
 
 const IndexPage = ({ data }) => {
   const theme = useTheme();
@@ -25,8 +28,46 @@ const IndexPage = ({ data }) => {
       <Seo />
       <HeroHeader />
       <Container>
-        <RecentPosts posts={posts.map(post => post.node)} />
-        <Contact />
+        <SectionWrapper>
+          <Heading>Últimas publicaciones</Heading>
+          <PostsGrid posts={posts.map(post => post.node)} />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Heading>Sobre mi</Heading>
+          <p
+            css={{
+              color: theme.colors.dark,
+              fontSize: theme.fontSize['2xl'],
+              paddingBottom: theme.spacing[5],
+              [bpAboveMedium]: {
+                fontSize: theme.fontSize['3xl']
+              }
+            }}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+            obcaecati sed qui, nisi perferendis ducimus amet a dolorum fugit,
+            expedita maxime rem aut. Rem quisquam neque aspernatur? Incidunt,
+            excepturi voluptatem.
+          </p>
+        </SectionWrapper>
+        <SectionWrapper>
+          <Heading>Contacto</Heading>
+          <p
+            css={{
+              color: theme.colors.dark,
+              fontSize: theme.fontSize['2xl'],
+              paddingBottom: theme.spacing[5],
+              [bpAboveMedium]: {
+                fontSize: theme.fontSize['3xl']
+              }
+            }}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
+            Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
+            vel.
+          </p>
+          <ContactFrom />
+        </SectionWrapper>
         <SocialLinks
           iconColor={theme.colors.dark}
           iconSize="xl"
