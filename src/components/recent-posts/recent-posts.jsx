@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
 import { useTheme } from 'emotion-theming';
 
-import PostPreview from 'app-base-components/post-preview';
+import PostPreview from 'app-components/post-preview';
 import Heading from 'app-base-components/heading';
 
 const RecentPosts = ({ posts = [] }) => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Container, Row, Col } from 'react-grid-system';
 
-// import PostPreview from 'app-base-components/post-preview';
+// import PostPreview from 'app-components/post-preview';
 
 const BlogPage = () => <div>hola</div>;
 
