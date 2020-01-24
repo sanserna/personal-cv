@@ -19,11 +19,11 @@ const ContactFormSchema = object().shape({
     .required()
 });
 
-const Contact = () => {
+const ContactSection = () => {
   const theme = useTheme();
 
   return (
-    <>
+    <section>
       <Heading
         css={{
           padding: `${theme.spacing[16]} 0 ${theme.spacing[5]} 0`
@@ -93,12 +93,12 @@ const Contact = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </section>
   );
 };
 
-Contact.propTypes = {};
+ContactSection.propTypes = {};
 
-Contact.defaultProps = {};
+ContactSection.defaultProps = {};
 
-export default Contact;
+export default ContactSection;

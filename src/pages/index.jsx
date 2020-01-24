@@ -11,8 +11,8 @@ import SocialLinks from 'app-components/social-links';
 // import Skills from 'app-components/skills';
 // import Education from 'app-components/education';
 // import Experience from 'app-components/experience';
-import RecentPosts from 'app-components/recent-posts';
-import Contact from 'app-components/contact';
+import RecentPosts from 'app-components/recent-posts-section';
+import Contact from 'app-components/contact-section';
 
 const IndexPage = ({ data }) => {
   const theme = useTheme();

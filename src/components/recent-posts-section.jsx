@@ -7,11 +7,11 @@ import { useTheme } from 'emotion-theming';
 import PostPreview from 'app-components/post-preview';
 import Heading from 'app-base-components/heading';
 
-const RecentPosts = ({ posts = [] }) => {
+const RecentPostsSection = ({ posts = [] }) => {
   const theme = useTheme();
 
   return (
-    <>
+    <section>
       <Heading
         css={{
           padding: `${theme.spacing[16]} 0 ${theme.spacing[5]} 0`
@@ -48,11 +48,11 @@ const RecentPosts = ({ posts = [] }) => {
           )
         )}
       </Row>
-    </>
+    </section>
   );
 };
 
-RecentPosts.propTypes = {
+RecentPostsSection.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -71,6 +71,6 @@ RecentPosts.propTypes = {
   ).isRequired
 };
 
-RecentPosts.defaultProps = {};
+RecentPostsSection.defaultProps = {};
 
-export default RecentPosts;
+export default RecentPostsSection;
