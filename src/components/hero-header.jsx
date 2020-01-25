@@ -10,7 +10,6 @@ import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 const HeaderWrapper = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundSize: '800px 800px',
     backgroundCover: 'cover'
   },
   ({ haderPattern, theme }) => ({

@@ -17,15 +17,14 @@ import { bpAboveMedium } from 'app-utils/breakpoints';
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    'app-heading': Heading,
-    'app-paragraph': Paragraph
+    p: Paragraph,
+    h2: Heading
   }
 }).Compiler;
 
 const PostHeader = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundSize: '800px 800px',
     backgroundCover: 'cover'
   },
   ({ theme, haderPattern }) => ({
@@ -149,7 +148,7 @@ export const query = graphql`
   query($slug: String!) {
     haderPattern: file(relativePath: { eq: "assets/footer_lodyas.png" }) {
       childImageSharp {
-        fixed(width: 800, height: 800, quality: 100) {
+        fixed(width: 600, height: 600, quality: 100) {
           src
         }
       }
