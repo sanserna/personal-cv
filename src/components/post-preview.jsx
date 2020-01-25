@@ -25,6 +25,9 @@ const PostPreview = ({
       style={style}
       css={{
         backgroundColor: theme.colors.white,
+        border: `${theme.borderWidth.default} solid ${theme.colors.light}`,
+        borderBottomLeftRadius: theme.borderRadius.default,
+        borderBottomRightRadius: theme.borderRadius.default,
         paddingBottom: theme.spacing[4]
       }}
     >
@@ -33,7 +36,8 @@ const PostPreview = ({
           fluid={img}
           imgStyle={{ margin: 0 }}
           css={{
-            borderRadius: theme.borderRadius.lg
+            borderTopLeftRadius: theme.borderRadius.default,
+            borderTopRightRadius: theme.borderRadius.default
           }}
         />
       </Link>
