@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
+import { StaticQuery, graphql } from 'gatsby';
 import { useTheme } from 'emotion-theming';
-import { Visible } from 'react-grid-system';
+import { Container, Visible } from 'react-grid-system';
 import { IconContext } from 'react-icons';
 import { FaBars } from 'react-icons/fa';
 
@@ -13,13 +15,10 @@ import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const Navbar = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  height: 85px;
   ${({ theme }) => `
     background-color: ${theme.colors.white};
-    padding: ${`${theme.spacing[6]} ${theme.spacing[4]}`};
+    padding: ${`0 ${theme.spacing[4]}`};
   `};
 `;
 
@@ -72,7 +71,7 @@ const NavigationCollapse = styled.div`
   }
 `;
 
-const MainNav = ({ style, className }) => {
+const MainNav = ({ style, className, showHeroImg }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
@@ -81,77 +80,117 @@ const MainNav = ({ style, className }) => {
   const [navCollapseIsHidden, setNavCollapseIsHidden] = useState(true);
 
   return (
-    <IconContext.Provider value={iconConfig}>
-      <Navbar style={style} className={className}>
-        <Link
-          to="/"
-          css={{
-            color: theme.colors.dark,
-            letterSpacing: theme.letterSpacing.tight,
-            fontSize: theme.fontSize['2xl'],
-            fontWeight: theme.fontWeight.semibold,
-            '&:hover': {
-              textDecoration: 'none'
+    <StaticQuery
+      query={graphql`
+        {
+          heroImage: file(relativePath: { eq: "santiago-2.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 60, quality: 100) {
+                ...GatsbyImageSharpFluid_noBase64
+              }
             }
-          }}
-        >
-          {author.name}
-        </Link>
-        <Visible xs sm>
-          <Button
-            color="dark"
-            css={{
-              paddingTop: theme.spacing[2],
-              paddingBottom: theme.spacing[2]
-            }}
-            onClick={() => setNavCollapseIsHidden(!navCollapseIsHidden)}
-          >
-            <FaBars />
-          </Button>
-        </Visible>
-        <NavigationCollapse className={navCollapseIsHidden ? 'is-hidden' : ''}>
-          <NavigationItems>
-            {[
-              {
-                to: '/about',
-                label: 'About'
-              },
-              {
-                to: '/blog',
-                label: 'Blog'
-              }
-            ].map(navItem => (
-              <NavigationItem key={navItem.to} to={navItem.to}>
-                {navItem.label}
-              </NavigationItem>
-            ))}
-          </NavigationItems>
-          <SocialLinks
-            iconColor={theme.colors.gray[800]}
-            iconSize="lg"
-            show={['github', 'linkedin']}
-            css={{
-              paddingTop: theme.spacing[5],
-              [bpAboveMedium]: {
-                paddingLeft: theme.spacing[5],
-                paddingTop: 0
-              }
-            }}
-          />
-        </NavigationCollapse>
-      </Navbar>
-    </IconContext.Provider>
+          }
+        }
+      `}
+      render={({ heroImage }) => (
+        <IconContext.Provider value={iconConfig}>
+          <Navbar style={style} className={className}>
+            <Container className="h-full">
+              <div className="h-full flex flex-wrap items-center justify-between">
+                <div className="flex items-center">
+                  <Img
+                    fluid={heroImage.childImageSharp.fluid}
+                    className={showHeroImg ? '' : 'hidden'}
+                    css={{
+                      marginRight: theme.spacing[3],
+                      height: 60,
+                      width: 60,
+                      background: theme.colors.primary,
+                      borderRadius: '50%'
+                    }}
+                    imgStyle={{
+                      width: 'auto',
+                      height: 'auto'
+                    }}
+                  />
+                  <Link
+                    to="/"
+                    css={{
+                      color: theme.colors.dark,
+                      letterSpacing: theme.letterSpacing.tight,
+                      fontSize: theme.fontSize['2xl'],
+                      fontWeight: theme.fontWeight.semibold,
+                      '&:hover': {
+                        textDecoration: 'none'
+                      }
+                    }}
+                  >
+                    {author.name}
+                  </Link>
+                </div>
+                <Visible xs sm>
+                  <Button
+                    color="dark"
+                    css={{
+                      paddingTop: theme.spacing[2],
+                      paddingBottom: theme.spacing[2]
+                    }}
+                    onClick={() => setNavCollapseIsHidden(!navCollapseIsHidden)}
+                  >
+                    <FaBars />
+                  </Button>
+                </Visible>
+                <NavigationCollapse
+                  className={navCollapseIsHidden ? 'is-hidden' : ''}
+                >
+                  <NavigationItems>
+                    {[
+                      {
+                        to: '/about',
+                        label: 'About'
+                      },
+                      {
+                        to: '/blog',
+                        label: 'Blog'
+                      }
+                    ].map(navItem => (
+                      <NavigationItem key={navItem.to} to={navItem.to}>
+                        {navItem.label}
+                      </NavigationItem>
+                    ))}
+                  </NavigationItems>
+                  <SocialLinks
+                    iconColor={theme.colors.gray[800]}
+                    iconSize="lg"
+                    show={['github', 'linkedin']}
+                    css={{
+                      paddingTop: theme.spacing[5],
+                      [bpAboveMedium]: {
+                        paddingLeft: theme.spacing[5],
+                        paddingTop: 0
+                      }
+                    }}
+                  />
+                </NavigationCollapse>
+              </div>
+            </Container>
+          </Navbar>
+        </IconContext.Provider>
+      )}
+    />
   );
 };
 
 MainNav.propTypes = {
   style: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  showHeroImg: PropTypes.bool
 };
 
 MainNav.defaultProps = {
   style: {},
-  className: ''
+  className: '',
+  showHeroImg: false
 };
 
 export default MainNav;

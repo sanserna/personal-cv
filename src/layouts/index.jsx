@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import styled from '@emotion/styled';
 import { Global, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import resolveConfig from 'tailwindcss/resolveConfig';
-import { Container } from 'react-grid-system';
 import 'moment/locale/es';
 
 import tailwindConfig from 'app-root/tailwind.config';
@@ -17,7 +15,7 @@ moment.locale('es');
 
 const { theme: themeConfig } = resolveConfig(tailwindConfig);
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <ThemeProvider theme={themeConfig}>
     <Global
       styles={css`
@@ -74,12 +72,11 @@ const Layout = ({ children }) => (
     />
     <div
       css={{
-        minHeight: '100vh'
+        minHeight: '100vh',
+        background: themeConfig.colors.gray[100]
       }}
     >
-      <Container>
-        <MainNav />
-      </Container>
+      <MainNav showHeroImg={location.pathname !== '/'} />
       <main>{children}</main>
       <MainFooter />
     </div>
@@ -87,7 +84,8 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default Layout;
