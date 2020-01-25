@@ -12,24 +12,19 @@ import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
+import Paragraph from 'app-base-components/paragraph';
 import { author } from 'app-content/meta/config';
-import { bpAboveMedium, bpAboveSmall } from 'app-utils/breakpoints';
+import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16]
 }));
 
-const Paragraph = styled.p(({ theme }) => ({
-  color: theme.colors.dark,
-  fontSize: theme.fontSize.lg,
-  paddingBottom: theme.spacing[5],
-  [bpAboveSmall]: {
-    fontSize: theme.fontSize['2xl']
-  },
-  [bpAboveMedium]: {
-    fontSize: theme.fontSize['3xl']
-  }
-}));
+const SectionHeading = styled(Heading)`
+  ${({ theme }) => `
+    font-size: ${theme.fontSize['5xl']};
+  `}
+`;
 
 const IndexPage = ({ data }) => {
   const theme = useTheme();
@@ -43,17 +38,22 @@ const IndexPage = ({ data }) => {
       <HeroHeader />
       <Container>
         <SectionWrapper>
-          <Heading>Últimas publicaciones</Heading>
+          <SectionHeading>Últimas publicaciones</SectionHeading>
           <PostsGrid posts={posts.map(post => post.node)} />
         </SectionWrapper>
         <SectionWrapper>
-          <Heading>Sobre mi</Heading>
+          <SectionHeading>Sobre mi</SectionHeading>
+          <Paragraph lead>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            mollitia odit est! Officia consequuntur adipisci delectus suscipit
+            quasi totam iusto?
+          </Paragraph>
           <Paragraph>{author.texts.resume}</Paragraph>
           <Link
             to="/about"
             css={{
               [bpAboveSmall]: {
-                fontSize: theme.fontSize['2xl']
+                fontSize: theme.fontSize.xl
               }
             }}
           >
@@ -61,8 +61,8 @@ const IndexPage = ({ data }) => {
           </Link>
         </SectionWrapper>
         <SectionWrapper>
-          <Heading>Contacto</Heading>
-          <Paragraph>
+          <SectionHeading>Contacto</SectionHeading>
+          <Paragraph lead>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
             Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
             vel.

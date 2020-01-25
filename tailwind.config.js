@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#4F7CAC',
-        secondary: colors.gray[600],
+        secondary: colors.gray[500],
         warning: colors.yellow[600],
         danger: colors.red[600],
         success: colors.green[600],
@@ -20,9 +20,12 @@ module.exports = {
   plugins: [
     ({ addBase, config }) => {
       addBase({
-        h1: { fontSize: config('theme.fontSize.2xl') },
-        h2: { fontSize: config('theme.fontSize.xl') },
-        h3: { fontSize: config('theme.fontSize.lg') }
+        h1: { fontSize: config('theme.fontSize.4xl') },
+        h2: { fontSize: config('theme.fontSize.3xl') },
+        h3: { fontSize: config('theme.fontSize.2xl') },
+        h4: { fontSize: config('theme.fontSize.xl') },
+        h5: { fontSize: config('theme.fontSize.lg') },
+        h6: { fontSize: config('theme.fontSize.base') }
       });
     }
   ]

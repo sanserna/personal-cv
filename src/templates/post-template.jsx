@@ -1,38 +1,42 @@
-/* eslint-disable react/no-danger, react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import moment from 'moment';
+import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { useTheme } from 'emotion-theming';
 import { Container, Row, Col } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
 import Badge from 'app-base-components/badge';
+import Heading from 'app-base-components/heading';
+import Paragraph from 'app-base-components/paragraph';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
-const PostHeader = styled.header(({ theme }) => ({
-  padding: `${theme.spacing[4]} 0`,
-  background: theme.colors.light
-}));
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: {
+    'app-heading': Heading,
+    'app-paragraph': Paragraph
+  }
+}).Compiler;
+
+const PostHeader = styled.header(
+  {
+    backgroundRepeat: 'repeat',
+    backgroundSize: '800px 800px',
+    backgroundCover: 'cover'
+  },
+  ({ theme, haderPattern }) => ({
+    padding: `${theme.spacing[5]} 0`,
+    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`
+  })
+);
 
 const PostContent = styled.main`
   ${({ theme }) => `
     padding: ${theme.spacing[4]} 0;
-
-    h2 {
-      color: ${theme.colors.dark};
-      font-weight: ${theme.fontWeight.bold};
-      font-size: ${theme.fontSize['2xl']};
-      margin-top: ${theme.spacing[8]};
-      margin-bottom: ${theme.spacing[3]};
-    }
-
-    p {
-      font-size: ${theme.fontSize.lg};
-      margin-bottom: ${theme.spacing[6]};
-    }
   `}
 `;
 
@@ -40,8 +44,9 @@ const PostTemplate = props => {
   const theme = useTheme();
   const {
     data: {
+      haderPattern,
       post: {
-        html,
+        htmlAst,
         fields: { prefix },
         frontmatter: {
           author,
@@ -59,7 +64,7 @@ const PostTemplate = props => {
   return (
     <>
       <Seo title={title} description={description} />
-      <PostHeader>
+      <PostHeader haderPattern={haderPattern}>
         <Container>
           <Row align="center" nogutter>
             <Col xs={12} md={5}>
@@ -82,7 +87,7 @@ const PostTemplate = props => {
               >
                 <h1
                   css={{
-                    color: theme.colors.dark,
+                    color: theme.colors.light,
                     fontWeight: theme.fontWeight.semibold,
                     fontSize: theme.fontSize['3xl'],
                     lineHeight: theme.lineHeight.tight,
@@ -94,7 +99,7 @@ const PostTemplate = props => {
                 <span
                   css={{
                     fontSize: theme.fontSize.lg,
-                    color: theme.colors.dark
+                    color: theme.colors.light
                   }}
                 >
                   {author}
@@ -113,9 +118,9 @@ const PostTemplate = props => {
                     marginTop: theme.spacing[2]
                   }}
                 >
-                  {categories.map((category, index) => (
+                  {categories.map(category => (
                     <Badge
-                      key={index}
+                      key={category}
                       text={category}
                       color={theme.colors.primary}
                       textColor={theme.colors.white}
@@ -128,9 +133,7 @@ const PostTemplate = props => {
         </Container>
       </PostHeader>
       <PostContent>
-        <Container>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-        </Container>
+        <Container>{renderAst(htmlAst)}</Container>
       </PostContent>
     </>
   );
@@ -144,9 +147,16 @@ export default PostTemplate;
 
 export const query = graphql`
   query($slug: String!) {
+    haderPattern: file(relativePath: { eq: "assets/footer_lodyas.png" }) {
+      childImageSharp {
+        fixed(width: 800, height: 800, quality: 100) {
+          src
+        }
+      }
+    }
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      html
+      htmlAst
       fields {
         slug
         prefix

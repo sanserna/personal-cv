@@ -2,41 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-const Heading = ({ children, className, style, tag: TagName }) => {
+const Paragraph = ({ children, className, style, lead }) => {
   const theme = useTheme();
 
   return (
-    <TagName
+    <p
       style={style}
       className={className}
       css={{
         color: theme.colors.dark,
-        marginBottom: theme.spacing[5],
-        '&::after': {
-          content: '"_"',
-          color: theme.colors.primary
-        }
+        fontSize: lead ? theme.fontSize['3xl'] : theme.fontSize.xl,
+        fontWeight: lead ? theme.fontWeight.normal : theme.fontWeight.light,
+        lineHeight: lead ? theme.lineHeight.normal : theme.lineHeight.relaxed,
+        paddingBottom: theme.spacing[5]
       }}
     >
       {children}
-    </TagName>
+    </p>
   );
 };
 
-Heading.propTypes = {
+Paragraph.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+  lead: PropTypes.bool
 };
 
-Heading.defaultProps = {
+Paragraph.defaultProps = {
   className: '',
   style: {},
-  tag: 'h1'
+  lead: false
 };
 
-export default Heading;
+export default Paragraph;

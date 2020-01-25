@@ -67,6 +67,12 @@ module.exports = {
                 width: '25px'
               }
             }
+          },
+          {
+            resolve: 'gatsby-remark-component',
+            options: {
+              components: ['heading', 'paragraph']
+            }
           }
         ]
       }
