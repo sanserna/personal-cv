@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Field } from 'formik';
 
+import { bpAboveSmall } from 'app-utils/breakpoints';
+
 const Label = styled.label(({ theme }) => ({
-  fontSize: theme.fontSize.lg,
+  fontSize: theme.fontSize.base,
   color: theme.colors.gray[600],
   display: 'block',
-  marginBottom: theme.spacing[2]
+  marginBottom: theme.spacing[2],
+  [bpAboveSmall]: {
+    fontSize: theme.fontSize.lg
+  }
 }));
 
 const Input = ({

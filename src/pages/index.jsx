@@ -11,10 +11,24 @@ import HeroHeader from 'app-components/hero-header';
 import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
-import { bpAboveMedium } from 'app-utils/breakpoints';
+import Link from 'app-base-components/link';
+import { author } from 'app-content/meta/config';
+import { bpAboveMedium, bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16]
+}));
+
+const Paragraph = styled.p(({ theme }) => ({
+  color: theme.colors.dark,
+  fontSize: theme.fontSize.lg,
+  paddingBottom: theme.spacing[5],
+  [bpAboveSmall]: {
+    fontSize: theme.fontSize['2xl']
+  },
+  [bpAboveMedium]: {
+    fontSize: theme.fontSize['3xl']
+  }
 }));
 
 const IndexPage = ({ data }) => {
@@ -34,38 +48,25 @@ const IndexPage = ({ data }) => {
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Sobre mi</Heading>
-          <p
+          <Paragraph>{author.texts.resume}</Paragraph>
+          <Link
+            to="/about"
             css={{
-              color: theme.colors.dark,
-              fontSize: theme.fontSize['2xl'],
-              paddingBottom: theme.spacing[5],
-              [bpAboveMedium]: {
-                fontSize: theme.fontSize['3xl']
+              [bpAboveSmall]: {
+                fontSize: theme.fontSize['2xl']
               }
             }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            obcaecati sed qui, nisi perferendis ducimus amet a dolorum fugit,
-            expedita maxime rem aut. Rem quisquam neque aspernatur? Incidunt,
-            excepturi voluptatem.
-          </p>
+            Ver mas...
+          </Link>
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Contacto</Heading>
-          <p
-            css={{
-              color: theme.colors.dark,
-              fontSize: theme.fontSize['2xl'],
-              paddingBottom: theme.spacing[5],
-              [bpAboveMedium]: {
-                fontSize: theme.fontSize['3xl']
-              }
-            }}
-          >
+          <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
             Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
             vel.
-          </p>
+          </Paragraph>
           <ContactFrom />
         </SectionWrapper>
         <SocialLinks
