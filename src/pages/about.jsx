@@ -13,7 +13,10 @@ import Timeline from 'app-components/timeline';
 import { author } from 'app-content/meta/config';
 
 const SectionWrapper = styled.section(({ theme }) => ({
-  paddingTop: theme.spacing[16]
+  paddingTop: theme.spacing[16],
+  '&:last-of-type': {
+    paddingBottom: theme.spacing[10]
+  }
 }));
 
 const AboutPage = () => {
@@ -28,6 +31,11 @@ const AboutPage = () => {
           <Paragraph css={{ paddingBottom: 0 }}>
             {author.texts.resume}
           </Paragraph>
+        </SectionWrapper>
+        <SectionWrapper>
+          <Heading>Experiencia</Heading>
+          <Paragraph>{author.texts.experience}</Paragraph>
+          <Timeline items={author.experience} />
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Conocimientos</Heading>

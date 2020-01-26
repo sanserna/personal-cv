@@ -60,7 +60,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
               color: theme.colors.primary,
               display: 'block',
               fontSize: theme.fontSize.lg,
-              padding: `${theme.spacing[1]} 0`
+              paddingTop: theme.spacing[1]
             }}
           >
             {subtitle}
@@ -71,7 +71,8 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
             css={{
               color: theme.colors.secondary,
               display: 'block',
-              fontSize: theme.fontSize.lg
+              fontSize: theme.fontSize.lg,
+              paddingTop: theme.spacing[1]
             }}
           >
             {desc}
