@@ -21,12 +21,12 @@ const sizeModifierStyles = {
 const Button = ({
   children,
   style,
+  className,
   disabled,
   oulined,
   type,
   size,
-  color,
-  ...props
+  color
 }) => {
   const theme = useTheme();
   const mainColor = theme.colors[color];
@@ -36,8 +36,8 @@ const Button = ({
 
   return (
     <button
-      {...props}
       style={style}
+      className={className}
       type={type}
       disabled={disabled}
       color={color}
@@ -97,6 +97,7 @@ Button.propTypes = {
     PropTypes.node
   ]).isRequired,
   style: PropTypes.object,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   oulined: PropTypes.bool,
   type: PropTypes.string,
@@ -114,6 +115,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   style: {},
+  className: '',
   disabled: false,
   oulined: false,
   type: 'button',
