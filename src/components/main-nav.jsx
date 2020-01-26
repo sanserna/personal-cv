@@ -41,7 +41,7 @@ const NavigationItem = styled(Link)`
   ${({ theme }) => `
     font-size: ${theme.fontSize.lg};
     padding-top: ${theme.spacing[5]};
-    color: ${theme.colors.gray[600]};
+    color: ${theme.colors.secondary};
 
     &:hover {
       color: ${theme.colors.dark};

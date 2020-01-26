@@ -6,12 +6,12 @@ module.exports = {
     extend: {
       colors: {
         primary: '#4F7CAC',
-        secondary: colors.gray[500],
+        secondary: colors.gray[700],
         warning: colors.yellow[600],
         danger: colors.red[600],
         success: colors.green[600],
         light: colors.gray[200],
-        dark: '#343A40',
+        dark: colors.gray[900],
         link: theme => theme.colors.primary
       }
     }
