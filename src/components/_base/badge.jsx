@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-const Badge = ({ style, color, text, textColor }) => (
+const Badge = ({ style, className, color, text, textColor }) => (
   <span
+    className={className}
     style={style}
     css={css`
       display: inline-block;
@@ -28,6 +29,7 @@ const Badge = ({ style, color, text, textColor }) => (
 );
 
 Badge.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.object,
   text: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
@@ -35,6 +37,7 @@ Badge.propTypes = {
 };
 
 Badge.defaultProps = {
+  className: '',
   style: {}
 };
 

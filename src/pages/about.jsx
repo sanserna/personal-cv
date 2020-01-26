@@ -3,12 +3,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
 import Heading from 'app-base-components/heading';
 import Paragraph from 'app-base-components/paragraph';
 import ProgressBar from 'app-base-components/progress-bar';
+import Timeline from 'app-components/timeline';
 import { author } from 'app-content/meta/config';
 
 const SectionWrapper = styled.section(({ theme }) => ({
@@ -24,81 +25,53 @@ const AboutPage = () => {
       <Container>
         <SectionWrapper>
           <Paragraph lead>Soy Santiago!</Paragraph>
-          <Paragraph>{author.texts.resume}</Paragraph>
+          <Paragraph css={{ paddingBottom: 0 }}>
+            {author.texts.resume}
+          </Paragraph>
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Conocimientos</Heading>
-          <Row>
-            <Col xs={12} md={4}>
-              <ul
-                css={{
-                  listStyle: 'none',
-                  margin: 0,
-                  padding: 0
-                }}
+          <div className="table w-full">
+            {author.techSkills.map((skill, index) => (
+              <div
+                key={index}
+                css={css`
+                  padding: ${theme.spacing[2]};
+                  display: table-row;
+                  &:last-child {
+                    .pb-wrapper {
+                      height: auto;
+                    }
+                  }
+                `}
               >
-                {author.softSkills.map((skill, index) => (
-                  <li
-                    key={index}
-                    css={{
-                      '&::before': {
-                        color: theme.colors.dark,
-                        content: '"+"',
-                        paddingRight: '5px'
-                      }
-                    }}
-                  >
-                    <Paragraph
-                      css={{
-                        display: 'inline-block'
-                      }}
-                    >
-                      {skill}
-                    </Paragraph>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-            <Col xs={12} md={8}>
-              <div className="table w-full">
-                {author.techSkills.map((skill, index) => (
-                  <div
-                    key={index}
-                    css={css`
-                      padding: ${theme.spacing[2]};
-                      display: table-row;
-                      &:last-child {
-                        .pb-wrapper {
-                          height: auto;
-                        }
-                      }
-                    `}
-                  >
-                    <span
-                      css={{
-                        display: 'table-cell',
-                        fontWeight: theme.fontWeight.semibold,
-                        paddingRight: theme.spacing[3],
-                        textAlign: 'right'
-                      }}
-                    >
-                      {skill.label}
-                    </span>
-                    <div
-                      className="pb-wrapper"
-                      css={{
-                        display: 'table-cell',
-                        width: '80%',
-                        height: '60px'
-                      }}
-                    >
-                      <ProgressBar value={skill.level} />
-                    </div>
-                  </div>
-                ))}
+                <span
+                  css={{
+                    display: 'table-cell',
+                    fontSize: theme.fontSize.xl,
+                    paddingRight: theme.spacing[3]
+                  }}
+                >
+                  {skill.label}
+                </span>
+                <div
+                  className="pb-wrapper"
+                  css={{
+                    display: 'table-cell',
+                    width: '85%',
+                    height: '60px'
+                  }}
+                >
+                  <ProgressBar value={skill.level} />
+                </div>
               </div>
-            </Col>
-          </Row>
+            ))}
+          </div>
+        </SectionWrapper>
+        <SectionWrapper>
+          <Heading>Educación</Heading>
+          <Paragraph>{author.texts.education}</Paragraph>
+          <Timeline items={author.education} />
         </SectionWrapper>
       </Container>
     </>

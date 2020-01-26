@@ -15,11 +15,16 @@ import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const Navbar = styled.nav`
-  height: 85px;
   ${({ theme }) => `
     background-color: ${theme.colors.white};
-    padding: ${`0 ${theme.spacing[4]}`};
+    padding: ${`${theme.spacing[6]} 0}`};
   `};
+
+  ${bpAboveMedium} {
+    height: 85px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 `;
 
 const NavigationItems = styled.div`

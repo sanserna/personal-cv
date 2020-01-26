@@ -56,10 +56,9 @@ module.exports = {
     ],
     education: [
       {
-        lapse: '2010 - 2015',
-        title: 'Universidad Militar Nueva Granada',
-        subtitle:
-          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+        lapse: '2000 - 2005',
+        title: 'Colegio San Bartolome la Merced',
+        subtitle: 'Estudios primarios'
       },
       {
         lapse: '2005 - 2010',
@@ -67,9 +66,10 @@ module.exports = {
         subtitle: 'Estudios secundarios'
       },
       {
-        lapse: '2000 - 2005',
-        title: 'Colegio San Bartolome la Merced',
-        subtitle: 'Estudios primarios'
+        lapse: '2010 - 2015',
+        title: 'Universidad Militar Nueva Granada',
+        subtitle:
+          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
       }
     ],
     experience: [

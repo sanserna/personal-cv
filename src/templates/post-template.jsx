@@ -107,7 +107,7 @@ const PostTemplate = props => {
                 <span
                   css={{
                     fontSize: theme.fontSize.lg,
-                    color: theme.colors.secondary
+                    color: theme.colors.gray[500]
                   }}
                 >
                   {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}

@@ -13,7 +13,7 @@ const Heading = ({ children, className, style, tag: TagName }) => {
         color: theme.colors.dark,
         marginBottom: theme.spacing[5],
         '&::after': {
-          content: '"__"',
+          content: '"_"',
           color: theme.colors.primary,
           fontWeight: theme.fontWeight.bold,
           paddingLeft: theme.spacing[1]
