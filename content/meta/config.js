@@ -13,16 +13,6 @@ module.exports = {
     email: 'sanserve91@gmail.com',
     phone: '+57 301 510 6106',
     birthdate: 'Agosto 5 de 1991',
-    texts: {
-      headerResume:
-        'Mi nombre es Santiago y soy desarrollador full-stack con experiencia en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.',
-      resume:
-        'Soy un desarrollador full-stack con experiencia en tecnologías web, también las uso para crear aplicaciones móviles. Tengo experiencia en desarrollo backend y casi siempre hago parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en los dos roles (frontend y backend). Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software. Soy una persona autodidacta y me gusta usar mi tiempo libre aprendiendo cosas nuevas.',
-      education:
-        'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',
-      experience:
-        'Dentro de mi experiencia he tenido la oportunidad de trabajar en proyectos con el banco Davivienda, creando módulos y aplicaciones web (SPA) así como también el backend y la infraestructura que las soporta, he trabajado con startups y empresas medianas en la creación de plataformas web de todo tipo usando diferentes tipos de tecnologías, así como también aplicaciones móviles de pequeña y gran envergadura. En algunos de los proyectos en los que he participado, he trabajado como Líder Técnico con equipos compuestos por perfiles en backend, frontend, QA, IOS y Android.'
-    },
     social: {
       facebook: 'https://www.facebook.com/sanserna91',
       github: 'https://github.com/sanserna',
@@ -116,6 +106,19 @@ module.exports = {
           'Desarrollador frontend y backend en proyecto con el banco Davivienda, a cargo de desarrollar módulos web (SPA) de uso transversal, diseño y desarrollo de APIs REST orientadas a servicios, manejo de bases de datos MySQL y creación de herramientas para automatización en procesos de desarrollo.'
       }
     ]
+  },
+
+  texts: {
+    headerResume:
+      'Mi nombre es Santiago y soy desarrollador full-stack con experiencia en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.',
+    mainResume:
+      'Soy un desarrollador full-stack con experiencia en tecnologías web, también las uso para crear aplicaciones móviles. Tengo experiencia en desarrollo backend y casi siempre hago parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en los dos roles (frontend y backend). Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software. Soy una persona autodidacta y me gusta usar mi tiempo libre aprendiendo cosas nuevas.',
+    education:
+      'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',
+    experience:
+      'Dentro de mi experiencia he tenido la oportunidad de trabajar en proyectos con el banco Davivienda, creando módulos y aplicaciones web (SPA) así como también el backend y la infraestructura que las soporta, he trabajado con startups y empresas medianas en la creación de plataformas web de todo tipo usando diferentes tipos de tecnologías, así como también aplicaciones móviles de pequeña y gran envergadura. En algunos de los proyectos en los que he participado, he trabajado como Líder Técnico con equipos compuestos por perfiles en backend, frontend, QA, IOS y Android.',
+    subscription:
+      'Si por alguna extraña razón quieres ser notificado sobre los últimos artículos que sean publicados, ¡solo suscríbete!'
   },
 
   /* info */

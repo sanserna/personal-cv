@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { object, string } from 'yup';
 import { Row, Col } from 'react-grid-system';
@@ -17,14 +18,14 @@ const ContactFormSchema = object().shape({
     .required()
 });
 
-const ContactForm = () => (
+const ContactForm = ({ className, style }) => (
   <Formik
     initialValues={{ email: '', name: '', subject: '', message: '' }}
     validationSchema={ContactFormSchema}
     onSubmit={(values, actions) => {}}
   >
     {({ errors }) => (
-      <Form>
+      <Form style={style} className={className}>
         <Row>
           <Col xs={12} md={6}>
             <Input required name="name" label="Nombre" />
@@ -68,8 +69,14 @@ const ContactForm = () => (
   </Formik>
 );
 
-ContactForm.propTypes = {};
+ContactForm.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object
+};
 
-ContactForm.defaultProps = {};
+ContactForm.defaultProps = {
+  className: '',
+  style: {}
+};
 
 export default ContactForm;

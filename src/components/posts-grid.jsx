@@ -2,38 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
+import { useTheme } from 'emotion-theming';
 
 import PostPreview from 'app-components/post-preview';
 
-const PostsGrid = ({ posts = [] }) => (
-  <Row>
-    {posts.map(
-      ({
-        id,
-        excerpt,
-        fields: { slug, prefix },
-        frontmatter: {
-          title,
-          categories,
-          cover: {
-            childImageSharp: { fluid }
+const PostsGrid = ({ posts = [] }) => {
+  const theme = useTheme();
+
+  return (
+    <Row>
+      {posts.map(
+        ({
+          id,
+          excerpt,
+          fields: { slug, prefix },
+          frontmatter: {
+            title,
+            categories,
+            cover: {
+              childImageSharp: { fluid }
+            }
           }
-        }
-      }) => (
-        <Col key={id} md={6} lg={4}>
-          <PostPreview
-            creationDate={moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
-            categories={categories}
-            link={slug}
-            title={title}
-            text={excerpt}
-            img={fluid}
-          />
-        </Col>
-      )
-    )}
-  </Row>
-);
+        }) => (
+          <Col
+            key={id}
+            md={6}
+            lg={4}
+            css={{
+              paddingBottom: theme.spacing[4]
+            }}
+          >
+            <PostPreview
+              creationDate={moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+              categories={categories}
+              link={slug}
+              title={title}
+              text={excerpt}
+              img={fluid}
+            />
+          </Col>
+        )
+      )}
+    </Row>
+  );
+};
 
 PostsGrid.propTypes = {
   posts: PropTypes.arrayOf(

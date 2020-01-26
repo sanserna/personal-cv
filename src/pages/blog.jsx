@@ -6,6 +6,7 @@ import { Container } from 'react-grid-system';
 import PostsGrid from 'app-components/posts-grid';
 import SubscriptionForm from 'app-components/subscription-form';
 import Paragraph from 'app-base-components/paragraph';
+import { texts } from 'app-content/meta/config';
 
 const BlogPage = ({ data }) => {
   const {
@@ -14,11 +15,8 @@ const BlogPage = ({ data }) => {
 
   return (
     <Container>
-      <div className="rounded border border-gray-400 flex flex-wrap justify-center bg-white p-4 my-4">
-        <Paragraph className="text-center">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta,
-          dignissimos.
-        </Paragraph>
+      <div className="rounded border border-gray-400 flex flex-wrap justify-center bg-white py-4 px-8 my-4">
+        <Paragraph className="text-center">{texts.subscription}</Paragraph>
         <SubscriptionForm className="xs:w-full md:w-2/3" />
       </div>
       <PostsGrid posts={posts.map(post => post.node)} />

@@ -13,7 +13,7 @@ import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
 import Paragraph from 'app-base-components/paragraph';
-import { author } from 'app-content/meta/config';
+import { texts } from 'app-content/meta/config';
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
@@ -41,14 +41,18 @@ const IndexPage = ({ data }) => {
           <SectionHeading>Últimas publicaciones</SectionHeading>
           <PostsGrid posts={posts.map(post => post.node)} />
         </SectionWrapper>
-        <SectionWrapper>
+        <section
+          css={{
+            paddingTop: theme.spacing[12]
+          }}
+        >
           <SectionHeading>Sobre mi</SectionHeading>
           <Paragraph lead>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
             mollitia odit est! Officia consequuntur adipisci delectus suscipit
             quasi totam iusto?
           </Paragraph>
-          <Paragraph>{author.texts.resume}</Paragraph>
+          <Paragraph>{texts.mainResume}</Paragraph>
           <Link
             to="/about"
             css={{
@@ -59,7 +63,7 @@ const IndexPage = ({ data }) => {
           >
             Ver mas...
           </Link>
-        </SectionWrapper>
+        </section>
         <SectionWrapper>
           <SectionHeading>Contacto</SectionHeading>
           <Paragraph lead>

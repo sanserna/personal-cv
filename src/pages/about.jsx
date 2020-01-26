@@ -11,7 +11,7 @@ import Paragraph from 'app-base-components/paragraph';
 import ProgressBar from 'app-base-components/progress-bar';
 import Timeline from 'app-components/timeline';
 import SocialLinks from 'app-components/social-links';
-import { author } from 'app-content/meta/config';
+import { author, texts } from 'app-content/meta/config';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16]
@@ -26,13 +26,11 @@ const AboutPage = () => {
       <Container>
         <SectionWrapper>
           <Paragraph lead>Soy Santiago!</Paragraph>
-          <Paragraph css={{ paddingBottom: 0 }}>
-            {author.texts.resume}
-          </Paragraph>
+          <Paragraph css={{ paddingBottom: 0 }}>{texts.mainResume}</Paragraph>
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Experiencia</Heading>
-          <Paragraph>{author.texts.experience}</Paragraph>
+          <Paragraph>{texts.experience}</Paragraph>
           <Timeline items={author.experience} />
         </SectionWrapper>
         <SectionWrapper>
@@ -76,7 +74,7 @@ const AboutPage = () => {
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Educación</Heading>
-          <Paragraph>{author.texts.education}</Paragraph>
+          <Paragraph>{texts.education}</Paragraph>
           <Timeline items={author.education} />
         </SectionWrapper>
         <SocialLinks

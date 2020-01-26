@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
 import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
 
-import { author } from 'app-content/meta/config';
+import { texts } from 'app-content/meta/config';
 import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 
 const HeaderWrapper = styled.header(
@@ -88,7 +88,7 @@ const HeroHeader = () => (
               </Col>
             </Visible>
             <Col>
-              <Title>{author.texts.headerResume}</Title>
+              <Title>{texts.headerResume}</Title>
             </Col>
           </Row>
         </Container>
