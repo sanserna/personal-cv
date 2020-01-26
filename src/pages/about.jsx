@@ -10,13 +10,11 @@ import Heading from 'app-base-components/heading';
 import Paragraph from 'app-base-components/paragraph';
 import ProgressBar from 'app-base-components/progress-bar';
 import Timeline from 'app-components/timeline';
+import SocialLinks from 'app-components/social-links';
 import { author } from 'app-content/meta/config';
 
 const SectionWrapper = styled.section(({ theme }) => ({
-  paddingTop: theme.spacing[16],
-  '&:last-of-type': {
-    paddingBottom: theme.spacing[10]
-  }
+  paddingTop: theme.spacing[16]
 }));
 
 const AboutPage = () => {
@@ -81,6 +79,13 @@ const AboutPage = () => {
           <Paragraph>{author.texts.education}</Paragraph>
           <Timeline items={author.education} />
         </SectionWrapper>
+        <SocialLinks
+          iconColor={theme.colors.dark}
+          iconSize="xl"
+          css={{
+            padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`
+          }}
+        />
       </Container>
     </>
   );

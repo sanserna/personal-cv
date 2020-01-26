@@ -75,9 +75,19 @@ module.exports = {
     experience: [
       {
         lapse: {
-          from: '09/24/2018'
+          from: '08/01/2019'
         },
-        title: 'Grability',
+        title: 'Zemoga, Inc',
+        url: 'https://zemoga.com/',
+        subtitle: 'Front-End Developer',
+        desc: ''
+      },
+      {
+        lapse: {
+          from: '09/24/2018',
+          to: '08/01/2019'
+        },
+        title: 'Grability, Inc',
         url: 'https://www.grability.com/',
         subtitle: 'Tech Lead',
         desc:
