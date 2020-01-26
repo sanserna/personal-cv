@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Global, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import resolveConfig from 'tailwindcss/resolveConfig';
+import { setConfiguration } from 'react-grid-system';
 import 'moment/locale/es';
 
 import tailwindConfig from 'app-root/tailwind.config';
@@ -12,6 +13,11 @@ import MainNav from 'app-components/main-nav';
 
 // Setup moment
 moment.locale('es');
+
+// Setup react grid system
+setConfiguration({
+  containerWidths: [540, 750, 960, 960]
+});
 
 const { theme: themeConfig } = resolveConfig(tailwindConfig);
 

@@ -1,58 +1,47 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import { ThemeContext } from 'app-layouts/index';
+import { useTheme } from 'emotion-theming';
 
 const ProgressBar = ({ value, backgroundColor, color }) => {
-  const {
-    color: {
-      scheme: { primary, light }
-    }
-  } = useContext(ThemeContext);
+  const theme = useTheme();
 
   return (
-    <>
-      <div className="progress">
-        <span className="progress__value">{value}%</span>
-        <div className="progress__bar" />
-      </div>
-
-      <style jsx>{`
-        .progress {
-          display: flex;
-          height: 0.8rem;
-          font-size: 0.75rem;
-          background-color: ${backgroundColor || light};
-          position: relative;
-
-          &,
-          .progress__bar {
-            border-radius: 25px 0 50px 25px;
-          }
-
-          .progress__value {
-            position: absolute;
-            font-size: 1.3em;
-            top: -1.5rem;
-            left: ${value - 3}%;
-            font-style: italic;
-            font-weight: bold;
-          }
-
-          .progress__bar {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            white-space: nowrap;
-            background-color: ${color || primary};
-            transition: width 0.6s ease;
-            width: ${value}%;
-          }
-        }
-      `}</style>
-    </>
+    <div
+      css={{
+        display: 'flex',
+        height: '15px',
+        fontSize: theme.fontSize.xs,
+        backgroundColor: backgroundColor || theme.colors.light,
+        borderRadius: '25px 0 50px 25px',
+        position: 'relative'
+      }}
+    >
+      <span
+        css={{
+          position: 'absolute',
+          top: '-1.5rem',
+          left: `${value - 3}%`,
+          fontStyle: 'italic',
+          fontWeight: theme.fontWeight.bold
+        }}
+      >
+        {value}%
+      </span>
+      <div
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          color: theme.colors.white,
+          textAlign: 'center',
+          whiteSpace: 'nowrap',
+          backgroundColor: color || theme.colors.primary,
+          borderRadius: '25px 0px 50px 25px',
+          transition: 'width 0.6s escape',
+          width: `${value}%`
+        }}
+      />
+    </div>
   );
 };
 

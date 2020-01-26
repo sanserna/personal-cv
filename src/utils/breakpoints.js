@@ -1,8 +1,8 @@
 export const breakpoints = {
   small: 576,
   medium: 768,
-  large: 1200,
-  extraLarge: 992
+  large: 992,
+  extraLarge: 1200
 };
 
 export const bpBelowMedium = `@media screen and (max-width: ${breakpoints.medium -
