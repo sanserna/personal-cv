@@ -16,6 +16,17 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+        // develop: true, // Enable while using `gatsby develop`
+        tailwind: true,
+        // whitelist: [] // Don't remove this selector
+        ignore: ['prismjs/'] // Ignore files/folders
+        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
@@ -61,9 +72,8 @@ module.exports = {
               styles: {
                 display: 'inline',
                 margin: '0',
-                'margin-top': '1px',
                 position: 'relative',
-                top: '5px',
+                top: '-2px',
                 width: '25px'
               }
             }

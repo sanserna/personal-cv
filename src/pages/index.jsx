@@ -56,6 +56,7 @@ const IndexPage = ({ data }) => {
           <Link
             to="/about"
             css={{
+              fontSize: theme.fontSize.lg,
               [bpAboveSmall]: {
                 fontSize: theme.fontSize.xl
               }

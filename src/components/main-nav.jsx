@@ -17,7 +17,7 @@ import { bpAboveMedium } from 'app-utils/breakpoints';
 const Navbar = styled.nav`
   ${({ theme }) => `
     background-color: ${theme.colors.white};
-    padding: ${`${theme.spacing[6]} 0}`};
+    padding: ${`${theme.spacing[4]} 0}`};
   `};
 
   ${bpAboveMedium} {
@@ -114,6 +114,7 @@ const MainNav = ({ style, className, showHeroImg }) => {
                       borderRadius: '50%'
                     }}
                     imgStyle={{
+                      top: '5px',
                       width: 'auto',
                       height: 'auto'
                     }}

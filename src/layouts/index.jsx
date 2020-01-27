@@ -29,9 +29,8 @@ const Layout = ({ children, location }) => (
           box-sizing: border-box;
         }
 
-        a {
-          background-image: none !important;
-          text-shadow: none !important;
+        code[class*='language-'] {
+          font-size: 1rem;
         }
 
         .gatsby-resp-image-wrapper {

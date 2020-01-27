@@ -26,6 +26,7 @@ const Button = ({
   oulined,
   type,
   size,
+  onClick,
   color
 }) => {
   const theme = useTheme();
@@ -41,6 +42,7 @@ const Button = ({
       type={type}
       disabled={disabled}
       color={color}
+      onClick={onClick}
       css={css`
         border-width: ${theme.borderWidth.default};
         border-color: ${mainColor};
@@ -102,6 +104,7 @@ Button.propTypes = {
   oulined: PropTypes.bool,
   type: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  onClick: PropTypes.func,
   color: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -120,6 +123,7 @@ Button.defaultProps = {
   oulined: false,
   type: 'button',
   size: 'md',
+  onClick: () => {},
   color: 'primary'
 };
 

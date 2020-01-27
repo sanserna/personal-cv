@@ -76,6 +76,7 @@ const HeroHeader = () => (
                     width: 250
                   }}
                   imgStyle={{
+                    top: '5px',
                     width: 'auto',
                     height: 'auto'
                   }}
