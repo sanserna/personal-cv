@@ -51,6 +51,10 @@ const NavigationItem = styled(Link)`
     &:hover {
       color: ${theme.colors.dark};
     }
+
+    &.active {
+      color: ${theme.colors.primary};
+    }
   `};
 
   ${bpAboveMedium} {
@@ -160,7 +164,11 @@ const MainNav = ({ style, className, showHeroImg }) => {
                         label: 'Blog'
                       }
                     ].map(navItem => (
-                      <NavigationItem key={navItem.to} to={navItem.to}>
+                      <NavigationItem
+                        key={navItem.to}
+                        to={navItem.to}
+                        activeClassName="active"
+                      >
                         {navItem.label}
                       </NavigationItem>
                     ))}

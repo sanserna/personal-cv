@@ -3,29 +3,33 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Container } from 'react-grid-system';
 
+import Layout from 'app-components/layout';
 import PostsGrid from 'app-components/posts-grid';
 import SubscriptionForm from 'app-components/subscription-form';
 import Paragraph from 'app-base-components/paragraph';
 import { texts } from 'app-content/meta/config';
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, location }) => {
   const {
     posts: { edges: posts = [] }
   } = data;
 
   return (
-    <Container>
-      <div className="rounded border border-gray-400 flex flex-wrap justify-center bg-white py-4 px-8 my-4">
-        <Paragraph className="text-center">{texts.subscription}</Paragraph>
-        <SubscriptionForm className="xs:w-full md:w-2/3" />
-      </div>
-      <PostsGrid posts={posts.map(post => post.node)} />
-    </Container>
+    <Layout location={location}>
+      <Container>
+        <div className="rounded border border-gray-400 flex flex-wrap justify-center bg-white py-4 px-8 my-4">
+          <Paragraph className="text-center">{texts.subscription}</Paragraph>
+          <SubscriptionForm className="xs:w-full md:w-2/3" />
+        </div>
+        <PostsGrid posts={posts.map(post => post.node)} />
+      </Container>
+    </Layout>
   );
 };
 
 BlogPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default BlogPage;

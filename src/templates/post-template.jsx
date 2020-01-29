@@ -8,6 +8,7 @@ import { graphql } from 'gatsby';
 import { useTheme } from 'emotion-theming';
 import { Container, Row, Col } from 'react-grid-system';
 
+import Layout from 'app-components/layout';
 import Seo from 'app-base-components/seo';
 import Badge from 'app-base-components/badge';
 import Heading from 'app-base-components/heading';
@@ -42,6 +43,7 @@ const PostContent = styled.main`
 const PostTemplate = props => {
   const theme = useTheme();
   const {
+    location,
     data: {
       haderPattern,
       post: {
@@ -61,7 +63,7 @@ const PostTemplate = props => {
   } = props;
 
   return (
-    <>
+    <Layout location={location}>
       <Seo title={title} description={description} />
       <PostHeader haderPattern={haderPattern}>
         <Container>
@@ -134,12 +136,13 @@ const PostTemplate = props => {
       <PostContent>
         <Container>{renderAst(htmlAst)}</Container>
       </PostContent>
-    </>
+    </Layout>
   );
 };
 
 PostTemplate.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default PostTemplate;
