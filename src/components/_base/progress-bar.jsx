@@ -20,7 +20,7 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
         css={{
           position: 'absolute',
           top: '-1.5rem',
-          left: `${value - 9}%`,
+          left: `calc(${value}% - 30px)`,
           fontStyle: 'italic',
           fontWeight: theme.fontWeight.bold
         }}
