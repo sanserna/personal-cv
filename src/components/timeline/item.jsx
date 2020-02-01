@@ -24,7 +24,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
           border: `${theme.borderWidth.default} solid ${stepColor ||
             theme.colors.primary}`,
           left: '-8px',
-          top: '4px'
+          top: '5px'
         }
       }}
     >
@@ -48,8 +48,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
           css={{
             color: theme.colors.dark,
             display: 'block',
-            fontSize: theme.fontSize.xl,
-            textTransform: 'uppercase'
+            fontSize: theme.fontSize.xl
           }}
         >
           {title}
