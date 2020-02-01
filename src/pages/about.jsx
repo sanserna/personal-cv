@@ -27,8 +27,12 @@ const AboutPage = ({ location }) => {
       <Seo />
       <Container>
         <SectionWrapper>
-          <Paragraph lead>Soy Santiago!</Paragraph>
-          <Paragraph css={{ paddingBottom: 0 }}>{texts.mainResume}</Paragraph>
+          <Paragraph lead>
+            Mi nombre es Santiago!... {texts.resume.main}
+          </Paragraph>
+          <Paragraph css={{ paddingBottom: 0 }}>
+            {texts.resume.secondary}
+          </Paragraph>
         </SectionWrapper>
         <SectionWrapper>
           <Heading>Experiencia</Heading>
@@ -54,7 +58,7 @@ const AboutPage = ({ location }) => {
                 <span
                   css={{
                     display: 'table-cell',
-                    fontSize: theme.fontSize.xl,
+                    fontSize: theme.fontSize.lg,
                     paddingRight: theme.spacing[3]
                   }}
                 >

@@ -48,12 +48,8 @@ const IndexPage = ({ data, location }) => {
           }}
         >
           <SectionHeading>Sobre mi</SectionHeading>
-          <Paragraph lead>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            mollitia odit est! Officia consequuntur adipisci delectus suscipit
-            quasi totam iusto?
-          </Paragraph>
-          <Paragraph>{texts.mainResume}</Paragraph>
+          <Paragraph lead>{texts.resume.main}</Paragraph>
+          <Paragraph>{texts.resume.secondary}</Paragraph>
           <Link
             to="/about"
             css={{
@@ -69,9 +65,10 @@ const IndexPage = ({ data, location }) => {
         <SectionWrapper>
           <SectionHeading>Contacto</SectionHeading>
           <Paragraph lead>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quo.
-            Officiis, deleniti nihil aspernatur quod ea incidunt quam architecto
-            vel.
+            {texts.contact}{' '}
+            <span role="img" aria-label="smile-emoji">
+              😬
+            </span>
           </Paragraph>
           <ContactFrom />
         </SectionWrapper>
