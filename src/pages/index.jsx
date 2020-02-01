@@ -5,7 +5,6 @@ import { useTheme } from 'emotion-theming';
 import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
-import Layout from 'app-components/layout';
 import Seo from 'app-base-components/seo';
 import Heading from 'app-base-components/heading';
 import HeroHeader from 'app-components/hero-header';
@@ -27,14 +26,14 @@ const SectionHeading = styled(Heading)`
   `}
 `;
 
-const IndexPage = ({ data, location }) => {
+const IndexPage = ({ data }) => {
   const theme = useTheme();
   const {
     posts: { edges: posts = [] }
   } = data;
 
   return (
-    <Layout location={location}>
+    <>
       <Seo />
       <HeroHeader />
       <Container>
@@ -80,13 +79,12 @@ const IndexPage = ({ data, location }) => {
           }}
         />
       </Container>
-    </Layout>
+    </>
   );
 };
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default IndexPage;

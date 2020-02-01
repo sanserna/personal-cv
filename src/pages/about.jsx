@@ -1,12 +1,10 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import { Container } from 'react-grid-system';
 
-import Layout from 'app-components/layout';
 import Seo from 'app-base-components/seo';
 import Heading from 'app-base-components/heading';
 import Paragraph from 'app-base-components/paragraph';
@@ -19,11 +17,11 @@ const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16]
 }));
 
-const AboutPage = ({ location }) => {
+const AboutPage = () => {
   const theme = useTheme();
 
   return (
-    <Layout location={location}>
+    <>
       <Seo />
       <Container>
         <SectionWrapper>
@@ -91,12 +89,10 @@ const AboutPage = ({ location }) => {
           }}
         />
       </Container>
-    </Layout>
+    </>
   );
 };
 
-AboutPage.propTypes = {
-  location: PropTypes.object.isRequired
-};
+AboutPage.propTypes = {};
 
 export default AboutPage;

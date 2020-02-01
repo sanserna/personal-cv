@@ -26,13 +26,16 @@ const ListItem = styled.li`
   `}
 `;
 
-const Link = styled.a`
+const IconLink = styled.a`
   display: block;
   text-decoration: none;
   background-image: none;
   text-shadow: none;
   opacity: 0.7;
   transition: all 0.3s ease;
+  ${({ theme }) => `
+    line-height: ${theme.lineHeight.none};
+  `}
 
   &:hover {
     opacity: 1;
@@ -88,9 +91,9 @@ const SocialLinks = ({ className, style, iconColor, iconSize, show }) => {
 
             itemsArr.push(
               <ListItem key={itemConfig.url} itemSpacing={itemSpacing}>
-                <Link href={itemConfig.url} target="_blanc">
+                <IconLink href={itemConfig.url} target="_blanc">
                   <Icon />
-                </Link>
+                </IconLink>
               </ListItem>
             );
           }
