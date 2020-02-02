@@ -1,125 +1,84 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'react-grid-system';
+import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
+import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
-import { ThemeContext } from '../layouts';
-import Seo from '../lib/seo';
-import BgImgSection from '../lib/bg-img-section';
-import HeroHeader from '../components/hero-header';
-import Resume from '../components/resume';
-import Skills from '../components/skills';
-import Education from '../components/education';
-import Experience from '../components/experience';
-import RecentPosts from '../components/recent-posts';
+import Seo from 'app-base-components/seo';
+import Heading from 'app-base-components/heading';
+import HeroHeader from 'app-components/hero-header';
+import ContactFrom from 'app-components/contact-form';
+import SocialLinks from 'app-components/social-links';
+import PostsGrid from 'app-components/posts-grid';
+import Link from 'app-base-components/link';
+import Paragraph from 'app-base-components/paragraph';
+import { texts } from 'app-content/meta/config';
+import { bpAboveSmall } from 'app-utils/breakpoints';
+
+const SectionWrapper = styled.section(({ theme }) => ({
+  paddingTop: theme.spacing[16]
+}));
+
+const SectionHeading = styled(Heading)`
+  ${({ theme }) => `
+    font-size: ${theme.fontSize['5xl']};
+  `}
+`;
 
 const IndexPage = ({ data }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const {
-    color: {
-      neutral: {
-        gray: { b: pageContentBgColor }
-      }
-    },
-    space: { s: sectionPaddingY }
-  } = theme;
-  const {
-    background1: {
-      childImageSharp: { fluid: background1 }
-    },
-    background2: {
-      childImageSharp: { fluid: background2 }
-    },
     posts: { edges: posts = [] }
   } = data;
 
   return (
     <>
       <Seo />
-      <HeroHeader theme={theme} />
-      <div className="page-content">
-        <Container>
-          <Row className="section-container">
-            <Col>
-              <Resume theme={theme} />
-            </Col>
-          </Row>
-          <Row className="section-container">
-            <Col>
-              <Skills theme={theme} />
-            </Col>
-          </Row>
-        </Container>
-
-        <BgImgSection background={background1.src}>
-          &quot;Las oportunidades grandes nacen de haber sabido aprovechar las
-          pequeñas&quot;
-          <br />
-          <br />- BG
-        </BgImgSection>
-
-        <Container>
-          <Row className="section-container">
-            <Col>
-              <Education theme={theme} />
-            </Col>
-          </Row>
-          <Row className="section-container">
-            <Col>
-              <Experience theme={theme} />
-            </Col>
-          </Row>
-        </Container>
-
-        <BgImgSection background={background2.src}>
-          &quot;Contrata a los mejores y déjalos hacer lo que saben. Si no,
-          contrata a los mas baratos y que hagan lo que tu dices.&quot;
-          <br />
-          <br />- WB
-        </BgImgSection>
-
-        <Container>
-          <Row className="section-container">
-            <Col>
-              <RecentPosts theme={theme} posts={posts.map(post => post.node)} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      <style jsx>{`
-        --container-padding-y: ${sectionPaddingY};
-
-        .page-content {
-          background-color: ${pageContentBgColor};
-
-          :global(.section-container) {
-            padding-top: var(--container-padding-y);
-            padding-bottom: var(--container-padding-y);
-
-            &:first-of-type {
-              padding-top: calc(var(--container-padding-y) * 2);
-            }
-
-            &:last-of-type {
-              padding-bottom: calc(var(--container-padding-y) * 2);
-            }
-
-            @above tablet {
-              padding-top: calc(var(--container-padding-y) * 5);
-              padding-bottom: calc(var(--container-padding-y) * 5);
-
-              &:first-of-type {
-                padding-top: calc(var(--container-padding-y) * 10);
+      <HeroHeader />
+      <Container>
+        <SectionWrapper>
+          <SectionHeading>Últimas publicaciones</SectionHeading>
+          <PostsGrid posts={posts.map(post => post.node)} />
+        </SectionWrapper>
+        <section
+          css={{
+            paddingTop: theme.spacing[12]
+          }}
+        >
+          <SectionHeading>Sobre mi</SectionHeading>
+          <Paragraph lead>{texts.resume.main}</Paragraph>
+          <Paragraph>{texts.resume.secondary}</Paragraph>
+          <Link
+            to="/about"
+            css={{
+              fontSize: theme.fontSize.lg,
+              [bpAboveSmall]: {
+                fontSize: theme.fontSize.xl
               }
-
-              &:last-of-type {
-                padding-bottom: calc(var(--container-padding-y) * 10);
-              }
-            }
-          }
-        }
-      `}</style>
+            }}
+          >
+            Ver mas...
+          </Link>
+        </section>
+        <SectionWrapper>
+          <SectionHeading>Contacto</SectionHeading>
+          <Paragraph lead>
+            {texts.contact}{' '}
+            <span role="img" aria-label="smile-emoji">
+              😬
+            </span>
+          </Paragraph>
+          <ContactFrom />
+        </SectionWrapper>
+        <SocialLinks
+          iconColor={theme.colors.dark}
+          iconSize="xl"
+          css={{
+            padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`
+          }}
+        />
+      </Container>
     </>
   );
 };
@@ -132,22 +91,8 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    background1: file(relativePath: { eq: "bg-7.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100, grayscale: true) {
-          src
-        }
-      }
-    }
-    background2: file(relativePath: { eq: "bg-3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100, grayscale: true) {
-          src
-        }
-      }
-    }
     posts: allMarkdownRemark(
-      limit: 3
+      limit: 4
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
       sort: { fields: [fields___prefix], order: DESC }
     ) {

@@ -28,8 +28,43 @@
     "es6": true,
     "node": true
   },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["app-components", "./src/components"],
+          ["app-base-components", "./src/components/_base"],
+          ["app-layouts", "./src/layouts"],
+          ["app-pages", "./src/pages"],
+          ["app-templates", "./src/templates"],
+          ["app-theme", "./src/theme"],
+          ["app-utils", "./src/utils"],
+          ["app-images", "./src/images"],
+          ["app-content", "./content"],
+          ["app-root", "./"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  },
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ]
   }
 }

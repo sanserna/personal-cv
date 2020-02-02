@@ -3,6 +3,29 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require('path');
 
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        'app-root': path.resolve(__dirname, './'),
+        'app-content': path.resolve(__dirname, 'content'),
+        'app-images': path.resolve(__dirname, './src/images'),
+        'app-components': path.resolve(__dirname, './src/components'),
+        'app-base-components': path.resolve(
+          __dirname,
+          './src/components/_base'
+        ),
+        'app-layouts': path.resolve(__dirname, './src/layouts'),
+        'app-pages': path.resolve(__dirname, './src/pages'),
+        'app-templates': path.resolve(__dirname, './src/templates'),
+        'app-theme': path.resolve(__dirname, './src/theme'),
+        'app-utils': path.resolve(__dirname, './src/utils')
+      }
+    }
+  });
+};
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
@@ -47,11 +70,6 @@ exports.createPages = async ({ graphql, actions }) => {
   console.log(`Using environment config: '${activeEnv}'`);
 
   let filters = 'filter: { fields: { slug: { ne: null } } }';
-
-  if (activeEnv == 'production') {
-    filters =
-      'filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }';
-  }
 
   if (activeEnv == 'production') {
     filters =
@@ -118,6 +136,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create posts
   const posts = items.filter(item => item.node.fields.source === 'posts');
+
   posts.forEach(({ node }, index) => {
     const slug = node.fields.slug;
     const next = index === 0 ? undefined : posts[index - 1].node;

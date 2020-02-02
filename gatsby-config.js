@@ -6,21 +6,23 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-transformer-json',
-    'gatsby-plugin-layout',
-    'gatsby-plugin-styled-jsx-postcss',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-sass`,
       options: {
-        pathToConfigModule: 'src/utils/typography.js'
+        postCssPlugins: [require('tailwindcss')]
       }
     },
     {
-      resolve: 'gatsby-plugin-styled-jsx',
+      resolve: `gatsby-plugin-purgecss`,
       options: {
-        optimizeForSpeed: true,
-        sourceMaps: false,
-        vendorPrefixes: true
+        printRejected: true,
+        // develop: true, // Enable while using `gatsby develop`
+        tailwind: true,
+        // whitelist: [] // Don't remove this selector
+        ignore: ['prismjs/'] // Ignore files/folders
+        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       }
     },
     {
@@ -69,11 +71,16 @@ module.exports = {
               styles: {
                 display: 'inline',
                 margin: '0',
-                'margin-top': '1px',
                 position: 'relative',
-                top: '5px',
+                top: '-2px',
                 width: '25px'
               }
+            }
+          },
+          {
+            resolve: 'gatsby-remark-component',
+            options: {
+              components: ['heading', 'paragraph']
             }
           }
         ]

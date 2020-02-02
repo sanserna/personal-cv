@@ -1,0 +1,27 @@
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: theme('spacing.2') theme('spacing.3');
+  font-size: theme('fontSize.base');
+  font-weight: theme('fontWeight.normal');
+  line-height: theme('lineHeight.normal');
+  color: theme('colors.gray.700');
+  background-color: theme('colors.white');
+  background-clip: padding-box;
+  border-width: theme('borderWidth.default');
+  border-color: theme('colors.gray.400');
+  border-radius: theme('borderRadius.default');
+  margin-bottom: theme('spacing.3');
+  outline: 0;
+
+  &.invalid {
+    border-color: theme('colors.danger');
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: theme('colors.gray.400');
+    opacity: 1;
+  }
+}

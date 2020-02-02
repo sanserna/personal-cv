@@ -41,7 +41,7 @@ Del ejemplo anterior lo primero que les quiero decir es que es la forma en la qu
 
 Es conveniente tener en cuenta algunos detalles del fragmento de código anterior, si el objeto `cords` al que estamos accediendo esta profundamente anidado en otro objeto, la cadena de acceso al objeto se hace más larga, lo que podría significar mas lineas de código y posibles errores, ya que en la mayoría de los casos algunas de las propiedades dentro del objeto son opcionales, y para cualquier dato que deseemos obtener siempre tendríamos que estar validado que no se acceda a una propiedad que es `undefined`.
 
-## Y entonces, de qué se trata el destructuring?
+## Y entonces, de qué se trata el destructuring
 
 Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array.
 

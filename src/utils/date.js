@@ -34,7 +34,7 @@ export const formatLapseDate = config => {
   let difference = '';
 
   if (years) {
-    difference += `${years} año${!(years <= 1) && 's'}`;
+    difference += `${years} año${years <= 1 ? '' : 's'}`;
   }
 
   if (months) {
