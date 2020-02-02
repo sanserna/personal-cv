@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
@@ -15,16 +15,13 @@ import { author } from 'app-content/meta/config';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const Navbar = styled.nav`
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
   ${({ theme }) => `
     background-color: ${theme.colors.white};
-    padding: ${`${theme.spacing[4]} 0}`};
   `};
-
-  ${bpAboveMedium} {
-    height: 85px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
 `;
 
 const NavigationItems = styled.div`
@@ -80,13 +77,20 @@ const NavigationCollapse = styled.div`
   }
 `;
 
-const MainNav = ({ style, className, showHeroImg }) => {
+const MainNav = ({ style, className, pathName }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
     size: theme.fontSize.sm
   });
   const [navCollapseIsHidden, setNavCollapseIsHidden] = useState(true);
+
+  useEffect(
+    () => {
+      setNavCollapseIsHidden(true);
+    },
+    [pathName]
+  );
 
   return (
     <StaticQuery
@@ -104,12 +108,12 @@ const MainNav = ({ style, className, showHeroImg }) => {
       render={({ heroImage }) => (
         <IconContext.Provider value={iconConfig}>
           <Navbar style={style} className={className}>
-            <Container className="h-full">
+            <Container className="h-full w-full">
               <div className="h-full flex flex-wrap items-center justify-between">
                 <div className="flex items-center">
                   <Img
                     fluid={heroImage.childImageSharp.fluid}
-                    className={showHeroImg ? '' : 'hidden'}
+                    className={pathName !== '/' ? '' : 'hidden'}
                     css={{
                       marginRight: theme.spacing[3],
                       height: 60,
@@ -141,10 +145,6 @@ const MainNav = ({ style, className, showHeroImg }) => {
                 <Visible xs sm>
                   <Button
                     color="dark"
-                    css={{
-                      paddingTop: theme.spacing[2],
-                      paddingBottom: theme.spacing[2]
-                    }}
                     onClick={() => setNavCollapseIsHidden(!navCollapseIsHidden)}
                   >
                     <FaBars />
@@ -198,13 +198,12 @@ const MainNav = ({ style, className, showHeroImg }) => {
 MainNav.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
-  showHeroImg: PropTypes.bool
+  pathName: PropTypes.string.isRequired
 };
 
 MainNav.defaultProps = {
   style: {},
-  className: '',
-  showHeroImg: false
+  className: ''
 };
 
 export default MainNav;

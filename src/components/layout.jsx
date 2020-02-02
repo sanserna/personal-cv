@@ -71,7 +71,7 @@ const Layout = ({ children, location }) => {
           }
         `}
       />
-      <MainNav showHeroImg={location.pathname !== '/'} />
+      <MainNav pathName={location.pathname} />
       <main
         css={{
           background: theme.colors.gray[100]

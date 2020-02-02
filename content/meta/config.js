@@ -117,7 +117,7 @@ module.exports = {
       main:
         'Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software.',
       secondary:
-        'Soy un desarrollador de software con experiencia en tecnologías web, en mi trayectoria como programador, he tenido la oportunidad de hacer parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en roles como front-end y back-end, también tengo experiencia en creación de aplicaciones móviles con base en tecnologías web.'
+        'Soy un desarrollador de software con experiencia en tecnologías web, en mi trayectoria como programador he tenido la oportunidad de hacer parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en roles como front-end y back-end, también tengo experiencia en creación de aplicaciones móviles con base en tecnologías web.'
     },
     education:
       'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',

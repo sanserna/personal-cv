@@ -23,6 +23,7 @@ const ContactFormSchema = object().shape({
 
 const ContactForm = ({ className, style }) => {
   const theme = useTheme();
+  const [messageConfig, setMessageConfig] = useState(undefined);
   const [requestInProgress, setRequestInProgress] = useState(false);
 
   return (
@@ -32,13 +33,28 @@ const ContactForm = ({ className, style }) => {
       onSubmit={(values, { resetForm }) => {
         setRequestInProgress(true);
 
-        axios.post('//sanserna-api.test/contact', values).then(response => {
-          setRequestInProgress(false);
-
-          if (response.status === 200) {
+        axios
+          .post('api/contact', values)
+          .then(response => {
             resetForm();
-          }
-        });
+            setMessageConfig({
+              text: 'Mensaje enviado!',
+              className: 'text-success'
+            });
+          })
+          .catch(() => {
+            setMessageConfig({
+              text: 'Ha ocurrido un error inesperado',
+              className: 'text-danger'
+            });
+          })
+          .then(() => {
+            setRequestInProgress(false);
+
+            setTimeout(() => {
+              setMessageConfig(undefined);
+            }, 5000);
+          });
       }}
     >
       {({ errors }) => (
@@ -62,11 +78,23 @@ const ContactForm = ({ className, style }) => {
           </Row>
           <div
             css={{
-              width: '100%',
               display: 'flex',
-              justifyContent: 'flex-end'
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              justifyContent: 'flex-end',
+              width: '100%'
             }}
           >
+            {messageConfig && (
+              <span
+                className={[
+                  messageConfig.className,
+                  'w-full pr-3 pb-3 md:pb-0 md:w-auto'
+                ].join(' ')}
+              >
+                {messageConfig.text}
+              </span>
+            )}
             <Button
               type="submit"
               color="dark"
