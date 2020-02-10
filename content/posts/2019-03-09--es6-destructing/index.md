@@ -149,3 +149,7 @@ Esta imagen la tome del editor de código que yo uso (vscode), al llamar al mét
 ![image1](./image2.png)
 
 Como podemos ver, ahora es un poco mas fácil saber que estructura debe tener el objeto que recibe el método como parámetro, incluso cuando asignamos un valor por defecto a alguna de las propiedades del objeto nos lo indica y nos dice que tipo de variable es (`number` para la propiedad `age`).
+
+## Conclusión
+
+En este pequeño articulo, exploramos algunos de las ventajas del _object destructuring_ y como yo le he sacado provecho al momento de trabajar en distintos tipos de proyectos, vale la pena destacar que depende de cada programador el uso que le quiera dar a esta funcionalidad de ES6 y aplicar lo aprendido dependiendo del escenario en el que nos encontremos, si ya estabas familiarizado con el uso del _object destructuring_, puede que hayas aprendido algo nuevo también, [acá](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) podrás encontrar la documentación y profundizar un poco mas en el tema.

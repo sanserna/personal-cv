@@ -18,7 +18,13 @@ const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     p: Paragraph,
-    h2: Heading
+    h2: Heading,
+    a: styled.a(({ theme }) => ({
+      color: theme.colors.primary,
+      '&:hover': {
+        textDecoration: 'underline'
+      }
+    }))
   }
 }).Compiler;
 
@@ -33,7 +39,7 @@ const PostHeader = styled.header(
   })
 );
 
-const PostContent = styled.main`
+const PostContent = styled.article`
   ${({ theme }) => `
     padding: ${theme.spacing[4]} 0;
   `}
