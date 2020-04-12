@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
 import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
 
-import { texts } from 'app-content/meta/config';
 import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 
 const HeaderWrapper = styled.header(
@@ -89,7 +88,11 @@ const HeroHeader = () => (
               </Col>
             </Visible>
             <Col>
-              <Title>{texts.headerResume}</Title>
+              <Title>
+                Mi nombre es santiago y soy desarrollador de sofware con
+                experiencia en tecnologías web, actualmente creando desde Bogotá
+                D.C, Colombia.
+              </Title>
             </Col>
           </Row>
         </Container>

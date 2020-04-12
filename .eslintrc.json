@@ -2,7 +2,6 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb",
-    "google",
     "prettier",
     "prettier/react",
     "eslint:recommended",

@@ -1,7 +1,6 @@
 module.exports = {
   siteTitle: 'Soy Santiago Serna',
-  siteDescription:
-    'Un lugar en donde podrás saber conocer un poco mas sobre mi y mis pensamientos',
+  siteDescription: 'Un lugar en donde podrás saber conocer un poco mas sobre mi y mis pensamientos',
   siteUrl: 'http://sanserna.com',
   siteLanguage: 'es',
 
@@ -18,14 +17,7 @@ module.exports = {
       linkedin: 'https://linkedin.com/in/sanserna',
       instagram: 'https://www.instagram.com/sanserna91'
     },
-    softSkills: [
-      'Animación por Computadora',
-      'Gestion de Proyectos',
-      'UI/UX',
-      'Arquitectura de Sofware',
-      'Arquitectura Web',
-      'Liderazgo de Equipos'
-    ],
+    softSkills: ['Animación por Computadora', 'Gestion de Proyectos', 'UI/UX', 'Arquitectura de Sofware', 'Arquitectura Web', 'Liderazgo de Equipos'],
     techSkills: [
       { label: 'HTML/CSS', level: 100 },
       { label: 'JavaScript', level: 90 },
@@ -57,8 +49,7 @@ module.exports = {
       {
         lapse: '2010 - 2015',
         title: 'Universidad Militar Nueva Granada',
-        subtitle:
-          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+        subtitle: 'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
       }
     ],
     experience: [
@@ -106,24 +97,5 @@ module.exports = {
           'Desarrollador frontend y backend en proyecto con el banco Davivienda, a cargo de desarrollar módulos web (SPA) de uso transversal, diseño y desarrollo de APIs REST orientadas a servicios, manejo de bases de datos MySQL y creación de herramientas para automatización en procesos de desarrollo.'
       }
     ]
-  },
-
-  texts: {
-    contact:
-      '¿Preguntas ó información? no dudes en contactarme, intentare responder en el menor tiempo posible!',
-    headerResume:
-      'Mi nombre es santiago y soy desarrollador de sofware con experiencia en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.',
-    resume: {
-      main:
-        'Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software.',
-      secondary:
-        'Soy un desarrollador de software con experiencia en tecnologías web, en mi trayectoria como programador he tenido la oportunidad de hacer parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en roles como front-end y back-end, también tengo experiencia en creación de aplicaciones móviles con base en tecnologías web.'
-    },
-    education:
-      'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',
-    experience:
-      'Dentro de mi experiencia he tenido la oportunidad de trabajar en proyectos con el banco Davivienda, creando módulos y aplicaciones web (SPA) así como también el backend y la infraestructura que las soporta, he trabajado con startups y empresas medianas en la creación de plataformas web de todo tipo usando diferentes tipos de tecnologías, así como también aplicaciones móviles de pequeña y gran envergadura. En algunos de los proyectos en los que he participado, he trabajado como Líder Técnico con equipos compuestos por perfiles en backend, frontend, QA, IOS y Android.',
-    subscription:
-      'Si por alguna extraña razón quieres ser notificado sobre los últimos artículos que sean publicados, ¡solo suscríbete!'
   }
 };
