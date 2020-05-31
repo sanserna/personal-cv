@@ -12,6 +12,7 @@ import Seo from 'app-base-components/seo';
 import Badge from 'app-base-components/badge';
 import Heading from 'app-base-components/heading';
 import Paragraph from 'app-base-components/paragraph';
+import PostFooter from 'app-components/post-footer';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
 const renderAst = new rehypeReact({
@@ -134,6 +135,7 @@ const PostTemplate = props => {
       <PostContent>
         <Container>{renderAst(htmlAst)}</Container>
       </PostContent>
+      <PostFooter />
     </>
   );
 };
