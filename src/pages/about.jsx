@@ -45,12 +45,11 @@ const AboutPage = () => {
             Dentro de mi experiencia he tenido la oportunidad de trabajar en
             proyectos con el banco Davivienda, creando módulos y aplicaciones
             web (SPA) así como también el backend y la infraestructura que las
-            soporta, he trabajado con startups y empresas medianas en la
-            creación de plataformas web de todo tipo usando diferentes tipos de
-            tecnologías, así como también aplicaciones móviles de pequeña y gran
-            envergadura. En algunos de los proyectos en los que he participado,
-            he trabajado como Líder Técnico con equipos compuestos por perfiles
-            en backend, frontend, QA, IOS y Android.
+            soporta, he trabajado con startups y empresas grandes en la creación
+            de plataformas y aplicaciones móviles usando diferentes tipos de
+            tecnologías web. En algunos de los proyectos en los que he
+            participado, he trabajado como Líder Técnico con equipos compuestos
+            por perfiles en backend, frontend, QA, IOS y Android.
           </Paragraph>
           <Timeline items={author.experience} />
         </SectionWrapper>

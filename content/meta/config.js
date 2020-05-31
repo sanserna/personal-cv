@@ -1,6 +1,7 @@
 module.exports = {
   siteTitle: 'Soy Santiago Serna',
-  siteDescription: 'Un lugar en donde podrás saber conocer un poco mas sobre mi y mis pensamientos',
+  siteDescription:
+    'Un lugar en donde podrás saber conocer un poco mas sobre mi y mis pensamientos',
   siteUrl: 'http://sanserna.com',
   siteLanguage: 'es',
 
@@ -17,7 +18,14 @@ module.exports = {
       linkedin: 'https://linkedin.com/in/sanserna',
       instagram: 'https://www.instagram.com/sanserna91'
     },
-    softSkills: ['Animación por Computadora', 'Gestion de Proyectos', 'UI/UX', 'Arquitectura de Sofware', 'Arquitectura Web', 'Liderazgo de Equipos'],
+    softSkills: [
+      'Animación por Computadora',
+      'Gestion de Proyectos',
+      'UI/UX',
+      'Arquitectura de Sofware',
+      'Arquitectura Web',
+      'Liderazgo de Equipos'
+    ],
     techSkills: [
       { label: 'HTML/CSS', level: 100 },
       { label: 'JavaScript', level: 90 },
@@ -49,7 +57,8 @@ module.exports = {
       {
         lapse: '2010 - 2015',
         title: 'Universidad Militar Nueva Granada',
-        subtitle: 'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
+        subtitle:
+          'Ingeniero Multimedia, Software informático y aplicaciones multimedia.'
       }
     ],
     experience: [
@@ -61,7 +70,7 @@ module.exports = {
         url: 'https://zemoga.com/',
         subtitle: 'Front-End Developer',
         desc:
-          'Desarrollador en el proyecto Direct Cloud para la firma de servicios financieros Morningstar, Inc. A cargo de brindar soporte y agregar nuevas funcionalidades a la plataforma web con base tecnológica en los principales tipos de frameworks, tales como ReactJs, VueJs, AngularJs, EmberJs y BackboneJs, así como también el mantenimiento de APIs desarrolladas en NodeJs para soportar el front-end de la plataforma.'
+          'Integrante del equipo técnico para la firma de servicios financieros Morningstar, Inc, a cargo de llevar a cabo el desarrollo y mantenimiento del producto Morningstar Direct Cloud, el cual es la versión web y evolución de su producto estrella Morningstar Direct, destacado por brindar acceso a una de las bases de datos financieras mas grandes del mundo, donde se permite al usuario manipular la data y obtener retroalimentación sobre el mercado de acciones y valores, esto con el fin de proporcionar información precisa y relevante a sus clientes y así estos puedan tomar decisiones correctas sobre sus inversiones.'
       },
       {
         lapse: {
