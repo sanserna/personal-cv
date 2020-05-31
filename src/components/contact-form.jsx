@@ -35,7 +35,7 @@ const ContactForm = ({ className, style }) => {
 
         axios
           .post('api/contact', values)
-          .then(response => {
+          .then(() => {
             resetForm();
             setMessageConfig({
               text: 'Mensaje enviado!',

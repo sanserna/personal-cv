@@ -9,11 +9,11 @@ const borderLoop = keyframes`
   }
 `;
 const sizeModifierStyles = {
-  sm: theme => css`
+  sm: () => css`
     width: 1rem;
     height: 1rem;
   `,
-  lg: theme => css`
+  lg: () => css`
     width: 2rem;
     height: 2rem;
   `

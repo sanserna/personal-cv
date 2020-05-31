@@ -70,7 +70,7 @@ module.exports = {
         url: 'https://zemoga.com/',
         subtitle: 'Front-End Developer',
         desc:
-          'Desarrollador en el proyecto Direct Cloud para la firma de servicios financieros Morningstar, Inc. A cargo de brindar soporte y agregar nuevas funcionalidades a la plataforma web con base tecnológica en los principales tipos de frameworks, tales como ReactJs, VueJs, AngularJs, EmberJs y BackboneJs, así como también el mantenimiento de APIs desarrolladas en NodeJs para soportar el front-end de la plataforma.'
+          'Integrante del equipo técnico para la firma de servicios financieros Morningstar, Inc, a cargo de llevar a cabo el desarrollo y mantenimiento del producto Morningstar Direct Cloud, el cual es la versión web y evolución de su producto estrella Morningstar Direct, destacado por brindar acceso a una de las bases de datos financieras mas grandes del mundo, donde se permite al usuario manipular la data y obtener retroalimentación sobre el mercado de acciones y valores, esto con el fin de proporcionar información precisa y relevante a sus clientes y así estos puedan tomar decisiones correctas sobre sus inversiones.'
       },
       {
         lapse: {
@@ -106,24 +106,5 @@ module.exports = {
           'Desarrollador frontend y backend en proyecto con el banco Davivienda, a cargo de desarrollar módulos web (SPA) de uso transversal, diseño y desarrollo de APIs REST orientadas a servicios, manejo de bases de datos MySQL y creación de herramientas para automatización en procesos de desarrollo.'
       }
     ]
-  },
-
-  texts: {
-    contact:
-      '¿Preguntas ó información? no dudes en contactarme, intentare responder en el menor tiempo posible!',
-    headerResume:
-      'Mi nombre es santiago y soy desarrollador de sofware con experiencia en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.',
-    resume: {
-      main:
-        'Soy un apasionado de la tecnología y me encanta ayudar a las personas en su proceso de crecimiento como desarrolladores de software.',
-      secondary:
-        'Soy un desarrollador de software con experiencia en tecnologías web, en mi trayectoria como programador he tenido la oportunidad de hacer parte del proceso de pensar, planear e implementar el desarrollo de proyectos web en roles como front-end y back-end, también tengo experiencia en creación de aplicaciones móviles con base en tecnologías web.'
-    },
-    education:
-      'Mi proceso de aprendizaje a estado orientado siempre en dos grandes áreas, por un lado esta el diseño, y del otro lado la programación. Desde muy pequeño siempre estuve mas orientado por temas relacionados con el diseño y las artes digitales, gracias a mi carrera puede aprender mucho sobre animación 2D/3D, dibujo artístico, render, UI/UX, ilustración y algunas otras cosas relacionadas con la multimedia, el interés por la programación ha sido un tema que viene conmigo desde el colegio, ya que tuve la oportunidad de aprender sobre programación desde muy temprana edad.',
-    experience:
-      'Dentro de mi experiencia he tenido la oportunidad de trabajar en proyectos con el banco Davivienda, creando módulos y aplicaciones web (SPA) así como también el backend y la infraestructura que las soporta, he trabajado con startups y empresas medianas en la creación de plataformas web de todo tipo usando diferentes tipos de tecnologías, así como también aplicaciones móviles de pequeña y gran envergadura. En algunos de los proyectos en los que he participado, he trabajado como Líder Técnico con equipos compuestos por perfiles en backend, frontend, QA, IOS y Android.',
-    subscription:
-      'Si por alguna extraña razón quieres ser notificado sobre los últimos artículos que sean publicados, ¡solo suscríbete!'
   }
 };

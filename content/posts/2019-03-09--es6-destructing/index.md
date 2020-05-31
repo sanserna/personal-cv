@@ -43,7 +43,7 @@ Es conveniente tener en cuenta algunos detalles del fragmento de código anterio
 
 ## Y entonces, de qué se trata el destructuring
 
-Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array.
+Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array, en este articulo vamos a estar hablando específicamente de los objetos.
 
 Del ejemplo anterior parte el primer uso que me parece importante resaltar del _destructuring_, y es precisamente como se puede usar al momento de obtener parámetros en un método, miremos como podemos alcanzar el mismo resultado haciendo uso del _object destructuring_:
 
@@ -149,3 +149,7 @@ Esta imagen la tome del editor de código que yo uso (vscode), al llamar al mét
 ![image1](./image2.png)
 
 Como podemos ver, ahora es un poco mas fácil saber que estructura debe tener el objeto que recibe el método como parámetro, incluso cuando asignamos un valor por defecto a alguna de las propiedades del objeto nos lo indica y nos dice que tipo de variable es (`number` para la propiedad `age`).
+
+## Conclusión
+
+En este articulo les he dado una pequeña introducción a algunas de las ventajas que para mi trae el _object destructuring_ en la forma en la que trabajo, si ya estabas familiarizado con este concepto, estoy seguro de que algo nuevo pudiste aprender desde mi experiencia, espero poder profundizar un poco mas en este tema en futuros artículos y mostrarte algunos ejemplos mas avanzados que se pueden tener si se aplica el _object destructuring_ junto con otras funcionalidades de ES6.

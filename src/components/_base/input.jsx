@@ -25,7 +25,7 @@ const Input = ({
   type
 }) => (
   <Field name={name}>
-    {({ field, form: { touched, errors }, meta }) => (
+    {({ field, form: { touched, errors } }) => (
       <>
         {label && (
           <Label htmlFor={name}>
@@ -37,6 +37,7 @@ const Input = ({
         )}
         <input
           id={name}
+          style={style}
           type={type}
           placeholder={placeholder}
           className={[

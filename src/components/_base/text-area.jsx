@@ -24,6 +24,7 @@ const TextArea = ({ style, className, name, label, placeholder, required }) => (
         )}
         <textarea
           id={name}
+          style={style}
           placeholder={placeholder}
           css={{
             height: 130

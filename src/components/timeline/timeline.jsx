@@ -34,6 +34,7 @@ const Timeline = ({ style, className, stepColor, lineColor, items }) => {
           title={item.title}
           subtitle={item.subtitle}
           desc={item.desc}
+          stepColor={stepColor}
         />
       ))}
     </ul>

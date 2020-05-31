@@ -17,7 +17,7 @@ const SubscriptionForm = ({ className, style }) => (
   <Formik
     initialValues={{ email: '' }}
     validationSchema={ContactFormSchema}
-    onSubmit={(values, actions) => {}}
+    onSubmit={() => {}}
   >
     {({ errors }) => (
       <Form style={style} className={className}>

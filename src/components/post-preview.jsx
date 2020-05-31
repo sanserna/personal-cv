@@ -77,6 +77,15 @@ const PostPreview = ({
             textColor={theme.colors.white}
           />
         ))}
+        {text && (
+          <p
+            css={{
+              paddingTop: theme.spacing[1]
+            }}
+          >
+            {text}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -86,7 +95,7 @@ PostPreview.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   link: PropTypes.string.isRequired,
   // FIXME: we should format the date internaly
   creationDate: PropTypes.string.isRequired,
@@ -103,7 +112,8 @@ PostPreview.propTypes = {
 PostPreview.defaultProps = {
   style: {},
   className: '',
-  categories: []
+  categories: [],
+  text: ''
 };
 
 export default PostPreview;
