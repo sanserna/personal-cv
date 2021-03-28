@@ -70,6 +70,8 @@ const ContactForm = ({ className, style }) => {
           className={className}
           data-netlify="true"
         >
+          {/* needed for netlify form handling */}
+          <input type="hidden" name="form-name" value="contact" />
           <Row>
             <Col xs={12} md={6}>
               <Input required name="name" label="Nombre" />
