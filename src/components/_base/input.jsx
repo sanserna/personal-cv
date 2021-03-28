@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import classNames from 'classnames';
 
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
@@ -40,13 +41,13 @@ const Input = ({
           style={style}
           type={type}
           placeholder={placeholder}
-          className={[
+          className={classNames(
             'form-control',
             className,
             required && touched[field.name] && errors[field.name]
               ? 'invalid'
               : 'valid'
-          ].join(' ')}
+          )}
           {...field}
         />
       </>
