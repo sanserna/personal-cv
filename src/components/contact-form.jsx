@@ -32,11 +32,18 @@ const ContactForm = ({ className, style }) => {
     setRequestInProgress(true);
 
     try {
-      await axios.post('/', qs.stringify(values), {
-        headers: {
-          'content-type': 'application/x-www-form-urlencoded'
+      await axios.post(
+        '/',
+        qs.stringify({
+          ...values,
+          'form-name': 'contact'
+        }),
+        {
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+          }
         }
-      });
+      );
 
       resetForm();
       setMessageConfig({
