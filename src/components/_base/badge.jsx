@@ -33,12 +33,12 @@ Badge.propTypes = {
   style: PropTypes.object,
   text: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  textColor: PropTypes.string.isRequired
+  textColor: PropTypes.string.isRequired,
 };
 
 Badge.defaultProps = {
   className: '',
-  style: {}
+  style: {},
 };
 
 export default Badge;

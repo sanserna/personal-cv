@@ -6,8 +6,8 @@ const linkStyles = theme => ({
   lineHeight: theme.lineHeight.none,
   color: theme.colors.primary,
   '&:hover': {
-    textDecoration: 'underline'
-  }
+    textDecoration: 'underline',
+  },
 });
 
 const Link = ({ children, className, to, ...props }) => {
@@ -22,7 +22,13 @@ const Link = ({ children, className, to, ...props }) => {
   }
 
   return (
-    <a className={className} href={to} css={linkStyles} {...props}>
+    <a
+      className={className}
+      css={linkStyles}
+      target="_blank"
+      rel="noreferrer"
+      {...props}
+    >
       {children}
     </a>
   );
@@ -31,14 +37,15 @@ const Link = ({ children, className, to, ...props }) => {
 Link.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
   className: PropTypes.string,
-  to: PropTypes.string.isRequired
+  to: PropTypes.string,
 };
 
 Link.defaultProps = {
-  className: ''
+  className: '',
+  to: '',
 };
 
 export default Link;

@@ -10,7 +10,7 @@ import Button from 'app-base-components/button';
 const ContactFormSchema = object().shape({
   email: string()
     .email()
-    .required()
+    .required(),
 });
 
 const SubscriptionForm = ({ className, style }) => (
@@ -43,12 +43,12 @@ const SubscriptionForm = ({ className, style }) => (
 
 SubscriptionForm.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 SubscriptionForm.defaultProps = {
   className: '',
-  style: {}
+  style: {},
 };
 
 export default SubscriptionForm;

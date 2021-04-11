@@ -8,14 +8,14 @@ const MainFooter = () => {
     <footer
       css={{
         background: theme.colors.dark,
-        padding: theme.spacing[10]
+        padding: theme.spacing[10],
       }}
     >
       <p
         css={{
           color: theme.colors.white,
           textAlign: 'center',
-          width: '100%'
+          width: '100%',
         }}
       >
         © 2018 Santiago Serna. Todos los derechos reservados.

@@ -14,7 +14,7 @@ const Paragraph = ({ children, className, style, lead }) => {
         fontSize: lead ? theme.fontSize['3xl'] : theme.fontSize.xl,
         fontWeight: lead ? theme.fontWeight.normal : theme.fontWeight.light,
         lineHeight: lead ? theme.lineHeight.normal : theme.lineHeight.relaxed,
-        paddingBottom: theme.spacing[5]
+        paddingBottom: theme.spacing[5],
       }}
     >
       {children}
@@ -25,17 +25,17 @@ const Paragraph = ({ children, className, style, lead }) => {
 Paragraph.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
-  lead: PropTypes.bool
+  lead: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {
   className: '',
   style: {},
-  lead: false
+  lead: false,
 };
 
 export default Paragraph;

@@ -16,7 +16,7 @@ const sizeModifierStyles = {
   lg: () => css`
     width: 2rem;
     height: 2rem;
-  `
+  `,
 };
 
 const Spinner = ({ className, style, size, color }) => {
@@ -47,14 +47,14 @@ Spinner.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 Spinner.defaultProps = {
   className: '',
   style: {},
   size: 'md',
-  color: 'currentColor'
+  color: 'currentColor',
 };
 
 export default Spinner;

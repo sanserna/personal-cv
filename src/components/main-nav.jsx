@@ -81,16 +81,13 @@ const MainNav = ({ style, className, pathName }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
-    size: theme.fontSize.sm
+    size: theme.fontSize.sm,
   });
   const [navCollapseIsHidden, setNavCollapseIsHidden] = useState(true);
 
-  useEffect(
-    () => {
-      setNavCollapseIsHidden(true);
-    },
-    [pathName]
-  );
+  useEffect(() => {
+    setNavCollapseIsHidden(true);
+  }, [pathName]);
 
   return (
     <StaticQuery
@@ -119,12 +116,12 @@ const MainNav = ({ style, className, pathName }) => {
                       height: 60,
                       width: 60,
                       background: theme.colors.primary,
-                      borderRadius: '50%'
+                      borderRadius: '50%',
                     }}
                     imgStyle={{
                       top: '5px',
                       width: 'auto',
-                      height: 'auto'
+                      height: 'auto',
                     }}
                   />
                   <Link
@@ -135,8 +132,8 @@ const MainNav = ({ style, className, pathName }) => {
                       fontSize: theme.fontSize['2xl'],
                       fontWeight: theme.fontWeight.semibold,
                       '&:hover': {
-                        textDecoration: 'none'
-                      }
+                        textDecoration: 'none',
+                      },
                     }}
                   >
                     {author.name}
@@ -157,12 +154,12 @@ const MainNav = ({ style, className, pathName }) => {
                     {[
                       {
                         to: '/about',
-                        label: 'About'
+                        label: 'About',
                       },
                       {
                         to: '/blog',
-                        label: 'Blog'
-                      }
+                        label: 'Blog',
+                      },
                     ].map(navItem => (
                       <NavigationItem
                         key={navItem.to}
@@ -181,8 +178,8 @@ const MainNav = ({ style, className, pathName }) => {
                       paddingTop: theme.spacing[5],
                       [bpAboveMedium]: {
                         paddingLeft: theme.spacing[5],
-                        paddingTop: 0
-                      }
+                        paddingTop: 0,
+                      },
                     }}
                   />
                 </NavigationCollapse>
@@ -198,12 +195,12 @@ const MainNav = ({ style, className, pathName }) => {
 MainNav.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
-  pathName: PropTypes.string.isRequired
+  pathName: PropTypes.string.isRequired,
 };
 
 MainNav.defaultProps = {
   style: {},
-  className: ''
+  className: '',
 };
 
 export default MainNav;

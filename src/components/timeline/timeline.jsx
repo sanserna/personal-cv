@@ -23,8 +23,8 @@ const Timeline = ({ style, className, stepColor, lineColor, items }) => {
           height: '100%',
           top: 0,
           left: -1,
-          background: lineColor || theme.colors.dark
-        }
+          background: lineColor || theme.colors.dark,
+        },
       }}
     >
       {items.map((item, index) => (
@@ -52,21 +52,21 @@ Timeline.propTypes = {
         PropTypes.string.isRequired,
         PropTypes.shape({
           from: PropTypes.string.isRequired,
-          to: PropTypes.string
-        }).isRequired
+          to: PropTypes.string,
+        }).isRequired,
       ]).isRequired,
       title: PropTypes.string.isRequired,
       desc: PropTypes.string,
-      subtitle: PropTypes.string
+      subtitle: PropTypes.string,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 Timeline.defaultProps = {
   style: {},
   className: '',
   stepColor: '',
-  lineColor: ''
+  lineColor: '',
 };
 
 export default Timeline;

@@ -12,6 +12,7 @@ import Seo from 'app-base-components/seo';
 import Badge from 'app-base-components/badge';
 import Heading from 'app-base-components/heading';
 import Paragraph from 'app-base-components/paragraph';
+import Link from 'app-base-components/link';
 import PostFooter from 'app-components/post-footer';
 import { bpAboveMedium } from 'app-utils/breakpoints';
 
@@ -20,23 +21,18 @@ const renderAst = new rehypeReact({
   components: {
     p: Paragraph,
     h2: Heading,
-    a: styled.a(({ theme }) => ({
-      color: theme.colors.primary,
-      '&:hover': {
-        textDecoration: 'underline'
-      }
-    }))
-  }
+    a: Link,
+  },
 }).Compiler;
 
 const PostHeader = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundCover: 'cover'
+    backgroundCover: 'cover',
   },
   ({ theme, haderPattern }) => ({
     padding: `${theme.spacing[5]} 0`,
-    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`
+    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
   })
 );
 
@@ -60,11 +56,11 @@ const PostTemplate = props => {
           description,
           categories = [],
           cover: {
-            childImageSharp: { fluid }
-          }
-        }
-      }
-    }
+            childImageSharp: { fluid },
+          },
+        },
+      },
+    },
   } = props;
 
   return (
@@ -77,7 +73,7 @@ const PostTemplate = props => {
               <Img
                 fluid={fluid}
                 css={{
-                  borderRadius: theme.borderRadius.lg
+                  borderRadius: theme.borderRadius.lg,
                 }}
               />
             </Col>
@@ -87,8 +83,8 @@ const PostTemplate = props => {
                   paddingTop: theme.spacing[4],
                   [bpAboveMedium]: {
                     paddingTop: 0,
-                    paddingLeft: theme.spacing[4]
-                  }
+                    paddingLeft: theme.spacing[4],
+                  },
                 }}
               >
                 <h1
@@ -97,7 +93,7 @@ const PostTemplate = props => {
                     fontWeight: theme.fontWeight.semibold,
                     fontSize: theme.fontSize['3xl'],
                     lineHeight: theme.lineHeight.tight,
-                    marginBottom: theme.spacing[3]
+                    marginBottom: theme.spacing[3],
                   }}
                 >
                   {title}
@@ -105,7 +101,7 @@ const PostTemplate = props => {
                 <span
                   css={{
                     fontSize: theme.fontSize.lg,
-                    color: theme.colors.light
+                    color: theme.colors.light,
                   }}
                 >
                   {author}
@@ -114,14 +110,14 @@ const PostTemplate = props => {
                 <span
                   css={{
                     fontSize: theme.fontSize.lg,
-                    color: theme.colors.gray[500]
+                    color: theme.colors.gray[500],
                   }}
                 >
                   {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
                 </span>
                 <div
                   css={{
-                    marginTop: theme.spacing[2]
+                    marginTop: theme.spacing[2],
                   }}
                 >
                   {categories.map(category => (
@@ -147,7 +143,7 @@ const PostTemplate = props => {
 };
 
 PostTemplate.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default PostTemplate;

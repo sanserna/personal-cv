@@ -15,7 +15,7 @@ moment.locale(siteLanguage);
 
 // Setup react grid system configuration
 setConfiguration({
-  containerWidths: [540, 750, 960, 960]
+  containerWidths: [540, 750, 960, 960],
 });
 
 const Layout = ({ children, location }) => {
@@ -74,7 +74,7 @@ const Layout = ({ children, location }) => {
       <MainNav pathName={location.pathname} />
       <main
         css={{
-          background: theme.colors.gray[100]
+          background: theme.colors.gray[100],
         }}
       >
         {children}
@@ -87,9 +87,9 @@ const Layout = ({ children, location }) => {
 Layout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 export default Layout;

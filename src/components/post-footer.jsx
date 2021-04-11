@@ -34,12 +34,12 @@ const PostFooter = () => {
                 height: 100,
                 width: 100,
                 background: theme.colors.white,
-                borderRadius: '50%'
+                borderRadius: '50%',
               }}
               imgStyle={{
                 top: '5px',
                 width: 'auto',
-                height: 'auto'
+                height: 'auto',
               }}
             />
             <Paragraph className="pl-3 pb-0">

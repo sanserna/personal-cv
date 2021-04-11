@@ -12,8 +12,8 @@ const Label = styled.label(({ theme }) => ({
   display: 'block',
   marginBottom: theme.spacing[2],
   [bpAboveSmall]: {
-    fontSize: theme.fontSize.lg
-  }
+    fontSize: theme.fontSize.lg,
+  },
 }));
 
 const Input = ({
@@ -23,7 +23,7 @@ const Input = ({
   label,
   placeholder,
   required,
-  type
+  type,
 }) => (
   <Field name={name}>
     {({ field, form: { touched, errors } }) => (
@@ -69,8 +69,8 @@ Input.propTypes = {
     'search',
     'tel',
     'text',
-    'url'
-  ])
+    'url',
+  ]),
 };
 
 Input.defaultProps = {
@@ -80,7 +80,7 @@ Input.defaultProps = {
   label: '',
   placeholder: '',
   required: false,
-  type: 'text'
+  type: 'text',
 };
 
 export default Input;

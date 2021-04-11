@@ -20,7 +20,7 @@ const ContactFormSchema = object().shape({
   subject: string().required(),
   email: string()
     .email()
-    .required()
+    .required(),
 });
 
 const ContactForm = ({ className, style }) => {
@@ -36,24 +36,24 @@ const ContactForm = ({ className, style }) => {
         '/',
         qs.stringify({
           ...values,
-          'form-name': 'contact'
+          'form-name': 'contact',
         }),
         {
           headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-          }
+            'content-type': 'application/x-www-form-urlencoded',
+          },
         }
       );
 
       resetForm();
       setMessageConfig({
         text: 'Mensaje enviado!',
-        className: 'text-success'
+        className: 'text-success',
       });
     } catch (error) {
       setMessageConfig({
         text: 'Ha ocurrido un error inesperado',
-        className: 'text-danger'
+        className: 'text-danger',
       });
     } finally {
       setRequestInProgress(false);
@@ -77,8 +77,6 @@ const ContactForm = ({ className, style }) => {
           className={className}
           data-netlify="true"
         >
-          {/* needed for netlify form handling */}
-          <input type="hidden" name="form-name" value="contact" />
           <Row>
             <Col xs={12} md={6}>
               <Input required name="name" label="Nombre" />
@@ -91,7 +89,7 @@ const ContactForm = ({ className, style }) => {
                 name="message"
                 label="Mensaje"
                 css={{
-                  height: 208
+                  height: 208,
                 }}
               />
             </Col>
@@ -102,7 +100,7 @@ const ContactForm = ({ className, style }) => {
               alignItems: 'center',
               flexWrap: 'wrap',
               justifyContent: 'flex-end',
-              width: '100%'
+              width: '100%',
             }}
           >
             {messageConfig && (
@@ -122,14 +120,14 @@ const ContactForm = ({ className, style }) => {
               css={{
                 minWidth: 100,
                 [bpBelowMedium]: {
-                  width: '100%'
-                }
+                  width: '100%',
+                },
               }}
             >
               {requestInProgress && (
                 <Spinner
                   css={{
-                    marginRight: theme.spacing[1]
+                    marginRight: theme.spacing[1],
                   }}
                   size="sm"
                 />
@@ -145,12 +143,12 @@ const ContactForm = ({ className, style }) => {
 
 ContactForm.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 ContactForm.defaultProps = {
   className: '',
-  style: {}
+  style: {},
 };
 
 export default ContactForm;

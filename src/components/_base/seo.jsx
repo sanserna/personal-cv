@@ -7,48 +7,48 @@ import config from 'app-content/meta/config';
 const Seo = ({ description, meta, keywords, title }) => (
   <Helmet
     htmlAttributes={{
-      lang: config.siteLanguage
+      lang: config.siteLanguage,
     }}
     title={title}
     meta={[
       {
         name: `description`,
-        content: description
+        content: description,
       },
       {
         property: `og:title`,
-        content: title
+        content: title,
       },
       {
         property: `og:description`,
-        content: description
+        content: description,
       },
       {
         property: `og:type`,
-        content: `website`
+        content: `website`,
       },
       {
         name: `twitter:card`,
-        content: `summary`
+        content: `summary`,
       },
       {
         name: `twitter:creator`,
-        content: config.author.name
+        content: config.author.name,
       },
       {
         name: `twitter:title`,
-        content: title
+        content: title,
       },
       {
         name: `twitter:description`,
-        content: description
-      }
+        content: description,
+      },
     ]
       .concat(
         keywords.length > 0
           ? {
               name: `keywords`,
-              content: keywords.join(`, `)
+              content: keywords.join(`, `),
             }
           : []
       )
@@ -60,14 +60,14 @@ Seo.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string)
+  keywords: PropTypes.arrayOf(PropTypes.string),
 };
 
 Seo.defaultProps = {
   title: config.siteTitle,
   description: config.siteDescription,
   meta: [],
-  keywords: []
+  keywords: [],
 };
 
 export default Seo;
