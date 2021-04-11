@@ -14,7 +14,6 @@ const PostsGrid = ({ posts = [] }) => {
       {posts.map(
         ({
           id,
-          excerpt,
           fields: { slug, prefix },
           frontmatter: {
             title,
@@ -37,7 +36,6 @@ const PostsGrid = ({ posts = [] }) => {
               categories={categories}
               link={slug}
               title={title}
-              text={excerpt}
               img={fluid}
             />
           </Col>

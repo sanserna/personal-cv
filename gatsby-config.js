@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Mi Resumen'
+    title: 'Mi Resumen',
+    siteUrl: 'http://www.sanserna.com'
   },
   plugins: [
     'gatsby-transformer-sharp',
@@ -8,6 +9,9 @@ module.exports = {
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
+    'gatsby-plugin-robots-txt',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-catch-links',
     {
       resolve: `gatsby-plugin-sass`,
       options: {

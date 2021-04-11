@@ -43,7 +43,7 @@ Es conveniente tener en cuenta algunos detalles del fragmento de código anterio
 
 ## Y entonces, de qué se trata el destructuring
 
-Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array.
+Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array, en este articulo vamos a estar hablando específicamente de los objetos.
 
 Del ejemplo anterior parte el primer uso que me parece importante resaltar del _destructuring_, y es precisamente como se puede usar al momento de obtener parámetros en un método, miremos como podemos alcanzar el mismo resultado haciendo uso del _object destructuring_:
 
@@ -152,4 +152,4 @@ Como podemos ver, ahora es un poco mas fácil saber que estructura debe tener el
 
 ## Conclusión
 
-En este pequeño articulo, exploramos algunos de las ventajas del _object destructuring_ y como yo le he sacado provecho al momento de trabajar en distintos tipos de proyectos, vale la pena destacar que depende de cada programador el uso que le quiera dar a esta funcionalidad de ES6 y aplicar lo aprendido dependiendo del escenario en el que nos encontremos, si ya estabas familiarizado con el uso del _object destructuring_, puede que hayas aprendido algo nuevo también, [acá](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) podrás encontrar la documentación y profundizar un poco mas en el tema.
+En este pequeño articulo, exploramos algunos de las ventajas del _object destructuring_ y como yo le he sacado provecho al momento de trabajar en distintos tipos de proyectos, vale la pena destacar que depende de cada programador el uso que le quiera dar a esta funcionalidad de ES6 y aplicar lo aprendido dependiendo del escenario en el que nos encontremos, si ya estabas familiarizado con el uso del _object destructuring_, puede que hayas aprendido algo nuevo también, [acá](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) podrás encontrar la documentación y profundizar un poco mas en el tema, espero poder profundizar un poco mas en futuros artículos y mostrarte algunos ejemplos mas avanzados que se pueden tener si se aplica el _object destructuring_ junto con otras funcionalidades de ES6.

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useTheme } from 'emotion-theming';
-import { Row, Col } from 'react-grid-system';
+import { Col, Row } from 'react-grid-system';
+import classNames from 'classnames';
+import qs from 'qs';
 
 import Input from 'app-base-components/input';
-import TextArea from 'app-base-components/text-area';
 import Button from 'app-base-components/button';
+import TextArea from 'app-base-components/text-area';
 import Spinner from 'app-base-components/spinner';
 import { bpBelowMedium } from 'app-utils/breakpoints';
 
@@ -26,39 +28,57 @@ const ContactForm = ({ className, style }) => {
   const [messageConfig, setMessageConfig] = useState(undefined);
   const [requestInProgress, setRequestInProgress] = useState(false);
 
+  const onSubmit = async (values, { resetForm }) => {
+    setRequestInProgress(true);
+
+    try {
+      await axios.post(
+        '/',
+        qs.stringify({
+          ...values,
+          'form-name': 'contact'
+        }),
+        {
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+          }
+        }
+      );
+
+      resetForm();
+      setMessageConfig({
+        text: 'Mensaje enviado!',
+        className: 'text-success'
+      });
+    } catch (error) {
+      setMessageConfig({
+        text: 'Ha ocurrido un error inesperado',
+        className: 'text-danger'
+      });
+    } finally {
+      setRequestInProgress(false);
+
+      setTimeout(() => {
+        setMessageConfig(undefined);
+      }, 5000);
+    }
+  };
+
   return (
     <Formik
       initialValues={{ email: '', name: '', subject: '', message: '' }}
       validationSchema={ContactFormSchema}
-      onSubmit={(values, { resetForm }) => {
-        setRequestInProgress(true);
-
-        axios
-          .post('api/contact', values)
-          .then(response => {
-            resetForm();
-            setMessageConfig({
-              text: 'Mensaje enviado!',
-              className: 'text-success'
-            });
-          })
-          .catch(() => {
-            setMessageConfig({
-              text: 'Ha ocurrido un error inesperado',
-              className: 'text-danger'
-            });
-          })
-          .then(() => {
-            setRequestInProgress(false);
-
-            setTimeout(() => {
-              setMessageConfig(undefined);
-            }, 5000);
-          });
-      }}
+      onSubmit={onSubmit}
     >
       {({ errors }) => (
-        <Form style={style} className={className}>
+        <Form
+          name="contact"
+          style={style}
+          className={className}
+          data-netlify="true"
+        >
+          {/* needed for netlify form handling */}
+          <input type="hidden" name="form-name" value="contact" />
           <Row>
             <Col xs={12} md={6}>
               <Input required name="name" label="Nombre" />
@@ -87,10 +107,10 @@ const ContactForm = ({ className, style }) => {
           >
             {messageConfig && (
               <span
-                className={[
+                className={classNames(
                   messageConfig.className,
                   'w-full pr-3 pb-3 md:pb-0 md:w-auto'
-                ].join(' ')}
+                )}
               >
                 {messageConfig.text}
               </span>
