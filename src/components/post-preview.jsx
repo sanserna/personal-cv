@@ -15,7 +15,7 @@ const PostPreview = ({
   link,
   img,
   creationDate,
-  categories = []
+  categories = [],
 }) => {
   const theme = useTheme();
 
@@ -28,7 +28,7 @@ const PostPreview = ({
         border: `${theme.borderWidth.default} solid ${theme.colors.light}`,
         borderBottomLeftRadius: theme.borderRadius.default,
         borderBottomRightRadius: theme.borderRadius.default,
-        paddingBottom: theme.spacing[4]
+        paddingBottom: theme.spacing[4],
       }}
     >
       <Link to={link}>
@@ -37,13 +37,13 @@ const PostPreview = ({
           imgStyle={{ margin: 0 }}
           css={{
             borderTopLeftRadius: theme.borderRadius.default,
-            borderTopRightRadius: theme.borderRadius.default
+            borderTopRightRadius: theme.borderRadius.default,
           }}
         />
       </Link>
       <div
         css={{
-          padding: theme.spacing[2]
+          padding: theme.spacing[2],
         }}
       >
         <Link to={link}>
@@ -54,8 +54,8 @@ const PostPreview = ({
               lineHeight: theme.lineHeight.tight,
               color: theme.colors.dark,
               '&:hover': {
-                textDecoration: 'underline'
-              }
+                textDecoration: 'underline',
+              },
             }}
           >
             {title}
@@ -64,7 +64,7 @@ const PostPreview = ({
         <div
           css={{
             color: theme.colors.secondary,
-            padding: `${theme.spacing[1]} 0`
+            padding: `${theme.spacing[1]} 0`,
           }}
         >
           {creationDate}
@@ -80,7 +80,7 @@ const PostPreview = ({
         {text && (
           <p
             css={{
-              paddingTop: theme.spacing[1]
+              paddingTop: theme.spacing[1],
             }}
           >
             {text}
@@ -105,15 +105,15 @@ PostPreview.propTypes = {
     aspectRatio: PropTypes.number,
     src: PropTypes.string,
     srcSet: PropTypes.string,
-    sizes: PropTypes.string
-  }).isRequired
+    sizes: PropTypes.string,
+  }).isRequired,
 };
 
 PostPreview.defaultProps = {
   style: {},
   className: '',
   categories: [],
-  text: ''
+  text: '',
 };
 
 export default PostPreview;

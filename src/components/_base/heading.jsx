@@ -16,8 +16,8 @@ const Heading = ({ children, className, style, tag: TagName }) => {
           content: '"_"',
           color: theme.colors.primary,
           fontWeight: theme.fontWeight.bold,
-          paddingLeft: theme.spacing[1]
-        }
+          paddingLeft: theme.spacing[1],
+        },
       }}
     >
       {children}
@@ -28,17 +28,17 @@ const Heading = ({ children, className, style, tag: TagName }) => {
 Heading.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
 };
 
 Heading.defaultProps = {
   className: '',
   style: {},
-  tag: 'h1'
+  tag: 'h1',
 };
 
 export default Heading;

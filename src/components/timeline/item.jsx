@@ -12,7 +12,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
         position: 'relative',
         paddingBottom: theme.spacing[16],
         '&:last-child': {
-          paddingBottom: 0
+          paddingBottom: 0,
         },
         '&::before': {
           content: '" "',
@@ -24,8 +24,8 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
           border: `${theme.borderWidth.default} solid ${stepColor ||
             theme.colors.primary}`,
           left: '-8px',
-          top: '5px'
-        }
+          top: '5px',
+        },
       }}
     >
       <span
@@ -34,21 +34,21 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
           color: theme.colors.secondary,
           fontSize: theme.fontSize.lg,
           paddingLeft: theme.spacing[10],
-          paddingBottom: theme.spacing[3]
+          paddingBottom: theme.spacing[3],
         }}
       >
         {lapse}
       </span>
       <div
         css={{
-          paddingLeft: theme.spacing[10]
+          paddingLeft: theme.spacing[10],
         }}
       >
         <span
           css={{
             color: theme.colors.dark,
             display: 'block',
-            fontSize: theme.fontSize.xl
+            fontSize: theme.fontSize.xl,
           }}
         >
           {title}
@@ -59,7 +59,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
               color: theme.colors.primary,
               display: 'block',
               fontSize: theme.fontSize.lg,
-              paddingTop: theme.spacing[1]
+              paddingTop: theme.spacing[1],
             }}
           >
             {subtitle}
@@ -71,7 +71,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
               color: theme.colors.secondary,
               display: 'block',
               fontSize: theme.fontSize.lg,
-              paddingTop: theme.spacing[1]
+              paddingTop: theme.spacing[1],
             }}
           >
             {desc}
@@ -87,13 +87,13 @@ Item.propTypes = {
   lapse: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   desc: PropTypes.string,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.string,
 };
 
 Item.defaultProps = {
   stepColor: '',
   desc: '',
-  subtitle: ''
+  subtitle: '',
 };
 
 export default Item;

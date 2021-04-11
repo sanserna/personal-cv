@@ -45,20 +45,20 @@ const IconLink = styled.a`
 const linksConfig = {
   facebook: {
     url: author.social.facebook,
-    icon: FaFacebook
+    icon: FaFacebook,
   },
   github: {
     url: author.social.github,
-    icon: FaGithub
+    icon: FaGithub,
   },
   linkedin: {
     url: author.social.linkedin,
-    icon: FaLinkedin
+    icon: FaLinkedin,
   },
   instagram: {
     url: author.social.instagram,
-    icon: FaInstagram
-  }
+    icon: FaInstagram,
+  },
 };
 
 const SocialLinks = ({ className, style, iconColor, iconSize, show }) => {
@@ -70,14 +70,14 @@ const SocialLinks = ({ className, style, iconColor, iconSize, show }) => {
       sm: theme.fontSize.lg,
       md: theme.fontSize['2xl'],
       lg: theme.fontSize['3xl'],
-      xl: theme.fontSize['5xl']
-    }[iconSize]
+      xl: theme.fontSize['5xl'],
+    }[iconSize],
   });
   const itemSpacing = {
     sm: theme.spacing[2],
     md: theme.spacing[3],
     lg: theme.spacing[5],
-    xl: theme.spacing[6]
+    xl: theme.spacing[6],
   }[iconSize];
 
   return (
@@ -110,7 +110,7 @@ SocialLinks.propTypes = {
   style: PropTypes.object,
   iconColor: PropTypes.string,
   iconSize: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
-  show: PropTypes.arrayOf(PropTypes.string)
+  show: PropTypes.arrayOf(PropTypes.string),
 };
 
 SocialLinks.defaultProps = {
@@ -118,7 +118,7 @@ SocialLinks.defaultProps = {
   style: {},
   iconColor: '',
   iconSize: 'md',
-  show: []
+  show: [],
 };
 
 export default SocialLinks;

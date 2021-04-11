@@ -8,7 +8,7 @@ const Label = styled.label(({ theme }) => ({
   fontSize: theme.fontSize.lg,
   color: theme.colors.gray[600],
   display: 'block',
-  marginBottom: theme.spacing[2]
+  marginBottom: theme.spacing[2],
 }));
 
 const TextArea = ({ style, className, name, label, placeholder, required }) => (
@@ -28,7 +28,7 @@ const TextArea = ({ style, className, name, label, placeholder, required }) => (
           style={style}
           placeholder={placeholder}
           css={{
-            height: 130
+            height: 130,
           }}
           className={classNames(
             'form-control',
@@ -50,7 +50,7 @@ TextArea.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
@@ -59,7 +59,7 @@ TextArea.defaultProps = {
   name: '',
   label: '',
   placeholder: '',
-  required: false
+  required: false,
 };
 
 export default TextArea;

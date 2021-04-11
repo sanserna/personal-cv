@@ -9,11 +9,11 @@ import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 const HeaderWrapper = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundCover: 'cover'
+    backgroundCover: 'cover',
   },
   ({ haderPattern, theme }) => ({
     backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
-    paddingTop: theme.spacing[8]
+    paddingTop: theme.spacing[8],
   })
 );
 
@@ -21,7 +21,7 @@ const ThumbnailImg = styled(Img)`
   ${({ theme }) => ({
     background: theme.colors.primary,
     borderRadius: '50%',
-    boxShadow: '5px 10px 15px rgba(0, 0, 0, 0.3)'
+    boxShadow: '5px 10px 15px rgba(0, 0, 0, 0.3)',
   })}
 `;
 
@@ -34,11 +34,11 @@ const Title = styled.h1(({ theme }) => ({
   [bpAboveMedium]: {
     fontSize: theme.fontSize['3xl'],
     padding: `0 0 ${theme.spacing[8]} ${theme.spacing[5]}`,
-    textAlign: 'left'
+    textAlign: 'left',
   },
   [bpAboveLarge]: {
-    fontSize: theme.fontSize['4xl']
-  }
+    fontSize: theme.fontSize['4xl'],
+  },
 }));
 
 const HeroHeader = () => (
@@ -72,12 +72,12 @@ const HeroHeader = () => (
                   css={{
                     margin: 'auto',
                     height: 250,
-                    width: 250
+                    width: 250,
                   }}
                   imgStyle={{
                     top: '5px',
                     width: 'auto',
-                    height: 'auto'
+                    height: 'auto',
                   }}
                 />
               </Col>
@@ -89,7 +89,7 @@ const HeroHeader = () => (
             </Visible>
             <Col>
               <Title>
-                Mi nombre es santiago y soy desarrollador de sofware con
+                Mi nombre es Santiago y soy desarrollador de sofware con
                 experiencia en tecnologías web, actualmente creando desde Bogotá
                 D.C, Colombia.
               </Title>

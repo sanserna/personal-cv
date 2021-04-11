@@ -11,7 +11,7 @@ import PostsGrid from 'app-components/posts-grid';
 
 const BlogPage = ({ data }) => {
   const {
-    posts: { edges: posts = [] }
+    posts: { edges: posts = [] },
   } = data;
 
   return (
@@ -31,7 +31,7 @@ const BlogPage = ({ data }) => {
 };
 
 BlogPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default BlogPage;

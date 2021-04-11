@@ -13,7 +13,7 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
         fontSize: theme.fontSize.xs,
         backgroundColor: backgroundColor || theme.colors.light,
         borderRadius: '25px 0 50px 25px',
-        position: 'relative'
+        position: 'relative',
       }}
     >
       <span
@@ -22,7 +22,7 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
           top: '-1.5rem',
           left: `calc(${value}% - 30px)`,
           fontStyle: 'italic',
-          fontWeight: theme.fontWeight.bold
+          fontWeight: theme.fontWeight.bold,
         }}
       >
         {value}%
@@ -38,7 +38,7 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
           backgroundColor: color || theme.colors.primary,
           borderRadius: '25px 0px 50px 25px',
           transition: 'width 0.6s escape',
-          width: `${value}%`
+          width: `${value}%`,
         }}
       />
     </div>
@@ -48,13 +48,13 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
 ProgressBar.propTypes = {
   value: PropTypes.number,
   backgroundColor: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 ProgressBar.defaultProps = {
   value: 0,
   backgroundColor: '',
-  color: ''
+  color: '',
 };
 
 export default ProgressBar;

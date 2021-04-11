@@ -15,7 +15,7 @@ const sizeModifierStyles = {
     --lg-spacing: ${theme.spacing[4]};
     padding: calc(var(--lg-spacing) / 2) var(--lg-spacing);
     font-size: ${theme.fontSize.lg};
-  `
+  `,
 };
 
 const Button = ({
@@ -27,7 +27,7 @@ const Button = ({
   type,
   size,
   onClick,
-  color
+  color,
 }) => {
   const theme = useTheme();
   const mainColor = theme.colors[color];
@@ -96,7 +96,7 @@ const Button = ({
 Button.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
   style: PropTypes.object,
   className: PropTypes.string,
@@ -112,8 +112,8 @@ Button.propTypes = {
     'danger',
     'success',
     'light',
-    'dark'
-  ])
+    'dark',
+  ]),
 };
 
 Button.defaultProps = {
@@ -124,7 +124,7 @@ Button.defaultProps = {
   type: 'button',
   size: 'md',
   onClick: () => {},
-  color: 'primary'
+  color: 'primary',
 };
 
 export default Button;

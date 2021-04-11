@@ -19,16 +19,16 @@ const PostsGrid = ({ posts = [] }) => {
             title,
             categories,
             cover: {
-              childImageSharp: { fluid }
-            }
-          }
+              childImageSharp: { fluid },
+            },
+          },
         }) => (
           <Col
             key={id}
             md={6}
             lg={4}
             css={{
-              paddingBottom: theme.spacing[4]
+              paddingBottom: theme.spacing[4],
             }}
           >
             <PostPreview
@@ -52,16 +52,16 @@ PostsGrid.propTypes = {
       excerpt: PropTypes.string.isRequired,
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
-        prefix: PropTypes.string.isRequired
+        prefix: PropTypes.string.isRequired,
       }),
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         categories: PropTypes.arrayOf(PropTypes.string).isRequired,
         author: PropTypes.string.isRequired,
-        cover: PropTypes.object.isRequired
-      }).isRequired
+        cover: PropTypes.object.isRequired,
+      }).isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 PostsGrid.defaultProps = {};

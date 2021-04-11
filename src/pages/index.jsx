@@ -16,7 +16,7 @@ import Paragraph from 'app-base-components/paragraph';
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
-  paddingTop: theme.spacing[16]
+  paddingTop: theme.spacing[16],
 }));
 
 const SectionHeading = styled(Heading)`
@@ -28,7 +28,7 @@ const SectionHeading = styled(Heading)`
 const IndexPage = ({ data }) => {
   const theme = useTheme();
   const {
-    posts: { edges: posts = [] }
+    posts: { edges: posts = [] },
   } = data;
 
   return (
@@ -42,7 +42,7 @@ const IndexPage = ({ data }) => {
         </SectionWrapper>
         <section
           css={{
-            paddingTop: theme.spacing[12]
+            paddingTop: theme.spacing[12],
           }}
         >
           <SectionHeading>Sobre mi</SectionHeading>
@@ -64,8 +64,8 @@ const IndexPage = ({ data }) => {
             css={{
               fontSize: theme.fontSize.lg,
               [bpAboveSmall]: {
-                fontSize: theme.fontSize.xl
-              }
+                fontSize: theme.fontSize.xl,
+              },
             }}
           >
             Ver mas...
@@ -85,8 +85,9 @@ const IndexPage = ({ data }) => {
         <SocialLinks
           iconColor={theme.colors.dark}
           iconSize="xl"
+          show={['github', 'linkedin']}
           css={{
-            padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`
+            padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`,
           }}
         />
       </Container>
@@ -95,7 +96,7 @@ const IndexPage = ({ data }) => {
 };
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

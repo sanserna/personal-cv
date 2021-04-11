@@ -20,9 +20,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         'app-pages': path.resolve(__dirname, './src/pages'),
         'app-templates': path.resolve(__dirname, './src/templates'),
         'app-theme': path.resolve(__dirname, './src/theme'),
-        'app-utils': path.resolve(__dirname, './src/utils')
-      }
-    }
+        'app-utils': path.resolve(__dirname, './src/utils'),
+      },
+    },
   });
 };
 
@@ -40,22 +40,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       createNodeField({
         node,
         name: 'slug',
-        value: `blog${separtorIndex ? '/' : ''}${slug.substring(
+        value: `/blog${separtorIndex ? '/' : ''}${slug.substring(
           shortSlugStart
-        )}`
+        )}`,
       });
     }
 
     createNodeField({
       node,
       name: 'prefix',
-      value: separtorIndex ? slug.substring(1, separtorIndex) : ''
+      value: separtorIndex ? slug.substring(1, separtorIndex) : '',
     });
 
     createNodeField({
       node,
       name: 'source',
-      value: source
+      value: source,
     });
   }
 };
@@ -150,8 +150,8 @@ exports.createPages = async ({ graphql, actions }) => {
         slug,
         prev,
         next,
-        source
-      }
+        source,
+      },
     });
   });
 

@@ -12,9 +12,9 @@ module.exports = {
         success: colors.green[600],
         light: colors.gray[200],
         dark: colors.gray[900],
-        link: theme => theme.colors.primary
-      }
-    }
+        link: theme => theme.colors.primary,
+      },
+    },
   },
   variants: {},
   plugins: [
@@ -25,8 +25,8 @@ module.exports = {
         h3: { fontSize: config('theme.fontSize.2xl') },
         h4: { fontSize: config('theme.fontSize.xl') },
         h5: { fontSize: config('theme.fontSize.lg') },
-        h6: { fontSize: config('theme.fontSize.base') }
+        h6: { fontSize: config('theme.fontSize.base') },
       });
-    }
-  ]
+    },
+  ],
 };
