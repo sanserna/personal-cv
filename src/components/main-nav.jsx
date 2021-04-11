@@ -165,6 +165,7 @@ const MainNav = ({ style, className, pathName }) => {
                         key={navItem.to}
                         to={navItem.to}
                         activeClassName="active"
+                        partiallyActive
                       >
                         {navItem.label}
                       </NavigationItem>

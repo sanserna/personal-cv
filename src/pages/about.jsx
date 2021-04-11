@@ -110,6 +110,7 @@ const AboutPage = () => {
         <SocialLinks
           iconColor={theme.colors.dark}
           iconSize="xl"
+          show={['github', 'linkedin']}
           css={{
             padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`,
           }}
