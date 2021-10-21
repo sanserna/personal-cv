@@ -24,7 +24,7 @@ export const formatLapseDate = config => {
   if (days >= 15) {
     months++;
 
-    if (months >= 13) {
+    if (months >= 12) {
       months = 0;
       years++;
     }
@@ -38,7 +38,7 @@ export const formatLapseDate = config => {
   }
 
   if (months) {
-    const monthsTxt = `${months} mes${!(months <= 1) && 'es'}`;
+    const monthsTxt = `${months} mes${months <= 1 ? '' : 'es'}`;
     difference += years ? `, ${monthsTxt}` : monthsTxt;
   }
 
