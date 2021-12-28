@@ -86,7 +86,7 @@ const AboutPage = () => {
                     height: '60px',
                   }}
                 >
-                  <ProgressBar value={skill.level} />
+                  <ProgressBar value={skill.level} showPercentage={false} />
                 </div>
               </div>
             ))}

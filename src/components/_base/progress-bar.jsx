@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-const ProgressBar = ({ value, backgroundColor, color }) => {
+const ProgressBar = ({ value, backgroundColor, color, showPercentage }) => {
   const theme = useTheme();
 
   return (
@@ -16,17 +16,19 @@ const ProgressBar = ({ value, backgroundColor, color }) => {
         position: 'relative',
       }}
     >
-      <span
-        css={{
-          position: 'absolute',
-          top: '-1.5rem',
-          left: `calc(${value}% - 30px)`,
-          fontStyle: 'italic',
-          fontWeight: theme.fontWeight.bold,
-        }}
-      >
-        {value}%
-      </span>
+      {showPercentage && (
+        <span
+          css={{
+            position: 'absolute',
+            top: '-1.5rem',
+            left: `calc(${value}% - 30px)`,
+            fontStyle: 'italic',
+            fontWeight: theme.fontWeight.bold,
+          }}
+        >
+          {value}%
+        </span>
+      )}
       <div
         css={{
           display: 'flex',
@@ -49,12 +51,14 @@ ProgressBar.propTypes = {
   value: PropTypes.number,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
+  showPercentage: PropTypes.bool,
 };
 
 ProgressBar.defaultProps = {
   value: 0,
   backgroundColor: '',
   color: '',
+  showPercentage: true,
 };
 
 export default ProgressBar;
