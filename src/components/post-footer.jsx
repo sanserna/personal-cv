@@ -5,6 +5,7 @@ import { Container } from 'react-grid-system';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Paragraph from 'app-base-components/paragraph';
+import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const PostFooter = () => {
   const theme = useTheme();
@@ -15,7 +16,7 @@ const PostFooter = () => {
         {
           heroImage: file(relativePath: { eq: "santiago-2.png" }) {
             childImageSharp {
-              fluid(maxWidth: 100, quality: 100) {
+              fluid(maxWidth: 150, quality: 100) {
                 ...GatsbyImageSharpFluid_noBase64
               }
             }
@@ -25,16 +26,20 @@ const PostFooter = () => {
       render={({ heroImage }) => (
         <Container>
           <hr />
-          <div className="flex items-center py-10">
+          <div className="flex items-center py-10 flex-wrap md:flex-no-wrap">
             <Img
               fluid={heroImage.childImageSharp.fluid}
               className="flex-none"
               css={{
-                marginRight: theme.spacing[3],
-                height: 100,
-                width: 100,
+                margin: 'auto',
+                height: 150,
+                width: 150,
                 background: theme.colors.white,
                 borderRadius: '50%',
+                [bpAboveSmall]: {
+                  height: 100,
+                  width: 100,
+                },
               }}
               imgStyle={{
                 top: '5px',
@@ -42,7 +47,7 @@ const PostFooter = () => {
                 height: 'auto',
               }}
             />
-            <Paragraph className="pl-3 pb-0">
+            <Paragraph className="pt-4 md:pt-0 pb-0 md:pl-4 w-full md:w-auto text-center md:text-left">
               Soy <strong>Santiago Serna</strong> y me apasiona la tecnología,
               me encanta ayudar a las personas en su proceso de crecimiento como
               desarrolladores de software.
