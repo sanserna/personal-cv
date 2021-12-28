@@ -1,8 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { css, useTheme } from '@emotion/react';
 import { darken } from 'polished';
 
 const sizeModifierStyles = {
@@ -44,9 +43,9 @@ const Button = ({
       color={color}
       onClick={onClick}
       css={css`
-        border-width: ${theme.borderWidth.default};
+        border-width: ${theme.borderWidth.DEFAULT};
         border-color: ${mainColor};
-        border-radius: ${theme.borderRadius.default};
+        border-radius: ${theme.borderRadius.DEFAULT};
         padding: calc(${mdSpacing} / 2) ${mdSpacing};
         font-size: ${theme.fontSize.base};
         font-weight: ${theme.fontWeight.semibold};

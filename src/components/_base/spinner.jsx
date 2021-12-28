@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, keyframes } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { css, keyframes, useTheme } from '@emotion/react';
 
 const borderLoop = keyframes`
   to {

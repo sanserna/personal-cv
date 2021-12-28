@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 import PostPreview from 'app-components/post-preview';
 

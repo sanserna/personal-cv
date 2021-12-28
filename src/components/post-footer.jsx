@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Container } from 'react-grid-system';
 import { StaticQuery, graphql } from 'gatsby';
 

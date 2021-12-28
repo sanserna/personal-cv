@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 module.exports = {
   siteMetadata: {
     title: 'Mi Resumen',
@@ -18,17 +19,17 @@ module.exports = {
         postCssPlugins: [require('tailwindcss')],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true,
-        // develop: true, // Enable while using `gatsby develop`
-        tailwind: true,
-        // whitelist: [] // Don't remove this selector
-        ignore: ['prismjs/'], // Ignore files/folders
-        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-purgecss`,
+    //   options: {
+    //     printRejected: true,
+    //     // develop: true, // Enable while using `gatsby develop`
+    //     tailwind: true,
+    //     // whitelist: [] // Don't remove this selector
+    //     ignore: ['prismjs/'], // Ignore files/folders
+    //     // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

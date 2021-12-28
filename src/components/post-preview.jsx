@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 import Badge from 'app-base-components/badge';
 import Link from 'app-base-components/link';
@@ -25,9 +25,9 @@ const PostPreview = ({
       style={style}
       css={{
         backgroundColor: theme.colors.white,
-        border: `${theme.borderWidth.default} solid ${theme.colors.light}`,
-        borderBottomLeftRadius: theme.borderRadius.default,
-        borderBottomRightRadius: theme.borderRadius.default,
+        border: `${theme.borderWidth.DEFAULT} solid ${theme.colors.light}`,
+        borderBottomLeftRadius: theme.borderRadius.DEFAULT,
+        borderBottomRightRadius: theme.borderRadius.DEFAULT,
         paddingBottom: theme.spacing[4],
       }}
     >
@@ -36,8 +36,8 @@ const PostPreview = ({
           fluid={img}
           imgStyle={{ margin: 0 }}
           css={{
-            borderTopLeftRadius: theme.borderRadius.default,
-            borderTopRightRadius: theme.borderRadius.default,
+            borderTopLeftRadius: theme.borderRadius.DEFAULT,
+            borderTopRightRadius: theme.borderRadius.DEFAULT,
           }}
         />
       </Link>

@@ -1,22 +1,28 @@
-const { colors } = require('tailwindcss/defaultTheme');
-
 module.exports = {
   important: true,
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './templates/**/*.{js,jsx}',
+  ],
   theme: {
     extend: {
-      colors: {
+      colors: ({ colors }) => ({
         primary: '#2980b9',
-        secondary: colors.gray[700],
-        warning: colors.yellow[600],
+        secondary: colors.neutral[700],
+        warning: colors.amber[600],
         danger: colors.red[600],
-        success: colors.green[600],
-        light: colors.gray[200],
-        dark: colors.gray[900],
+        success: colors.emerald[600],
+        light: colors.neutral[200],
+        dark: colors.neutral[900],
         link: theme => theme.colors.primary,
-      },
+        gray: colors.neutral,
+      }),
     },
   },
-  variants: {},
+  corePlugins: {
+    preflight: false,
+  },
   plugins: [
     ({ addBase, config }) => {
       addBase({

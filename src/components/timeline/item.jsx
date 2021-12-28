@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
   const theme = useTheme();
@@ -21,7 +21,7 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
           width: '16px',
           background: theme.colors.white,
           borderRadius: '8px',
-          border: `${theme.borderWidth.default} solid ${stepColor ||
+          border: `${theme.borderWidth.DEFAULT} solid ${stepColor ||
             theme.colors.primary}`,
           left: '-8px',
           top: '5px',

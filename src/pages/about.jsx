@@ -1,8 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { css, useTheme } from '@emotion/react';
 import { Container } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';

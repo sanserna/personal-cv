@@ -5,7 +5,8 @@ module.exports = ctx => ({
       defaultFontFamily: 'Open Sans',
       defaultLineHeight: '0',
     },
-    'postcss-nested': {},
     'postcss-preset-env': {},
+    autoprefixer: {},
+    // ...(NODE_ENV === 'production' ? { cssnano: {} } : {}),
   },
 });

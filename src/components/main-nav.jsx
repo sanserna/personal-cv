@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Container, Visible } from 'react-grid-system';
 import { IconContext } from 'react-icons';
 import { FaBars } from 'react-icons/fa';

@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import moment from 'moment';
 import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Container, Row, Col } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
