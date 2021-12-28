@@ -26,7 +26,7 @@ const PostFooter = () => {
       render={({ heroImage }) => (
         <Container>
           <hr />
-          <div className="flex items-center py-10 flex-wrap md:flex-no-wrap">
+          <div className="flex items-center py-10 flex-wrap md:flex-nowrap">
             <Img
               fluid={heroImage.childImageSharp.fluid}
               className="flex-none"

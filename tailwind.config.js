@@ -1,11 +1,27 @@
 module.exports = {
   important: true,
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './templates/**/*.{js,jsx}',
+    './src/pages/**/*.{js,jsx}',
+    './src/components/**/*.{js,jsx}',
+    './src/templates/**/*.{js,jsx}',
   ],
   theme: {
+    // IMPORTANT: explicitly configuring font-size scale to use the scale from
+    // v1 since v2 font-size utility includes a sensible size-specific
+    // line-height by default, this affects components that are using
+    // theme.fontSize js utility
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+    },
     extend: {
       colors: ({ colors }) => ({
         primary: '#2980b9',
@@ -19,9 +35,6 @@ module.exports = {
         gray: colors.neutral,
       }),
     },
-  },
-  corePlugins: {
-    preflight: false,
   },
   plugins: [
     ({ addBase, config }) => {

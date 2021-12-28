@@ -7,6 +7,6 @@ module.exports = ctx => ({
     },
     'postcss-preset-env': {},
     autoprefixer: {},
-    // ...(NODE_ENV === 'production' ? { cssnano: {} } : {}),
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
   },
 });

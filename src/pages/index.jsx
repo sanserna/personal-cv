@@ -20,9 +20,14 @@ const SectionWrapper = styled.section(({ theme }) => ({
 }));
 
 const SectionHeading = styled(Heading)`
-  ${({ theme }) => `
-    font-size: ${theme.fontSize['5xl']};
-  `}
+  ${({ theme }) => {
+    console.log(theme.fontSize['5xl']);
+    console.log(theme.colors);
+
+    return `
+      font-size: ${theme.fontSize['5xl']};
+    `;
+  }}
 `;
 
 const IndexPage = ({ data }) => {

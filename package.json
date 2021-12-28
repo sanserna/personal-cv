@@ -10,11 +10,11 @@
     "url": "https://github.com/sanserna/personal-cv"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "dev": "gatsby develop",
-    "build": "NODE_ENV=production gatsby build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "cache:clean": "gatsby clean",
     "lint": "eslint . --ext .jsx,.js"
