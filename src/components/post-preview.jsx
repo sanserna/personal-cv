@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useTheme } from '@emotion/react';
 
 import Badge from 'app-base-components/badge';
@@ -32,14 +32,13 @@ const PostPreview = ({
       }}
     >
       <Link to={link}>
-        <Img
-          fluid={img}
+        <GatsbyImage
+          image={img}
           imgStyle={{ margin: 0 }}
           css={{
             borderTopLeftRadius: theme.borderRadius.DEFAULT,
             borderTopRightRadius: theme.borderRadius.DEFAULT,
-          }}
-        />
+          }} />
       </Link>
       <div
         css={{

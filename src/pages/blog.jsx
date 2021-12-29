@@ -37,7 +37,7 @@ BlogPage.propTypes = {
 export default BlogPage;
 
 export const query = graphql`
-  query {
+  {
     posts: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
       sort: { fields: [fields___prefix], order: DESC }
@@ -56,9 +56,7 @@ export const query = graphql`
             author
             cover {
               childImageSharp {
-                fluid(maxHeight: 300) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(height: 300, layout: FULL_WIDTH)
               }
             }
           }

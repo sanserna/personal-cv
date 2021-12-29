@@ -20,14 +20,9 @@ const SectionWrapper = styled.section(({ theme }) => ({
 }));
 
 const SectionHeading = styled(Heading)`
-  ${({ theme }) => {
-    console.log(theme.fontSize['5xl']);
-    console.log(theme.colors);
-
-    return `
-      font-size: ${theme.fontSize['5xl']};
-    `;
-  }}
+  ${({ theme }) => `
+    font-size: ${theme.fontSize['5xl']};
+  `}
 `;
 
 const IndexPage = ({ data }) => {
@@ -43,7 +38,7 @@ const IndexPage = ({ data }) => {
       <Container>
         <SectionWrapper>
           <SectionHeading>Últimas publicaciones</SectionHeading>
-          <PostsGrid posts={posts.map(post => post.node)} />
+          {/* <PostsGrid posts={posts.map(post => post.node)} /> */}
         </SectionWrapper>
         <section
           css={{
@@ -107,7 +102,7 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 export const query = graphql`
-  query {
+  {
     posts: allMarkdownRemark(
       limit: 4
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
@@ -127,9 +122,7 @@ export const query = graphql`
             author
             cover {
               childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 400, layout: CONSTRAINED)
               }
             }
           }
