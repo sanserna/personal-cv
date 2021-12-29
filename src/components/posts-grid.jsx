@@ -15,13 +15,7 @@ const PostsGrid = ({ posts = [] }) => {
         ({
           id,
           fields: { slug, prefix },
-          frontmatter: {
-            title,
-            categories,
-            cover: {
-              childImageSharp: { fluid },
-            },
-          },
+          frontmatter: { title, categories, cover },
         }) => (
           <Col
             key={id}
@@ -36,7 +30,7 @@ const PostsGrid = ({ posts = [] }) => {
               categories={categories}
               link={slug}
               title={title}
-              img={fluid}
+              coverImageData={cover}
             />
           </Col>
         )

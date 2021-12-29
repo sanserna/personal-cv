@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import rehypeReact from 'rehype-react';
@@ -15,6 +15,7 @@ import Paragraph from 'app-base-components/paragraph';
 import Link from 'app-base-components/link';
 import PostFooter from 'app-components/post-footer';
 import { bpAboveMedium } from 'app-utils/breakpoints';
+import haderPattern from 'app-images/assets/footer_lodyas.png';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -28,11 +29,11 @@ const renderAst = new rehypeReact({
 const PostHeader = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundCover: 'cover',
+    backgroundSize: '600px 600px',
+    backgroundImage: `url(${haderPattern})`,
   },
-  ({ theme, haderPattern }) => ({
+  ({ theme }) => ({
     padding: `${theme.spacing[5]} 0`,
-    backgroundImage: `url(${haderPattern.childImageSharp.gatsbyImageData.src})`,
   })
 );
 
@@ -46,97 +47,93 @@ const PostTemplate = props => {
   const theme = useTheme();
   const {
     data: {
-      haderPattern,
       post: {
         htmlAst,
         fields: { prefix },
-        frontmatter: {
-          author,
-          title,
-          description,
-          categories = [],
-          cover: {
-            childImageSharp: { fluid },
-          },
-        },
+        frontmatter: { author, title, description, categories = [], cover },
       },
     },
   } = props;
+  const coverImage = getImage(cover);
 
-  return <>
-    <Seo title={title} description={description} />
-    <PostHeader haderPattern={haderPattern}>
-      <Container>
-        <Row align="center" nogutter>
-          <Col xs={12} md={5}>
-            <GatsbyImage
-              image={fluid}
-              css={{
-                borderRadius: theme.borderRadius.lg,
-              }} />
-          </Col>
-          <Col xs={12} md={7}>
-            <div
-              css={{
-                paddingTop: theme.spacing[4],
-                [bpAboveMedium]: {
-                  paddingTop: 0,
-                  paddingLeft: theme.spacing[4],
-                },
-              }}
-            >
-              <h1
+  return (
+    <>
+      <Seo title={title} description={description} />
+      <PostHeader haderPattern={haderPattern}>
+        <Container>
+          <Row align="center" nogutter>
+            <Col xs={12} md={5}>
+              <GatsbyImage
+                alt={title}
+                image={coverImage}
                 css={{
-                  color: theme.colors.light,
-                  fontWeight: theme.fontWeight.semibold,
-                  fontSize: theme.fontSize['3xl'],
-                  lineHeight: theme.lineHeight.tight,
-                  marginBottom: theme.spacing[3],
+                  borderRadius: theme.borderRadius.lg,
                 }}
-              >
-                {title}
-              </h1>
-              <span
-                css={{
-                  fontSize: theme.fontSize.lg,
-                  color: theme.colors.light,
-                }}
-              >
-                {author}
-                {' | '}
-              </span>
-              <span
-                css={{
-                  fontSize: theme.fontSize.lg,
-                  color: theme.colors.gray[500],
-                }}
-              >
-                {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
-              </span>
+              />
+            </Col>
+            <Col xs={12} md={7}>
               <div
                 css={{
-                  marginTop: theme.spacing[2],
+                  paddingTop: theme.spacing[4],
+                  [bpAboveMedium]: {
+                    paddingTop: 0,
+                    paddingLeft: theme.spacing[4],
+                  },
                 }}
               >
-                {categories.map(category => (
-                  <Badge
-                    key={category}
-                    text={category}
-                    color={theme.colors.primary}
-                    textColor={theme.colors.white}
-                  />
-                ))}
+                <h1
+                  css={{
+                    color: theme.colors.light,
+                    fontWeight: theme.fontWeight.semibold,
+                    fontSize: theme.fontSize['3xl'],
+                    lineHeight: theme.lineHeight.tight,
+                    marginBottom: theme.spacing[3],
+                  }}
+                >
+                  {title}
+                </h1>
+                <span
+                  css={{
+                    fontSize: theme.fontSize.lg,
+                    color: theme.colors.light,
+                  }}
+                >
+                  {author}
+                  {' | '}
+                </span>
+                <span
+                  css={{
+                    fontSize: theme.fontSize.lg,
+                    color: theme.colors.slate[400],
+                  }}
+                >
+                  {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+                </span>
+                <div
+                  css={{
+                    marginTop: theme.spacing[2],
+                  }}
+                >
+                  {categories.map(category => (
+                    <Badge
+                      key={category}
+                      text={category}
+                      color={theme.colors.primary}
+                      textColor={theme.colors.white}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </PostHeader>
-    <PostContent>
-      <Container>{renderAst(htmlAst)}</Container>
-    </PostContent>
-    <PostFooter />
-  </>;
+            </Col>
+          </Row>
+        </Container>
+      </PostHeader>
+      <PostContent>
+        <Container>{renderAst(htmlAst)}</Container>
+      </PostContent>
+      <PostFooter />
+    </>
+  );
 };
 
 PostTemplate.propTypes = {
@@ -145,36 +142,26 @@ PostTemplate.propTypes = {
 
 export default PostTemplate;
 
-export const query = graphql`query ($slug: String!) {
-  haderPattern: file(relativePath: {eq: "assets/footer_lodyas.png"}) {
-    childImageSharp {
-      gatsbyImageData(
-        width: 600
-        height: 600
-        quality: 100
-        placeholder: BLURRED
-        layout: FIXED
-      )
-    }
-  }
-  post: markdownRemark(fields: {slug: {eq: $slug}}) {
-    id
-    htmlAst
-    fields {
-      slug
-      prefix
-    }
-    frontmatter {
-      author
-      title
-      description
-      categories
-      cover {
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
+export const query = graphql`
+  query($slug: String!) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      htmlAst
+      fields {
+        slug
+        prefix
+      }
+      frontmatter {
+        author
+        title
+        description
+        categories
+        cover {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR)
+          }
         }
       }
     }
   }
-}
 `;

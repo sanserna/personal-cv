@@ -38,7 +38,7 @@ const IndexPage = ({ data }) => {
       <Container>
         <SectionWrapper>
           <SectionHeading>Últimas publicaciones</SectionHeading>
-          {/* <PostsGrid posts={posts.map(post => post.node)} /> */}
+          <PostsGrid posts={posts.map(post => post.node)} />
         </SectionWrapper>
         <section
           css={{
@@ -122,7 +122,11 @@ export const query = graphql`
             author
             cover {
               childImageSharp {
-                gatsbyImageData(width: 400, layout: CONSTRAINED)
+                gatsbyImageData(
+                  width: 400
+                  layout: CONSTRAINED
+                  placeholder: DOMINANT_COLOR
+                )
               }
             }
           }

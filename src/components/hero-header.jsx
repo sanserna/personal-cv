@@ -10,7 +10,7 @@ import heroBgPattern from 'app-images/assets/tree_bark.png';
 const HeaderWrapper = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundCover: 'cover',
+    backgroundSize: '350px 350px',
     backgroundImage: `url(${heroBgPattern})`,
   },
   ({ theme }) => ({

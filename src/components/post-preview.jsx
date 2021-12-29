@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { useTheme } from '@emotion/react';
 
 import Badge from 'app-base-components/badge';
@@ -13,11 +13,12 @@ const PostPreview = ({
   title,
   text,
   link,
-  img,
+  coverImageData,
   creationDate,
   categories = [],
 }) => {
   const theme = useTheme();
+  const coverImage = getImage(coverImageData);
 
   return (
     <div
@@ -33,12 +34,13 @@ const PostPreview = ({
     >
       <Link to={link}>
         <GatsbyImage
-          image={img}
-          imgStyle={{ margin: 0 }}
+          alt={title}
+          image={coverImage}
           css={{
             borderTopLeftRadius: theme.borderRadius.DEFAULT,
             borderTopRightRadius: theme.borderRadius.DEFAULT,
-          }} />
+          }}
+        />
       </Link>
       <div
         css={{
@@ -99,13 +101,7 @@ PostPreview.propTypes = {
   // FIXME: we should format the date internaly
   creationDate: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
-  img: PropTypes.shape({
-    base64: PropTypes.string,
-    aspectRatio: PropTypes.number,
-    src: PropTypes.string,
-    srcSet: PropTypes.string,
-    sizes: PropTypes.string,
-  }).isRequired,
+  coverImageData: PropTypes.object.isRequired,
 };
 
 PostPreview.defaultProps = {
