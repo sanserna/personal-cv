@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
@@ -102,7 +102,7 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 export const query = graphql`
-  query {
+  {
     posts: allMarkdownRemark(
       limit: 4
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
@@ -122,9 +122,11 @@ export const query = graphql`
             author
             cover {
               childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(
+                  width: 400
+                  layout: CONSTRAINED
+                  placeholder: DOMINANT_COLOR
+                )
               }
             }
           }

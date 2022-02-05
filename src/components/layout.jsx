@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Global, css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { Global, css, useTheme } from '@emotion/react';
 import { setConfiguration } from 'react-grid-system';
 import 'moment/locale/es';
 

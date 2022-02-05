@@ -1,7 +1,7 @@
 /* eslint react/no-array-index-key: "off" */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 import { formatLapseDate } from 'app-utils/date';
 import Item from './item';

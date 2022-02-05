@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
-import { useTheme } from 'emotion-theming';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { useTheme } from '@emotion/react';
 
 import Badge from 'app-base-components/badge';
 import Link from 'app-base-components/link';
@@ -13,11 +13,12 @@ const PostPreview = ({
   title,
   text,
   link,
-  img,
+  coverImageData,
   creationDate,
   categories = [],
 }) => {
   const theme = useTheme();
+  const coverImage = getImage(coverImageData);
 
   return (
     <div
@@ -25,19 +26,19 @@ const PostPreview = ({
       style={style}
       css={{
         backgroundColor: theme.colors.white,
-        border: `${theme.borderWidth.default} solid ${theme.colors.light}`,
-        borderBottomLeftRadius: theme.borderRadius.default,
-        borderBottomRightRadius: theme.borderRadius.default,
+        border: `${theme.borderWidth.DEFAULT} solid ${theme.colors.light}`,
+        borderBottomLeftRadius: theme.borderRadius.DEFAULT,
+        borderBottomRightRadius: theme.borderRadius.DEFAULT,
         paddingBottom: theme.spacing[4],
       }}
     >
       <Link to={link}>
-        <Img
-          fluid={img}
-          imgStyle={{ margin: 0 }}
+        <GatsbyImage
+          alt={title}
+          image={coverImage}
           css={{
-            borderTopLeftRadius: theme.borderRadius.default,
-            borderTopRightRadius: theme.borderRadius.default,
+            borderTopLeftRadius: theme.borderRadius.DEFAULT,
+            borderTopRightRadius: theme.borderRadius.DEFAULT,
           }}
         />
       </Link>
@@ -100,13 +101,7 @@ PostPreview.propTypes = {
   // FIXME: we should format the date internaly
   creationDate: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
-  img: PropTypes.shape({
-    base64: PropTypes.string,
-    aspectRatio: PropTypes.number,
-    src: PropTypes.string,
-    srcSet: PropTypes.string,
-    sizes: PropTypes.string,
-  }).isRequired,
+  coverImageData: PropTypes.object.isRequired,
 };
 
 PostPreview.defaultProps = {

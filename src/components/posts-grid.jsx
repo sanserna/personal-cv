@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 import PostPreview from 'app-components/post-preview';
 
@@ -15,13 +15,7 @@ const PostsGrid = ({ posts = [] }) => {
         ({
           id,
           fields: { slug, prefix },
-          frontmatter: {
-            title,
-            categories,
-            cover: {
-              childImageSharp: { fluid },
-            },
-          },
+          frontmatter: { title, categories, cover },
         }) => (
           <Col
             key={id}
@@ -36,7 +30,7 @@ const PostsGrid = ({ posts = [] }) => {
               categories={categories}
               link={slug}
               title={title}
-              img={fluid}
+              coverImageData={cover}
             />
           </Col>
         )

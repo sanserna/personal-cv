@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Container, Row, Col } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
@@ -15,6 +15,7 @@ import Paragraph from 'app-base-components/paragraph';
 import Link from 'app-base-components/link';
 import PostFooter from 'app-components/post-footer';
 import { bpAboveMedium } from 'app-utils/breakpoints';
+import haderPattern from 'app-images/assets/footer_lodyas.png';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -28,11 +29,11 @@ const renderAst = new rehypeReact({
 const PostHeader = styled.header(
   {
     backgroundRepeat: 'repeat',
-    backgroundCover: 'cover',
+    backgroundSize: '600px 600px',
+    backgroundImage: `url(${haderPattern})`,
   },
-  ({ theme, haderPattern }) => ({
+  ({ theme }) => ({
     padding: `${theme.spacing[5]} 0`,
-    backgroundImage: `url(${haderPattern.childImageSharp.fixed.src})`,
   })
 );
 
@@ -46,22 +47,14 @@ const PostTemplate = props => {
   const theme = useTheme();
   const {
     data: {
-      haderPattern,
       post: {
         htmlAst,
         fields: { prefix },
-        frontmatter: {
-          author,
-          title,
-          description,
-          categories = [],
-          cover: {
-            childImageSharp: { fluid },
-          },
-        },
+        frontmatter: { author, title, description, categories = [], cover },
       },
     },
   } = props;
+  const coverImage = getImage(cover);
 
   return (
     <>
@@ -70,8 +63,9 @@ const PostTemplate = props => {
         <Container>
           <Row align="center" nogutter>
             <Col xs={12} md={5}>
-              <Img
-                fluid={fluid}
+              <GatsbyImage
+                alt={title}
+                image={coverImage}
                 css={{
                   borderRadius: theme.borderRadius.lg,
                 }}
@@ -110,7 +104,7 @@ const PostTemplate = props => {
                 <span
                   css={{
                     fontSize: theme.fontSize.lg,
-                    color: theme.colors.gray[500],
+                    color: theme.colors.slate[400],
                   }}
                 >
                   {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
@@ -150,13 +144,6 @@ export default PostTemplate;
 
 export const query = graphql`
   query($slug: String!) {
-    haderPattern: file(relativePath: { eq: "assets/footer_lodyas.png" }) {
-      childImageSharp {
-        fixed(width: 600, height: 600, quality: 100) {
-          src
-        }
-      }
-    }
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       htmlAst
@@ -171,9 +158,7 @@ export const query = graphql`
         categories
         cover {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR)
           }
         }
       }
