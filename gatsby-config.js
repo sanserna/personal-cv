@@ -7,13 +7,16 @@ module.exports = {
   plugins: [
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      breakpoints: [576, 768, 992, 1200],
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {

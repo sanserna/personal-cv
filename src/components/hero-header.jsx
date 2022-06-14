@@ -40,7 +40,7 @@ const HeroHeader = () => (
       <Row align="center" nogutter>
         <Hidden md lg xl>
           <Col xs={12}>
-            <HeroThumbnail size="lg" showShadow />
+            <HeroThumbnail size="lg" />
           </Col>
         </Hidden>
         <Visible md lg xl>

@@ -149,7 +149,6 @@ export const query = graphql`
       htmlAst
       fields {
         slug
-        prefix
       }
       frontmatter {
         author

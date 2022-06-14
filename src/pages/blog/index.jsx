@@ -40,7 +40,7 @@ export const query = graphql`
   {
     posts: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
+      sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
         node {
@@ -48,7 +48,6 @@ export const query = graphql`
           excerpt
           fields {
             slug
-            prefix
           }
           frontmatter {
             title

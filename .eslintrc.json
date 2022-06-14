@@ -47,6 +47,7 @@
     }
   },
   "rules": {
+    "import/prefer-default-export": 0,
     "react-hooks/rules-of-hooks": "error",
     "react/forbid-prop-types": "off",
     "jsx-a11y/label-has-associated-control": [

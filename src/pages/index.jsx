@@ -28,8 +28,10 @@ const SectionHeading = styled(Heading)`
 const IndexPage = ({ data }) => {
   const theme = useTheme();
   const {
-    posts: { edges: posts = [] },
+    postsData: { edges: posts = [] },
   } = data;
+
+  console.log(posts);
 
   return (
     <>
@@ -103,10 +105,13 @@ export default IndexPage;
 
 export const query = graphql`
   {
-    posts: allMarkdownRemark(
+    postsData
+  }
+  {
+    postsData: allMarkdownRemark(
       limit: 4
-      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
+      filter: { fileAbsolutePath: { regex: "posts/\\w+/" } }
+      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
     ) {
       edges {
         node {
@@ -114,7 +119,6 @@ export const query = graphql`
           excerpt
           fields {
             slug
-            prefix
           }
           frontmatter {
             title

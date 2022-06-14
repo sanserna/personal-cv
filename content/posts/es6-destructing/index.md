@@ -1,5 +1,6 @@
 ---
 title: ES6 Destructuring (lo que no sabias)
+date: 2019-03-09
 description: Esta característica de ECMAScript 6 puede llegar a ser mas útil de lo que crees
 categories:
   - Javascript
