@@ -66,9 +66,9 @@ module.exports = {
         lapse: {
           from: '08/01/2019',
         },
-        title: 'Zemoga, Inc',
+        title: 'Front-End Developer',
         url: 'https://zemoga.com/',
-        subtitle: 'Front-End Developer',
+        subtitle: 'Zemoga, Inc',
         desc:
           'Integrante del equipo técnico para la firma de servicios financieros Morningstar, Inc, a cargo de llevar a cabo el desarrollo y mantenimiento del producto Morningstar Direct Cloud, el cual es la versión web y evolución de su producto estrella Morningstar Direct, destacado por brindar acceso a una de las bases de datos financieras mas grandes del mundo, donde se permite al usuario manipular la data y obtener retroalimentación sobre el mercado de acciones y valores, esto con el fin de proporcionar información precisa y relevante a sus clientes y así estos puedan tomar decisiones correctas sobre sus inversiones.',
       },
@@ -77,9 +77,9 @@ module.exports = {
           from: '09/24/2018',
           to: '08/01/2019',
         },
-        title: 'Grability, Inc',
+        title: 'Tech Lead',
         url: 'https://www.grability.com/',
-        subtitle: 'Tech Lead',
+        subtitle: 'Grability, Inc',
         desc:
           'Aplicaciones móviles para retailers centradas en la experiencia de compra de un supermercado, desarrollos nativos en Android, IOS y React Native; A cargo de coordinar los equipos de desarrollo (dispositivos, backend) como Líder Técnico en el proyecto para el Supermercado El Corte Ingles de España.',
       },
@@ -88,9 +88,9 @@ module.exports = {
           from: '02/01/2018',
           to: '09/21/2018',
         },
-        title: 'PappCorn',
+        title: 'Tech Lead & Product Manager',
         url: 'https://www.pappcorn.com/',
-        subtitle: 'Tech Lead & Product Manager',
+        subtitle: 'PappCorn',
         desc:
           'Soluciones digitales de todo tipo, planeación estratégica y desarrollo tecnológico para startups y empresas medianas; A cargo de coordinar los diferentes proyectos en el proceso de ideación, planeación y ejecución; Orientación en los equipos de backend y frontend como Líder Técnico y Product Manager.',
       },
@@ -99,9 +99,9 @@ module.exports = {
           from: '02/01/2016',
           to: '07/15/2018',
         },
-        title: 'Nectia Colombia',
+        title: 'Full-stack Developer',
         url: 'http://www.nectia.com/',
-        subtitle: 'Full-stack Developer',
+        subtitle: 'Nectia Colombia',
         desc:
           'Desarrollador frontend y backend en proyecto con el banco Davivienda, a cargo de desarrollar módulos web (SPA) de uso transversal, diseño y desarrollo de APIs REST orientadas a servicios, manejo de bases de datos MySQL y creación de herramientas para automatización en procesos de desarrollo.',
       },

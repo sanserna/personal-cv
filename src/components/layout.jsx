@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Global, css, useTheme } from '@emotion/react';
 import { setConfiguration } from 'react-grid-system';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/roboto/300-italic.css';
+import '@fontsource/roboto/400-italic.css';
+import '@fontsource/roboto/500-italic.css';
+import '@fontsource/roboto/700-italic.css';
 import 'moment/locale/es';
 
 import MainFooter from 'app-components/main-footer';

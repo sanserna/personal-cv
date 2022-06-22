@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
-import moment from 'moment';
 import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { useTheme } from '@emotion/react';
@@ -11,7 +10,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import Seo from 'app-base-components/seo';
 import Badge from 'app-base-components/badge';
 import Heading from 'app-base-components/heading';
-import Paragraph from 'app-base-components/paragraph';
+import Paragraph from 'app-base-components/body';
 import Link from 'app-base-components/link';
 import PostFooter from 'app-components/post-footer';
 import { bpAboveMedium } from 'app-utils/breakpoints';
@@ -21,7 +20,9 @@ const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     p: Paragraph,
-    h2: Heading,
+    h1: props => <Heading {...props} tag="h1" />,
+    h2: props => <Heading {...props} tag="h2" />,
+    h3: props => <Heading {...props} tag="h3" />,
     a: Link,
   },
 }).Compiler;
@@ -43,17 +44,14 @@ const PostContent = styled.article`
   `}
 `;
 
-const PostTemplate = props => {
+const BlogPost = ({ data }) => {
   const theme = useTheme();
   const {
-    data: {
-      post: {
-        htmlAst,
-        fields: { prefix },
-        frontmatter: { author, title, description, categories = [], cover },
-      },
+    markdownRemark: {
+      htmlAst,
+      frontmatter: { author, title, description, date, cover, categories = [] },
     },
-  } = props;
+  } = data;
   const coverImage = getImage(cover);
 
   return (
@@ -84,8 +82,8 @@ const PostTemplate = props => {
                 <h1
                   css={{
                     color: theme.colors.light,
-                    fontWeight: theme.fontWeight.semibold,
-                    fontSize: theme.fontSize['3xl'],
+                    fontWeight: theme.fontWeight.medium,
+                    fontSize: theme.fontSizeRaw['3xl'],
                     lineHeight: theme.lineHeight.tight,
                     marginBottom: theme.spacing[3],
                   }}
@@ -94,7 +92,7 @@ const PostTemplate = props => {
                 </h1>
                 <span
                   css={{
-                    fontSize: theme.fontSize.lg,
+                    fontSize: theme.fontSizeRaw.lg,
                     color: theme.colors.light,
                   }}
                 >
@@ -103,11 +101,11 @@ const PostTemplate = props => {
                 </span>
                 <span
                   css={{
-                    fontSize: theme.fontSize.lg,
+                    fontSize: theme.fontSizeRaw.lg,
                     color: theme.colors.slate[400],
                   }}
                 >
-                  {moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+                  {date}
                 </span>
                 <div
                   css={{
@@ -136,31 +134,39 @@ const PostTemplate = props => {
   );
 };
 
-PostTemplate.propTypes = {
+BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default PostTemplate;
-
-export const query = graphql`
-  query($slug: String!) {
-    post: markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      htmlAst
-      fields {
-        slug
-      }
-      frontmatter {
-        author
-        title
-        description
-        categories
-        cover {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR)
-          }
+export const fragments = graphql`
+  fragment PostContent on MarkdownRemark {
+    id
+    htmlAst
+    fields {
+      contentName
+      slug
+    }
+    frontmatter {
+      author
+      title
+      description
+      categories
+      date(formatString: "DD MMMM YYYY", locale: "es")
+      cover {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR)
         }
       }
     }
   }
 `;
+
+export const query = graphql`
+  query($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      ...PostContent
+    }
+  }
+`;
+
+export default BlogPost;

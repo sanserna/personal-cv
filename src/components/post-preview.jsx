@@ -51,7 +51,7 @@ const PostPreview = ({
           <h3
             css={{
               margin: 0,
-              fontSize: theme.fontSize['2xl'],
+              fontSize: theme.fontSizeRaw['2xl'],
               lineHeight: theme.lineHeight.tight,
               color: theme.colors.dark,
               '&:hover': {

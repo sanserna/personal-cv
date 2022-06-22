@@ -8,12 +8,12 @@ const sizeModifierStyles = {
   sm: theme => css`
     --sm-spacing: ${theme.spacing[2]};
     padding: calc(var(--sm-spacing) / 2) var(--sm-spacing);
-    font-size: ${theme.fontSize.sm};
+    font-size: ${theme.fontSizeRaw.sm};
   `,
   lg: theme => css`
     --lg-spacing: ${theme.spacing[4]};
     padding: calc(var(--lg-spacing) / 2) var(--lg-spacing);
-    font-size: ${theme.fontSize.lg};
+    font-size: ${theme.fontSizeRaw.lg};
   `,
 };
 
@@ -47,8 +47,8 @@ const Button = ({
         border-color: ${mainColor};
         border-radius: ${theme.borderRadius.DEFAULT};
         padding: calc(${mdSpacing} / 2) ${mdSpacing};
-        font-size: ${theme.fontSize.base};
-        font-weight: ${theme.fontWeight.semibold};
+        font-size: ${theme.fontSizeRaw.base};
+        font-weight: ${theme.fontWeight.medium};
         outline: 0;
         vertical-align: middle;
         transition: 100ms ease-in-out;

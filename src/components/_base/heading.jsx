@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 
-const Heading = ({ children, className, style, tag: TagName }) => {
+const Heading = ({ children, className, style, color, tag: TagName }) => {
   const theme = useTheme();
 
   return (
@@ -10,14 +10,8 @@ const Heading = ({ children, className, style, tag: TagName }) => {
       style={style}
       className={className}
       css={{
-        color: theme.colors.dark,
-        marginBottom: theme.spacing[5],
-        '&::after': {
-          content: '"_"',
-          color: theme.colors.primary,
-          fontWeight: theme.fontWeight.bold,
-          paddingLeft: theme.spacing[1],
-        },
+        color: color || theme.colors.dark,
+        marginBottom: '0.35em',
       }}
     >
       {children}
@@ -32,12 +26,14 @@ Heading.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
+  color: PropTypes.string,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
 };
 
 Heading.defaultProps = {
   className: '',
   style: {},
+  color: '',
   tag: 'h1',
 };
 

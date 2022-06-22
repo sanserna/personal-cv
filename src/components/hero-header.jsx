@@ -20,17 +20,17 @@ const HeaderWrapper = styled.header(
 
 const Title = styled.h1(({ theme }) => ({
   color: theme.colors.dark,
-  fontSize: theme.fontSize['2xl'],
+  fontSize: theme.fontSizeRaw['2xl'],
   paddingBottom: theme.spacing[8],
   paddingTop: theme.spacing[3],
   textAlign: 'center',
   [bpAboveMedium]: {
-    fontSize: theme.fontSize['3xl'],
+    fontSize: theme.fontSizeRaw['3xl'],
     padding: `0 0 ${theme.spacing[8]} ${theme.spacing[5]}`,
     textAlign: 'left',
   },
   [bpAboveLarge]: {
-    fontSize: theme.fontSize['4xl'],
+    fontSize: theme.fontSizeRaw['4xl'],
   },
 }));
 

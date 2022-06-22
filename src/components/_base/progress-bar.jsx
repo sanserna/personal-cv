@@ -10,7 +10,7 @@ const ProgressBar = ({ value, backgroundColor, color, showPercentage }) => {
       css={{
         display: 'flex',
         height: '15px',
-        fontSize: theme.fontSize.xs,
+        fontSize: theme.fontSizeRaw.xs,
         backgroundColor: backgroundColor || theme.colors.light,
         borderRadius: '25px 0 50px 25px',
         position: 'relative',
@@ -58,7 +58,7 @@ ProgressBar.defaultProps = {
   value: 0,
   backgroundColor: '',
   color: '',
-  showPercentage: true,
+  showPercentage: false,
 };
 
 export default ProgressBar;

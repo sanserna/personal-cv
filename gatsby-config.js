@@ -13,6 +13,7 @@ module.exports = {
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
+    'gatsby-plugin-lodash',
     {
       resolve: 'gatsby-plugin-sharp',
       breakpoints: [576, 768, 992, 1200],

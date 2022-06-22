@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: "off" */
 import moment from 'moment';
 
 export const formatLapseDate = config => {

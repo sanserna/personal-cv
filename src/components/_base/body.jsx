@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 
-const Paragraph = ({ children, className, style, lead }) => {
+const Body = ({ children, className, style, lead }) => {
   const theme = useTheme();
 
   return (
@@ -11,7 +11,7 @@ const Paragraph = ({ children, className, style, lead }) => {
       className={className}
       css={{
         color: theme.colors.dark,
-        fontSize: lead ? theme.fontSize['3xl'] : theme.fontSize.xl,
+        fontSize: lead ? theme.fontSizeRaw['3xl'] : theme.fontSizeRaw.xl,
         fontWeight: lead ? theme.fontWeight.normal : theme.fontWeight.light,
         lineHeight: lead ? theme.lineHeight.normal : theme.lineHeight.relaxed,
         paddingBottom: theme.spacing[5],
@@ -22,7 +22,7 @@ const Paragraph = ({ children, className, style, lead }) => {
   );
 };
 
-Paragraph.propTypes = {
+Body.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -32,10 +32,10 @@ Paragraph.propTypes = {
   lead: PropTypes.bool,
 };
 
-Paragraph.defaultProps = {
+Body.defaultProps = {
   className: '',
   style: {},
   lead: false,
 };
 
-export default Paragraph;
+export default Body;

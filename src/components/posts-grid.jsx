@@ -43,7 +43,6 @@ PostsGrid.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      excerpt: PropTypes.string.isRequired,
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
         prefix: PropTypes.string.isRequired,

@@ -7,12 +7,12 @@ import classNames from 'classnames';
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const Label = styled.label(({ theme }) => ({
-  fontSize: theme.fontSize.base,
+  fontSize: theme.fontSizeRaw.base,
   color: theme.colors.gray[600],
   display: 'block',
   marginBottom: theme.spacing[2],
   [bpAboveSmall]: {
-    fontSize: theme.fontSize.lg,
+    fontSize: theme.fontSizeRaw.lg,
   },
 }));
 

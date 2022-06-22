@@ -5,7 +5,7 @@ import { Field } from 'formik';
 import classNames from 'classnames';
 
 const Label = styled.label(({ theme }) => ({
-  fontSize: theme.fontSize.lg,
+  fontSize: theme.fontSizeRaw.lg,
   color: theme.colors.gray[600],
   display: 'block',
   marginBottom: theme.spacing[2],
@@ -13,7 +13,7 @@ const Label = styled.label(({ theme }) => ({
 
 const TextArea = ({ style, className, name, label, placeholder, required }) => (
   <Field name={name}>
-    {({ field, form: { touched, errors }, meta }) => (
+    {({ field, form: { touched, errors } }) => (
       <>
         {label && (
           <Label htmlFor={name}>

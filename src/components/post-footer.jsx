@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '@emotion/react';
 import { Container } from 'react-grid-system';
 
-import Paragraph from 'app-base-components/paragraph';
+import Paragraph from 'app-base-components/body';
 import HeroThumbnail from 'app-components/hero-thumbnail';
 
 const PostFooter = () => {

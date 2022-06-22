@@ -40,7 +40,7 @@ const NavigationItem = styled(Link)`
   display: block;
 
   ${({ theme }) => `
-    font-size: ${theme.fontSize.lg};
+    font-size: ${theme.fontSizeRaw.lg};
     padding-top: ${theme.spacing[5]};
     color: ${theme.colors.secondary};
 
@@ -80,7 +80,7 @@ const MainNav = ({ style, className, pathName }) => {
   const theme = useTheme();
   const [iconConfig] = useState({
     color: theme.colors.gray[100],
-    size: theme.fontSize.sm,
+    size: theme.fontSizeRaw.sm,
   });
   const [navCollapseIsHidden, setNavCollapseIsHidden] = useState(true);
 
@@ -107,8 +107,8 @@ const MainNav = ({ style, className, pathName }) => {
                 css={{
                   color: theme.colors.dark,
                   letterSpacing: theme.letterSpacing.tight,
-                  fontSize: theme.fontSize['2xl'],
-                  fontWeight: theme.fontWeight.semibold,
+                  fontSize: theme.fontSizeRaw['2xl'],
+                  fontWeight: theme.fontWeight.medium,
                   '&:hover': {
                     textDecoration: 'none',
                   },
@@ -151,7 +151,7 @@ const MainNav = ({ style, className, pathName }) => {
               </NavigationItems>
               <SocialLinks
                 iconColor={theme.colors.gray[800]}
-                iconSize="lg"
+                iconSize="md"
                 show={['github', 'linkedin']}
                 css={{
                   paddingTop: theme.spacing[5],

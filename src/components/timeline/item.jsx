@@ -1,83 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { useTheme } from '@emotion/react';
+
+import Typography from 'app-base-components/typography';
 
 const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
   const theme = useTheme();
+  const bulletClassName = `
+    before:content-['']
+    before:absolute
+    before:h-4
+    before:w-4
+    before:bg-white
+    before:border
+    before:rounded-lg
+    before:border-primary
+    before:-left-2
+    before:top-1
+  `;
 
   return (
     <li
-      css={{
-        color: theme.colors.dark,
-        position: 'relative',
-        paddingBottom: theme.spacing[16],
-        '&:last-child': {
-          paddingBottom: 0,
-        },
-        '&::before': {
-          content: '" "',
-          position: 'absolute',
-          height: '16px',
-          width: '16px',
-          background: theme.colors.white,
-          borderRadius: '8px',
-          border: `${theme.borderWidth.DEFAULT} solid ${stepColor ||
-            theme.colors.primary}`,
-          left: '-8px',
-          top: '5px',
-        },
-      }}
+      className={clsx(
+        'text-dark relative pb-16 pl-10 last:pb-0',
+        bulletClassName
+      )}
     >
-      <span
-        css={{
-          display: 'block',
-          color: theme.colors.secondary,
-          fontSize: theme.fontSize.lg,
-          paddingLeft: theme.spacing[10],
-          paddingBottom: theme.spacing[3],
-        }}
-      >
-        {lapse}
-      </span>
-      <div
-        css={{
-          paddingLeft: theme.spacing[10],
-        }}
-      >
-        <span
-          css={{
-            color: theme.colors.dark,
-            display: 'block',
-            fontSize: theme.fontSize.xl,
-          }}
-        >
-          {title}
-        </span>
-        {subtitle && (
-          <span
-            css={{
-              color: theme.colors.primary,
-              display: 'block',
-              fontSize: theme.fontSize.lg,
-              paddingTop: theme.spacing[1],
-            }}
-          >
-            {subtitle}
-          </span>
-        )}
-        {desc && (
-          <p
-            css={{
-              color: theme.colors.secondary,
-              display: 'block',
-              fontSize: theme.fontSize.lg,
-              paddingTop: theme.spacing[1],
-            }}
-          >
-            {desc}
-          </p>
-        )}
-      </div>
+      <Typography variant="body1">{lapse}</Typography>
+      <Typography className="pt-3" variant="h5" colorVariant="primary">
+        {title}
+      </Typography>
+      {subtitle && (
+        <Typography variant="subtitle1" colorVariant="secondary">
+          {subtitle}
+        </Typography>
+      )}
+      {desc && <Typography className="pt-3">{desc}</Typography>}
     </li>
   );
 };

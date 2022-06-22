@@ -10,19 +10,18 @@ module.exports = {
     // v1 since v2 font-size utility includes a sensible size-specific
     // line-height by default, this affects components that are using
     // theme.fontSize js utility
-    fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
-      base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '3rem',
-      '6xl': '4rem',
-    },
+    fontSizeRaw: ({ theme }) =>
+      Object.entries(theme('fontSize')).reduce(
+        (acc, [entryKey, [size]]) => ({
+          ...acc,
+          [entryKey]: size,
+        }),
+        {}
+      ),
     extend: {
+      fontFamily: {
+        sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      },
       colors: ({ colors }) => ({
         primary: '#2980b9',
         secondary: colors.neutral[700],
@@ -35,16 +34,4 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    ({ addBase, config }) => {
-      addBase({
-        h1: { fontSize: config('theme.fontSize.4xl') },
-        h2: { fontSize: config('theme.fontSize.3xl') },
-        h3: { fontSize: config('theme.fontSize.2xl') },
-        h4: { fontSize: config('theme.fontSize.xl') },
-        h5: { fontSize: config('theme.fontSize.lg') },
-        h6: { fontSize: config('theme.fontSize.base') },
-      });
-    },
-  ],
 };

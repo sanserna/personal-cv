@@ -12,7 +12,7 @@ import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
-import Paragraph from 'app-base-components/paragraph';
+import Paragraph from 'app-base-components/body';
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
@@ -21,17 +21,15 @@ const SectionWrapper = styled.section(({ theme }) => ({
 
 const SectionHeading = styled(Heading)`
   ${({ theme }) => `
-    font-size: ${theme.fontSize['5xl']};
+    font-size: ${theme.fontSizeRaw['5xl']};
   `}
 `;
 
 const IndexPage = ({ data }) => {
   const theme = useTheme();
   const {
-    postsData: { edges: posts = [] },
+    allMarkdownRemark: { nodes: posts = [] },
   } = data;
-
-  console.log(posts);
 
   return (
     <>
@@ -40,7 +38,7 @@ const IndexPage = ({ data }) => {
       <Container>
         <SectionWrapper>
           <SectionHeading>Últimas publicaciones</SectionHeading>
-          <PostsGrid posts={posts.map(post => post.node)} />
+          <PostsGrid posts={posts} />
         </SectionWrapper>
         <section
           css={{
@@ -64,9 +62,9 @@ const IndexPage = ({ data }) => {
           <Link
             to="/about"
             css={{
-              fontSize: theme.fontSize.lg,
+              fontSize: theme.fontSizeRaw.lg,
               [bpAboveSmall]: {
-                fontSize: theme.fontSize.xl,
+                fontSize: theme.fontSizeRaw.xl,
               },
             }}
           >
@@ -105,36 +103,13 @@ export default IndexPage;
 
 export const query = graphql`
   {
-    postsData
-  }
-  {
-    postsData: allMarkdownRemark(
+    allMarkdownRemark(
       limit: 4
-      filter: { fileAbsolutePath: { regex: "posts/\\w+/" } }
-      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+      filter: { fields: { source: { eq: "posts" } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
     ) {
-      edges {
-        node {
-          id
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            categories
-            author
-            cover {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 400
-                  layout: CONSTRAINED
-                  placeholder: DOMINANT_COLOR
-                )
-              }
-            }
-          }
-        }
+      nodes {
+        ...PostContent
       }
     }
   }

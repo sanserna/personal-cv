@@ -1,5 +1,5 @@
 /* eslint react/no-array-index-key: "off" */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
@@ -64,33 +64,35 @@ const linksConfig = {
 const SocialLinks = ({ className, style, iconColor, iconSize, show }) => {
   const itemsToShow = show.length ? show : Object.keys(linksConfig);
   const theme = useTheme();
-  const [iconConfig] = useState({
-    color: iconColor || theme.colors.gray[100],
-    size: {
-      sm: theme.fontSize.lg,
-      md: theme.fontSize['2xl'],
-      lg: theme.fontSize['3xl'],
-      xl: theme.fontSize['5xl'],
-    }[iconSize],
-  });
-  const itemSpacing = {
+  const iconSizeMapping = {
+    sm: theme.fontSizeRaw['xl'],
+    md: theme.fontSizeRaw['2xl'],
+    lg: theme.fontSizeRaw['4xl'],
+    xl: theme.fontSizeRaw['5xl'],
+  };
+  const itemSpacingMapping = {
     sm: theme.spacing[2],
     md: theme.spacing[3],
     lg: theme.spacing[5],
     xl: theme.spacing[6],
-  }[iconSize];
+  };
 
   return (
     <List className={className} style={style}>
-      <IconContext.Provider value={iconConfig}>
-        {itemsToShow.reduce((itemsArr, itemToShow) => {
+      <IconContext.Provider
+        value={{
+          color: iconColor || theme.colors.gray[100],
+          size: iconSizeMapping[iconSize],
+        }}
+      >
+        {itemsToShow.reduce((itemsArr, itemToShow, index) => {
           const itemConfig = linksConfig[itemToShow];
 
           if (itemConfig) {
             const Icon = itemConfig.icon;
 
             itemsArr.push(
-              <ListItem key={itemConfig.url} itemSpacing={itemSpacing}>
+              <ListItem key={index} itemSpacing={itemSpacingMapping[iconSize]}>
                 <IconLink href={itemConfig.url} target="_blanc">
                   <Icon />
                 </IconLink>
