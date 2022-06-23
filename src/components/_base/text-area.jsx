@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 const Label = styled.label(({ theme }) => ({
   fontSize: theme.fontSizeRaw.lg,
@@ -30,7 +30,7 @@ const TextArea = ({ style, className, name, label, placeholder, required }) => (
           css={{
             height: 130,
           }}
-          className={classNames(
+          className={clsx(
             'form-control',
             className,
             required && touched[field.name] && errors[field.name]

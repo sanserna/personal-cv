@@ -24,7 +24,6 @@
     "@emotion/styled": "^11.6.0",
     "@fontsource/roboto": "^4.5.7",
     "axios": "^0.19.2",
-    "classnames": "^2.2.6",
     "clsx": "^1.1.1",
     "formik": "^2.1.2",
     "gatsby": "^4.0.0",
