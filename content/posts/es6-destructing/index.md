@@ -42,7 +42,7 @@ Del ejemplo anterior lo primero que les quiero decir es que es la forma en la qu
 
 Es conveniente tener en cuenta algunos detalles del fragmento de código anterior, si el objeto `cords` al que estamos accediendo esta profundamente anidado en otro objeto, la cadena de acceso al objeto se hace más larga, lo que podría significar mas lineas de código y posibles errores, ya que en la mayoría de los casos algunas de las propiedades dentro del objeto son opcionales, y para cualquier dato que deseemos obtener siempre tendríamos que estar validado que no se acceda a una propiedad que es `undefined`.
 
-### Y entonces, de qué se trata el destructuring
+## Y entonces, de qué se trata el destructuring
 
 Básicamente, implica descomponer una estructura compleja en partes mas simples. En JavaScript, esas estructuras hacen referencia a un objeto o a un array, en este articulo vamos a estar hablando específicamente de los objetos.
 
@@ -137,7 +137,7 @@ displayUserInfo({
 
 En este ejemplo sencillo podemos ver como los nombres que asignamos a las propiedades del objeto son mucho mas descriptivos que los que vienen por defecto, de esta manera al momento de usarlas dentro del cuerpo del método, el código es mucho mas legible y fácil de entender.
 
-### Tipado y editores de código
+## Tipado y editores de código
 
 En mi opinión uno de los grandes retos cuando estas trabajando con JavaScript, es el hecho de que algunas veces nos cuesta entender el comportamiento de un método en base a los argumentos que recibe a primera vista.
 
@@ -151,6 +151,6 @@ Esta imagen la tome del editor de código que yo uso (vscode), al llamar al mét
 
 Como podemos ver, ahora es un poco mas fácil saber que estructura debe tener el objeto que recibe el método como parámetro, incluso cuando asignamos un valor por defecto a alguna de las propiedades del objeto nos lo indica y nos dice que tipo de variable es (`number` para la propiedad `age`).
 
-### Conclusión
+## Conclusión
 
 En este pequeño articulo, exploramos algunos de las ventajas del _object destructuring_ y como yo le he sacado provecho al momento de trabajar en distintos tipos de proyectos, vale la pena destacar que depende de cada programador el uso que le quiera dar a esta funcionalidad de ES6 y aplicar lo aprendido dependiendo del escenario en el que nos encontremos, si ya estabas familiarizado con el uso del _object destructuring_, puede que hayas aprendido algo nuevo también, [acá](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) podrás encontrar la documentación oficial, espero poder profundizar un poco mas en futuros artículos y mostrarte algunos ejemplos mas avanzados que se pueden tener si se aplica el _object destructuring_ junto con otras funcionalidades de ES6.

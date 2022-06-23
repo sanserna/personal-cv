@@ -12,6 +12,7 @@ import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
+import Typography from 'app-base-components/typography';
 import Paragraph from 'app-base-components/body';
 import { bpAboveSmall } from 'app-utils/breakpoints';
 

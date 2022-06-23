@@ -116,10 +116,10 @@ const Typography = React.forwardRef(function Typography(props, ref) {
   ];
   const [themeFontSize] = theme.fontSize[fontSize.replace('text-', '')];
   const themePxFontSize = Number(themeFontSize.replace('rem', '')) * 16;
-  const Component = component || tag;
+  const RootComponent = component || tag;
 
   return (
-    <Component
+    <RootComponent
       ref={ref}
       style={style}
       className={clsx(
@@ -140,7 +140,7 @@ const Typography = React.forwardRef(function Typography(props, ref) {
       }}
     >
       {children}
-    </Component>
+    </RootComponent>
   );
 });
 

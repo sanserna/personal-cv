@@ -4,19 +4,9 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
 
 import HeroThumbnail from 'app-components/hero-thumbnail';
+import Typography from 'app-base-components/typography';
 import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
 import heroBgPattern from 'app-images/assets/tree_bark.png';
-
-const HeaderWrapper = styled.header(
-  {
-    backgroundRepeat: 'repeat',
-    backgroundSize: '350px 350px',
-    backgroundImage: `url(${heroBgPattern})`,
-  },
-  ({ theme }) => ({
-    paddingTop: theme.spacing[8],
-  })
-);
 
 const Title = styled.h1(({ theme }) => ({
   color: theme.colors.dark,
@@ -35,7 +25,10 @@ const Title = styled.h1(({ theme }) => ({
 }));
 
 const HeroHeader = () => (
-  <HeaderWrapper>
+  <div
+    className="pt-8 bg-repeat bg-[length:350px_350px]"
+    css={{ backgroundImage: `url(${heroBgPattern})` }}
+  >
     <Container>
       <Row align="center" nogutter>
         <Hidden md lg xl>
@@ -54,14 +47,14 @@ const HeroHeader = () => (
           </Col>
         </Visible>
         <Col>
-          <Title>
+          <Typography>
             Mi nombre es Santiago y soy desarrollador de sofware con experiencia
             en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.
-          </Title>
+          </Typography>
         </Col>
       </Row>
     </Container>
-  </HeaderWrapper>
+  </div>
 );
 
 HeroHeader.propTypes = {};

@@ -5,61 +5,41 @@ import { useTheme } from '@emotion/react';
 import { Container, Row, Col } from 'react-grid-system';
 
 import Badge from 'app-base-components/badge';
-import Heading from 'app-base-components/heading';
+import Typography from 'app-base-components/typography';
 import haderPattern from 'app-images/assets/footer_lodyas.png';
-
-import { PostHeaderRoot, BodyWrapper } from './styled';
 
 const PostHeader = ({ title, author, date, categories, coverData }) => {
   const theme = useTheme();
   const coverImage = getImage(coverData);
 
   return (
-    <PostHeaderRoot haderPattern={haderPattern}>
+    <div
+      className="py-5 bg-repeat bg-[length:600px_600px]"
+      css={{ backgroundImage: `url(${haderPattern})` }}
+    >
       <Container>
         <Row align="center" nogutter>
           <Col xs={12} md={5}>
             <GatsbyImage
+              className="rounded-lg"
               alt={title}
               image={coverImage}
-              css={{
-                borderRadius: theme.borderRadius.lg,
-              }}
             />
           </Col>
           <Col xs={12} md={7}>
-            <BodyWrapper>
-              <Heading
-                tag="h1"
-                color={theme.colors.light}
-                css={{
-                  marginBottom: theme.spacing[3],
-                }}
+            <div className="pt-4 md:p-0 md:pl-4">
+              <Typography
+                className="mb-3"
+                variant="h4"
+                component="h1"
+                colorVariant="light"
               >
                 {title}
-              </Heading>
-              <span
-                css={{
-                  fontSize: theme.fontSizeRaw.lg,
-                  color: theme.colors.light,
-                }}
-              >
-                {author}
-                {' | '}
-              </span>
-              <span
-                css={{
-                  fontSize: theme.fontSizeRaw.lg,
-                  color: theme.colors.slate[400],
-                }}
-              >
-                {date}
-              </span>
-              <div
-                css={{
-                  marginTop: theme.spacing[2],
-                }}
-              >
+              </Typography>
+              <Typography colorVariant="light">
+                {author} | {date}
+              </Typography>
+              <div className="mt-2">
                 {categories.map(category => (
                   <Badge
                     key={category}
@@ -69,11 +49,11 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
                   />
                 ))}
               </div>
-            </BodyWrapper>
+            </div>
           </Col>
         </Row>
       </Container>
-    </PostHeaderRoot>
+    </div>
   );
 };
 

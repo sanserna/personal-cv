@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 
+/**
+ * @deprecated since version 2.0
+ */
 const Heading = ({ children, className, style, color, tag: TagName }) => {
   const theme = useTheme();
 
