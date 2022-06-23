@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const Label = styled.label(({ theme }) => ({
-  fontSize: theme.fontSize.base,
+  fontSize: theme.fontSizeRaw.base,
   color: theme.colors.gray[600],
   display: 'block',
   marginBottom: theme.spacing[2],
   [bpAboveSmall]: {
-    fontSize: theme.fontSize.lg,
+    fontSize: theme.fontSizeRaw.lg,
   },
 }));
 
@@ -41,7 +41,7 @@ const Input = ({
           style={style}
           type={type}
           placeholder={placeholder}
-          className={classNames(
+          className={clsx(
             'form-control',
             className,
             required && touched[field.name] && errors[field.name]

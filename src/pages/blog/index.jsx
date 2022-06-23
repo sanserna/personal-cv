@@ -6,12 +6,12 @@ import { Container } from 'react-grid-system';
 import Seo from 'app-base-components/seo';
 import PostsGrid from 'app-components/posts-grid';
 // import SubscriptionForm from 'app-components/subscription-form';
-// import Paragraph from 'app-base-components/paragraph';
+// import Paragraph from 'app-base-components/body';
 // import { texts } from 'app-content/meta/config';
 
 const BlogPage = ({ data }) => {
   const {
-    posts: { edges: posts = [] },
+    allMarkdownRemark: { nodes: posts = [] },
   } = data;
 
   return (
@@ -23,7 +23,7 @@ const BlogPage = ({ data }) => {
           <SubscriptionForm className="xs:w-full md:w-2/3" />
         </div> */}
         <div className="pt-4">
-          <PostsGrid posts={posts.map(post => post.node)} />
+          <PostsGrid posts={posts} />
         </div>
       </Container>
     </>
@@ -34,34 +34,17 @@ BlogPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default BlogPage;
-
 export const query = graphql`
   {
-    posts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
+    allMarkdownRemark(
+      filter: { fields: { source: { eq: "posts" } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
     ) {
-      edges {
-        node {
-          id
-          excerpt
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            categories
-            author
-            cover {
-              childImageSharp {
-                gatsbyImageData(height: 300, layout: FULL_WIDTH)
-              }
-            }
-          }
-        }
+      nodes {
+        ...PostContent
       }
     }
   }
 `;
+
+export default BlogPage;

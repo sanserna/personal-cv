@@ -4,13 +4,14 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "app-components/*": ["src/components/*"],
       "app-base-components/*": ["src/components/_base/*"],
+      "app-components/*": ["src/components/*"],
       "app-layouts/*": ["src/layouts/*"],
       "app-pages/*": ["src/pages/*"],
       "app-templates/*": ["src/templates/*"],
       "app-theme/*": ["src/theme/*"],
       "app-utils/*": ["src/utils/*"],
+      "app-hooks/*": ["src/hooks/*"],
       "app-images/*": ["src/images/*"],
       "app-content/*": ["./content/*"],
       "app-root/*": ["./*"]

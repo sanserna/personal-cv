@@ -6,29 +6,21 @@ import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import Seo from 'app-base-components/seo';
-import Heading from 'app-base-components/heading';
 import HeroHeader from 'app-components/hero-header';
 import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
-import Paragraph from 'app-base-components/paragraph';
-import { bpAboveSmall } from 'app-utils/breakpoints';
+import Typography from 'app-base-components/typography';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16],
 }));
 
-const SectionHeading = styled(Heading)`
-  ${({ theme }) => `
-    font-size: ${theme.fontSize['5xl']};
-  `}
-`;
-
 const IndexPage = ({ data }) => {
   const theme = useTheme();
   const {
-    posts: { edges: posts = [] },
+    allMarkdownRemark: { nodes: posts = [] },
   } = data;
 
   return (
@@ -37,49 +29,45 @@ const IndexPage = ({ data }) => {
       <HeroHeader />
       <Container>
         <SectionWrapper>
-          <SectionHeading>Últimas publicaciones</SectionHeading>
-          <PostsGrid posts={posts.map(post => post.node)} />
+          <Typography variant="h3" gutterBottom>
+            Últimas publicaciones
+          </Typography>
+          <PostsGrid posts={posts} />
         </SectionWrapper>
-        <section
-          css={{
-            paddingTop: theme.spacing[12],
-          }}
-        >
-          <SectionHeading>Sobre mi</SectionHeading>
-          <Paragraph lead>
+        <SectionWrapper>
+          <Typography variant="h3" gutterBottom>
+            Sobre mi
+          </Typography>
+          <Typography variant="lead" paragraph>
             Soy un apasionado de la tecnología y me encanta ayudar a las
             personas en su proceso de crecimiento como desarrolladores de
             software.
-          </Paragraph>
-          <Paragraph>
+          </Typography>
+          <Typography paragraph>
             Soy un desarrollador de software con experiencia en tecnologías web,
             en mi trayectoria como programador he tenido la oportunidad de hacer
             parte del proceso de pensar, planear e implementar el desarrollo de
             proyectos web en roles como front-end y back-end, también tengo
             experiencia en creación de aplicaciones móviles con base en
             tecnologías web.
-          </Paragraph>
-          <Link
-            to="/about"
-            css={{
-              fontSize: theme.fontSize.lg,
-              [bpAboveSmall]: {
-                fontSize: theme.fontSize.xl,
-              },
-            }}
-          >
-            Ver mas...
+          </Typography>
+          <Link to="/about">
+            <Typography component="span" colorVariant="primary">
+              Ver mas...
+            </Typography>
           </Link>
-        </section>
+        </SectionWrapper>
         <SectionWrapper>
-          <SectionHeading>Contacto</SectionHeading>
-          <Paragraph lead>
+          <Typography variant="h3" gutterBottom>
+            Contacto
+          </Typography>
+          <Typography variant="lead" paragraph>
             ¿Preguntas ó información? no dudes en contactarme, intentare
             responder en el menor tiempo posible!{' '}
             <span role="img" aria-label="smile-emoji">
               😬
             </span>
-          </Paragraph>
+          </Typography>
           <ContactFrom />
         </SectionWrapper>
         <SocialLinks
@@ -99,39 +87,18 @@ IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default IndexPage;
-
 export const query = graphql`
   {
-    posts: allMarkdownRemark(
+    allMarkdownRemark(
       limit: 4
-      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
+      filter: { fields: { source: { eq: "posts" } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
     ) {
-      edges {
-        node {
-          id
-          excerpt
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            categories
-            author
-            cover {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 400
-                  layout: CONSTRAINED
-                  placeholder: DOMINANT_COLOR
-                )
-              }
-            }
-          }
-        }
+      nodes {
+        ...PostContent
       }
     }
   }
 `;
+
+export default IndexPage;

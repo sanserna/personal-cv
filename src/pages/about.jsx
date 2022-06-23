@@ -1,19 +1,17 @@
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled from '@emotion/styled';
-import { css, useTheme } from '@emotion/react';
+import { useTheme } from '@emotion/react';
 import { Container } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
-import Heading from 'app-base-components/heading';
-import Paragraph from 'app-base-components/paragraph';
-import ProgressBar from 'app-base-components/progress-bar';
+import Typography from 'app-base-components/typography';
 import Timeline from 'app-components/timeline';
 import SocialLinks from 'app-components/social-links';
+import ProgressList from 'app-components/progress-list';
 import { author } from 'app-content/meta/config';
 
 const SectionWrapper = styled.section(({ theme }) => ({
-  paddingTop: theme.spacing[16],
+  paddingTop: theme.spacing[14],
 }));
 
 const AboutPage = () => {
@@ -24,23 +22,25 @@ const AboutPage = () => {
       <Seo />
       <Container>
         <SectionWrapper>
-          <Paragraph lead>
+          <Typography variant="lead" gutterBottom>
             Mi nombre es Santiago y soy un apasionado de la tecnología, me
             encanta ayudar a las personas en su proceso de crecimiento como
             desarrolladores de software.
-          </Paragraph>
-          <Paragraph css={{ paddingBottom: 0 }}>
+          </Typography>
+          <Typography>
             Soy un desarrollador de software con experiencia en tecnologías web,
             en mi trayectoria como programador he tenido la oportunidad de hacer
             parte del proceso de pensar, planear e implementar el desarrollo de
             proyectos web en roles como front-end y back-end, también tengo
             experiencia en creación de aplicaciones móviles con base en
             tecnologías web.
-          </Paragraph>
+          </Typography>
         </SectionWrapper>
         <SectionWrapper>
-          <Heading>Experiencia</Heading>
-          <Paragraph>
+          <Typography variant="h3" gutterBottom>
+            Experiencia
+          </Typography>
+          <Typography>
             Dentro de mi experiencia he tenido la oportunidad de trabajar en
             proyectos con el banco Davivienda, creando módulos y aplicaciones
             web (SPA) así como también el backend y la infraestructura que las
@@ -49,51 +49,27 @@ const AboutPage = () => {
             tecnologías web. En algunos de los proyectos en los que he
             participado, he trabajado como Líder Técnico con equipos compuestos
             por perfiles en backend, frontend, QA, IOS y Android.
-          </Paragraph>
-          <Timeline items={author.experience} />
-        </SectionWrapper>
-        <SectionWrapper>
-          <Heading>Conocimientos</Heading>
-          <div className="table w-full">
-            {author.techSkills.map((skill, index) => (
-              <div
-                key={index}
-                css={css`
-                  padding: ${theme.spacing[2]};
-                  display: table-row;
-                  &:last-child {
-                    .pb-wrapper {
-                      height: auto;
-                    }
-                  }
-                `}
-              >
-                <span
-                  css={{
-                    display: 'table-cell',
-                    fontSize: theme.fontSize.lg,
-                    paddingRight: theme.spacing[3],
-                  }}
-                >
-                  {skill.label}
-                </span>
-                <div
-                  className="pb-wrapper"
-                  css={{
-                    display: 'table-cell',
-                    width: '85%',
-                    height: '60px',
-                  }}
-                >
-                  <ProgressBar value={skill.level} showPercentage={false} />
-                </div>
-              </div>
-            ))}
+          </Typography>
+          <div className="py-5">
+            <Timeline items={author.experience} />
           </div>
         </SectionWrapper>
         <SectionWrapper>
-          <Heading>Educación</Heading>
-          <Paragraph>
+          <Typography variant="h3" gutterBottom>
+            Conocimientos
+          </Typography>
+          <ProgressList
+            list={author.techSkills.map(({ label, level }) => ({
+              label,
+              value: level,
+            }))}
+          />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Typography variant="h3" gutterBottom>
+            Educación
+          </Typography>
+          <Typography>
             Mi proceso de aprendizaje a estado orientado siempre en dos grandes
             áreas, por un lado esta el diseño, y del otro lado la programación.
             Desde muy pequeño siempre estuve mas orientado por temas
@@ -103,16 +79,16 @@ const AboutPage = () => {
             relacionadas con la multimedia, el interés por la programación ha
             sido un tema que viene conmigo desde el colegio, ya que tuve la
             oportunidad de aprender sobre programación desde muy temprana edad.
-          </Paragraph>
-          <Timeline items={author.education} />
+          </Typography>
+          <div className="pt-5">
+            <Timeline items={author.education} />
+          </div>
         </SectionWrapper>
         <SocialLinks
+          className="pt-16 pb-10"
           iconColor={theme.colors.dark}
           iconSize="xl"
           show={['github', 'linkedin']}
-          css={{
-            padding: `${theme.spacing[16]} 0 ${theme.spacing[10]} 0`,
-          }}
         />
       </Container>
     </>

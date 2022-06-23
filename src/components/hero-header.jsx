@@ -1,68 +1,61 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
+import {
+  Container,
+  Row,
+  Col,
+  Hidden,
+  Visible,
+  useScreenClass,
+} from 'react-grid-system';
 
 import HeroThumbnail from 'app-components/hero-thumbnail';
-import { bpAboveMedium, bpAboveLarge } from 'app-utils/breakpoints';
+import Typography from 'app-base-components/typography';
 import heroBgPattern from 'app-images/assets/tree_bark.png';
 
-const HeaderWrapper = styled.header(
-  {
-    backgroundRepeat: 'repeat',
-    backgroundSize: '350px 350px',
-    backgroundImage: `url(${heroBgPattern})`,
-  },
-  ({ theme }) => ({
-    paddingTop: theme.spacing[8],
-  })
-);
+const HeroHeader = () => {
+  const screenClass = useScreenClass();
+  const isMobile = ['xs', 'sm'].includes(screenClass);
 
-const Title = styled.h1(({ theme }) => ({
-  color: theme.colors.dark,
-  fontSize: theme.fontSize['2xl'],
-  paddingBottom: theme.spacing[8],
-  paddingTop: theme.spacing[3],
-  textAlign: 'center',
-  [bpAboveMedium]: {
-    fontSize: theme.fontSize['3xl'],
-    padding: `0 0 ${theme.spacing[8]} ${theme.spacing[5]}`,
-    textAlign: 'left',
-  },
-  [bpAboveLarge]: {
-    fontSize: theme.fontSize['4xl'],
-  },
-}));
-
-const HeroHeader = () => (
-  <HeaderWrapper>
-    <Container>
-      <Row align="center" nogutter>
-        <Hidden md lg xl>
-          <Col xs={12}>
-            <HeroThumbnail size="lg" showShadow />
+  return (
+    <div
+      className="pt-8 bg-repeat bg-[length:350px_350px]"
+      css={{ backgroundImage: `url(${heroBgPattern})` }}
+    >
+      <Container>
+        <Row align="center" nogutter>
+          <Hidden md lg xl>
+            <Col xs={12}>
+              <HeroThumbnail size="lg" />
+            </Col>
+          </Hidden>
+          <Visible md lg xl>
+            <Col md={4} lg={5}>
+              <StaticImage
+                alt="hero"
+                src="../images/santiago-2.png"
+                placeholder="tracedSVG"
+                layout="fullWidth"
+              />
+            </Col>
+          </Visible>
+          <Col>
+            <Typography
+              className="pb-8 pt-3 text-center md:text-left md:p-0 md:pl-5"
+              variant={isMobile ? 'h5' : 'h4'}
+              component="h1"
+              align={isMobile ? 'center' : null}
+            >
+              Mi nombre es Santiago y soy desarrollador de sofware con
+              experiencia en tecnologías web, actualmente creando desde Bogotá
+              D.C, Colombia.
+            </Typography>
           </Col>
-        </Hidden>
-        <Visible md lg xl>
-          <Col md={4} lg={5}>
-            <StaticImage
-              alt="hero"
-              src="../images/santiago-2.png"
-              placeholder="tracedSVG"
-              layout="fullWidth"
-            />
-          </Col>
-        </Visible>
-        <Col>
-          <Title>
-            Mi nombre es Santiago y soy desarrollador de sofware con experiencia
-            en tecnologías web, actualmente creando desde Bogotá D.C, Colombia.
-          </Title>
-        </Col>
-      </Row>
-    </Container>
-  </HeaderWrapper>
-);
+        </Row>
+      </Container>
+    </div>
+  );
+};
 
 HeroHeader.propTypes = {};
 

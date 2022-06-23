@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useTheme } from '@emotion/react';
 import { Col, Row } from 'react-grid-system';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import qs from 'qs';
 
 import Input from 'app-base-components/input';
@@ -105,7 +105,7 @@ const ContactForm = ({ className, style }) => {
           >
             {messageConfig && (
               <span
-                className={classNames(
+                className={clsx(
                   messageConfig.className,
                   'w-full pr-3 pb-3 md:pb-0 md:w-auto'
                 )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { Row, Col } from 'react-grid-system';
 import { useTheme } from '@emotion/react';
 
@@ -14,8 +13,8 @@ const PostsGrid = ({ posts = [] }) => {
       {posts.map(
         ({
           id,
-          fields: { slug, prefix },
-          frontmatter: { title, categories, cover },
+          fields: { slug },
+          frontmatter: { title, categories, date, cover },
         }) => (
           <Col
             key={id}
@@ -26,7 +25,7 @@ const PostsGrid = ({ posts = [] }) => {
             }}
           >
             <PostPreview
-              creationDate={moment(prefix, 'YYYY-MM-DD').format('DD MMMM YYYY')}
+              creationDate={date}
               categories={categories}
               link={slug}
               title={title}
@@ -43,14 +42,13 @@ PostsGrid.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      excerpt: PropTypes.string.isRequired,
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
-        prefix: PropTypes.string.isRequired,
       }),
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+        date: PropTypes.string.isRequired,
         author: PropTypes.string.isRequired,
         cover: PropTypes.object.isRequired,
       }).isRequired,
