@@ -11,7 +11,7 @@ import tailwindConfig from 'app-root/tailwind.config';
 import './src/styles/global.scss';
 
 const { theme } = resolveConfig(tailwindConfig);
-setConfiguration({ maxScreenClass: 'xl' });
+setConfiguration({ maxScreenClass: 'xl', defaultScreenClass: 'xl' });
 
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>{element}</ThemeProvider>
