@@ -1,1 +1,1 @@
-# Santiago Serna's website (build with [GatsbyJs](https://www.gatsbyjs.com/))
+# Santiago Serna's website (built with [GatsbyJs](https://www.gatsbyjs.com/))
