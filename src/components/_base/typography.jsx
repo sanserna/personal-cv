@@ -87,13 +87,6 @@ const fontColorVariantMapping = {
   light: 'text-light',
 };
 
-const textAlignMapping = {
-  center: 'text-center',
-  justify: 'text-justify',
-  left: 'text-left',
-  right: 'text-right',
-};
-
 const calcLetterSpacing = (letterSpacing, size) =>
   `${round(letterSpacing / size)}em}`;
 
@@ -102,7 +95,6 @@ const Typography = React.forwardRef(function Typography(props, ref) {
     children,
     className,
     style,
-    align,
     colorVariant,
     component,
     gutterBottom,
@@ -126,8 +118,7 @@ const Typography = React.forwardRef(function Typography(props, ref) {
         'm-0',
         fontWeight,
         fontSize,
-        fontColorVariantMapping[colorVariant],
-        textAlignMapping[align],
+        colorVariant !== 'inherit' && fontColorVariantMapping[colorVariant],
         {
           truncate: noWrap,
           ['mb-[.35em]']: gutterBottom && !paragraph,
@@ -148,8 +139,13 @@ Typography.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
-  align: PropTypes.oneOf(['center', 'justify', 'left', 'right']),
-  colorVariant: PropTypes.oneOf(['primary', 'secondary', 'dark', 'light']),
+  colorVariant: PropTypes.oneOf([
+    'inherit',
+    'primary',
+    'secondary',
+    'dark',
+    'light',
+  ]),
   component: PropTypes.elementType,
   gutterBottom: PropTypes.bool,
   noWrap: PropTypes.bool,
@@ -176,7 +172,6 @@ Typography.propTypes = {
 Typography.defaultProps = {
   className: '',
   style: {},
-  align: 'left',
   colorVariant: 'dark',
   component: null,
   gutterBottom: false,

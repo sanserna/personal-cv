@@ -1,14 +1,21 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Container, Row, Col, Hidden, Visible } from 'react-grid-system';
+import {
+  Container,
+  Row,
+  Col,
+  Hidden,
+  Visible,
+  useScreenClass,
+} from 'react-grid-system';
 
 import HeroThumbnail from 'app-components/hero-thumbnail';
 import Typography from 'app-base-components/typography';
-import useMediaQuery from 'app-hooks/use-media-query';
 import heroBgPattern from 'app-images/assets/tree_bark.png';
 
 const HeroHeader = () => {
-  const isMobile = useMediaQuery(theme => `(max-width:${theme.screens.md})`);
+  const screenClass = useScreenClass();
+  const isMobile = ['xs', 'sm'].includes(screenClass);
 
   return (
     <div
@@ -34,8 +41,8 @@ const HeroHeader = () => {
           </Visible>
           <Col>
             <Typography
-              className="pb-8 pt-3 md:p-0 md:pl-5"
-              variant="h4"
+              className="pb-8 pt-3 text-center md:text-left md:p-0 md:pl-5"
+              variant={isMobile ? 'h5' : 'h4'}
               component="h1"
               align={isMobile ? 'center' : null}
             >

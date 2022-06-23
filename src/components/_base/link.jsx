@@ -3,23 +3,15 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Link as GatsbyLink } from 'gatsby';
 
-import Typography from 'app-base-components/typography';
-
-const Link = ({ children, className, to, colorVariant, ...props }) => {
+const Link = ({ children, className, to, ...props }) => {
   const internal = /^\/(?!\/)/.test(to);
-  const baseClassName = 'text-primary hover:underline';
+  const baseClassName = 'hover:underline';
 
   if (internal) {
     return (
-      <Typography colorVariant={colorVariant}>
-        <GatsbyLink
-          className={clsx(baseClassName, className)}
-          to={to}
-          {...props}
-        >
-          {children}
-        </GatsbyLink>
-      </Typography>
+      <GatsbyLink className={clsx(baseClassName, className)} to={to} {...props}>
+        {children}
+      </GatsbyLink>
     );
   }
 
@@ -30,7 +22,7 @@ const Link = ({ children, className, to, colorVariant, ...props }) => {
       rel="noreferrer"
       {...props}
     >
-      <Typography colorVariant={colorVariant}>{children}</Typography>
+      {children}
     </a>
   );
 };
@@ -42,13 +34,11 @@ Link.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   to: PropTypes.string,
-  colorVariant: PropTypes.oneOf(['primary', 'secondary', 'dark', 'light']),
 };
 
 Link.defaultProps = {
   className: '',
   to: '',
-  colorVariant: 'dark',
 };
 
 export default Link;

@@ -3,13 +3,13 @@ import { useTheme } from '@emotion/react';
 
 export default function useMediaQuery(queryInput, options = {}) {
   const theme = useTheme();
-  const [match, setMatch] = React.useState(defaultMatches);
   const supportMatchMedia =
     typeof window !== 'undefined' && typeof window.matchMedia !== 'undefined';
   const {
     defaultMatches = false,
     matchMedia = supportMatchMedia ? window.matchMedia : null,
   } = options;
+  const [match, setMatch] = React.useState(defaultMatches);
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof queryInput === 'function' && theme === null) {

@@ -6,25 +6,16 @@ import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import Seo from 'app-base-components/seo';
-import Heading from 'app-base-components/heading';
 import HeroHeader from 'app-components/hero-header';
 import ContactFrom from 'app-components/contact-form';
 import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
 import Typography from 'app-base-components/typography';
-import Paragraph from 'app-base-components/body';
-import { bpAboveSmall } from 'app-utils/breakpoints';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16],
 }));
-
-const SectionHeading = styled(Heading)`
-  ${({ theme }) => `
-    font-size: ${theme.fontSizeRaw['5xl']};
-  `}
-`;
 
 const IndexPage = ({ data }) => {
   const theme = useTheme();
@@ -43,11 +34,7 @@ const IndexPage = ({ data }) => {
           </Typography>
           <PostsGrid posts={posts} />
         </SectionWrapper>
-        <section
-          css={{
-            paddingTop: theme.spacing[12],
-          }}
-        >
+        <SectionWrapper>
           <Typography variant="h3" gutterBottom>
             Sobre mi
           </Typography>
@@ -64,27 +51,23 @@ const IndexPage = ({ data }) => {
             experiencia en creación de aplicaciones móviles con base en
             tecnologías web.
           </Typography>
-          <Link
-            to="/about"
-            css={{
-              fontSize: theme.fontSizeRaw.lg,
-              [bpAboveSmall]: {
-                fontSize: theme.fontSizeRaw.xl,
-              },
-            }}
-          >
-            Ver mas...
+          <Link to="/about">
+            <Typography component="span" colorVariant="primary">
+              Ver mas...
+            </Typography>
           </Link>
-        </section>
+        </SectionWrapper>
         <SectionWrapper>
-          <SectionHeading>Contacto</SectionHeading>
-          <Paragraph lead>
+          <Typography variant="h3" gutterBottom>
+            Contacto
+          </Typography>
+          <Typography variant="lead" paragraph>
             ¿Preguntas ó información? no dudes en contactarme, intentare
             responder en el menor tiempo posible!{' '}
             <span role="img" aria-label="smile-emoji">
               😬
             </span>
-          </Paragraph>
+          </Typography>
           <ContactFrom />
         </SectionWrapper>
         <SocialLinks
@@ -104,8 +87,6 @@ IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default IndexPage;
-
 export const query = graphql`
   {
     allMarkdownRemark(
@@ -119,3 +100,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default IndexPage;

@@ -57,7 +57,7 @@
     "qs": "^6.10.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-grid-system": "^4.4.2",
+    "react-grid-system": "^8.1.5",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
     "rehype-react": "^4.0.1",

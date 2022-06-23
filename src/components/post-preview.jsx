@@ -1,11 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { useTheme } from '@emotion/react';
 
 import Badge from 'app-base-components/badge';
 import Link from 'app-base-components/link';
+import Typography from 'app-base-components/typography';
 
 const PostPreview = ({
   style,
@@ -22,54 +24,26 @@ const PostPreview = ({
 
   return (
     <div
-      className={className}
+      className={clsx('pb-4 bg-white border border-light rounded-b', className)}
       style={style}
-      css={{
-        backgroundColor: theme.colors.white,
-        border: `${theme.borderWidth.DEFAULT} solid ${theme.colors.light}`,
-        borderBottomLeftRadius: theme.borderRadius.DEFAULT,
-        borderBottomRightRadius: theme.borderRadius.DEFAULT,
-        paddingBottom: theme.spacing[4],
-      }}
     >
       <Link to={link}>
-        <GatsbyImage
-          alt={title}
-          image={coverImage}
-          css={{
-            borderTopLeftRadius: theme.borderRadius.DEFAULT,
-            borderTopRightRadius: theme.borderRadius.DEFAULT,
-          }}
-        />
+        <GatsbyImage className="rounded-t" alt={title} image={coverImage} />
       </Link>
-      <div
-        css={{
-          padding: theme.spacing[2],
-        }}
-      >
+      <div className="p-2">
         <Link to={link}>
-          <h3
-            css={{
-              margin: 0,
-              fontSize: theme.fontSizeRaw['2xl'],
-              lineHeight: theme.lineHeight.tight,
-              color: theme.colors.dark,
-              '&:hover': {
-                textDecoration: 'underline',
-              },
-            }}
+          <Typography
+            className="block"
+            variant="h5"
+            component="span"
+            colorVariant="inherit"
           >
             {title}
-          </h3>
+          </Typography>
         </Link>
-        <div
-          css={{
-            color: theme.colors.secondary,
-            padding: `${theme.spacing[1]} 0`,
-          }}
-        >
+        <Typography variant="body2" className="text-secondary py-1">
           {creationDate}
-        </div>
+        </Typography>
         {categories.map((category, index) => (
           <Badge
             key={index}
@@ -78,15 +52,7 @@ const PostPreview = ({
             textColor={theme.colors.white}
           />
         ))}
-        {text && (
-          <p
-            css={{
-              paddingTop: theme.spacing[1],
-            }}
-          >
-            {text}
-          </p>
-        )}
+        {text && <Typography className="pt-1">{text}</Typography>}
       </div>
     </div>
   );
@@ -98,7 +64,6 @@ PostPreview.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string,
   link: PropTypes.string.isRequired,
-  // FIXME: we should format the date internaly
   creationDate: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
   coverImageData: PropTypes.object.isRequired,

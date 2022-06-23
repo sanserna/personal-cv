@@ -14548,7 +14548,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.4, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.5.4, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.0":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -14838,14 +14838,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-grid-system@npm:^4.4.2":
-  version: 4.4.11
-  resolution: "react-grid-system@npm:4.4.11"
+"react-grid-system@npm:^8.1.5":
+  version: 8.1.5
+  resolution: "react-grid-system@npm:8.1.5"
   dependencies:
-    prop-types: ^15.7.2
+    prop-types: ^15.8.0
   peerDependencies:
-    react: ^16.0.0
-  checksum: ce99d0ebffe1217b4e9497f8a82451e2a669c966ca0c1cc5ac6329202d5494d85efb23a4020f258f54b9c28b8618c2660f774085703f8fe2d181daf8080283d4
+    react: ^16.8.0 || ^17.x || ^18.x
+  checksum: 39c21eb3e221925ff1d4a3d05adff3995d71564796279a1c61e94e0d79bbcaf8760385d10092c0fc177a8343fdd79cc61d74c7c088bf20db04cd505fafb87247
   languageName: node
   linkType: hard
 
@@ -15738,7 +15738,7 @@ __metadata:
     qs: ^6.10.1
     react: ^16.8.1
     react-dom: ^16.8.1
-    react-grid-system: ^4.4.2
+    react-grid-system: ^8.1.5
     react-helmet: ^5.2.0
     react-icons: ^3.4.0
     rehype-react: ^4.0.1
