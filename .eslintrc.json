@@ -39,6 +39,7 @@
           ["app-theme", "./src/theme"],
           ["app-utils", "./src/utils"],
           ["app-images", "./src/images"],
+          ["app-hooks", "./src/hooks"],
           ["app-content", "./content"],
           ["app-root", "./"]
         ],

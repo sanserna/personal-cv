@@ -1,35 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { Link as GatsbyLink } from 'gatsby';
 
-const linkStyles = theme => ({
-  lineHeight: theme.lineHeight.none,
-  color: theme.colors.primary,
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-});
+import Typography from 'app-base-components/typography';
 
-const Link = ({ children, className, to, ...props }) => {
+const Link = ({ children, className, to, colorVariant, ...props }) => {
   const internal = /^\/(?!\/)/.test(to);
+  const baseClassName = 'text-primary hover:underline';
 
   if (internal) {
     return (
-      <GatsbyLink className={className} to={to} css={linkStyles} {...props}>
-        {children}
-      </GatsbyLink>
+      <Typography colorVariant={colorVariant}>
+        <GatsbyLink
+          className={clsx(baseClassName, className)}
+          to={to}
+          {...props}
+        >
+          {children}
+        </GatsbyLink>
+      </Typography>
     );
   }
 
   return (
     <a
-      className={className}
-      css={linkStyles}
+      className={clsx(baseClassName, className)}
       target="_blank"
       rel="noreferrer"
       {...props}
     >
-      {children}
+      <Typography colorVariant={colorVariant}>{children}</Typography>
     </a>
   );
 };
@@ -41,11 +42,13 @@ Link.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   to: PropTypes.string,
+  colorVariant: PropTypes.oneOf(['primary', 'secondary', 'dark', 'light']),
 };
 
 Link.defaultProps = {
   className: '',
   to: '',
+  colorVariant: 'dark',
 };
 
 export default Link;

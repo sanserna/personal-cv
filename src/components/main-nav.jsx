@@ -40,7 +40,7 @@ const NavigationItem = styled(Link)`
   display: block;
 
   ${({ theme }) => `
-    font-size: ${theme.fontSizeRaw.lg};
+    font-size: ${theme.fontSizeRaw.xl};
     padding-top: ${theme.spacing[5]};
     color: ${theme.colors.secondary};
 
@@ -103,6 +103,7 @@ const MainNav = ({ style, className, pathName }) => {
                 <HeroThumbnail size="sm" />
               </div>
               <Link
+                className="hover:no-underline"
                 to="/"
                 css={{
                   color: theme.colors.dark,
@@ -139,14 +140,14 @@ const MainNav = ({ style, className, pathName }) => {
                     label: 'Blog',
                   },
                 ].map(navItem => (
-                  <NavigationItem
+                  <Link
                     key={navItem.to}
                     to={navItem.to}
                     activeClassName="active"
                     partiallyActive
                   >
                     {navItem.label}
-                  </NavigationItem>
+                  </Link>
                 ))}
               </NavigationItems>
               <SocialLinks

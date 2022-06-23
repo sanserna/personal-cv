@@ -38,7 +38,9 @@ const IndexPage = ({ data }) => {
       <HeroHeader />
       <Container>
         <SectionWrapper>
-          <SectionHeading>Últimas publicaciones</SectionHeading>
+          <Typography variant="h3" gutterBottom>
+            Últimas publicaciones
+          </Typography>
           <PostsGrid posts={posts} />
         </SectionWrapper>
         <section
@@ -46,20 +48,22 @@ const IndexPage = ({ data }) => {
             paddingTop: theme.spacing[12],
           }}
         >
-          <SectionHeading>Sobre mi</SectionHeading>
-          <Paragraph lead>
+          <Typography variant="h3" gutterBottom>
+            Sobre mi
+          </Typography>
+          <Typography variant="lead" paragraph>
             Soy un apasionado de la tecnología y me encanta ayudar a las
             personas en su proceso de crecimiento como desarrolladores de
             software.
-          </Paragraph>
-          <Paragraph>
+          </Typography>
+          <Typography paragraph>
             Soy un desarrollador de software con experiencia en tecnologías web,
             en mi trayectoria como programador he tenido la oportunidad de hacer
             parte del proceso de pensar, planear e implementar el desarrollo de
             proyectos web en roles como front-end y back-end, también tengo
             experiencia en creación de aplicaciones móviles con base en
             tecnologías web.
-          </Paragraph>
+          </Typography>
           <Link
             to="/about"
             css={{

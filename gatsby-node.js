@@ -18,6 +18,7 @@ const onCreateWebpackConfig = ({ actions }) => {
         'app-templates': path.resolve(__dirname, './src/templates'),
         'app-theme': path.resolve(__dirname, './src/theme'),
         'app-utils': path.resolve(__dirname, './src/utils'),
+        'app-hooks': path.resolve(__dirname, './src/hooks'),
       },
     },
   });
