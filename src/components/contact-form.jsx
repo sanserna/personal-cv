@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useTheme } from '@emotion/react';
-import { Col, Row } from 'react-grid-system';
 import clsx from 'clsx';
 import qs from 'qs';
 
@@ -77,13 +76,13 @@ const ContactForm = ({ className, style }) => {
           className={className}
           data-netlify="true"
         >
-          <Row>
-            <Col xs={12} md={6}>
+          <div className="grid grid-cols-1 gap-x-8 md:grid-cols-2">
+            <div>
               <Input required name="name" label="Nombre" />
               <Input required name="email" label="Email" />
               <Input required name="subject" label="Asunto" />
-            </Col>
-            <Col xs={12} md={6}>
+            </div>
+            <div>
               <TextArea
                 required
                 name="message"
@@ -92,8 +91,8 @@ const ContactForm = ({ className, style }) => {
                   height: 208,
                 }}
               />
-            </Col>
-          </Row>
+            </div>
+          </div>
           <div
             css={{
               display: 'flex',

@@ -1,48 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { ClassNames } from '@emotion/react';
 
-const sizeModifierValues = {
-  sm: {
-    height: 60,
-    width: 60,
-  },
-  md: {
-    height: 150,
-    width: 150,
-  },
-  lg: {
-    height: 250,
-    width: 250,
-  },
+const sizeVariantMapping = {
+  sm: 'w-14 h-14',
+  md: 'w-36 h-36',
+  lg: 'w-64 h-64',
 };
 
 const Thumbnail = ({ style, className, imageData, alt, bgColor, size }) => {
   const image = getImage(imageData);
 
   return (
-    <ClassNames>
-      {({ css }) => (
-        <GatsbyImage
-          className={className}
-          style={style}
-          alt={alt}
-          image={image}
-          backgroundColor={bgColor}
-          imgClassName={css({
-            borderRadius: '50%',
-          })}
-          css={{
-            ...sizeModifierValues[size],
-            display: 'block',
-            margin: 'auto',
-            overflow: 'hidden',
-            borderRadius: '50%',
-          }}
-        />
+    <GatsbyImage
+      className={clsx(
+        'block m-auto overflow-hidden rounded-full',
+        sizeVariantMapping[size],
+        className
       )}
-    </ClassNames>
+      style={style}
+      alt={alt}
+      image={image}
+      backgroundColor={bgColor}
+      placeholder="none"
+      imgClassName="rounded-full"
+    />
   );
 };
 

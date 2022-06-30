@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 import clsx from 'clsx';
-import { Container, Visible } from 'react-grid-system';
 import { IconContext } from 'react-icons';
 import { FaBars } from 'react-icons/fa';
 
+import { author } from 'app-content/meta/config';
+import { bpAboveMedium } from 'app-utils/breakpoints';
+import Container from 'app-base-components/container';
 import Button from 'app-base-components/button';
 import Link from 'app-base-components/link';
 import SocialLinks from 'app-components/social-links';
 import Typography from 'app-base-components/typography';
-import { author } from 'app-content/meta/config';
-import { bpAboveMedium } from 'app-utils/breakpoints';
+import Mobile from 'app-base-components/responsive/mobile';
 
 const MainNav = ({ style, className, pathName }) => {
   const theme = useTheme();
@@ -31,7 +32,7 @@ const MainNav = ({ style, className, pathName }) => {
         style={style}
         className={clsx('py-5 flex items-center bg-white', className)}
       >
-        <Container className="h-full w-full">
+        <Container className="container mx-auto max-w-5xl h-full">
           <div className="h-full flex flex-wrap items-center justify-between">
             <div className="flex items-center">
               <Link className="hover:no-underline" to="/">
@@ -40,14 +41,14 @@ const MainNav = ({ style, className, pathName }) => {
                 </Typography>
               </Link>
             </div>
-            <Visible xs sm>
+            <Mobile>
               <Button
                 color="dark"
                 onClick={() => setNavCollapseIsHidden(!navCollapseIsHidden)}
               >
                 <FaBars />
               </Button>
-            </Visible>
+            </Mobile>
             <div
               className={clsx('w-full md:w-auto md:flex', {
                 hidden: navCollapseIsHidden,

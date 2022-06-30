@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-import { Container } from 'react-grid-system';
 
+import { author } from 'app-content/meta/config';
 import Seo from 'app-base-components/seo';
 import Typography from 'app-base-components/typography';
 import Timeline from 'app-components/timeline';
 import SocialLinks from 'app-components/social-links';
 import ProgressList from 'app-components/progress-list';
-import { author } from 'app-content/meta/config';
+import Container from 'app-base-components/container';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[14],

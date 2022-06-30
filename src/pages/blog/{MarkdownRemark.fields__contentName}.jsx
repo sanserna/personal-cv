@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-import { Container } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
 import Typography from 'app-base-components/typography';
 import Link from 'app-base-components/link';
 import PostHeader from 'app-components/post-header';
 import PostFooter from 'app-components/post-footer';
+import Container from 'app-base-components/container';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -39,7 +39,7 @@ const BlogPost = ({ data }) => {
         categories={categories}
         coverData={cover}
       />
-      <article className="p-4">
+      <article className="py-4">
         <Container>{renderAst(htmlAst)}</Container>
       </article>
       <PostFooter />

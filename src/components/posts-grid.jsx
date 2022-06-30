@@ -1,42 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-grid-system';
-import { useTheme } from '@emotion/react';
 
 import PostPreview from 'app-components/post-preview';
 
-const PostsGrid = ({ posts = [] }) => {
-  const theme = useTheme();
-
-  return (
-    <Row>
-      {posts.map(
-        ({
-          id,
-          fields: { slug },
-          frontmatter: { title, categories, date, cover },
-        }) => (
-          <Col
-            key={id}
-            md={6}
-            lg={4}
-            css={{
-              paddingBottom: theme.spacing[4],
-            }}
-          >
-            <PostPreview
-              creationDate={date}
-              categories={categories}
-              link={slug}
-              title={title}
-              coverImageData={cover}
-            />
-          </Col>
-        )
-      )}
-    </Row>
-  );
-};
+const PostsGrid = ({ posts = [] }) => (
+  <div className="grid grid-cols-1 gap-x-8 md:grid-cols-3">
+    {posts.map(
+      ({
+        id,
+        fields: { slug },
+        frontmatter: { title, categories, date, cover },
+      }) => (
+        <div key={id}>
+          <PostPreview
+            creationDate={date}
+            categories={categories}
+            link={slug}
+            title={title}
+            coverImageData={cover}
+          />
+        </div>
+      )
+    )}
+  </div>
+);
 
 PostsGrid.propTypes = {
   posts: PropTypes.arrayOf(
