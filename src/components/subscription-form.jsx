@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { object, string } from 'yup';
-import { Row, Col } from 'react-grid-system';
 
 import Input from 'app-base-components/input';
 import Button from 'app-base-components/button';
@@ -21,21 +20,17 @@ const SubscriptionForm = ({ className, style }) => (
   >
     {({ errors }) => (
       <Form style={style} className={className}>
-        <Row>
-          <Col xs={12} md={6}>
-            <Input required name="email" placeholder="Email" />
-          </Col>
-          <Col xs={12} md={6}>
-            <Button
-              className="w-full"
-              type="submit"
-              color="success"
-              disabled={Object.entries(errors).length > 0}
-            >
-              Suscribirme
-            </Button>
-          </Col>
-        </Row>
+        <div className="grid grid-cols-1 gap-y-2 md:gap-x-2 md:grid-cols-2">
+          <Input className="m-0" required name="email" placeholder="Email" />
+          <Button
+            className="w-full"
+            type="submit"
+            color="success"
+            disabled={Object.entries(errors).length > 0}
+          >
+            Suscribirme
+          </Button>
+        </div>
       </Form>
     )}
   </Formik>

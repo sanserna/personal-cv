@@ -1,37 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Container } from 'react-grid-system';
 
 import Seo from 'app-base-components/seo';
 import PostsGrid from 'app-components/posts-grid';
-// import SubscriptionForm from 'app-components/subscription-form';
-// import Paragraph from 'app-base-components/body';
-// import { texts } from 'app-content/meta/config';
+import Container from 'app-base-components/container';
+import Typography from 'app-base-components/typography';
+import SubscriptionForm from 'app-components/subscription-form';
 
-const BlogPage = ({ data }) => {
-  const {
+const BlogPage = ({
+  data: {
     allMarkdownRemark: { nodes: posts = [] },
-  } = data;
-
-  return (
-    <>
-      <Seo />
-      <Container>
-        {/* <div className="rounded border border-gray-400 flex flex-wrap justify-center bg-white py-4 px-8 my-4">
-          <Paragraph className="text-center">{texts.subscription}</Paragraph>
-          <SubscriptionForm className="xs:w-full md:w-2/3" />
-        </div> */}
-        <div className="pt-4">
-          <PostsGrid posts={posts} />
+  },
+  showSubscriptionForm,
+}) => (
+  <>
+    <Seo />
+    <Container className="py-4">
+      {showSubscriptionForm && (
+        <div
+          className="
+            rounded
+            border
+            border-gray-400
+            flex
+            flex-wrap
+            md:flex-nowrap
+            items-center
+            justify-center
+            bg-white
+            mb-4
+            p-4
+          "
+        >
+          <Typography className="pb-2 md:pb-0 md:pr-2">
+            Lorem ipsum dolor sit amet.
+          </Typography>
+          <SubscriptionForm className="w-full md:w-2/3" />
         </div>
-      </Container>
-    </>
-  );
-};
+      )}
+      <PostsGrid posts={posts} />
+    </Container>
+  </>
+);
 
 BlogPage.propTypes = {
   data: PropTypes.object.isRequired,
+  showSubscriptionForm: PropTypes.bool,
+};
+
+BlogPage.defaultProps = {
+  showSubscriptionForm: false,
 };
 
 export const query = graphql`

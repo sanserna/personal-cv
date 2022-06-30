@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { useTheme } from '@emotion/react';
-import { Container, Row, Col } from 'react-grid-system';
 
+import haderPattern from 'app-images/assets/footer_lodyas.png';
 import Badge from 'app-base-components/badge';
 import Typography from 'app-base-components/typography';
-import haderPattern from 'app-images/assets/footer_lodyas.png';
+import Container from 'app-base-components/container';
 
 const PostHeader = ({ title, author, date, categories, coverData }) => {
   const theme = useTheme();
@@ -18,15 +18,15 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
       css={{ backgroundImage: `url(${haderPattern})` }}
     >
       <Container>
-        <Row align="center" nogutter>
-          <Col xs={12} md={5}>
+        <div className="grid grid-cols-1 items-center md:grid-cols-2">
+          <div xs={12} md={5}>
             <GatsbyImage
               className="rounded-lg"
               alt={title}
               image={coverImage}
             />
-          </Col>
-          <Col xs={12} md={7}>
+          </div>
+          <div xs={12} md={7}>
             <div className="pt-4 md:p-0 md:pl-4">
               <Typography
                 className="mb-3"
@@ -50,8 +50,8 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
                 ))}
               </div>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Container>
     </div>
   );

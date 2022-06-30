@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Global, css, useTheme } from '@emotion/react';
-import { setConfiguration } from 'react-grid-system';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -19,11 +18,6 @@ import { siteLanguage } from 'app-content/meta/config';
 
 // Setup moment locale
 moment.locale(siteLanguage);
-
-// Setup react grid system configuration
-setConfiguration({
-  containerWidths: [540, 750, 960, 960],
-});
 
 const Layout = ({ children, location }) => {
   const theme = useTheme();

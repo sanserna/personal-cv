@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-import { Container } from 'react-grid-system';
 import { graphql } from 'gatsby';
 
 import Seo from 'app-base-components/seo';
@@ -12,16 +11,18 @@ import SocialLinks from 'app-components/social-links';
 import PostsGrid from 'app-components/posts-grid';
 import Link from 'app-base-components/link';
 import Typography from 'app-base-components/typography';
+import Container from 'app-base-components/container';
 
 const SectionWrapper = styled.section(({ theme }) => ({
   paddingTop: theme.spacing[16],
 }));
 
-const IndexPage = ({ data }) => {
-  const theme = useTheme();
-  const {
+const IndexPage = ({
+  data: {
     allMarkdownRemark: { nodes: posts = [] },
-  } = data;
+  },
+}) => {
+  const theme = useTheme();
 
   return (
     <>
