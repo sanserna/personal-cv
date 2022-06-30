@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useTheme } from '@emotion/react';
 
 import Typography from 'app-base-components/typography';
 
-const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
-  const theme = useTheme();
+const Item = ({ lapse, title, desc, subtitle }) => {
   const bulletClassName = `
     before:content-['']
     before:absolute
@@ -42,7 +40,6 @@ const Item = ({ stepColor, lapse, title, desc, subtitle }) => {
 };
 
 Item.propTypes = {
-  stepColor: PropTypes.string,
   lapse: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   desc: PropTypes.string,
@@ -50,7 +47,6 @@ Item.propTypes = {
 };
 
 Item.defaultProps = {
-  stepColor: '',
   desc: '',
   subtitle: '',
 };

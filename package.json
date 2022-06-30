@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
-    "build": "gatsby build",
+    "build": "yarn lint && gatsby build",
     "serve": "gatsby serve",
     "cache:clean": "gatsby clean",
     "lint": "eslint . --ext .jsx,.js"

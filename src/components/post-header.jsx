@@ -24,6 +24,7 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
               className="rounded-lg"
               alt={title}
               image={coverImage}
+              imgClassName="rounded-lg"
             />
           </div>
           <div xs={12} md={7}>
