@@ -36,7 +36,7 @@ const MainNav = ({ style, className, pathName }) => {
           <div className="h-full flex flex-wrap items-center justify-between">
             <div className="flex items-center">
               <Link className="hover:no-underline" to="/">
-                <Typography variant="h5" component="span">
+                <Typography variant="h4" component="span">
                   {author.name}
                 </Typography>
               </Link>

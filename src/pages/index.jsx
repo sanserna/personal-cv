@@ -30,13 +30,13 @@ const IndexPage = ({
       <HeroHeader />
       <Container>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Últimas publicaciones
           </Typography>
           <PostsGrid posts={posts} />
         </SectionWrapper>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Sobre mi
           </Typography>
           <Typography variant="lead" paragraph>
@@ -52,17 +52,17 @@ const IndexPage = ({
             experiencia en creación de aplicaciones móviles con base en
             tecnologías web.
           </Typography>
-          <Link to="/about">
-            <Typography component="span" colorVariant="primary">
+          <Link to="/about" className="text-primary">
+            <Typography component="span" colorVariant="inherit">
               Ver mas...
             </Typography>
           </Link>
         </SectionWrapper>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Contacto
           </Typography>
-          <Typography variant="lead" paragraph>
+          <Typography paragraph>
             ¿Preguntas ó información? no dudes en contactarme, intentare
             responder en el menor tiempo posible!{' '}
             <span role="img" aria-label="smile-emoji">

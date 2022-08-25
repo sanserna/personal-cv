@@ -48,6 +48,6 @@ export const formatLapseDate = config => {
   }
 
   return `${formattedFrom} -> ${formattedTo}`.concat(
-    difference ? ` - ${difference}` : ''
+    difference ? ` (${difference})` : ''
   );
 };

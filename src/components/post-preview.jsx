@@ -32,16 +32,11 @@ const PostPreview = ({
       </Link>
       <div className="p-2">
         <Link to={link}>
-          <Typography
-            className="block"
-            variant="h5"
-            component="span"
-            colorVariant="inherit"
-          >
+          <Typography variant="h3" colorVariant="inherit" paragraph>
             {title}
           </Typography>
         </Link>
-        <Typography variant="body2" className="text-secondary py-1">
+        <Typography colorVariant="secondary" className="pb-1">
           {creationDate}
         </Typography>
         {categories.map((category, index) => (

@@ -29,12 +29,7 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
           </div>
           <div xs={12} md={7}>
             <div className="pt-4 md:p-0 md:pl-4">
-              <Typography
-                className="mb-3"
-                variant="h4"
-                component="h1"
-                colorVariant="light"
-              >
+              <Typography className="mb-3" variant="h2" colorVariant="light">
                 {title}
               </Typography>
               <Typography colorVariant="light">

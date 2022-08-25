@@ -37,7 +37,7 @@ const AboutPage = () => {
           </Typography>
         </SectionWrapper>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Experiencia
           </Typography>
           <Typography>
@@ -55,7 +55,7 @@ const AboutPage = () => {
           </div>
         </SectionWrapper>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Conocimientos
           </Typography>
           <ProgressList
@@ -66,7 +66,7 @@ const AboutPage = () => {
           />
         </SectionWrapper>
         <SectionWrapper>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Educación
           </Typography>
           <Typography>

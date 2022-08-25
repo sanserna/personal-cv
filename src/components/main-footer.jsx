@@ -1,28 +1,14 @@
 import React from 'react';
-import { useTheme } from '@emotion/react';
 
-const MainFooter = () => {
-  const theme = useTheme();
+import Typography from 'app-base-components/typography';
 
-  return (
-    <footer
-      css={{
-        background: theme.colors.dark,
-        padding: theme.spacing[10],
-      }}
-    >
-      <p
-        css={{
-          color: theme.colors.white,
-          textAlign: 'center',
-          width: '100%',
-        }}
-      >
-        © 2018 Santiago Serna. Todos los derechos reservados.
-      </p>
-    </footer>
-  );
-};
+const MainFooter = () => (
+  <footer className="bg-dark p-10">
+    <Typography className="text-center" colorVariant="light">
+      © 2018 Santiago Serna. Todos los derechos reservados.
+    </Typography>
+  </footer>
+);
 
 MainFooter.propTypes = {};
 

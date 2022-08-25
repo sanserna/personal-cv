@@ -19,6 +19,13 @@ module.exports = {
         {}
       ),
     extend: {
+      fontSize: {
+        xl: ['1.375rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5625rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.5rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3.125rem', { lineHeight: '1' }],
+      },
       fontFamily: {
         sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },

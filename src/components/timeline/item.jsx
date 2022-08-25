@@ -25,12 +25,12 @@ const Item = ({ lapse, title, desc, subtitle }) => {
         bulletClassName
       )}
     >
-      <Typography variant="body1">{lapse}</Typography>
-      <Typography className="pt-3" variant="h5" colorVariant="primary">
+      <Typography variant="body">{lapse}</Typography>
+      <Typography className="pt-3" variant="h4" colorVariant="primary">
         {title}
       </Typography>
       {subtitle && (
-        <Typography variant="subtitle1" colorVariant="secondary">
+        <Typography variant="subtitle" colorVariant="secondary">
           {subtitle}
         </Typography>
       )}

@@ -13,39 +13,35 @@ import Container from 'app-base-components/container';
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    p: props => <Typography {...props} paragraph colorVariant="secondary" />,
-    h2: props => (
-      <Typography {...props} variant="h4" component="h2" gutterBottom />
-    ),
+    p: props => <Typography {...props} paragraph />,
+    h2: props => <Typography {...props} variant="h2" gutterBottom />,
     a: Link,
   },
 }).Compiler;
 
-const BlogPost = ({ data }) => {
-  const {
+const BlogPost = ({
+  data: {
     markdownRemark: {
       htmlAst,
       frontmatter: { author, title, description, date, cover, categories = [] },
     },
-  } = data;
-
-  return (
-    <>
-      <Seo title={title} description={description} />
-      <PostHeader
-        title={title}
-        author={author}
-        date={date}
-        categories={categories}
-        coverData={cover}
-      />
-      <article className="py-4">
-        <Container>{renderAst(htmlAst)}</Container>
-      </article>
-      <PostFooter />
-    </>
-  );
-};
+  },
+}) => (
+  <>
+    <Seo title={title} description={description} />
+    <PostHeader
+      title={title}
+      author={author}
+      date={date}
+      categories={categories}
+      coverData={cover}
+    />
+    <article className="py-4">
+      <Container>{renderAst(htmlAst)}</Container>
+    </article>
+    <PostFooter />
+  </>
+);
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
