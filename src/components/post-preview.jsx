@@ -44,7 +44,8 @@ const PostPreview = ({
             key={index}
             text={category}
             color={theme.colors.primary}
-            textColor={theme.colors.white}
+            size="sm"
+            textColorColorVariant="light"
           />
         ))}
         {text && <Typography className="pt-1">{text}</Typography>}

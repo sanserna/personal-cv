@@ -25,7 +25,7 @@ const fontSizeVariantMapping = {
   subtitle: 'text-base md:text-lg',
   lead: 'font-medium text-xl md:text-2xl',
   body: 'text-lg md:text-xl',
-  caption: 'text-sm md:base',
+  caption: 'text-sm md:text-base',
 };
 
 const fontColorVariantMapping = {

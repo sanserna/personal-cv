@@ -1,19 +1,25 @@
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
+import uniqueId from 'lodash/uniqueId';
+import { transparentize } from 'polished';
 
 import ProgressBar from 'app-base-components/progress-bar';
 import Typography from 'app-base-components/typography';
 
-const ProgressList = ({ list, showPercentage }) => (
+const ProgressList = ({ items, showPercentage }) => (
   <div className="table w-full">
-    {list.map((listItem, index) => (
-      <div key={index} className="table-row">
+    {items.map(item => (
+      <div key={uniqueId('progress_')} className="table-row">
         <Typography className="table-cell pr-3 align-middle">
-          {listItem.label}
+          {item.text}
         </Typography>
         <div className="table-cell w-[85%] h-16 align-middle">
-          <ProgressBar value={listItem.value} showPercentage={showPercentage} />
+          <ProgressBar
+            value={item.value}
+            showPercentage={showPercentage}
+            color={item.color}
+            backgroundColor={transparentize(0.7, item.color)}
+          />
         </div>
       </div>
     ))}
@@ -21,9 +27,9 @@ const ProgressList = ({ list, showPercentage }) => (
 );
 
 ProgressList.propTypes = {
-  list: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
     })
   ).isRequired,

@@ -58,12 +58,7 @@ const AboutPage = () => {
           <Typography variant="h2" gutterBottom>
             Conocimientos
           </Typography>
-          <ProgressList
-            list={author.techSkills.map(({ label, level }) => ({
-              label,
-              value: level,
-            }))}
-          />
+          <ProgressList items={author.techSkills} />
         </SectionWrapper>
         <SectionWrapper>
           <Typography variant="h2" gutterBottom>

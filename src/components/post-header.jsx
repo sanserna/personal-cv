@@ -41,7 +41,7 @@ const PostHeader = ({ title, author, date, categories, coverData }) => {
                     key={category}
                     text={category}
                     color={theme.colors.primary}
-                    textColor={theme.colors.white}
+                    textColorColorVariant="light"
                   />
                 ))}
               </div>
